@@ -1,6 +1,26 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "logo": "shopify:\/\/shop_images\/logoheader.png",
+          "logo-secondary": "shopify:\/\/shop_images\/thuiswinkel.jpg"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }
