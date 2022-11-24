@@ -1,0 +1,27 @@
+{
+  "name": "rephone-theme",
+  "version": "1.0.0",
+  "description": "![Shopify](https://i.ibb.co/85CkkDW/Estudio-de-Fotografi-a-Portada-de-Facebook.png)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enchanted-Labs/Rephone-Theme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Enchanted-Labs/Rephone-Theme/issues"
+  },
+  "homepage": "https://github.com/Enchanted-Labs/Rephone-Theme#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "bootstrap-scss": "^5.2.2",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^8.0.0",
+    "sass": "^1.56.1"
+  }
+}

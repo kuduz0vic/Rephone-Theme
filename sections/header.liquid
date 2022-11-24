@@ -6,36 +6,178 @@
   endif
 %}
 
-<header id="header" class="header">
-  <nav role="navigation">
-    {% for link in main_menu_linklist %}
-      {% if link.links != blank %}
-        {% assign link_handle = link.handle | replace: '-', '_' %}
-        {% for childlink in link.links %}
-          <a href="{{ childlink.url }}">{{ childlink.title }}</a>
-        {% endfor %}     
-      {% else %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      {% endif %}
-    {% endfor %}
-    <form action="{{ routes.search_url }}" method="get">
-      <input type="search" name="q" placeholder="Search">
-      <button type="submit">Search</button>
-    </form>
-  </nav>     
+<header>
+  <div class="container-fluid d-lg-block d-none">
+    <div class="outer">
+      <div class="top-side">
+        <div class="inner">
+          <div class="row">
+            <div class="col-6 left-side d-lg-block d-none">
+              <div class="row">
+                <div class="col-md-6 col-lg-5 col-xl-4 call">
+                  <i class="far fa-phone"></i>
+                  <p>085 1301 646</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 right-side">
+              <div class="row">
+                <div class="col-6 top-menu d-lg-flex d-none">
+                  <ul>
+                    <li><a href="">Inruilen</a></li>
+                    <li><a href="">Klantenservice</a></li>
+                    <li><a href="">Contact</a></li>
+                  </ul>
+                </div>
+                <div class="col-1 search">
+                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  <i class="far fa-search"></i>
+                </div>
+                <div class="col-3 brands">
+                  <img src="{{section.settings.logo-secondary | img_url: 'master'}}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid bottom-container-fluid">
+    <div class="outer">
+      <div class="bottom-side">
+        <div class="inner">
+          <div class="row">
+            <div class="col-2 logo d-lg-block d-none">
+              <img class="img" src="{{section.settings.logo | img_url: 'master'}}">
+            </div>
+            <div class="offset-0 offset-lg-3 col-12 col-lg-7">
+              <!--<div class="offset-1 offset-lg-4 col-9 col-lg-6">-->
+              <div class="tabs">
+                <div class="tab-item d-none d-lg-flex">
+                  <img src="{{'iphone.png' | asset_url}}">
+                  <p>Iphone</p>
+                  <i class="far fa-arrow-down"></i>
+                </div>
+                <div class="tab-item d-none d-lg-flex">
+                  <img src="{{'apple-ipad-pro.png' | asset_url}}">
+                  <p>Ipads</p>
+                  <i class="far fa-arrow-down"></i>
+                </div>
+                <div class="tab-item d-none d-lg-flex">
+                  <img src="{{'macbook.png' | asset_url}}">
+                  <p>Macs</p>
+                  <i class="far fa-arrow-down"></i>
+                </div>
+                <div class="tab-item d-none d-lg-flex">
+                  <img src="{{'menu-accessoires.jpg' | asset_url}}">
+                  <p>Accessoires</p>
+                  <i class="far fa-arrow-down"></i>
+                </div>
+                <div class="mobile-logo d-lg-none">
+                  <div class="img"></div>
+                </div>
+                <div class="d-lg-none brands">
+                  <div class="img"></div>
+                  <div class="img"></div>
+                </div>
+                <div class="tab-item cart">
+                  <p class="d-lg-block d-none">Je winkelwagen</p>
+                  <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="counter">
+                      <p>0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="menu-row d-md-none d-none">
+    <div class="container">
+      <div class="row">
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone X</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone 5S</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone X</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone 5S</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone X</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone 5S</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone X</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone 5S</p>
+          </div>
+        </div>
+        <div class="col item-parent">
+          <div class="item">
+            <div class="img"></div>
+            <p>iphone X</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </header>
-        
 
 {% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "default": "main-menu",
-      "label": "Heading Navigation Menu"
-    }
-  ]
-}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "Heading Navigation Menu"
+      }, {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }, {
+        "type": "image_picker",
+        "id": "logo-secondary",
+        "label": "Logo Secondary"
+      }
+    ]
+  }
 {% endschema %}
