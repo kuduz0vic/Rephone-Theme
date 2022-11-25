@@ -1,13 +1,112 @@
 {
   "sections": {
-    "store-name": {
-      "type": "store-name",
+    "c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06": {
+      "type": "hero",
+      "blocks": {
+        "template--17065257828654__c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06-16693866664b92b677-0": {
+          "type": "text",
+          "settings": {
+            "title": "<p>Refurbished <strong>van Rephone<\/strong><\/p>"
+          }
+        },
+        "template--17065257828654__c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06-16693866664b92b677-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label": "Bekijk onze iPhones",
+            "button_link": ""
+          }
+        },
+        "a2dffdcd-0cef-49a0-8da5-7b5ce37caa6c": {
+          "type": "hero-usp",
+          "settings": {
+            "hero-column-text": "Ruim 22360 klanten beoordelen ons met een 8.3"
+          }
+        },
+        "351c5c81-39be-4e52-9308-db2f1e31de20": {
+          "type": "hero-usp",
+          "settings": {
+            "hero-column-text": "14 dagen bedenktijd, gratis retour"
+          }
+        },
+        "a9f78dce-f0be-413b-a537-134793fe8e62": {
+          "type": "hero-usp",
+          "settings": {
+            "hero-column-text": "24 maanden garantie op alle producten"
+          }
+        },
+        "e30c8d04-26f8-48bb-8ba9-3768238ae68d": {
+          "type": "hero-usp",
+          "settings": {
+            "hero-column-text": "Ook garantie op de accu"
+          }
+        }
+      },
+      "block_order": [
+        "template--17065257828654__c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06-16693866664b92b677-0",
+        "template--17065257828654__c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06-16693866664b92b677-1",
+        "a2dffdcd-0cef-49a0-8da5-7b5ce37caa6c",
+        "351c5c81-39be-4e52-9308-db2f1e31de20",
+        "a9f78dce-f0be-413b-a537-134793fe8e62",
+        "e30c8d04-26f8-48bb-8ba9-3768238ae68d"
+      ],
       "settings": {
-        "store_name": "Store Name"
+        "banner": "shopify:\/\/shop_images\/inspiration-geometry.png",
+        "phone-gif": "https:\/\/cdn.shopify.com\/s\/files\/1\/0683\/3478\/0718\/files\/phone.gif?v=1669394089"
+      }
+    },
+    "fc597fea-6300-470b-94f1-02228c440484": {
+      "type": "divider-line",
+      "settings": {
+      }
+    },
+    "bf887640-591b-447f-84fe-cf628514e256": {
+      "type": "image-w-text",
+      "settings": {
+        "emoji": "",
+        "title": "",
+        "description": ""
+      }
+    },
+    "6296f7ca-a643-4318-ad80-920acdd8f2b9": {
+      "type": "divider-line",
+      "settings": {
+      }
+    },
+    "8ec157f7-2dd8-451b-b10f-bf5b0becaa8e": {
+      "type": "product-recommendation",
+      "settings": {
+        "title": "",
+        "label-text_color": "#000000",
+        "rec_product_list": [
+
+        ]
+      }
+    },
+    "5aabcb34-699a-471e-9273-69b94a7ab966": {
+      "type": "divider-line",
+      "settings": {
+      }
+    },
+    "fff4fe18-add8-4b89-913d-f6e667a8dfc1": {
+      "type": "about-us",
+      "settings": {
+        "desktop-left": false,
+        "desktop-right": false,
+        "inverted": false,
+        "title": "",
+        "description": "",
+        "button-label": "",
+        "button-url": ""
       }
     }
   },
   "order": [
-    "store-name"
+    "c7a8fd4e-4d1e-49f9-87ca-bcaba28fbf06",
+    "fc597fea-6300-470b-94f1-02228c440484",
+    "bf887640-591b-447f-84fe-cf628514e256",
+    "6296f7ca-a643-4318-ad80-920acdd8f2b9",
+    "8ec157f7-2dd8-451b-b10f-bf5b0becaa8e",
+    "5aabcb34-699a-471e-9273-69b94a7ab966",
+    "fff4fe18-add8-4b89-913d-f6e667a8dfc1"
   ]
 }

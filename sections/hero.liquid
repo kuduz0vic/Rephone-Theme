@@ -1,0 +1,216 @@
+<section style="background: url({{section.settings.banner | img_url: 'master'}}) repeat center #29A7BF;" class="banner">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 left-side">
+          <div style="background: url({{section.settings.phone-gif}}); background-repeat: no-repeat;
+                        background-size: auto 100%;
+                        background-position: 0 100px,180px 120px;
+                        height: 500px;" class="img"></div>
+        </div>
+        <div class="d-none d-md-flex col-12 col-md-6 offset-lg-0 col-lg-6 right-side">
+          <div class="inner">
+            <div class="title">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'text' %}
+                    <div class="hero-title">{{block.settings.title}}</div>
+                  </div>
+                {% endcase %}
+              {% endfor %}
+              <div class="check-marks">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'hero-usp' %}
+                      <div class="check-mark">
+                        <i class="fal fa-check-circle"></i>
+                        <p>{{block.settings.hero-column-text}}</p>
+                      </div>
+                  {% endcase %}
+                {% endfor %}
+              </div>
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'buttons' %}
+                    <a href="{{block.settings.button_link}}" class="btn-green">{{block.settings.button_label_1}}</a>
+                {% endcase %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mobile-banner-addon d-md-none">
+    <div class="container">
+      <div class="inner">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'text' %}
+              <div class="title">
+                <h1>{{block.settings.title}}</h1>
+              </div>
+          {% endcase %}
+        {% endfor %}
+        <div class="check-marks green">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'hero-usp' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{block.settings.hero-column-text}}</p>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards mb-3 mb-lg-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6 left-side mb-3 mb-lg-0">
+          <div class="inner">
+            <div class="row">
+              <div class="col-4">
+                <div class="img">
+                  <div class="price">
+                    <p>Al vanaf <br>
+                      <span>139,-</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8">
+                <h3>Onze iPhones</h3>
+                <div class="check-marks">
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>Oplader en oortjes meegeleverd</p>
+                  </div>
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>Screenprotector al op het scherm gemonteerd</p>
+                  </div>
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>14 dagen bedenktijd</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPhones</a>
+        </div>
+
+        <div class="col-12 col-lg-6 right-side">
+          <div class="inner">
+            <div class="row">
+              <div class="col-4">
+                <div class="img">
+                  <div class="price">
+                    <p>Al vanaf <br>
+                      <span>189,-</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8">
+                <h3>Onze iPhones</h3>
+                <div class="check-marks">
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>Oplader en oortjes meegeleverd</p>
+                  </div>
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>Screenprotector al op het scherm gemonteerd</p>
+                  </div>
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>14 dagen bedenktijd</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPads</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% schema %}
+    {
+      "name": "Hero",
+      "tag": "section",
+      "class": "section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner",
+          "label": "Banner"
+        }, {
+          "type": "url",
+          "id": "phone-gif",
+          "label": "Phone Gif"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "text",
+          "name": "Hero Heading",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "title",
+              "label": "Hero Heading"
+            }
+          ]
+        }, {
+          "type": "buttons",
+          "name": "Buttons",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Button Label"
+            }, {
+              "type": "url",
+              "id": "button_link",
+              "label": "Button Url"
+            }
+          ]
+        }, {
+          "type": "hero-usp",
+          "name": "Hero Column",
+          "limit": 4,
+          "settings": [
+            {
+              "type": "text",
+              "id": "hero-column-text",
+              "label": "Column"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Hero Image",
+          "blocks": [
+            {
+              "type": "text"
+            }, {
+              "type": "buttons"
+            }, {
+              "type": "hero-usp"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

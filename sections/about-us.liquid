@@ -1,0 +1,108 @@
+<section class="about">
+  <div class="container">
+    <div class="row d-flex flex-column-reverse flex-md-row">
+      <div class="col-12 col-lg-4 left-side">
+        <div class="inner">
+          <h3>Waarom bij ons kopen?</h3>
+
+          <div class="check-marks">
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Goede kwaliteit/prijs verhouding</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Uitvoerig nagekeken, getest en gereinigd</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Twee jaar garantie</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Op werkdagen voor 23:00 uur besteld is morgen in huis</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="" class="btn-green">Bekijk ons assortiment</a>
+      </div>
+
+      <div class="col-12 col-lg-8 right-side">
+        <div class="text">
+          <h3 class="d-none d-md-block">Refurbished van Rephone.nl
+          </h3>
+          <h2 class="d-md-none">Refurbished elektronica van Rephone.nl</h2>
+          <p>Rephone is gespecialiseerd in refurbished iPhones, iPads en smartphones. Refurbished betekent gerenoveerd en dit houdt in dat we bij Rephone gebruikte artikelen een tweede leven geven. Al onze 'gereviseerde' toestellen en apparaten worden uitvoerig door technici nagekeken, getest en gereinigd. We leveren de beste kwaliteit en op alle tweedehands artikelen die je bij ons kunt kopen geldt de wettelijke garantie. In onze webshop vind je ons volledige aanbod.</p>
+        </div>
+        <div class="text">
+          <h3>Een refurbished Apple iPhone, iPad of Mac kopen</h3>
+          <p>
+            Omdat al onze tweedehands elektronica zorgvuldig wordt nagekeken, getest en gereinigd ben jij verzekerd van een iPhone, iPad of Mac van de beste kwaliteit. Het voordeel van het kopen van een refurbished iPhone, iPad of Mac is de prijs/kwaliteit verhouding. De prijs van een gebruikt apparaat ligt lager dan de prijs van een nieuw exemplaar. Houd er wel rekening mee dat er een krasje of een beschadiging op de tweedehands iPhone, iPad of Mac kan zitten. Dit zegt overigens niets over de kwaliteit van de telefoon. Je hebt twee jaar garantie op onze refurbished elektronica en voor reparatie kun je altijd bij ons terecht.
+          </p>
+        </div>
+        <div class="text">
+          <h3>Het Rephone assortiment</h3>
+          <p>
+            Ons assortiment bestaat uit verschillende soorten tweedehands iPhones en iPads, namelijk: iPhone 5s, iPhone 6, iPhone 6 Plus, iPhone 6s, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone SE, iPad Air, iMac, Macbook.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "About us",
+    "class": "section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "desktop-left",
+        "label": "Desktop - Left / Mobile Bottom"
+      },
+      {
+        "type": "checkbox",
+        "id": "desktop-right",
+        "label": "Desktop - Right / Mobile Top"
+      },
+      {
+        "type": "checkbox",
+        "id": "inverted",
+        "label": "Desktop - Right / Mobile Bottom",
+        "info": "Only one, from the 3 possibilites above, can be checked at the time!"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      }, {
+        "type": "text",
+        "id": "button-label",
+        "label": "Button Label"
+      }, {
+        "type": "url",
+        "id": "button-url",
+        "label": "Button Url"
+      }
+    ],
+    "presets": [
+      {
+        "name": "About Us"
+      }
+    ]
+  }
+{% endschema %}

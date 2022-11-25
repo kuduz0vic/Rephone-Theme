@@ -730,7 +730,6 @@ header {
   right: 0 !important; }
 
 .homepage section.banner {
-  background: url("../img/inspiration-geometry.png") repeat center #29A7BF;
   -webkit-background-size: contain;
   background-size: contain;
   height: 500px;
@@ -739,7 +738,6 @@ header {
     .homepage section.banner {
       height: auto; } }
   .homepage section.banner .left-side .img {
-    background: url("../img/phone.gif");
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: 0 100px,180px 120px;
@@ -756,13 +754,21 @@ header {
     .homepage section.banner .right-side .inner {
       display: flex;
       flex-direction: column; }
-      .homepage section.banner .right-side .inner .title h1 {
+      .hero-title p {
         font-weight: bold;
         color: white;
-        font-size: 64px; }
+        font-size: 64px;
+        line-height: 64px;
+        font-family: ubuntu, sans-serif;
+        margin-bottom: .5rem;
+        margin-top: 0; }
         @media (max-width: 991.98px) {
-          .homepage section.banner .right-side .inner .title h1 {
-            font-size: 46px; } }
+          .hero-title p {
+            font-size: 46px;
+            line-height: 64px;
+            font-family: ubuntu, sans-serif;
+            margin-bottom: .5rem;
+            margin-top: 0; } }
       .homepage section.banner .right-side .inner .check-marks .check-mark i, .homepage section.banner .right-side .inner .check-marks .check-mark p {
         color: white; }
       .homepage section.banner .right-side .inner .btn-green {
