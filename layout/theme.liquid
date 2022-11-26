@@ -49,6 +49,58 @@
 
     <!--custom css-->
     {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
+
+    <style>
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-Bold.woff' | asset_url}}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-BoldItalic.woff' | asset_url}}') format('woff');
+        font-weight: 700;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-Italic.woff' | asset_url}}') format('woff');
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-Light.woff' | asset_url}}') format('woff');
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-LightItalic.woff' | asset_url}}') format('woff');
+        font-weight: 300;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-Medium.woff' | asset_url}}') format('woff');
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-MediumItalic.woff' | asset_url}}') format('woff');
+        font-weight: 500;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        src: url('{{'Ubuntu-Regular.woff' | asset_url}}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+      }
+    </style>
   </head>
   <body>
     {% section 'header' %}
@@ -57,11 +109,11 @@
     </main>
     {% section 'footer' %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.js" integrity="sha512-1cF8XUz5U3BlnRVqNFn+aPNwwSr/FPtrmKvM1g4dJJ9tg8kmqRUzqbSOvRRAMScDnTkOcOnnfwF3+jRA/nE2Ow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" integrity="sha512-nnzkI2u2Dy6HMnzMIkh7CPd1KX445z38XIu4jG1jGw7x5tSL3VBjE44dY4ihMU1ijAQV930SPM12cCFrB18sVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 
     <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'slicknav.js' | asset_url }}" defer="defer"></script>

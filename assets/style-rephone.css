@@ -2,6 +2,10 @@
 * {
   box-sizing: border-box; }
 
+.show {
+  display: inline-block;
+}
+
 body {
   margin: 0;
   color: #697C83;
@@ -281,10 +285,12 @@ form textarea {
       font-size: 16px; }
     .check-marks .check-mark i, .check-marks .check-mark p {
       margin-right: 15px;
-      font-weight: normal; }
+      font-weight: normal;
+    color: #fff; }
     .check-marks .check-mark p {
       margin-right: 0;
-      font-size: 14px; }
+      font-size: 14px;
+    color: #fff; }
   .check-marks.green .check-mark i {
     color: #18B900; }
   .check-marks.blue .check-mark i {
@@ -755,7 +761,7 @@ header {
       display: flex;
       flex-direction: column; }
       .hero-title p {
-        font-weight: bold;
+        font-weight: 400;
         color: white;
         font-size: 64px;
         line-height: 64px;

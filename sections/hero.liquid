@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-12 col-md-6 left-side">
           <div style="background: url({{section.settings.phone-gif}}); background-repeat: no-repeat;
-                        background-size: auto 100%;
-                        background-position: 0 100px,180px 120px;
-                        height: 500px;" class="img"></div>
+                                    background-size: auto 100%;
+                                    background-position: 0 100px,180px 120px;
+                                    height: 500px;" class="img"></div>
         </div>
         <div class="d-none d-md-flex col-12 col-md-6 offset-lg-0 col-lg-6 right-side">
           <div class="inner">
@@ -32,7 +32,7 @@
               {% for block in section.blocks %}
                 {% case block.type %}
                   {% when 'buttons' %}
-                    <a href="{{block.settings.button_link}}" class="btn-green">{{block.settings.button_label_1}}</a>
+                    <a href="{{block.settings.button_link}}" class="btn-green">{{block.settings.button_label}}</a>
                 {% endcase %}
               {% endfor %}
             </div>
