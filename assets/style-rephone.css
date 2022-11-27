@@ -2,10 +2,6 @@
 * {
   box-sizing: border-box; }
 
-.show {
-  display: inline-block;
-}
-
 body {
   margin: 0;
   color: #697C83;
@@ -285,12 +281,10 @@ form textarea {
       font-size: 16px; }
     .check-marks .check-mark i, .check-marks .check-mark p {
       margin-right: 15px;
-      font-weight: normal;
-    color: #fff; }
+      font-weight: normal; }
     .check-marks .check-mark p {
       margin-right: 0;
-      font-size: 14px;
-    color: #fff; }
+      font-size: 14px; }
   .check-marks.green .check-mark i {
     color: #18B900; }
   .check-marks.blue .check-mark i {
@@ -601,14 +595,13 @@ header {
           header .container-fluid .outer .top-side .inner .row .right-side .brands .img:first-of-type {
             background: url("../img/eet.jpg") no-repeat center;
             width: 35px; }
-          header .container-fluid .outer .top-side .inner .row .right-side .brands .img:last-of-type img {
+          header .container-fluid .outer .top-side .inner .row .right-side .brands .img:last-of-type {
             width: 90px; }
       header .container-fluid .outer .bottom-side .inner .row {
         display: flex;
         justify-content: center;
         align-items: center; }
-        header .container-fluid .outer .bottom-side .inner .row .logo img {
-          background: url("../img/logoheader.png") no-repeat 15px center;
+        header .container-fluid .outer .bottom-side .inner .row .logo {
           -webkit-background-size: contain;
           background-size: contain;
           width: 100%;
@@ -623,9 +616,8 @@ header {
             justify-content: space-between;
             padding: 10px;
             border-left: 1px solid #E5E5E5; }
-            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item img {
+            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item .img {
               -webkit-background-size: contain;
-              background-size: contain;
               height: 45px;
               width: 23px; }
             header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item p {
@@ -634,12 +626,15 @@ header {
               padding: 0 10px; }
             header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item i {
               color: #29A7BF; }
-            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(2) img {
+            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(2) .img {
+              background: url("../img/apple-ipad-pro.png") no-repeat center;
               width: 32px; }
-            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(3) img {
+            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(3) .img {
+              background: url("../img/macbook.png") no-repeat center;
               width: 50px;
               background-size: contain; }
-            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(4) img {
+            header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item:nth-of-type(4) .img {
+              background: url("../img/menu-accessoires.jpg") no-repeat center;
               width: 65px; }
             header .container-fluid .outer .bottom-side .inner .row .tabs .tab-item.cart p {
               font-size: 12px;
@@ -736,6 +731,7 @@ header {
   right: 0 !important; }
 
 .homepage section.banner {
+  background: url("../img/inspiration-geometry.png") repeat center #29A7BF;
   -webkit-background-size: contain;
   background-size: contain;
   height: 500px;
@@ -744,6 +740,7 @@ header {
     .homepage section.banner {
       height: auto; } }
   .homepage section.banner .left-side .img {
+    background: url("../img/phone.gif");
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: 0 100px,180px 120px;
@@ -760,21 +757,13 @@ header {
     .homepage section.banner .right-side .inner {
       display: flex;
       flex-direction: column; }
-      .hero-title p {
-        font-weight: 400;
+      .homepage section.banner .right-side .inner .title h1 {
+        font-weight: bold;
         color: white;
-        font-size: 64px;
-        line-height: 64px;
-        font-family: ubuntu, sans-serif;
-        margin-bottom: .5rem;
-        margin-top: 0; }
+        font-size: 64px; }
         @media (max-width: 991.98px) {
-          .hero-title p {
-            font-size: 46px;
-            line-height: 64px;
-            font-family: ubuntu, sans-serif;
-            margin-bottom: .5rem;
-            margin-top: 0; } }
+          .homepage section.banner .right-side .inner .title h1 {
+            font-size: 46px; } }
       .homepage section.banner .right-side .inner .check-marks .check-mark i, .homepage section.banner .right-side .inner .check-marks .check-mark p {
         color: white; }
       .homepage section.banner .right-side .inner .btn-green {
@@ -3604,3 +3593,14 @@ footer {
   line-height: 30px;
   padding: 7px 12px;
   height: 44px; }
+
+
+  /* custom theme css */
+
+  #shopify-section-header {
+    margin: 0;
+  }
+
+  a.menu-links-2 {
+    font-weight: 700;
+  }

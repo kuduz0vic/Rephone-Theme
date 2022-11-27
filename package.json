@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "laravel-mix-twig-to-html": "^1.3.0"
+  }
+}

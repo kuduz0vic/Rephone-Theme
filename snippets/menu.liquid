@@ -1,0 +1,68 @@
+<style>
+  .slicknav_menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 991px) {
+    .slicknav_menu {
+      display: block;
+    }
+
+  }
+</style>
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'collections' %}
+      {% assign collection = collections[block.settings.collection] %}
+      <section class="menu-row d-md-none d-none" data-menu="{{collection.title}}">
+        <div class="container">
+          <div class="row">
+            {% for collection in block.settings.collection_list %}
+              <div class="col item-parent">
+                <a href="{{ collection.url }}" class="item">
+                  <img src="{{ collection.featured_image | img_url: 'master'}}" alt="{{ collection.title }}" style="width: 100px;"/>
+                  <p style="width: 100px;">{{ collection.title }}</p>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+  {% endcase %}
+{% endfor %}
+
+<div id="slicknav_menu" style="display: none;">
+  <ul>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'collections' %}
+          {% assign collection = collections[block.settings.collection] %}
+          <li>
+            {{ collection.title }}
+            <ul>
+              {% for collection in block.settings.collection_list %}
+                <li>
+                  <a href="{{ collection.url  }}" class="item">{{ collection.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endcase %}
+      {% endfor %}
+    </li>
+    {% for link in section.settings.mobile-menu.links %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+        {% if link.links.size > 0 %}
+          <ul>
+            {% for child_link in link.links %}
+              <li>
+                <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
