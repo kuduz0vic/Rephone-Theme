@@ -1,119 +1,54 @@
 <section class="refurbished-phones-row">
   <div class="container">
     <div class="row">
-      <div class="col-6 col-sm item-parent">
-        <div class="item">
-          <div class="img"></div>
-          <p class="title">Refurbished iPhone 7 Plus <br>
-            <span>256GB  |  Space grey</span>
-          </p>
-          <div class="price">
-            <p>Vanaf <br>
-              <span>219,95</span>
-            </p>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'product' %}
+            {% assign product = block.settings.product %}
+            <div class="col-6 col-sm item-parent">
+              <div class="item">
+                <img src="{{product.featured_image | img_url: 'master'}}" style="width:200px;margin-left:-50px;">
+                <p class="title">{{ product.title }}<br>
+                  <span>{{block.settings.variant}}</span>
+                </p>
+                <div class="price">
+                  <p>Vanaf <br>
+                    <span>{{product.price | money}}</span>
+                  </p>
+                </div>
+              </img>
+            </div>
           </div>
-          <a href="" class="blue-underline">
-            <p>Bekijk alle iPhone 5S</p>
-            <i class="far fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-6 col-sm item-parent">
-        <div class="item">
-          <div class="img"></div>
-          <p class="title">Refurbished iPhone 7 Plus <br>
-            <span>256GB  |  Space grey</span>
-          </p>
-          <div class="price">
-            <p>Vanaf <br>
-              <span>219,95</span>
-            </p>
-          </div>
-
-          <a href="" class="blue-underline">
-            <p>Bekijk alle iPhone 5S</p>
-            <i class="far fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="d-none d-md-block col-6 col-sm item-parent">
-        <div class="item">
-          <div class="img"></div>
-          <p class="title">Refurbished iPhone 7 Plus <br>
-            <span>256GB  |  Space grey</span>
-          </p>
-          <div class="price">
-            <p>Vanaf <br>
-              <span>219,95</span>
-            </p>
-          </div>
-          <a href="" class="blue-underline">
-            <p>Bekijk alle iPhone 5S</p>
-            <i class="far fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="d-none d-md-block col-6 col-sm item-parent">
-        <div class="item">
-          <div class="img"></div>
-          <p class="title">Refurbished iPhone 7 Plus <br>
-            <span>256GB  |  Space grey</span>
-          </p>
-          <div class="price">
-            <p>Vanaf <br>
-              <span>219,95</span>
-            </p>
-          </div>
-          <a href="" class="blue-underline">
-            <p>Bekijk alle iPhone 5S</p>
-            <i class="far fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="d-none d-md-block col-6 col-sm item-parent">
-        <div class="item">
-          <div class="img"></div>
-          <p class="title">Refurbished iPhone 7 Plus <br>
-            <span>256GB  |  Space grey</span>
-          </p>
-          <div class="price">
-            <p>Vanaf <br>
-              <span>219,95</span>
-            </p>
-          </div>
-          <a href="" class="blue-underline">
-            <p>Bekijk alle iPhone 5S</p>
-            <i class="far fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+        {% endcase %}
+      {% endfor %}
     </div>
-  </div>
-</section>
+  </section>
 
-{% schema %}
-  {
-    "name": "Product Collection",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title"
-      }, {
-        "type": "liquid",
-        "id": "label-text_color",
-        "label": "Label Text Color",
-        "default": "#000000"
-      }, {
-        "type": "product_list",
-        "id": "rec_product_list",
-        "label": "Rec Product List"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Product Collection"
-      }
-    ]
-  }
-{% endschema %}
+  {% schema %}
+    {
+      "name": "Product Collection",
+      "max_blocks": 5,
+      "blocks": [
+        {
+          "name": "Product",
+          "type": "product",
+          "settings": [
+            {
+              "type": "product",
+              "id": "product",
+              "label": "Product"
+            }, {
+              "type": "text",
+              "id": "variant",
+              "label": "Variant"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Product Collection"
+        }
+      ]
+    }
+  {% endschema %}

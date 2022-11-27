@@ -4,13 +4,11 @@
       "type": "about-us",
       "disabled": true,
       "settings": {
-        "desktop-left": false,
-        "desktop-right": false,
-        "inverted": false,
         "title": "",
-        "description": "",
         "button-label": "",
-        "button-url": ""
+        "button-url": "",
+        "bottom-title": "",
+        "bottom-description": ""
       }
     },
     "d4046020-af19-4038-b6c3-9edc22e9fb14": {
@@ -94,11 +92,6 @@
         "mobile-phone": "shopify:\/\/shop_images\/mobile-gif-replacement.png"
       }
     },
-    "64e82a2c-5842-4681-80ce-bae3c7df009d": {
-      "type": "divider-line",
-      "settings": {
-      }
-    },
     "1e0e049e-c20e-4484-a67f-7105f66922d3": {
       "type": "image-w-text",
       "settings": {
@@ -107,19 +100,53 @@
         "button-label": "Lees meer"
       }
     },
-    "b2cd5199-1157-4008-a131-595686ab8189": {
-      "type": "divider-line",
-      "settings": {
-      }
-    },
     "2d663948-30a0-40a5-9075-eb325d5ec599": {
       "type": "product-recommendation",
+      "blocks": {
+        "fcf7ddbf-6ccc-4d88-be54-1f3e01b6f9c2": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-iphone-12-mini-black",
+            "variant": "64GB | Space Grey"
+          }
+        },
+        "826276b7-6fec-4160-af14-f74b29a995eb": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-iphone-13-pro-max-blauw",
+            "variant": "64GB | Space Grey"
+          }
+        },
+        "a97b1af3-cc61-4059-a690-56aff1b3b1fd": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-iphone-se-2022-rood",
+            "variant": "64GB | Space Grey"
+          }
+        },
+        "964b0999-4556-41ce-a3dd-9722dd4619b4": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-iphone-13-pro-max-goud",
+            "variant": "64GB | Space Grey"
+          }
+        },
+        "a005867f-b891-4e19-aea9-0f3c261387fb": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-iphone-se-2022-wit",
+            "variant": "64GB | Space Grey"
+          }
+        }
+      },
+      "block_order": [
+        "fcf7ddbf-6ccc-4d88-be54-1f3e01b6f9c2",
+        "826276b7-6fec-4160-af14-f74b29a995eb",
+        "a97b1af3-cc61-4059-a690-56aff1b3b1fd",
+        "964b0999-4556-41ce-a3dd-9722dd4619b4",
+        "a005867f-b891-4e19-aea9-0f3c261387fb"
+      ],
       "settings": {
-        "title": "",
-        "label-text_color": "#000000",
-        "rec_product_list": [
-
-        ]
       }
     },
     "5a47dceb-4ff1-4f8b-814a-32150255a4fc": {
@@ -129,23 +156,90 @@
     },
     "1af80d9c-cdc8-4332-9229-35a7a8ecf2d3": {
       "type": "about-us",
+      "blocks": {
+        "36b661a1-bde1-4785-b828-ddaf431f5dc4": {
+          "type": "text-line",
+          "settings": {
+            "line": "Goede kwaliteit\/prijs verhouding"
+          }
+        },
+        "efeda675-a79c-4dfe-8340-56ace3847846": {
+          "type": "text-line",
+          "settings": {
+            "line": "Uitvoerig nagekeken, getest en gereinigd"
+          }
+        },
+        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517": {
+          "type": "text-line",
+          "settings": {
+            "line": "Twee jaar garantie"
+          }
+        },
+        "67ea050b-0c64-4b64-b916-a9a0e343aab4": {
+          "type": "text-line",
+          "settings": {
+            "line": "Op werkdagen voor 22:00 uur besteld is morgen in huis"
+          }
+        },
+        "13b7a4f3-2d7d-4a2e-8e36-a2cfe03d54d5": {
+          "type": "text-block",
+          "settings": {
+            "block-title": "Refurbished van Rephone.nl",
+            "block-description": "<p>Rephone is gespecialiseerd in refurbished iPhones, iPads en smartphones. Refurbished betekent gerenoveerd en dit houdt in dat we bij Rephone gebruikte artikelen een tweede leven geven. Al onze 'gereviseerde' toestellen en apparaten worden uitvoerig door technici nagekeken, getest en gereinigd. We leveren de beste kwaliteit en op alle tweedehands artikelen die je bij ons kunt kopen geldt de wettelijke garantie. In onze webshop vind je ons volledige aanbod.<\/p>"
+          }
+        },
+        "482991d4-fffe-450d-a632-c16520e47409": {
+          "type": "text-block",
+          "settings": {
+            "block-title": "Een refurbished Apple iPhone, iPad of Mac kopen",
+            "block-description": "<p>Omdat al onze tweedehands elektronica zorgvuldig wordt nagekeken, getest en gereinigd ben jij verzekerd van een iPhone, iPad of Mac van de beste kwaliteit. Het voordeel van het kopen van een refurbished iPhone, iPad of Mac is de prijs\/kwaliteit verhouding. De prijs van een gebruikt apparaat ligt lager dan de prijs van een nieuw exemplaar. Houd er wel rekening mee dat er een krasje of een beschadiging op de tweedehands iPhone, iPad of Mac kan zitten. Dit zegt overigens niets over de kwaliteit van de telefoon. Je hebt twee jaar garantie op onze refurbished elektronica en voor reparatie kun je altijd bij ons terecht. <\/p>"
+          }
+        },
+        "ecdc9ba9-c7bd-4390-9a6b-4f5eaaa0ec76": {
+          "type": "bottom-products",
+          "settings": {
+            "collection": "iphones",
+            "collection_list": [
+              "iphone-12-mini",
+              "iphone-13-pro-max",
+              "iphone-se"
+            ]
+          }
+        },
+        "6c31c351-8128-4c10-85d6-7fbe49e9da0f": {
+          "type": "bottom-products",
+          "settings": {
+            "collection": "ipads",
+            "collection_list": [
+              "ipad-10-2-2019",
+              "ipad-2017"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "36b661a1-bde1-4785-b828-ddaf431f5dc4",
+        "efeda675-a79c-4dfe-8340-56ace3847846",
+        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517",
+        "67ea050b-0c64-4b64-b916-a9a0e343aab4",
+        "13b7a4f3-2d7d-4a2e-8e36-a2cfe03d54d5",
+        "482991d4-fffe-450d-a632-c16520e47409",
+        "ecdc9ba9-c7bd-4390-9a6b-4f5eaaa0ec76",
+        "6c31c351-8128-4c10-85d6-7fbe49e9da0f"
+      ],
       "settings": {
-        "desktop-left": false,
-        "desktop-right": false,
-        "inverted": false,
-        "title": "",
-        "description": "",
-        "button-label": "",
-        "button-url": ""
+        "title": "Waarom bij ons kopen?",
+        "button-label": "Bekijk ons assortiment",
+        "button-url": "",
+        "bottom-title": "Het Rephone assortiment",
+        "bottom-description": "<p>Ons assortiment bestaat uit verschillende soorten tweedehands iPhones en iPads, namelijk:<\/p>"
       }
     }
   },
   "order": [
     "fff4fe18-add8-4b89-913d-f6e667a8dfc1",
     "d4046020-af19-4038-b6c3-9edc22e9fb14",
-    "64e82a2c-5842-4681-80ce-bae3c7df009d",
     "1e0e049e-c20e-4484-a67f-7105f66922d3",
-    "b2cd5199-1157-4008-a131-595686ab8189",
     "2d663948-30a0-40a5-9075-eb325d5ec599",
     "5a47dceb-4ff1-4f8b-814a-32150255a4fc",
     "1af80d9c-cdc8-4332-9229-35a7a8ecf2d3"
