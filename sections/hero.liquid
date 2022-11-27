@@ -1,145 +1,169 @@
-<section style="background: url({{section.settings.banner | img_url: 'master'}}) repeat center #29A7BF;" class="banner">
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-6 left-side">
-          <div style="background: url({{section.settings.phone-gif}}); background-repeat: no-repeat;
-                                    background-size: auto 100%;
-                                    background-position: 0 100px,180px 120px;
-                                    height: 500px;" class="img"></div>
-        </div>
-        <div class="d-none d-md-flex col-12 col-md-6 offset-lg-0 col-lg-6 right-side">
-          <div class="inner">
-            <div class="title">
-              {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'text' %}
-                    <div class="hero-title">{{block.settings.title}}</div>
+<style>
+  .homepage section.banner .left-side .img {
+    background: url({{section.settings.phone-gif}});
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 0 100px,180px 120px;
+    height: 500px; }
+    @media (max-width: 767.98px) {
+      .homepage section.banner .left-side .img {
+        height: 300px;
+        background: url({{section.settings.mobile-phone | img_url: 'master'}}) no-repeat 0 70px, 180px 120px, url({{section.settings.mobile-phone | img_url: 'master'}}) no-repeat 75px 100px;
+        -webkit-background-size: contain;
+        background-size: contain; } }
+</style>
+
+<div class="homepage">
+  <section class="banner"  style="background: url({{section.settings.banner | img_url: 'master'}}) repeat center #29A7BF;">
+      <div class="container-fluid">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12 col-md-6 left-side">
+                      <div class="img"></div>
                   </div>
-                {% endcase %}
-              {% endfor %}
-              <div class="check-marks">
-                {% for block in section.blocks %}
-                  {% case block.type %}
-                    {% when 'hero-usp' %}
-                      <div class="check-mark">
-                        <i class="fal fa-check-circle"></i>
-                        <p>{{block.settings.hero-column-text}}</p>
-                      </div>
-                  {% endcase %}
-                {% endfor %}
+                  <div class="d-none d-md-flex col-12 col-md-6 offset-lg-0 col-lg-6 right-side">
+                     <div class="inner">
+                         <div class="title">
+                          {% for block in section.blocks %}
+                            {% case block.type %}
+                              {% when 'text' %}
+                             <h1>{{block.settings.title}}</h1>
+                            {% endcase %}
+                          {% endfor %}
+                         </div>
+                         <div class="check-marks">
+                          {% for block in section.blocks %}
+                            {% case block.type %}
+                              {% when 'hero-usp' %}
+                             <div class="check-mark">
+                                 <i class="fal fa-check-circle"></i>
+                                 <p>{{block.settings.hero-column-text}}</p>
+                             </div>
+                            {% endcase %}
+                          {% endfor %}
+                         </div>
+
+                         {% for block in section.blocks %}
+                          {% case block.type %}
+                            {% when 'buttons' %}
+                         <a href="{{block.settings.button_link}}" class="btn-green">{{block.settings.button_label}}</a>
+                        {% endcase %}
+                      {% endfor %}
+                     </div>
+
+                  </div>
               </div>
-              {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'buttons' %}
-                    <a href="{{block.settings.button_link}}" class="btn-green">{{block.settings.button_label}}</a>
-                {% endcase %}
-              {% endfor %}
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </section>
 
   <section class="mobile-banner-addon d-md-none">
-    <div class="container">
-      <div class="inner">
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'text' %}
+      <div class="container">
+          <div class="inner">
               <div class="title">
-                <h1>{{block.settings.title}}</h1>
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'text' %}
+                  <h1>{{block.settings.title}}</h1>
+                {% endcase %}
+              {% endfor %}
               </div>
-          {% endcase %}
-        {% endfor %}
-        <div class="check-marks green">
-          {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'hero-usp' %}
-                <div class="check-mark">
-                  <i class="fal fa-check-circle"></i>
-                  <p>{{block.settings.hero-column-text}}</p>
-                </div>
-            {% endcase %}
-          {% endfor %}
-        </div>
+              <div class="check-marks green">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'hero-usp' %}
+                  <div class="check-mark">
+                      <i class="fal fa-check-circle"></i>
+                      <p>{{block.settings.hero-column-text}}</p>
+                  </div>
+                {% endcase %}
+              {% endfor %}
+              </div>
+          </div>
       </div>
-    </div>
   </section>
 
+  
   <section class="cards mb-3 mb-lg-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-6 left-side mb-3 mb-lg-0">
-          <div class="inner">
-            <div class="row">
-              <div class="col-4">
-                <div class="img">
-                  <div class="price">
-                    <p>Al vanaf <br>
-                      <span>139,-</span>
-                    </p>
+      <div class="container">
+          <div class="row">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'first-product' %}
+              <div class="col-12 col-lg-6 left-side mb-3 mb-lg-0">
+                  <div class="inner">
+                      <div class="row">
+                          <div class="col-4">
+                              <div class="img" style="background: url({{block.settings.product-image | img_url: 'master'}}); background-size: 120%; background-position: -30px 0; background-repeat: no-repeat;">
+                                  <div class="price">
+                                      <p>{{block.settings.price-title}}<br> <span>{{block.settings.price}}</span></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-8">
+                              <h3>{{block.settings.title}}</h3>
+                              <div class="check-marks">
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text1}}</p>
+                                  </div>
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text2}}</p>
+                                  </div>
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text3}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-8">
-                <h3>Onze iPhones</h3>
-                <div class="check-marks">
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>Oplader en oortjes meegeleverd</p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>Screenprotector al op het scherm gemonteerd</p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>14 dagen bedenktijd</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPhones</a>
-        </div>
 
-        <div class="col-12 col-lg-6 right-side">
-          <div class="inner">
-            <div class="row">
-              <div class="col-4">
-                <div class="img">
-                  <div class="price">
-                    <p>Al vanaf <br>
-                      <span>189,-</span>
-                    </p>
-                  </div>
-                </div>
+                  <a href="refurbished-iphone/" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPhones</a>
               </div>
-              <div class="col-8">
-                <h3>Onze iPhones</h3>
-                <div class="check-marks">
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>Oplader en oortjes meegeleverd</p>
+            {% endcase %}
+          {% endfor %}
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'second-product' %}
+              <div class="col-12 col-lg-6 right-side">
+                  <div class="inner">
+                      <div class="row">
+                          <div class="col-4">
+                              <div class="img" style="background: url({{block.settings.product-image-2 | img_url: 'master'}}); background-size: 110%; background-position: -20px 0; background-repeat: no-repeat;">
+                                  <div class="price">
+                                      <p>{{block.settings.price-title-2}}<br> <span>{{block.settings.price-2}}</span></p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-8">
+                              <h3>{{block.settings.title-2}}</h3>
+                              <div class="check-marks">
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text1-2}}</p>
+                                  </div>
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text2-2}}</p>
+                                  </div>
+                                  <div class="check-mark">
+                                      <i class="fal fa-check-circle"></i>
+                                      <p>{{block.settings.product-text3-2}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>Screenprotector al op het scherm gemonteerd</p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>14 dagen bedenktijd</p>
-                  </div>
-                </div>
+
+                  <a href="refurbished-ipad/" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPads</a>
               </div>
-            </div>
+            {% endcase %}
+          {% endfor %}
           </div>
-          <a href="" class="d-md-none mt-3 mb-3 btn-green">Bekijk onze iPads</a>
-        </div>
       </div>
-    </div>
   </section>
 
   {% schema %}
@@ -156,6 +180,11 @@
           "type": "url",
           "id": "phone-gif",
           "label": "Phone Gif"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile-phone",
+          "label": "Mobile Phone Image"
         }
       ],
       "blocks": [
@@ -165,7 +194,7 @@
           "limit": 1,
           "settings": [
             {
-              "type": "richtext",
+              "type": "text",
               "id": "title",
               "label": "Hero Heading"
             }
@@ -196,8 +225,92 @@
               "label": "Column"
             }
           ]
+        },
+        {
+          "type": "first-product",
+          "name": "First Product Column",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "price-title",
+              "label": "Price Title"
+            },
+            {
+              "type": "text",
+              "id": "price",
+              "label": "Price"
+            },
+            {
+              "type": "image_picker",
+              "id": "product-image",
+              "label": "Product Image"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "text",
+              "id": "product-text1",
+              "label": "Text 1"
+            },
+            {
+              "type": "text",
+              "id": "product-text2",
+              "label": "Text 2"
+            },
+            {
+              "type": "text",
+              "id": "product-text3",
+              "label": "Text 3"
+            }
+          ]
+        },
+        {
+          "type": "second-product",
+          "name": "Second Product Column",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "price-title-2",
+              "label": "Price Title"
+            },
+            {
+              "type": "text",
+              "id": "price-2",
+              "label": "Price"
+            },
+            {
+              "type": "image_picker",
+              "id": "product-image-2",
+              "label": "Product Image"
+            },
+            {
+              "type": "text",
+              "id": "title-2",
+              "label": "Title"
+            },
+            {
+              "type": "text",
+              "id": "product-text1-2",
+              "label": "Text 1"
+            },
+            {
+              "type": "text",
+              "id": "product-text2-2",
+              "label": "Text 2"
+            },
+            {
+              "type": "text",
+              "id": "product-text3-2",
+              "label": "Text 3"
+            }
+          ]
         }
-      ],
+        ],
       "presets": [
         {
           "name": "Hero Image",
@@ -208,6 +321,10 @@
               "type": "buttons"
             }, {
               "type": "hero-usp"
+            }, {
+              "type": "first-product"
+            }, {
+              "type": "second-product"
             }
           ]
         }

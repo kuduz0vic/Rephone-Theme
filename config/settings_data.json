@@ -3,15 +3,86 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "c775197d-5122-4e43-bc36-0afd48c7a4fb": {
+            "type": "collections",
+            "settings": {
+              "collection": "iphones",
+              "collection_list": [
+                "iphone-12-mini",
+                "iphone-13-pro-max",
+                "iphone-se"
+              ],
+              "collection-image": "shopify:\/\/shop_images\/iphone.png"
+            }
+          },
+          "23673bda-2ad5-49e1-bdff-7f0a8a1fb2b0": {
+            "type": "collections",
+            "settings": {
+              "collection": "ipads",
+              "collection_list": [
+                "ipad-10-2-2019",
+                "ipad-2017"
+              ],
+              "collection-image": "shopify:\/\/shop_images\/apple-ipad-pro.png"
+            }
+          },
+          "46111ae6-62f6-4d22-bc82-420ee43298ff": {
+            "type": "collections",
+            "settings": {
+              "collection": "macs",
+              "collection_list": [
+                "macbook-pro-13",
+                "macbook-pro-15"
+              ],
+              "collection-image": "shopify:\/\/shop_images\/macbook.png"
+            }
+          },
+          "77f4bdf6-af9a-4b17-b2ab-3c9189837657": {
+            "type": "collections",
+            "settings": {
+              "collection": "accessoires",
+              "collection_list": [
+                "screenprotectors",
+                "airpods"
+              ],
+              "collection-image": "shopify:\/\/shop_images\/menu-accessoires.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "c775197d-5122-4e43-bc36-0afd48c7a4fb",
+          "23673bda-2ad5-49e1-bdff-7f0a8a1fb2b0",
+          "46111ae6-62f6-4d22-bc82-420ee43298ff",
+          "77f4bdf6-af9a-4b17-b2ab-3c9189837657"
+        ],
         "settings": {
           "menu": "main-menu",
+          "mobile-menu": "mobile-menu",
           "logo": "shopify:\/\/shop_images\/logoheader.png",
-          "logo-secondary": "shopify:\/\/shop_images\/thuiswinkel.jpg"
+          "secondary-logo": "shopify:\/\/shop_images\/thuiswinkel.jpg",
+          "mobile-logo": "shopify:\/\/shop_images\/logoheader.jpg"
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
+          "footer-title": "Klantenservice",
+          "footer-text": "<p><strong>Advies over refurbished elektronica <\/strong><br\/><br\/>Weet je niet welke refurbished iPhone je moet kopen, of je<br\/>voor een gebruikte\/tweedehands iPad moet kiezen of wil je ons een andere vraag stellen?<br\/>Neem dan contact met ons op via telefoon of mail en wij helpen je verder!<br\/><\/p>",
+          "number": "085 1301 646",
+          "time": "Maandag tot vrijdag van 10:00 - 17:00",
+          "logo": "shopify:\/\/shop_images\/logoheade2.png",
+          "secondary-logo": "shopify:\/\/shop_images\/thuiswinkel.jpg",
+          "menu": "footer",
+          "menu-title": "Klantenservice",
+          "collection-title": "Onze iPhones",
+          "collection_list": [
+            "iphone-12-mini",
+            "iphone-13-pro-max",
+            "iphone-se"
+          ],
+          "email": "klantenservice@rephone.nl",
+          "secondary-menu": "legal"
         }
       }
     },

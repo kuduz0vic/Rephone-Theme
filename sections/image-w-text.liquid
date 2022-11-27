@@ -1,15 +1,28 @@
+{% assign article = section.settings.article %}
+<style>
+  .inner-blog {
+    background: linear-gradient(0deg, rgba(41, 167, 191, 0.3), rgba(41, 167, 191, 0.3)), url('{{ article.image | img_url: 'master'}}');
+    background-size: cover;
+    height: 400px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+</style>
+
 <section class="content">
   <div class="container">
-    <div class="inner">
+    <div class="inner-blog">
       <div class="row">
         <div class="col-12 col-lg-8">
-          <h2>
-            Ook met een refurbished iPhone <br> maak je de mooiste instagram foto's
+          <h2 class="article-title">
+            {{ article.title }}
           </h2>
-          <p>
-            De iPhones van Apple zijn nu eenmaal niet de goedkoopste telefoons. Wil jij een iPhone kopen maar niet de volle prijs betalen? Dan is een refurbished iPhone een goede optie voor jou. Een refurbished iPhone is een tweedehands telefoon die helemaal is nagekeken door een specialist. Hierdoor weet je zeker dat alle onderdelen perfect werken, maar dat de prijs een stuk lager ligt. Het grote voordeel van een refurbished iPhone van Rephone t.o.v. een tweedehands via bijv. Marktplaats is dat je bij ons gewoon een volle 2 jaar garantie krijgt.
-          </p>
-          <a href="" class="btn-white">Meer informatie</a>
+          <div class="article-summary">
+            {{ section.settings.article-summary }}
+          </div>
+          <a href="{{ article.url }}" class="btn-white">{{section.settings.button-label}}</a>
         </div>
       </div>
     </div>
@@ -19,30 +32,26 @@
 
 {% schema %}
   {
-    "name": "Middle Product IwT",
+    "name": "Blog",
     "class": "section",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      }, {
-        "type": "text",
-        "id": "emoji",
-        "label": "Emoji"
-      }, {
-        "type": "text",
-        "id": "title",
-        "label": "Title"
+        "type": "article",
+        "id": "article",
+        "label": "Article"
       }, {
         "type": "richtext",
-        "id": "description",
-        "label": "Description"
+        "id": "article-summary",
+        "label": "Article Summary"
+      }, {
+        "type": "text",
+        "id": "button-label",
+        "label": "Button Label"
       }
     ],
     "presets": [
       {
-        "name": "Middle Product IwT"
+        "name": "Blog"
       }
     ]
   }
