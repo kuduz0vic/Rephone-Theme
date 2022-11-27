@@ -3347,7 +3347,6 @@ footer {
   footer .container .socials-container {
     margin: 20px 0; }
     footer .container .socials-container .logo .img {
-      background: url("../img/logoheader.png") no-repeat center;
       -webkit-background-size: contain;
       background-size: contain;
       width: 100%;
