@@ -1,19 +1,16 @@
 {% assign selected_variant = product.selected_or_first_available_variant %}
-
-{% for media in product.media %}
-  {% render 'product-media', media: media %}
-{% endfor %}
-
 <style>
   .variant-a {
     display: block;
   }
+
   .variant-b {
     display: none;
   }
 </style>
 
 {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+  <input type="hidden" name="id" value="{{ selected_variant.id }}">
   <div class="container product-details">
     <section class="breadcrumbs">
       <div class="item-parent col-12 col-lg-6">
@@ -28,7 +25,6 @@
         </ul>
       </div>
     </section>
-
     <section class="brands d-md-none mobile-line-after" style="display: none;">
       <a href="https://www.thuiswinkel.org/leden/rephone/certificaat" target="_blank">
         <div class="img"></div>
@@ -36,54 +32,29 @@
         <div class="img"></div>
       </a>
     </section>
-
     <div class="row d-flex flex-column-reverse flex-lg-row" itemscope itemtype="http://schema.org/Product">
       <section class="left-sidebar col-12 col-lg-4">
         <div class="inner">
-
           <div class="product d-none d-lg-block">
-            <img itemprop="image" src="{{ thumb }}" class="headthumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="width: 288px ;"/>
+            <img itemprop="image" src="{{ product.featured_image | img_url: 'master' }}" class="headthumb" title="{{ product.title }}" alt="{{ product.title }}" style="width: 288px ;"/>
           </div>
-
           <div class="product-images d-none d-lg-block">
             <div class="item-parent">
-              <div class="item">
-                <img src="{{ thumb }}" class="thumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="height: 50px;"/>
-              </div>
-              {% if images %}
-                {% for image in images %}
-                  <div class="item">
-                    <img src="{{ image.thumb }}" class="thumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="height: 50px;"/>
-                  </div>
-                {% endfor %}
-              {% endif %}
+              {% for media in product.media %}
+                <div class="item">
+                  <img src="{{ media | image_url }}" class="thumb" title="{{ product.title }}" alt="{{ product.title }}" style="height: 50px;"/>
+                </div>
+              {% endfor %}
             </div>
           </div>
-
           <div class="unboxing" style="display: none;">
             <h4>Unboxing Rephone</h4>
             <div class="img"></div>
           </div>
-
           <div class="included d-lg-none mb-0">
             <h4 class="mb-3">Standaard meegeleverd</h4>
             <div class="item-parent">
               <div class="row">
-                <div class="item col-6 mb-3">
-                  <div class="inner">
-                    <img src="https://www.rephone.nl/image/apple-charger.jpg" class="img" alt="Apple Wall Charger" style="width: 50px;"/>
-                  </div>
-                </div>
-                <div class="item col-6 mb-3">
-                  <div class="inner">
-                    <img src="https://www.rephone.nl/image/apple-lightning.jpg" class="img" alt="Apple Lightning Cable" style="width: 50px;"/>
-                  </div>
-                </div>
-                <div class="item col-6 mb-3">
-                  <div class="inner">
-                    <img src="https://www.rephone.nl/image/simpin.jpg" class="img" alt="Simpin" style="width: 50px;"/>
-                  </div>
-                </div>
                 <div class="item col-6 mb-3">
                   <div class="inner">
                     <img src="https://www.rephone.nl/image/earpods.jpg" class="img" alt="Apple Earpods" style="width: 50px;"/>
@@ -92,14 +63,11 @@
               </div>
             </div>
           </div>
-
           <div class="text-content d-lg-none mt-3">
             <div class="text">
-              <h4>Omschrijving</h4>
-              <p>{{ description }}</p>
+              <p>{{ product.description }}</p>
             </div>
           </div>
-
           <div class="lookouts-accordion d-lg-none mt-4">
             <div id="accordion">
               <div class="card" style="display: none;">
@@ -112,7 +80,6 @@
                     </button>
                   </h5>
                 </div>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
                     <p>Lorem ipsum dolor sit amet.</p>
@@ -124,7 +91,6 @@
                   <h5 class="mb-0">
                     <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                       <h4>Rephone op TV</h4>
-
                       <i class="fal fa-chevron-down"></i>
                     </button>
                   </h5>
@@ -140,7 +106,6 @@
                   <h5 class="mb-0">
                     <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                       <h4>Wat zijn de specs</h4>
-
                       <i class="fal fa-chevron-down"></i>
                     </button>
                   </h5>
@@ -156,7 +121,6 @@
                   <h5 class="mb-0">
                     <button class="btn" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                       <h4>Reviews</h4>
-
                       <i class="fal fa-chevron-down"></i>
                     </button>
                   </h5>
@@ -194,22 +158,17 @@
               </div>
             </div>
           </div>
-
           <div class="unboxing" id="fixedOnScroll">
-
-
             <div class="why-buy-here mt-4">
               <div class="inner">
                 <h4>Waarom bij ons kopen</h4>
                 <div class="check-marks green">
-
                   <div class="check-mark">
                     <i class="fal fa-check-circle"></i>
                     <p>
                       <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
                     </p>
                   </div>
-
                   <div class="check-mark">
                     <i class="fal fa-check-circle"></i>
                     <p>Garantie ook op de batterij</p>
@@ -235,31 +194,24 @@
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
-
       <section class="main-content mt-lg-0 col-12 col-lg-8">
         <div class="inner">
           <div class="options-info">
-            <div class="title">
-              <h1 itemprop="name" style="font-size: 40px; margin:0;">{{ name_split.type }} {{ name_split.device }}</h1>
-              {% if name_split.type != '' %}
-                <h3>{{ name_split.storage }} |
-                  <span itemprop="color">{{ name_split.color }}</span>
-                  | 2 jaar garantie</h3>
-                <h4>Volledig functioneel & simlockvrij</h4>
-              {% endif %}
-            </div>
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'title' %}
+                  <div class="title">
+                    <h1 itemprop="name" style="font-size: 40px; margin:0;">{{product.title}}</h1>
+                    <h3>{{ block.settings.variant-text}} | 2 jaar garantie</h3>
+                    <h4>Volledig functioneel & simlockvrij</h4>
+                  </div>
+              {% endcase %}
+            {% endfor %}
             <div style="display: none;" itemprop="description">{{ description }}</div>
-            {% if name_split.type != '' %}
-              <div style="display:none;" itemprop="brand">Apple</div>
-              <div style="display:none;" itemprop="sku">{{ ean }}</div>
-              <div style="display:none;" itemprop="gtin13">{{ ean }}</div>
 
-            {% endif %}
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display: none;">
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content="{{ rs_price }}">{{ price }}</span>
@@ -270,51 +222,34 @@
               {% endif %}
               <span itemprop="priceValidUntil">2030-01-01</span>
               <span itemprop="url">{{ href }}</span>
-
-
-
             </div>
-
             <div class="product d-lg-none">
               <div class="row">
                 <div class="col-9 thumbnail-big">
                   <div class="inner">
-                    <img src="{{ thumb }}" class="headthumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="height: 190px;"/>
+                    <img src="{{ thumb }}" class="headthumb" title="{{ product.title }}" alt="{{ product.title }}" style="height: 190px;"/>
                   </div>
                 </div>
                 <div class="col-2 thumbnail-small">
                   <div class="item">
                     <div class="inner">
-                      <img src="{{ thumb }}" class="thumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="height: 38px;"/>
+                      <img src="{{ thumb }}" class="thumb" title="{{ product.title }}" alt="{{ product.title }}" style="height: 38px;"/>
                     </div>
                   </div>
                   {% if images %}
                     {% for image in images %}
                       <div class="item">
                         <div class="inner">
-                          <img src="{{ image.thumb }}" class="thumb" title="{{ heading_title }}" alt="{{ heading_title }}" style="height: 38px;"/>
+                          <img src="{{ image.thumb }}" class="thumb" title="{{ product.title }}" alt="{{ product.title }}" style="height: 38px;"/>
                         </div>
                       </div>
                     {% endfor %}
                   {% endif %}
-
-
-                  <!--
-                  <div class="item arrow">
-                  <div class="inner">
-                  <i class="far fa-chevron-down"></i>
-                  </div>
-                  </div>
-                  -->
                 </div>
               </div>
             </div>
-
             <div class="options mobile-line-after mobile-line-before">
               <div class="row">
-
-
-
                 <div class="col-12 col-lg-8 color-options">
                   <h4>Kleur</h4>
                   <div class="row">
@@ -329,7 +264,6 @@
                   </div>
                 </div>
                 <div style="clear: both; width: 100%;"></div>
-
                 <div class="col-12 col-lg-8 storage-options">
                   <h4>Opslag</h4>
                   <div class="row">
@@ -344,14 +278,11 @@
                     {% endfor %}
                   </div>
                 </div>
-
                 <div style="clear: both; width: 100%; height: 20px;"></div>
               </div>
             </div>
-
             {% for option in options %}
               {% if option.type == 'radio' %}
-
                 <div class="condition mt-5 mt-lg-0">
                   <div class="cart">
                     <div class="title">
@@ -366,24 +297,20 @@
                         </div>
                       </div>
                     </div>
-
-
-
                     <style>
-
                       .btn-cart {
                         width: 100% !important;
                         cursor: pointer;
                       }
+
                       @media screen and (max-width: 991px) {
                         .btn-cart {
                           font-size: 11px;
                         }
                       }
                     </style>
-
                     {% for option_value in option.product_option_value %}
-                      <div class="cart-item mobile-line-after mobile-line-before" {% if option_value.quantity == 0 %}style="opacity:100%;"{% endif %}>
+                      <div class="cart-item mobile-line-after mobile-line-before" {% if option_value.quantity==0 %}style="opacity:100%;"{% endif %}>
                         <div class="row no-gutters">
                           <div class="col-4 col-md-3">
                             <p>
@@ -403,8 +330,6 @@
                           <div class="col-4 col-md-3 price">
                             <p class="blue">{{ option_value.voor }}</p>
                           </div>
-
-
                           {% if option_value.quantity == 0 %}
                             <div class="stock no-stock col-3 d-none d-md-flex">
                               <p>Uitverkocht</p>
@@ -427,9 +352,6 @@
                             </div>
                           {% endif %}
                           <div class="col-4 col-md-3 d-flex justify-content-end">
-                            <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
-
-
                             {% if option_value.quantity == 0 %}
                               <div class="btn-cart stockemail" data-toggle="modal" data-product-option="option[{{ option.product_option_id }}]" data-product-option-value-id="{{ option_value.product_option_value_id }}" data-product-option-value-name="{{ option_value.name }}" data-product-id="{{ product_id }}" data-product-option-value-price="{{ option_value.voor }}" data-option-value-id="{{ option_value.option_value_id }}" data-target="#stockemail" style="background:  #29a7bf; border-bottom: #29a7bf;">
                                 <i class="fal fa-envelope"></i>&nbsp;
@@ -438,13 +360,10 @@
                             {% else %}
                               <div class="btn-cart addtocart" data-product-option="option[{{ option.product_option_id }}]" data-product-option-value-id="{{ option_value.product_option_value_id }}" data-product-option-value-name="{{ option_value.name }}" data-product-id="{{ product_id }}" data-product-option-value-price="{{ option_value.voor }}">
                                 <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
-
                               </div>
                             {% endif %}
                           </div>
-
                         </div>
-
                         <div class="row no-gutters mobile">
                           {% if option_value.quantity == 0 %}
                             <div class="stock no-stock col-12 d-none">
@@ -463,18 +382,10 @@
                               <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
                             </div>
                           {% endif %}
-
                         </div>
                       </div>
-
-
-
                     {% endfor %}
-
-
-
                   </div>
-
                 </div>
               {% endif %}
             {% endfor %}
@@ -486,26 +397,18 @@
               <h4>Wat zit er nog meer in de doos?</h4>
               <div class="item-parent">
                 <div class="item">
-                  <img src="https://www.rephone.nl/image/apple-charger.jpg" alt="Apple Wall Charger" class="img"/>
-                </div>
-                <div class="item">
-                  <img src="https://www.rephone.nl/image/apple-lightning.jpg" alt="Apple Lightning Cable" class="img"/>
-                </div>
-                <div class="item">
                   <img src="https://www.rephone.nl/image/simpin.jpg" alt="Simpin" class="img"/>
                 </div>
               </div>
             </div>
           {% else %}
             <p class="blue" style="font-size: 40px; font-weight: bold; margin-bottom: 20px;">{{ price }}</p>
-            <a class="btn-cart btn-green addtocart" data-product-id="{{ product_id }}" style="color: #fff;">Voeg toe aan winkelwagen</a>
+            <a class="btn-cart btn-green addtocart" data-product-id="{{ product_id }}" style="color: #fff;">Voeg toe aan
+              winkelwagen</a>
           {% endif %}
           <div class="text-content d-none d-lg-block">
             <div class="text">
-              {% if name_split.type != ''%}
-                <h2>Refurbished {{ name_split.device }} {{ name_split.storage }} {{ name_split.color }}</h2>
-              {% endif %}
-              <p>{{ description }}</p>
+              <p>{{ product.description }}</p>
             </div>
           </div>
           <div class="lookouts d-none d-lg-block" style="display: none!important;">
@@ -545,14 +448,6 @@
               </div>
             </div>
           </div>
-          <!--
-          <div class="media d-none d-lg-block">
-          <h3>Rephone in RTL Doe Maar Duurzaam</h3>
-          <iframe width="100%" height="305"  src="https://www.youtube.com/embed/fDWeSPuKdu0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-
-          -->
-
           <div class="specs d-none d-lg-block" style="display: none!important;">
             <h3>Wat zijn de specs?</h3>
 
@@ -576,35 +471,6 @@
 
       <section class="right-sidebar col-12 col-lg-3 d-none d-lg-block" style="display: none!important;">
         <div class="inner">
-          <!--
-          <a href="black-friday-2019/" class="temporary-discount d-none d-lg-block" style="display:none;">
-          <div class="inner">
-          <h4>Black Friday</h4>
-          <h2>&euro; 20 korting</h2>
-          <div class="row">
-          <div class="col-3">
-          <img src="https://www.rephone.nl/image/cache/catalog/productimages/apple-iphone-6/space-grey/iphone-6-space-grey-voorkant_2-456x456.png" style="width: 80px; margin-left: -20px;" />
-          </div>
-          <div class="col-9">
-          <p>
-          Ontvang <strong>20 euro korting</strong> zodra je actiecode <strong>BF2019</strong> toepast in je winkelwagen.
-          </p>
-          </div>
-          </div>
-          </div>
-          </a>
-          <div class="trade-old-phone d-none d-lg-block" style="display: none;">
-          <h4>Keuzehulp nodig?</h4>
-          <p>
-          Ben je er nog niet uit welke iPhone het beste bij je past? Wij helpen je graag een keuze te maken.
-          </p>
-
-          <a href="keuzehulp-iphone/" class="btn-green">Ga naar keuzehulp</a>
-          <br /><br />
-          </div>
-
-          -->
-
           <div class="why-buy-here" style="display:none;">
             <h4>Waarom bij ons kopen</h4>
             <div class="check-marks">
@@ -658,16 +524,10 @@
                 <div class="call">
                   <i class="far fa-phone"></i>
                   <p>
-                    <a href="tel:085 1301 646" onclick="ga('send', 'event', { eventCategory: 'klik op telnr', eventAction: 'bellen', eventLabel: 'contact'});">085 1301 646</a>
+                    <a href="tel:085 1301 646" onclick="ga('send', 'event', { eventCategory: 'klik op telnr', eventAction: 'bellen', eventLabel: 'contact'});">085
+                      1301 646</a>
                   </p>
                 </div>
-
-                <!--
-                <div class="whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <p>06 12 56 43 57</p>
-                </div>
-                -->
               </div>
             </div>
             <div class="openings-hours">
@@ -727,394 +587,6 @@
       </section>
     </div>
   </div>
-
-  <div class="divider-line">
-    <div class="container">
-      <div class="line"></div>
-    </div>
-  </div>
-
-  <section class="mobile-footer d-md-none" style="display: none;">
-    <div class="inner">
-      <div class="row no-gutters">
-        <div class="left-side col-7">
-          <div class="row no-gutters">
-            <div class="col-4">
-              <div class="img"></div>
-            </div>
-            <div class="col-8 d-flex align-items-center">
-              <select name="selected-color" class="form-control" id="selected-color">
-                <option value="item1">Space grey</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="right-side col-5">
-          <div class="row no-gutters">
-            <div class="col-7 d-flex align-items-center">
-              <select name="selected-storage" class="ml-2 mr-2 form-control" id="selected-storage">
-                <option value="item1">16GB</option>
-              </select>
-            </div>
-            <div class="col-5 d-flex justify-content-end">
-              <div class="btn-cart">
-                <i class="fal fa-shopping-cart"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modal AddToCart-->
-  <div class="modal fade addToCartModal" id="addToCartModal" tabindex="-1" role="dialog" aria-labelledby="addToCartModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Toegevoegd aan je winkelmandje</h5>
-          <button type="button" class="d-none close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="inner">
-            <div class="row">
-              <div class="d-none d-md-block col-9 col-sm-6 product mb-0 mb-md-3 pb-0 pb-md-0" style="border-bottom: 0;">
-                <div class="row">
-                  <div class="col-4">
-                    <img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" style="width: 140px ;"/>
-                  </div>
-                  <div class="col-8">
-                    <p class="title">{{ name_split.type }} {{ name_split.device }}</p>
-
-                    {% if name_split.type != '' %}
-                      <p class="sub-title">{{ name_split.storage }} | {{ name_split.color }}</p>
-                      <p class="status">
-                        <span id="submitted_grade"></span>
-                        <span>
-                          |
-                        </span>
-                        <span id="submitted_condition"></span>
-                      </p>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-              <div class="d-none d-md-block col-3 col-sm-2 item-options">
-                <div class="price">
-                  <p>
-                    <span id="submitted_price"></span>
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 d-none d-md-block col-sm-4 buttons mb-5 mb-md-0">
-                <a href="/winkelwagen/" class="btn-green">Naar bestellen</a>
-                <a href="" class="blue-underline">
-                  <p>Of nog even verder winkelen</p>
-                  <i class="far fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-
-            <div class="featured">
-              <div class="row">
-                <div class="col-12 text">
-                  <p class="p-2">Aanbevolen accessoires</p>
-                </div>
-                {% for accessoire in accessoires %}
-                  <div class="col-12 col-lg-4 item-parent mb-5 mb-lg-0">
-                    <div class="row">
-                      <a href="{{ accessoire.href }}" class="col-9 col-sm-8">
-                        <div class="item">
-                          <img src="{{ accessoire.thumb }}" alt="{{ accessoire.name }}" class="d-none d-md-block" style="width: 100%; height: auto"/>
-                          <img src="{{ accessoire.thumb }}" alt="{{ accessoire.name }}" class="img d-md-none"/>
-
-                          <div class="d-flex flex-column">
-                            <p class="title" style="height: 80px;">{{ accessoire.name }}</p>
-                            <div class="price">
-                              <p class="d-none d-md-block">
-                                <span>{{ accessoire.price }}</span>
-                              </p>
-                              <p class="d-md-none">
-                                <span>{{ accessoire.price }}</span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="col-3 col-sm-4 button" style="display: none;">
-                        <div class="btn-cart">
-                          <i class="fal fa-shopping-cart"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% endfor %}
-                <a href="accessoires&filter={{ filter_id }}" class="blue-underline d-none d-md-flex">
-                  <p>Bekijk alle accessoires</p>
-                  <i class="far fa-arrow-right"></i>
-                </a>
-
-              </div>
-            </div>
-
-            <div class="col-12 buttons mb-5 mb-md-0 d-md-none">
-              <a href="winkelwagen/" class="btn-green">Naar bestellen</a>
-              <a href="" class="blue-underline">
-                <p>Of nog even verder winkelen</p>
-                <i class="far fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Product condities-->
-  <div class="modal fade productConditions" id="productConditions" tabindex="-1" role="dialog" aria-labelledby="productConditions" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Behuizingconditie</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="inner">
-
-            <div class="text">
-              <div class="title">
-                <h3>Kwaliteitscontrole</h3>
-              </div>
-              <p>
-                Al onze iPhones zijn volledig functioneel. We hebben alle onderdelen gecontroleerd of deze nog werken en van de juiste kwaliteit zijn. Enkel in de behuizing zit een verschil.
-                <a href="kwaliteitscontrole/">Lees hier alles over de kwaliteitscontrole.</a>
-              </p>
-            </div>
-            <div class="text">
-              <div class="title">
-                <h3>A Grade</h3>
-              </div>
-              <p>
-                Een A Grade iPhone ziet er uit alsof deze vrijwel niet gebruikt is. Het scherm is helemaal krasvrij en ook op de achterkant zijn geen krassen te zien.
-              </p>
-            </div>
-
-            <div class="text">
-              <div class="title">
-                <h3>B Grade</h3>
-              </div>
-              <p>
-                Een B Grade iPhone ziet er ook bijna ongebruikt uit. Het scherm kan enkele lichte krasjes bevatten, op de achterkant kunnen een paar kleine gebruikssporen te zien zijn. Het hele apparaat is gewoon intact en werkt even goed als een A Grade.
-              </p>
-            </div>
-
-            <div class="text">
-              <div class="title">
-                <h3>C Grade</h3>
-              </div>
-              <p>
-                Een C Grade iPhone kun je zien als een gebruikte iPhone. Vaak zijn deze apparaten langer dan een jaar gebruikt door de vorige eigenaar en dit kun je ook zien aan de beschadigingen. Uiteraard ziet het scherm er wel helemaal goed uit, er zitten geen barsten etc in. Op de achterkant is wel duidelijk te zien dat het apparaat gebruikt is, denk bijvoorbeeld aan krassen of deukjes. Het hele apparaat is wel intact en werkt even goed als een A of B Grade.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- Modal Stock email -->
-  <div class="modal fade stockemail" id="stockemail" tabindex="-1" role="dialog" aria-labelledby="stockemail" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Ontvang een e-mail bij voorraad</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="inner">
-            <form id="stockalert">
-              <input type="hidden" class="stockemailinfo" name="product_option_value_id"/>
-              <input type="hidden" class="stockemailinfo" name="product_id"/>
-              Dit model is tijdelijk uitverkocht.<br/> Ontvang een e-mailbericht zodra dit product weer leverbaar is.
-              <input type="email" id="stockemail" name="email" class="form-control" style="margin: 20px 0px;"/>
-
-              <input type="submit" id="stockalertsubmit" class="btn-green" style="margin: 20px 0px; border:none; width: 100%; cursor:pointer;" value="Houd mij op de hoogte"/>
-              <a data-product-option="" data-product-option-value-id="" data-product-option-value-name="" data-product-option-value-price="" data-product-id="" class="blue-underline addtocartlink addtocart" style="display: block; text-align: center; cursor:pointer;">Of product bestellen met langere levertijd</a>
-
-            </form>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <input type="hidden" name="product_id" value="{{ product_id }}"/>
-
-
-
-  <script type="text/javascript">
-    function _defineProperty(obj, key, value) {
-      if (key in obj) {
-        Object.defineProperty(obj, key, {
-          value: value,
-          enumerable: true,
-          configurable: true,
-          writable: true
-        });
-      } else {
-        obj[key] = value;
-      }
-      return obj;
-    }
-
-    $('.thumb').click(function() {
-      var src = $(this).attr('src');
-      $('.headthumb').attr('src', src);
-    });
-
-    $('.btn-cart.stockemail').on('click', function() {
-      var _preppedArray;
-
-      var option_value_id = $(this).attr('data-option-value-id');
-
-
-      var product_option = $(this).attr('data-product-option');
-      var product_option_value_id = $(this).attr('data-product-option-value-id');
-      var product_option_value_name = $(this).attr('data-product-option-value-name');
-      var product_option_value_price = $(this).attr('data-product-option-value-price');
-      var product_id = $(this).attr('data-product-id');
-
-      $('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
-      $('.stockemailinfo[name="product_id"]').val(product_id);
-
-
-      $('.addtocartlink').attr('data-product-option', product_option);
-      $('.addtocartlink').attr('data-product-option-value-id', product_option_value_id);
-      $('.addtocartlink').attr('data-product-option-value-name', product_option_value_name);
-      $('.addtocartlink').attr('data-product-option-value-price', product_option_value_price);
-      $('.addtocartlink').attr('data-product-id', product_id);
-
-
-
-    });
-
-    $('.addtocartlink').click(function() {
-      $('#stockemail').modal('hide');
-
-    })
-
-    $('#stockalertsubmit').click(function() {
-      console.log('test');
-      var form = $('#stockalert');
-      var url = 'index.php?route=product/product/stockalert';
-
-      $.ajax({
-        type: "POST", url: url, data: form.serialize(), // serializes the form's elements.
-        success: function(data) {
-          console.log(data); // show response from the php script.
-          $('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
-        }
-      });
-
-      return false;
-
-    })
-
-
-
-    $('.addtocart').on('click', function() {
-      var _preppedArray;
-
-      var product_option = $(this).attr('data-product-option');
-      var product_option_value_id = $(this).attr('data-product-option-value-id');
-      var product_option_value_name = $(this).attr('data-product-option-value-name');
-      var product_option_value_price = $(this).attr('data-product-option-value-price');
-      var product_id = $(this).attr('data-product-id');
-      console.log("AAAAA" + product_option_value_name);
-      var preppedArray = (_preppedArray =
-        {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
-      var gradeArray = {
-        'Als nieuw': 'A Grade',
-        'Lichte gebruikssporen': 'B Grade',
-        'Zichtbare gebruikssporen': 'C Grade'
-      };
-      console.log(preppedArray);
-      $.ajax({
-        url: 'index.php?route=checkout/cart/add',
-        type: 'post',
-
-// data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-        data: preppedArray,
-        dataType: 'json',
-        beforeSend: function beforeSend() {
-          $('#button-cart').button('loading');
-        },
-        complete: function complete() {
-          $('#button-cart').button('reset');
-        },
-        success: function success(json) {
-
-// show modal
-          console.log('SUCCESS!');
-          $('#addToCartModal #submitted_condition').text(product_option_value_name);
-          $('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
-          $('#addToCartModal #submitted_price').text(product_option_value_price);
-          $('#addToCartModal').modal('show');
-          $('.alert-dismissible, .text-danger').remove();
-          $('.form-group').removeClass('has-error');
-
-          if (json['error']) {
-            if (json['error']['option']) {
-              for (i in json['error']['option']) {
-                var element = $('#input-option' + i.replace('_', '-'));
-
-                if (element.parent().hasClass('input-group')) {
-                  element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                } else {
-                  element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-                }
-              }
-            }
-
-            if (json['error']['recurring']) {
-              $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-            } // Highlight any found errors
-
-
-            $('.text-danger').parent().addClass('has-error');
-          }
-
-          if (json['success']) {
-            $('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-            $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-            $('html, body').animate({
-              scrollTop: 0
-            }, 'slow');
-            $('#cart > ul').load('index.php?route=common/cart/info ul li');
-          }
-        },
-        error: function error(xhr, ajaxOptions, thrownError) {
-          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-      });
-      return false;
-    });
-  </script>
-
-
-  {{ footer }}
-
 {% endform %}
 
 
@@ -1208,39 +680,104 @@
 
 {% schema %}
   {
-    "name": "Product",
+    "name": "Product Section",
+    "tag": "section",
+    "class": "products",
+    "settings": [],
     "blocks": [
-      {
-        "type": "vendor",
-        "name": "Vendor",
-        "limit": 1
-      },
       {
         "type": "title",
         "name": "Title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "variant-text",
+            "label": "Variant Text"
+          }
+        ]
+      },
+      {
+        "type": "description",
+        "name": "Description",
         "limit": 1
+      },
+      {
+        "type": "review",
+        "name": "Review",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "liquid",
+            "id": "review",
+            "label": "Review"
+          }
+        ]
       },
       {
         "type": "price",
         "name": "Price",
         "limit": 1
-      },
-      {
+      }, {
         "type": "variant_selector",
         "name": "Variant Selector",
+        "limit": 1
+      }, {
+        "type": "klarna",
+        "name": "Klarna Proof",
         "limit": 1
       }, {
         "type": "quantity",
         "name": "Quantity",
         "limit": 1
       }, {
-        "type": "description",
-        "name": "Description",
-        "limit": 1
-      }, {
         "type": "checkout_buttons",
         "name": "Checkout Buttons",
         "limit": 1
+      }, {
+        "type": "additional-icons",
+        "name": "Additional Icons",
+        "settings": [
+          {
+            "type": "url",
+            "id": "icon-link",
+            "label": "Icon Link"
+          }, {
+            "type": "text",
+            "id": "icon-description",
+            "label": "Description"
+          }
+        ]
+      }, {
+        "type": "accordion",
+        "name": "Accordion",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "text",
+            "id": "accordion-title",
+            "label": "Accordion Title"
+          }, {
+            "type": "richtext",
+            "id": "accordion-description",
+            "label": "Accordion Description"
+          }
+        ]
+      }, {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "testimonial-image",
+            "label": "Testimonial Image"
+          }, {
+            "type": "liquid",
+            "id": "testimonial-text",
+            "label": "Testimonial Bold 1"
+          }
+        ]
       }
     ]
   }
