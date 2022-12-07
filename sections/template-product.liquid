@@ -7,6 +7,38 @@
   .variant-b {
     display: none;
   }
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    position: relative;
+  }
+  label input {
+    display: none;
+  }
+  label span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 5px 0;
+  }
+  input:checked + span {
+    background: #29a7bf;
+    color: white;
+  }
+  input:checked label span {
+    color: white;
+  }
 </style>
 
 {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
@@ -169,28 +201,6 @@
                       <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
                     </p>
                   </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>Garantie ook op de batterij</p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>
-                      <a href="bezorging-afhalen/">Gratis verzending naar Nederland en Belgi&euml;</a>
-                    </p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>
-                      <a href="ruilen-retouren/">14 dagen bedenktijd en gratis retourneren</a>
-                    </p>
-                  </div>
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>
-                      <a href="kwaliteitscontrole/">Beste kwaliteit refurbished van de Benelux</a>
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -253,28 +263,26 @@
                 <div class="col-12 col-lg-8 color-options">
                   <h4>Kleur</h4>
                   <div class="row">
-                    {% for cs in custom_switcher_kleur %}
-                      {% if cs.opslag == currentproductattributes.opslag %}
-                        <a href="{% if cs.url != '' %}{{ cs.url }}{% else %}{{ canonical }}{% endif %}" class="color col-2 col-lg-2">
-                          <div class="img {% if cs.kleur == currentproductattributes.kleur %}active{% endif %}" style="background: {{ cs.code }}; margin: 0px auto;"></div>
-                          <p>{{ cs.kleur }}</p>
-                        </a>
-                      {% endif %}
-                    {% endfor %}
+                    <a href="{{block.settings.variant-link}}" class="color col-2 col-lg-2">
+                      <div class="img"></div>
+                      <p>{{ block.settings.variant-text }}</p>
+                    </a>
                   </div>
                 </div>
                 <div style="clear: both; width: 100%;"></div>
                 <div class="col-12 col-lg-8 storage-options">
                   <h4>Opslag</h4>
                   <div class="row">
-                    {% for cs in custom_switcher_opslag %}
-                      {% if cs.kleur == currentproductattributes.kleur %}
-                        <a href="{% if cs.url != '' %}{{ cs.url }}{% else %}{{ canonical }}{% endif %}" class="storage col-2 col-lg-2">
-                          <div class="img {% if cs.opslag == currentproductattributes.opslag %}active{% endif %}" style="margin: 0px auto;">
-                            <p>{{ cs.opslag }}</p>
-                          </div>
+                    {% for product_option in product.options_with_values %}
+                      {% for value in product_option.values %}
+                        <a class="storage col-2 col-lg-2">
+                          <label for="{{ value }}">
+                            <input type="radio" id="{{ value }}" name="{{ product_option.name}}" value="{{ value }}"/>
+                            <span>{{ value }}</span>
+                          </label>
                         </a>
-                      {% endif %}
+                      {% endfor %}
+                      <br>
                     {% endfor %}
                   </div>
                 </div>
@@ -474,34 +482,10 @@
           <div class="why-buy-here" style="display:none;">
             <h4>Waarom bij ons kopen</h4>
             <div class="check-marks">
-
               <div class="check-mark">
                 <i class="fal fa-check-circle"></i>
                 <p>
                   <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
-                </p>
-              </div>
-
-              <div class="check-mark">
-                <i class="fal fa-check-circle"></i>
-                <p>Garantie ook op de batterij</p>
-              </div>
-              <div class="check-mark">
-                <i class="fal fa-check-circle"></i>
-                <p>
-                  <a href="bezorging-afhalen/">Gratis verzending naar Nederland en Belgi&euml;</a>
-                </p>
-              </div>
-              <div class="check-mark">
-                <i class="fal fa-check-circle"></i>
-                <p>
-                  <a href="ruilen-retouren/">14 dagen bedenktijd en gratis retourneren</a>
-                </p>
-              </div>
-              <div class="check-mark">
-                <i class="fal fa-check-circle"></i>
-                <p>
-                  <a href="kwaliteitscontrole/">Beste kwaliteit refurbished van de Benelux</a>
                 </p>
               </div>
             </div>
@@ -688,14 +672,7 @@
       {
         "type": "title",
         "name": "Title",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "variant-text",
-            "label": "Variant Text"
-          }
-        ]
+        "limit": 1
       },
       {
         "type": "description",
@@ -721,7 +698,22 @@
       }, {
         "type": "variant_selector",
         "name": "Variant Selector",
-        "limit": 1
+        "limit": 1,
+        "settings": [
+          {
+            "type": "url",
+            "id": "variant-link",
+            "label": "Variant Link"
+          }, {
+            "type": "color",
+            "id": "variant-color",
+            "label": "Variant Color"
+          }, {
+            "type": "text",
+            "id": "variant-text",
+            "label": "Variant Text"
+          }
+        ]
       }, {
         "type": "klarna",
         "name": "Klarna Proof",
