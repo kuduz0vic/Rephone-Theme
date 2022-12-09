@@ -195,12 +195,17 @@
               <div class="inner">
                 <h4>Waarom bij ons kopen</h4>
                 <div class="check-marks green">
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>
-                      <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
-                    </p>
-                  </div>
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'additional-lines' %}
+                        <div class="check-mark">
+                          <i class="fal fa-check-circle"></i>
+                          <p>
+                            <a href="{{block.settings.line-link}}">{{block.settings.line-text}}</a>
+                          </p>
+                        </div>
+                    {% endcase %}
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -215,13 +220,12 @@
                 {% when 'title' %}
                   <div class="title">
                     <h1 itemprop="name" style="font-size: 40px; margin:0;">{{product.title}}</h1>
-                    <h3>{{ block.settings.variant-text}} | 2 jaar garantie</h3>
+                    <h3>{{ block.settings.storage-text}} | | 2 jaar garantie</h3>
                     <h4>Volledig functioneel & simlockvrij</h4>
                   </div>
               {% endcase %}
             {% endfor %}
             <div style="display: none;" itemprop="description">{{ description }}</div>
-
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display: none;">
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content="{{ rs_price }}">{{ price }}</span>
@@ -263,140 +267,100 @@
                 <div class="col-12 col-lg-8 color-options">
                   <h4>Kleur</h4>
                   <div class="row">
-                    <a href="{{block.settings.variant-link}}" class="color col-2 col-lg-2">
-                      <div class="img"></div>
-                      <p>{{ block.settings.variant-text }}</p>
-                    </a>
+                    {% for block in section.blocks %}
+                      {% case block.type %}
+                        {% when 'color_selector' %}
+                          <a href="{{block.settings.variant-link}}" class="color col-2 col-lg-2">
+                            <div class="img" style="background:{{block.settings.variant-color}};margin: 0px auto;"></div>
+                            <p>{{ block.settings.variant-text }}</p>
+                          </a>
+                      {% endcase %}
+                    {% endfor %}
                   </div>
                 </div>
                 <div style="clear: both; width: 100%;"></div>
                 <div class="col-12 col-lg-8 storage-options">
                   <h4>Opslag</h4>
                   <div class="row">
-                    {% for product_option in product.options_with_values %}
-                      {% for value in product_option.values %}
-                        <a class="storage col-2 col-lg-2">
-                          <label for="{{ value }}">
-                            <input type="radio" id="{{ value }}" name="{{ product_option.name}}" value="{{ value }}"/>
-                            <span>{{ value }}</span>
-                          </label>
-                        </a>
-                      {% endfor %}
-                      <br>
+                    {% for block in section.blocks %}
+                      {% case block.type %}
+                        {% when 'storage_selector' %}
+                          <a href="{{block.settings.storage-link}}" class="storage col-2 col-lg-2">
+                            <div class="img" style="margin: 0px auto;">
+                              <p>{{ block.settings.storage-text }}</p>
+                            </div>
+                          </a>
+                      {% endcase %}
                     {% endfor %}
                   </div>
                 </div>
                 <div style="clear: both; width: 100%; height: 20px;"></div>
               </div>
             </div>
-            {% for option in options %}
-              {% if option.type == 'radio' %}
-                <div class="condition mt-5 mt-lg-0">
-                  <div class="cart">
-                    <div class="title">
-                      <div class="row">
-                        <div class="col-4 col-md-6">
-                          <h4>Behuizing</h4>
-                        </div>
-                        <div class="col-8 col-md-6">
-                          <div class="blue" data-toggle="modal" data-target="#productConditions">
-                            <p>Meer weten over de behuizingconditie?</p>
-                          </div>
-                        </div>
+            <div class="condition mt-5 mt-lg-0">
+              <div class="cart">
+                <div class="title">
+                  <div class="row">
+                    <div class="col-4 col-md-6">
+                      <h4>Behuizing</h4>
+                    </div>
+                    <div class="col-8 col-md-6">
+                      <div class="blue" data-toggle="modal" data-target="#productConditions">
+                        <p>Meer weten over de behuizingconditie?</p>
                       </div>
                     </div>
-                    <style>
-                      .btn-cart {
-                        width: 100% !important;
-                        cursor: pointer;
-                      }
+                  </div>
+                </div>
+                <style>
+                  .btn-cart {
+                    width: 100% !important;
+                    cursor: pointer;
+                  }
 
-                      @media screen and (max-width: 991px) {
-                        .btn-cart {
-                          font-size: 11px;
-                        }
-                      }
-                    </style>
-                    {% for option_value in option.product_option_value %}
-                      <div class="cart-item mobile-line-after mobile-line-before" {% if option_value.quantity==0 %}style="opacity:100%;"{% endif %}>
+                  @media screen and (max-width: 991px) {
+                    .btn-cart {
+                      font-size: 11px;
+                    }
+                  }
+                </style>
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'grade_buttons' %}
+                      <div class="cart-item mobile-line-after mobile-line-before" style="opacity:100%;">
                         <div class="row no-gutters">
                           <div class="col-4 col-md-3">
                             <p>
-                              {% if option_value.name == 'Als nieuw' %}A Grade{% endif %}
-                              {% if option_value.name == 'Lichte gebruikssporen' %}B Grade{% endif %}
-                              {% if option_value.name == 'Zichtbare gebruikssporen' %}C Grade{% endif %}
-                              {% if option_value.name == 'Nieuw' %}Nieuw{% endif %}
+                              {{block.settings.grade-text}}
                               <br>
                               <span>
-                                {% if option_value.name == 'Als nieuw' %}Als nieuw{% endif %}
-                                {% if option_value.name == 'Lichte gebruikssporen' %}Licht gebruikt{% endif %}
-                                {% if option_value.name == 'Zichtbare gebruikssporen' %}Zichtbaar gebruikt{% endif %}
-                                {% if option_value.name == 'Nieuw' %}Gloednieuw{% endif %}
+                                {{block.settings.grade-sub-text}}
                               </span>
                             </p>
                           </div>
                           <div class="col-4 col-md-3 price">
-                            <p class="blue">{{ option_value.voor }}</p>
+                            <p class="blue">{{ block.settings.grade-price }}</p>
                           </div>
-                          {% if option_value.quantity == 0 %}
-                            <div class="stock no-stock col-3 d-none d-md-flex">
-                              <p>Uitverkocht</p>
-                              <p>Ontvang een e-mail bij voorraad</p>
-                            </div>
-                          {% else if option_value.quantity < 200 %}
-                            <div class="stock in-stock col-3 d-none d-md-flex">
-                              <p>In voorraad</p>
-                              <p>Voor 22:30 besteld, {{ nextday }} in huis</p>
-                            </div>
-                          {% else if option_value.quantity == 200 %}
-                            <div class="stock in-stock col-3 d-none d-md-flex">
-                              <p>4 stuks in voorraad</p>
-                              <p>{{ supplier_delivery }}</p>
-                            </div>
-                          {% else if option_value.quantity == 300 %}
-                            <div class="stock in-stock col-3 d-none d-md-flex">
-                              <p>4 stuks in voorraad</p>
-                              <p>{{ supplier_minpex_delivery }}</p>
-                            </div>
-                          {% endif %}
+                          <div class="stock no-stock col-3 d-none d-md-flex">
+                            <p>Uitverkocht</p>
+                            <p>Ontvang een e-mail bij voorraad</p>
+                          </div>
                           <div class="col-4 col-md-3 d-flex justify-content-end">
-                            {% if option_value.quantity == 0 %}
-                              <div class="btn-cart stockemail" data-toggle="modal" data-product-option="option[{{ option.product_option_id }}]" data-product-option-value-id="{{ option_value.product_option_value_id }}" data-product-option-value-name="{{ option_value.name }}" data-product-id="{{ product_id }}" data-product-option-value-price="{{ option_value.voor }}" data-option-value-id="{{ option_value.option_value_id }}" data-target="#stockemail" style="background:  #29a7bf; border-bottom: #29a7bf;">
-                                <i class="fal fa-envelope"></i>&nbsp;
-                                E-mail mij
-                              </div>
-                            {% else %}
-                              <div class="btn-cart addtocart" data-product-option="option[{{ option.product_option_id }}]" data-product-option-value-id="{{ option_value.product_option_value_id }}" data-product-option-value-name="{{ option_value.name }}" data-product-id="{{ product_id }}" data-product-option-value-price="{{ option_value.voor }}">
-                                <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
-                              </div>
-                            {% endif %}
+                            <div class="btn-cart stockemail" data-toggle="modal" data-product-option="option[{{ option.product_option_id }}]" data-product-option-value-id="{{ option_value.product_option_value_id }}" data-product-option-value-name="{{ option_value.name }}" data-product-id="{{ product_id }}" data-product-option-value-price="{{ option_value.voor }}" data-option-value-id="{{ option_value.option_value_id }}" data-target="#stockemail" style="background:  #29a7bf; border-bottom: #29a7bf;">
+                              <i class="fal fa-envelope"></i>&nbsp;
+                              {{block.settings.grade-button-label}}
+                            </div>
                           </div>
                         </div>
                         <div class="row no-gutters mobile">
-                          {% if option_value.quantity == 0 %}
-                            <div class="stock no-stock col-12 d-none">
-                              <p>Uitverkocht ontvang een e-mail bij voorraad</p>
-                            </div>
-                          {% else if option_value.quantity < 200 %}
-                            <div class="stock in-stock col-12 d-none">
-                              <p>{{ option_value.quantity }} stuks in voorraad voor 22:30 besteld, {{ nextday }} in huis</p>
-                            </div>
-                          {% else if option_value.quantity == 200 %}
-                            <div class="stock in-stock col-12 d-none">
-                              <p>In voorraad bij leverancier, {{ supplier_delivery }}</p>
-                            </div>
-                          {% else if option_value.quantity == 300 %}
-                            <div class="stock in-stock col-12 d-none">
-                              <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
-                            </div>
-                          {% endif %}
+                          <div class="stock no-stock col-12 d-none">
+                            <p>Uitverkocht ontvang een e-mail bij voorraad</p>
+                          </div>
                         </div>
                       </div>
-                    {% endfor %}
-                  </div>
-                </div>
-              {% endif %}
-            {% endfor %}
+                  {% endcase %}
+                {% endfor %}
+              </div>
+            </div>
             <p>* Al onze aparaten zijn ingekocht van Nederlandse consumenten waardoor marge BTW van toepassing is</p>
           </div>
 
@@ -404,9 +368,14 @@
             <div class="included d-none d-lg-block">
               <h4>Wat zit er nog meer in de doos?</h4>
               <div class="item-parent">
-                <div class="item">
-                  <img src="https://www.rephone.nl/image/simpin.jpg" alt="Simpin" class="img"/>
-                </div>
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'addition' %}
+                      <div class="item">
+                        <img src="{{block.settings.addition-image | img_url: 'master'}}" alt="Simpin" class="img"/>
+                      </div>
+                  {% endcase %}
+                {% endfor %}
               </div>
             </div>
           {% else %}
@@ -414,11 +383,16 @@
             <a class="btn-cart btn-green addtocart" data-product-id="{{ product_id }}" style="color: #fff;">Voeg toe aan
               winkelwagen</a>
           {% endif %}
-          <div class="text-content d-none d-lg-block">
-            <div class="text">
-              <p>{{ product.description }}</p>
-            </div>
-          </div>
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'description' %}
+                <div class="text-content d-none d-lg-block">
+                  <div class="text">
+                    <p>{{ product.description }}</p>
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
           <div class="lookouts d-none d-lg-block" style="display: none!important;">
             <h3>Waar moet ik op letten?</h3>
             <div class="row">
@@ -482,12 +456,17 @@
           <div class="why-buy-here" style="display:none;">
             <h4>Waarom bij ons kopen</h4>
             <div class="check-marks">
-              <div class="check-mark">
-                <i class="fal fa-check-circle"></i>
-                <p>
-                  <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
-                </p>
-              </div>
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'additional-lines' %}
+                    <div class="check-mark">
+                      <i class="fal fa-check-circle"></i>
+                      <p>
+                        <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
+                      </p>
+                    </div>
+                {% endcase %}
+              {% endfor %}
             </div>
           </div>
 
@@ -672,7 +651,14 @@
       {
         "type": "title",
         "name": "Title",
-        "limit": 1
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "storage-text",
+            "label": "Storage Text"
+          }
+        ]
       },
       {
         "type": "description",
@@ -696,48 +682,72 @@
         "name": "Price",
         "limit": 1
       }, {
-        "type": "variant_selector",
-        "name": "Variant Selector",
-        "limit": 1,
+        "type": "color_selector",
+        "name": "Color Selector",
         "settings": [
           {
             "type": "url",
-            "id": "variant-link",
-            "label": "Variant Link"
+            "id": "color-link",
+            "label": "Color Link"
           }, {
             "type": "color",
             "id": "variant-color",
-            "label": "Variant Color"
+            "label": "Color"
           }, {
             "type": "text",
             "id": "variant-text",
-            "label": "Variant Text"
+            "label": "Color Text"
           }
         ]
       }, {
-        "type": "klarna",
-        "name": "Klarna Proof",
-        "limit": 1
-      }, {
-        "type": "quantity",
-        "name": "Quantity",
-        "limit": 1
-      }, {
-        "type": "checkout_buttons",
-        "name": "Checkout Buttons",
-        "limit": 1
-      }, {
-        "type": "additional-icons",
-        "name": "Additional Icons",
+        "type": "storage_selector",
+        "name": "Storage Selector",
         "settings": [
           {
             "type": "url",
-            "id": "icon-link",
-            "label": "Icon Link"
+            "id": "storage-link",
+            "label": "Storage Link"
           }, {
             "type": "text",
-            "id": "icon-description",
-            "label": "Description"
+            "id": "storage-text",
+            "label": "Color Text"
+          }
+        ]
+      }, {
+        "type": "grade_buttons",
+        "name": "Grade Buttons",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "text",
+            "id": "grade-text",
+            "label": "Grade Text"
+          }, {
+            "type": "text",
+            "id": "grade-sub-text",
+            "label": "Grade Sub Text"
+          }, {
+            "type": "text",
+            "id": "grade-price",
+            "label": "Grade Price"
+          }, {
+            "type": "text",
+            "id": "grade-button-label",
+            "label": "Grade Button Label"
+          }
+        ]
+      }, {
+        "type": "additional-lines",
+        "name": "Additional Lines",
+        "settings": [
+          {
+            "type": "url",
+            "id": "line-link",
+            "label": "Line Link"
+          }, {
+            "type": "text",
+            "id": "line-text",
+            "label": "Line Text"
           }
         ]
       }, {
@@ -756,18 +766,13 @@
           }
         ]
       }, {
-        "type": "testimonial",
-        "name": "Testimonial",
-        "limit": 1,
+        "type": "addition",
+        "name": "Box Items",
         "settings": [
           {
             "type": "image_picker",
-            "id": "testimonial-image",
-            "label": "Testimonial Image"
-          }, {
-            "type": "liquid",
-            "id": "testimonial-text",
-            "label": "Testimonial Bold 1"
+            "id": "addition-image",
+            "label": "Addition Image"
           }
         ]
       }
