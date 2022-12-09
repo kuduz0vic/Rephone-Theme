@@ -6,20 +6,11 @@
         "title": {
           "type": "title",
           "settings": {
+            "storage-text": "128GB"
           }
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
-        },
-        "variant_selector": {
-          "type": "variant_selector",
-          "settings": {
-          }
-        },
-        "quantity": {
-          "type": "quantity",
           "settings": {
           }
         },
@@ -28,19 +19,132 @@
           "settings": {
           }
         },
-        "checkout_buttons": {
-          "type": "checkout_buttons",
+        "9bf75894-862d-4290-a562-af0a86160871": {
+          "type": "color_selector",
           "settings": {
+            "color-link": "",
+            "variant-color": "",
+            "variant-text": ""
+          }
+        },
+        "741d398a-a210-4de8-989e-24048078da26": {
+          "type": "color_selector",
+          "settings": {
+            "color-link": "",
+            "variant-color": "",
+            "variant-text": ""
+          }
+        },
+        "8fd06b8c-47f5-4983-a95d-2c8b8f70f3b7": {
+          "type": "color_selector",
+          "settings": {
+            "color-link": "",
+            "variant-color": "",
+            "variant-text": ""
+          }
+        },
+        "63edcb31-99d2-4f5e-93fc-f75901eb98da": {
+          "type": "storage_selector",
+          "settings": {
+            "storage-link": "",
+            "storage-text": ""
+          }
+        },
+        "f0c349e4-19d5-4300-87fb-bde98df8f13c": {
+          "type": "storage_selector",
+          "settings": {
+            "storage-link": "",
+            "storage-text": ""
+          }
+        },
+        "de64c1bf-27af-4e49-9ab1-39e544af67ec": {
+          "type": "storage_selector",
+          "settings": {
+            "storage-link": "",
+            "storage-text": ""
+          }
+        },
+        "20f86578-2ba5-4dff-a0a8-00f6c01f382d": {
+          "type": "grade_buttons",
+          "settings": {
+            "grade-text": "",
+            "grade-sub-text": "",
+            "grade-price": "",
+            "grade-button-label": ""
+          }
+        },
+        "a88e89d3-08b1-4f7a-ad52-691811e7d3d9": {
+          "type": "grade_buttons",
+          "settings": {
+            "grade-text": "",
+            "grade-sub-text": "",
+            "grade-price": "",
+            "grade-button-label": ""
+          }
+        },
+        "cbd21cab-dc80-4156-a1c6-c5b82c3fb6e9": {
+          "type": "grade_buttons",
+          "settings": {
+            "grade-text": "",
+            "grade-sub-text": "",
+            "grade-price": "",
+            "grade-button-label": ""
+          }
+        },
+        "3371b941-2dcd-46b6-a72f-bfd1273c3190": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "",
+            "line-text": ""
+          }
+        },
+        "89f5bab4-4c07-473c-a84d-3ed4cf69f5fb": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "",
+            "line-text": ""
+          }
+        },
+        "3b7ab408-58a9-4ae4-8475-867601e82c75": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "",
+            "line-text": ""
+          }
+        },
+        "c738a88c-4494-4e7e-b575-011af8b6201b": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "",
+            "line-text": ""
+          }
+        },
+        "6e41c1fc-c17c-403a-a213-2fefd534a3bc": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "",
+            "line-text": ""
           }
         }
       },
       "block_order": [
         "title",
         "price",
-        "variant_selector",
-        "quantity",
         "description",
-        "checkout_buttons"
+        "9bf75894-862d-4290-a562-af0a86160871",
+        "741d398a-a210-4de8-989e-24048078da26",
+        "8fd06b8c-47f5-4983-a95d-2c8b8f70f3b7",
+        "63edcb31-99d2-4f5e-93fc-f75901eb98da",
+        "f0c349e4-19d5-4300-87fb-bde98df8f13c",
+        "de64c1bf-27af-4e49-9ab1-39e544af67ec",
+        "20f86578-2ba5-4dff-a0a8-00f6c01f382d",
+        "a88e89d3-08b1-4f7a-ad52-691811e7d3d9",
+        "cbd21cab-dc80-4156-a1c6-c5b82c3fb6e9",
+        "3371b941-2dcd-46b6-a72f-bfd1273c3190",
+        "89f5bab4-4c07-473c-a84d-3ed4cf69f5fb",
+        "3b7ab408-58a9-4ae4-8475-867601e82c75",
+        "c738a88c-4494-4e7e-b575-011af8b6201b",
+        "6e41c1fc-c17c-403a-a213-2fefd534a3bc"
       ],
       "settings": {
       }
