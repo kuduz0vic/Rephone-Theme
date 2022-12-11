@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "settings": {
+      }
+    },
+    "6d1ca30e-34ef-46e9-a524-a62f54523244": {
+      "type": "about-us",
+      "settings": {
+        "title": "",
+        "button-label": "",
+        "button-url": "",
+        "bottom-title": "",
+        "bottom-description": ""
+      }
+    }
+  },
+  "order": [
+    "template",
+    "6d1ca30e-34ef-46e9-a524-a62f54523244"
+  ]
+}
