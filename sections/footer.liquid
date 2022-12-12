@@ -80,10 +80,11 @@
                   <div class="row">
                       <div class="col-12 col-sm-6">
                           <h3>Blog</h3>
-                          {% for article in blog[section.settings.blog].articles %}
+                          {% assign blog = section.settings.blog-pick %}
+                          {% for article in blog.articles %}       
                           <p><a href="{{ article.url }}">{{ article.title }}</a></p>
                           {% endfor %}
-                          <a href="blog/" class="blue-underline">
+                          <a href="{{section.settings.blog-link}}" class="blue-underline">
                                   <p>Bekijk alle blogs</p> 
                                   <i class="far fa-arrow-right"></i> 
                               </a>
@@ -126,6 +127,7 @@
       </div>
   </div>
 </footer>
+
 
 {% schema %}
 {
@@ -196,7 +198,7 @@
   },
   {
   "type": "blog",
-  "id": "blog",
+  "id": "blog-pick",
   "label": "Blog"
 },
 {
