@@ -226,7 +226,7 @@
               {% when 'title' %}
                 <div class="title">
                   <h1 itemprop="name" style="font-size: 40px; margin:0;">{{product.title}}</h1>
-                  <h3>{{ block.settings.storage-text}} | | 2 jaar garantie</h3>
+                  <h3>{{ block.settings.product-info-text}}</h3>
                   <h4>Volledig functioneel & simlockvrij</h4>
                 </div>
             {% endcase %}
@@ -660,8 +660,8 @@
         "settings": [
           {
             "type": "text",
-            "id": "storage-text",
-            "label": "Storage Text"
+            "id": "product-info-text",
+            "label": "Product Informatie"
           }
         ]
       },
