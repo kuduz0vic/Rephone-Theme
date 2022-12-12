@@ -2,78 +2,12 @@
   "sections": {
     "89f47e08-e53c-4524-bf33-fa505a7f6023": {
       "type": "bestellen",
-      "blocks": {
-        "54b5657c-0396-4ba2-b067-fc47124929d8": {
-          "type": "main-text-line",
-          "settings": {
-            "main-line": "<p>iDeal: via de vertrouwde online betaalomgeving van je bank<\/p>"
-          }
-        },
-        "cc0fba01-18ea-43d0-a8ca-f32a8cefe6bc": {
-          "type": "main-text-line",
-          "settings": {
-            "main-line": "<p>Visa \/ Mastercard: wanneer u kiest voor de betaalmethode creditcard, wordt deze pas belast na levering van de producten.<\/p>"
-          }
-        },
-        "a11856a2-f792-47c2-a4ca-550e08c366d0": {
-          "type": "main-text-line",
-          "settings": {
-            "main-line": "<p>Handmatige overboeking: betaal via je eigen bankomgeving. De bestelling wordt geleverd na betaling.<\/p>"
-          }
-        },
-        "ace5f646-5ee6-4836-a482-c3c7e59ee71c": {
-          "type": "main-text-line",
-          "settings": {
-            "main-line": "<p>Mr. Cash \/ Bancontact: veilig online betalen voor klanten met een Belgische bank<\/p>"
-          }
-        },
-        "76c86591-5882-4de2-8b25-57888a2d96ea": {
-          "type": "text-line",
-          "settings": {
-            "line": "<p>Alle functionaliteiten uitvoerig getest<\/p>"
-          }
-        },
-        "10ebc4a9-59f5-4280-8523-480101786f41": {
-          "type": "text-line",
-          "settings": {
-            "line": "<p>Oplader, oortjes en simpin meegeleverd<\/p>"
-          }
-        },
-        "24a0af04-1e73-453d-bebb-9e25040e4336": {
-          "type": "text-line",
-          "settings": {
-            "line": "<p>Klantenservice staat dagelijks voor je klaar<\/p>"
-          }
-        },
-        "f05124d5-e32c-4d80-9274-b1676be2176f": {
-          "type": "text-line",
-          "settings": {
-            "line": "<p>Op werkdagen voor 22:00 uur besteld is morgen in huis<\/p>"
-          }
-        },
-        "43e25718-56b7-4233-b429-ed4de5fa0070": {
-          "type": "text-line",
-          "settings": {
-            "line": "<p>De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "54b5657c-0396-4ba2-b067-fc47124929d8",
-        "cc0fba01-18ea-43d0-a8ca-f32a8cefe6bc",
-        "a11856a2-f792-47c2-a4ca-550e08c366d0",
-        "ace5f646-5ee6-4836-a482-c3c7e59ee71c",
-        "76c86591-5882-4de2-8b25-57888a2d96ea",
-        "10ebc4a9-59f5-4280-8523-480101786f41",
-        "24a0af04-1e73-453d-bebb-9e25040e4336",
-        "f05124d5-e32c-4d80-9274-b1676be2176f",
-        "43e25718-56b7-4233-b429-ed4de5fa0070"
-      ],
       "settings": {
-        "menu": "page-side-menu",
-        "title": "Bestellen & Betalen",
-        "bottom-title": "Hoe werkt het bestelproces",
-        "bottom-description": "<p>Zodra u uw artikelen in uw winkelwagen heeft gezet krijgt u de mogelijkheid om uw gegevens in te voeren, op welke manier u wilt betalen en op welke manier u uw goederen wilt ontvangen. U kunt vervolgens een betaalmethode kiezen waarmee u uw bestelling af wilt rekenen. Zodra u uw bestelling heeft betaald ontvangt u van ons een bevestiging van uw bestelling. Wij gaan dan aan de slag met uw bestelling en proberen deze zo snel mogelijk te leveren. <\/p>",
+        "menu": "",
+        "title": "",
+        "description": "",
+        "bottom-title": "",
+        "bottom-description": "",
         "button-label": "",
         "button-url": ""
       }
