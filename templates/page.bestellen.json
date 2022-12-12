@@ -1,8 +1,25 @@
 {
-    "sections": {
-      "template": {
-        "type": "template-page"
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "settings": {
       }
     },
-    "order": ["template"]
-  }
+    "89f47e08-e53c-4524-bf33-fa505a7f6023": {
+      "type": "bestellen",
+      "settings": {
+        "menu": "",
+        "title": "",
+        "description": "",
+        "bottom-title": "",
+        "bottom-description": "",
+        "button-label": "",
+        "button-url": ""
+      }
+    }
+  },
+  "order": [
+    "template",
+    "89f47e08-e53c-4524-bf33-fa505a7f6023"
+  ]
+}
