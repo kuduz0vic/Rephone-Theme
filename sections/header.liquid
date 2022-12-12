@@ -54,7 +54,7 @@
       <div class="bottom-side">
         <div class="inner">
           <div class="row">
-            <a href="{{store.url}}" class="col-3 logo d-lg-block d-none" style="background: url({{section.settings.logo | img_url: 'master'}}) no-repeat 15px center;background-size: contain;"></a>
+            <a href="{{routes.root_url}}" class="col-3 logo d-lg-block d-none" style="background: url({{section.settings.logo | img_url: 'master'}}) no-repeat 15px center;background-size: contain;"></a>
             <div class="offset-0  col-md-9 offset-md-0 offset-lg-1 col-12 col-lg-8">
               <div class="tabs">
                 {% for block in section.blocks %}
@@ -68,7 +68,7 @@
                       </a>
                   {% endcase %}
                 {% endfor %}
-                <a href="{{store.url}}" class="mobile-logo d-lg-none">
+                <a href="{{routes.root_url}}" class="mobile-logo d-lg-none">
                   <img src="{{section.settings.mobile-logo | img_url: 'master'}}"/>
                 </a>
                 <a href="winkelwagen/" class="tab-item cart">

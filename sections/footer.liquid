@@ -80,8 +80,8 @@
                   <div class="row">
                       <div class="col-12 col-sm-6">
                           <h3>Blog</h3>
-                          {% for blog in blogs %}
-                          <p><a href="{{ blog.canonical }}">{{ blog.description.title }}</a></p>
+                          {% for article in blog[section.settings.blog].articles %}
+                          <p><a href="{{ article.url }}">{{ article.title }}</a></p>
                           {% endfor %}
                           <a href="blog/" class="blue-underline">
                                   <p>Bekijk alle blogs</p> 
@@ -193,7 +193,17 @@
   "type": "link_list",
   "id": "secondary-menu",
   "label": "Menu"
-  }
+  },
+  {
+  "type": "blog",
+  "id": "blog",
+  "label": "Blog"
+},
+{
+  "type": "url",
+  "id": "blog-link",
+  "label": "Blog Link"
+}
   ]
 }
 {% endschema %}
