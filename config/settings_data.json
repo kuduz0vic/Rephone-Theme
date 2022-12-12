@@ -82,7 +82,9 @@
             "iphone-se"
           ],
           "email": "klantenservice@rephone.nl",
-          "secondary-menu": "legal"
+          "secondary-menu": "legal",
+          "blog": "iphone",
+          "blog-link": "shopify:\/\/blogs\/iphone"
         }
       }
     },
