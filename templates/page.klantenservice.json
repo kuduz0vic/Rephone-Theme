@@ -1,23 +1,82 @@
 {
   "sections": {
-    "template": {
-      "type": "template-page",
+    "0b8c4496-2a71-4503-96a5-1230f812c842": {
+      "type": "klantenservice",
+      "blocks": {
+        "7d4122d6-7b83-437c-936a-02d92c89974d": {
+          "type": "text-line",
+          "settings": {
+            "line": "Alle functionaliteiten uitvoerig getest"
+          }
+        },
+        "50689562-c1ab-4de1-b702-96de07c4edb4": {
+          "type": "text-line",
+          "settings": {
+            "line": "Oplader, oortjes en simpin meegeleverd"
+          }
+        },
+        "97462251-534f-4745-92e7-4832c2dc0704": {
+          "type": "text-line",
+          "settings": {
+            "line": "Klantenservice staat dagelijks voor je klaar"
+          }
+        },
+        "9fcabc19-b607-477a-86ef-45faf4fb2bd2": {
+          "type": "text-line",
+          "settings": {
+            "line": "Op werkdagen voor 22:00 uur besteld is morgen in huis"
+          }
+        },
+        "90d22db6-6f39-4c5f-bd6a-76114a18b41a": {
+          "type": "text-line",
+          "settings": {
+            "line": "De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis"
+          }
+        },
+        "242191d6-30b5-43f4-8c0a-b5badfd5bd27": {
+          "type": "text-block",
+          "settings": {
+            "block-title": "E-mail",
+            "block-description": "<p>Wil je graag via een e-mail geholpen worden? Dat is ook mogelijk, je kunt ons e-mailen op <a href=\"mailto:klantenservice@rephone.nl\">klantenservice@rephone.nl<\/a>.<br\/><\/p>"
+          }
+        },
+        "d6238263-c347-4c47-b74a-73246cc54a1b": {
+          "type": "text-block",
+          "settings": {
+            "block-title": "Adresgegevens",
+            "block-description": "<p><strong>Adres<\/strong><br\/>Rephone<br\/>Simon Stevinweg 2<br\/>3241MD Middelharnis<br\/><strong>Bezoekadres<\/strong><br\/>Rephone<br\/>Nieuwstraat<br\/>3241CL Middelharnis<br\/><br\/>KvK: 8133419<br\/>BTW NL: NL210101933B0<br\/>BTW BE: BE 0717.687.558<\/p>"
+          }
+        },
+        "0b8c1813-f824-455a-ae3a-27fa775dfc7c": {
+          "type": "text-block",
+          "settings": {
+            "block-title": "Heeft u een klacht?",
+            "block-description": "<p>Indien u een klacht heeft over onze producten of onze service, dan kunt u contact met ons opnemen via klantenservice@rephone.nl. U krijgt van ons binnen 14 dagen na ontvangst van uw klacht een inhoudelijke reactie. Indien u niet tevreden bent met de afhandeling van uw klacht dan kunt u deze ook voorleggen aan de Geschillencommissie Thuiswinkel (www.sgc.nl) of aan deze Geschillencommissie via het Europees ODR Platform (https:\/\/ec.europa.eu\/consumers\/odr\/). <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "7d4122d6-7b83-437c-936a-02d92c89974d",
+        "50689562-c1ab-4de1-b702-96de07c4edb4",
+        "97462251-534f-4745-92e7-4832c2dc0704",
+        "9fcabc19-b607-477a-86ef-45faf4fb2bd2",
+        "90d22db6-6f39-4c5f-bd6a-76114a18b41a",
+        "242191d6-30b5-43f4-8c0a-b5badfd5bd27",
+        "d6238263-c347-4c47-b74a-73246cc54a1b",
+        "0b8c1813-f824-455a-ae3a-27fa775dfc7c"
+      ],
       "settings": {
-      }
-    },
-    "6d1ca30e-34ef-46e9-a524-a62f54523244": {
-      "type": "about-us",
-      "settings": {
-        "title": "",
-        "button-label": "",
-        "button-url": "",
-        "bottom-title": "",
-        "bottom-description": ""
+        "menu": "page-side-menu",
+        "title": "Klantenservice",
+        "description": "<p>Heb je een vraag? Onze klantenservice staat voor je klaar om je te helpen. Het is altijd handig om even het ordernummer van je bestelling bij de hand te houden. Heb je die niet bij de hand? Geen probleem vaak kunnen we ook op naam de bestelling opzoeken. Wij helpen je graag, via de onderstaande manier kun je contact met ons opnemen.<\/p>",
+        "bottom-title": "Probleem met uw apparaat?",
+        "bottom-description": "<p>Heeft u probleem met uw apparaat. Meld uw apparaat online aan voor garantie. Bekijk hier de <a href=\"https:\/\/www.rephone.nl\/garantie\/\"><strong>garantievoorwaarden<\/strong><\/a>.<\/p>",
+        "button-label": "Aanmelden garantie",
+        "button-url": ""
       }
     }
   },
   "order": [
-    "template",
-    "6d1ca30e-34ef-46e9-a524-a62f54523244"
+    "0b8c4496-2a71-4503-96a5-1230f812c842"
   ]
 }
