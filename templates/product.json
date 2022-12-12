@@ -125,6 +125,14 @@
             "line-link": "",
             "line-text": ""
           }
+        },
+        "d05c128c-d8b5-421f-8cf2-6337874ae26c": {
+          "type": "accordion-reviews",
+          "settings": {
+            "person-name": "Stephan",
+            "person-city": "Rotterdam",
+            "person-description": "<p>Twee toestellen inclusief abonnement afgesloten. Superservice en alles in een paar minuten geregeld. Ik beveel jullie zeker aan!<\/p>"
+          }
         }
       },
       "block_order": [
@@ -144,7 +152,8 @@
         "89f5bab4-4c07-473c-a84d-3ed4cf69f5fb",
         "3b7ab408-58a9-4ae4-8475-867601e82c75",
         "c738a88c-4494-4e7e-b575-011af8b6201b",
-        "6e41c1fc-c17c-403a-a213-2fefd534a3bc"
+        "6e41c1fc-c17c-403a-a213-2fefd534a3bc",
+        "d05c128c-d8b5-421f-8cf2-6337874ae26c"
       ],
       "settings": {
       }
