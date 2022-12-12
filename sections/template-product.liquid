@@ -110,7 +110,6 @@
                 <h5 class="mb-0">
                   <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     <h4>Waar moet ik op letten?</h4>
-
                     <i class="fal fa-chevron-down"></i>
                   </button>
                 </h5>
@@ -132,7 +131,7 @@
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
-                  <iframe width="375" height="210" src="https://www.youtube.com/embed/fDWeSPuKdu0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe src="https://www.youtube.com/embed/fDWeSPuKdu0?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.rephone.nl" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-gtm-yt-inspected-8="true" id="807589892" data-gtm-yt-inspected-8312312_46="true" title="Rephone item Doe maar Duurzaam S11E12 RTLZ 23 december 2018" width="375" height="210" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
@@ -162,37 +161,41 @@
               </div>
               <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                 <div class="card-body">
-                  {% for review in kiyoh_reviews %}
-                    <div class="review">
-                      <div class="title">
-                        <p>{{ review.customer_name }} | {{ review.customer_place }}</p>
-                      </div>
-                      <div class="star-ratings-css blue-stars">
-                        <div class="star-ratings-css-top" style="width: {{ review.percentage }}%">
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'accordion-reviews' %}
+                        <div class="review">
+                          <div class="title">
+                            <p>{{block.settings.person-name}} | {{block.settings.person-city}}</p>
+                          </div>
+                          <div class="star-ratings-css blue-stars">
+                            <div class="star-ratings-css-top" style="width: 100%">
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                            </div>
+                            <div class="star-ratings-css-bottom">
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                            </div>
+                          </div>
+                          <div class="text">
+                            {{block.settings.person-description}}
+                          </div>
                         </div>
-                        <div class="star-ratings-css-bottom">
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                          <span>&starf;</span>
-                        </div>
-                      </div>
-                      <div class="text">
-                        <p>{{ review.positive }}</p>
-                      </div>
-                    </div>
+                    {% endcase %}
                   {% endfor %}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="unboxing" id="fixedOnScroll">
           <div class="why-buy-here mt-4">
             <div class="inner">
@@ -635,6 +638,13 @@
   }
   customElements.define("variant-selector", VariantSelector);
 </script>
+<script>
+  jQuery(function($) {
+    $(".info-title").click(function() {
+      $(this).closest('.info-tab').toggleClass('no-border');
+    });
+  });
+</script>
 
 {% schema %}
   {
@@ -746,18 +756,21 @@
           }
         ]
       }, {
-        "type": "accordion",
-        "name": "Accordion",
-        "limit": 3,
+        "type": "accordion-reviews",
+        "name": "Accordion Reviews",
         "settings": [
           {
             "type": "text",
-            "id": "accordion-title",
-            "label": "Accordion Title"
+            "id": "person-name",
+            "label": "Name"
+          }, {
+            "type": "text",
+            "id": "person-city",
+            "label": "City"
           }, {
             "type": "richtext",
-            "id": "accordion-description",
-            "label": "Accordion Description"
+            "id": "person-description",
+            "label": "Review"
           }
         ]
       }, {
