@@ -1,0 +1,158 @@
+<div class="container order-and-pickup contact">
+  <div class="row">
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <section class="content-text">
+          <h1 class="mt-2 mt-lg-0">Bestellen &amp; Betalen</h1>
+          <div class="text">
+            <h3>Hoe werkt het bestelproces</h3>
+            <p>
+              Zodra u uw artikelen in uw winkelwagen heeft gezet krijgt u de mogelijkheid om uw gegevens in te voeren, op welke manier u wilt betalen en op welke manier u uw goederen wilt ontvangen. U kunt vervolgens een betaalmethode kiezen waarmee u uw bestelling af wilt rekenen. Zodra u uw bestelling heeft betaald ontvangt u van ons een bevestiging van uw bestelling. Wij gaan dan aan de slag met uw bestelling en proberen deze zo snel mogelijk te leveren.&nbsp;</p>
+          </div>
+          <div class="text">
+            <h3>Wat zijn de betaalmogelijkheden</h3>
+            <div class="check-marks">
+              <div class="check-mark">
+                <i class="fal fa-check-circle"></i>
+                <p>iDeal: via de vertrouwde online betaalomgeving van je bank</p>
+              </div>
+              <div class="check-mark">
+                <i class="fal fa-check-circle"></i>
+                <p>Visa / Mastercard: w<span style="color: rgb(30, 30, 30); font-family: Arial; font-size: 14px;">anneer u kiest voor de betaalmethode creditcard, wordt deze pas belast na levering van de producten.</span>
+                </p>
+              </div>
+              <div class="check-mark">
+                <i class="fal fa-check-circle"></i>
+                <p>Handmatige overboeking: betaal via je eigen bankomgeving. De bestelling wordt geleverd na betaling.</p>
+              </div>
+              <div class="check-mark">
+                <i class="fal fa-check-circle"></i>
+                <p>Mr. Cash / Bancontact: veilig online betalen voor klanten met een Belgische bank</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="right-sidebar col-12 col-lg-3">
+      <div class="inner">
+        <div class="customer-support-nav mobile-line-before">
+          <h4>Klantenservice</h4>
+          <ul>
+            <li class="mobile-line-before">
+              <a href="klantenservice/">Klantenservice</a>
+            </li>
+            <li class="mobile-line-before">
+              <a href="">Veelgestelde vragen</a>
+            </li>
+            <li class="mobile-line-before">
+              <a href="bestellen-betalen/">Bestellen &amp; Betalen</a>
+            </li>
+            <li class="mobile-line-before">
+              <a href="bezorging-afhalen/">Bezorging &amp; Afhalen</a>
+            </li>
+            <li class="mobile-line-before">
+              <a href="ruilen-retouren/">Ruilen &amp; Retouren</a>
+            </li>
+            <li class="mobile-line-before mobile-line-after">
+              <a href="rephone-thuiswinkel-waarborg/">Thuiswinkel Waarborg</a>
+            </li>
+          </ul>
+        </div>
+        <div class="why-buy-here mobile-line-after">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Alle functionaliteiten uitvoerig getest</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Oplader, oortjes en simpin meegeleverd</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Klantenservice staat dagelijks voor je klaar</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Op werkdagen voor 22:00 uur besteld is morgen in huis</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Klantenservice",
+    "class": "section",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "bottom-title",
+        "label": "Bottom Title"
+      }, {
+        "type": "richtext",
+        "id": "bottom-description",
+        "label": "Bottom Description"
+      }, {
+        "type": "text",
+        "id": "button-label",
+        "label": "Button Label"
+      }, {
+        "type": "url",
+        "id": "button-url",
+        "label": "Button Url"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Text Line",
+        "type": "text-line",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "line",
+            "label": "Text Line"
+          }
+        ]
+      }, {
+        "name": "Text Block",
+        "type": "text-block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block-title",
+            "label": "Block Title"
+          }, {
+            "type": "richtext",
+            "id": "block-description",
+            "label": "Block Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
