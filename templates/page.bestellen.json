@@ -1,10 +1,5 @@
 {
   "sections": {
-    "template": {
-      "type": "template-page",
-      "settings": {
-      }
-    },
     "89f47e08-e53c-4524-bf33-fa505a7f6023": {
       "type": "bestellen",
       "settings": {
@@ -19,7 +14,6 @@
     }
   },
   "order": [
-    "template",
     "89f47e08-e53c-4524-bf33-fa505a7f6023"
   ]
 }
