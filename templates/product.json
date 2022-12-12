@@ -133,6 +133,24 @@
             "person-city": "Rotterdam",
             "person-description": "<p>Twee toestellen inclusief abonnement afgesloten. Superservice en alles in een paar minuten geregeld. Ik beveel jullie zeker aan!<\/p>"
           }
+        },
+        "4cdf1e8a-6357-4f0d-8322-ad1b13a2176d": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/apple-charger.jpg"
+          }
+        },
+        "7c554b72-c8ce-4d48-a183-d4d0d12d2270": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/apple-lightning.jpg"
+          }
+        },
+        "9e4b84f5-bad2-4c03-b17d-90c29a144f1a": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/simpin.jpg"
+          }
         }
       },
       "block_order": [
@@ -153,7 +171,10 @@
         "3b7ab408-58a9-4ae4-8475-867601e82c75",
         "c738a88c-4494-4e7e-b575-011af8b6201b",
         "6e41c1fc-c17c-403a-a213-2fefd534a3bc",
-        "d05c128c-d8b5-421f-8cf2-6337874ae26c"
+        "d05c128c-d8b5-421f-8cf2-6337874ae26c",
+        "4cdf1e8a-6357-4f0d-8322-ad1b13a2176d",
+        "7c554b72-c8ce-4d48-a183-d4d0d12d2270",
+        "9e4b84f5-bad2-4c03-b17d-90c29a144f1a"
       ],
       "settings": {
       }
