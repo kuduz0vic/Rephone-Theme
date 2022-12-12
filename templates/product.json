@@ -22,7 +22,7 @@
         "9bf75894-862d-4290-a562-af0a86160871": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.first_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.first_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.first_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_1_name.value }}"
           }
@@ -30,7 +30,7 @@
         "741d398a-a210-4de8-989e-24048078da26": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.second_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.second_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.second_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_2_name.value }}"
           }
@@ -38,7 +38,7 @@
         "8fd06b8c-47f5-4983-a95d-2c8b8f70f3b7": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.third_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.third_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.third_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_3_name.value }}"
           }
