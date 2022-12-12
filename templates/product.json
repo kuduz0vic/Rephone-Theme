@@ -22,7 +22,7 @@
         "9bf75894-862d-4290-a562-af0a86160871": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.first_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.first_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.first_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_1_name.value }}"
           }
@@ -30,7 +30,7 @@
         "741d398a-a210-4de8-989e-24048078da26": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.second_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.second_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.second_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_2_name.value }}"
           }
@@ -38,7 +38,7 @@
         "8fd06b8c-47f5-4983-a95d-2c8b8f70f3b7": {
           "type": "color_selector",
           "settings": {
-            "color-link": "{{ product.metafields.custom.third_color_page_link.value }}",
+            "variant-link": "{{ product.metafields.custom.third_color_page_link.value }}",
             "variant-color": "{{ product.metafields.custom.third_color_hex.value }}",
             "variant-text": "{{ product.metafields.custom.color_3_name.value }}"
           }
@@ -95,35 +95,61 @@
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": ""
+            "line-text": "Twee jaar garantie op je refurbished apparaat"
           }
         },
-        "89f5bab4-4c07-473c-a84d-3ed4cf69f5fb": {
+        "55d45136-99c5-412b-80e2-8b471fa2812b": {
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": ""
+            "line-text": "Garantie ook op de batterij"
           }
         },
-        "3b7ab408-58a9-4ae4-8475-867601e82c75": {
+        "e78134e0-fd28-4290-af94-dc3122eeb2f3": {
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": ""
+            "line-text": "Gratis verzending naar Nederland en België"
           }
         },
-        "c738a88c-4494-4e7e-b575-011af8b6201b": {
+        "4abde90e-3540-47e5-a3b9-a4fa58651ad1": {
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": ""
+            "line-text": "14 dagen bedenktijd en gratis retourneren"
           }
         },
-        "6e41c1fc-c17c-403a-a213-2fefd534a3bc": {
+        "17dbcc2b-1e12-4a87-bde7-bc3b2fb87f69": {
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": ""
+            "line-text": "Beste kwaliteit refurbished van de Benelux"
+          }
+        },
+        "d05c128c-d8b5-421f-8cf2-6337874ae26c": {
+          "type": "accordion-reviews",
+          "settings": {
+            "person-name": "Stephan",
+            "person-city": "Rotterdam",
+            "person-description": "<p>Twee toestellen inclusief abonnement afgesloten. Superservice en alles in een paar minuten geregeld. Ik beveel jullie zeker aan!<\/p>"
+          }
+        },
+        "4cdf1e8a-6357-4f0d-8322-ad1b13a2176d": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/apple-charger.jpg"
+          }
+        },
+        "7c554b72-c8ce-4d48-a183-d4d0d12d2270": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/apple-lightning.jpg"
+          }
+        },
+        "9e4b84f5-bad2-4c03-b17d-90c29a144f1a": {
+          "type": "addition",
+          "settings": {
+            "addition-image": "shopify:\/\/shop_images\/simpin.jpg"
           }
         }
       },
@@ -141,10 +167,14 @@
         "a88e89d3-08b1-4f7a-ad52-691811e7d3d9",
         "cbd21cab-dc80-4156-a1c6-c5b82c3fb6e9",
         "3371b941-2dcd-46b6-a72f-bfd1273c3190",
-        "89f5bab4-4c07-473c-a84d-3ed4cf69f5fb",
-        "3b7ab408-58a9-4ae4-8475-867601e82c75",
-        "c738a88c-4494-4e7e-b575-011af8b6201b",
-        "6e41c1fc-c17c-403a-a213-2fefd534a3bc"
+        "55d45136-99c5-412b-80e2-8b471fa2812b",
+        "e78134e0-fd28-4290-af94-dc3122eeb2f3",
+        "4abde90e-3540-47e5-a3b9-a4fa58651ad1",
+        "17dbcc2b-1e12-4a87-bde7-bc3b2fb87f69",
+        "d05c128c-d8b5-421f-8cf2-6337874ae26c",
+        "4cdf1e8a-6357-4f0d-8322-ad1b13a2176d",
+        "7c554b72-c8ce-4d48-a183-d4d0d12d2270",
+        "9e4b84f5-bad2-4c03-b17d-90c29a144f1a"
       ],
       "settings": {
       }
