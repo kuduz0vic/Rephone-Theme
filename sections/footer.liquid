@@ -83,7 +83,7 @@
                           {% for article in blog[section.settings.blog].articles %}
                           <p><a href="{{ article.url }}">{{ article.title }}</a></p>
                           {% endfor %}
-                          <a href="blog/" class="blue-underline">
+                          <a href="{{ section.settings.blog-link }}" class="blue-underline">
                                   <p>Bekijk alle blogs</p> 
                                   <i class="far fa-arrow-right"></i> 
                               </a>
