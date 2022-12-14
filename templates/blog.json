@@ -1,8 +1,54 @@
 {
   "sections": {
     "template": {
-      "type": "template-blog"
+      "type": "template-blog",
+      "blocks": {
+        "f1aba00d-4839-4ba6-81b9-d016c4565186": {
+          "type": "text-line",
+          "settings": {
+            "line": "<p>Alle functionaliteiten uitvoerig getest<\/p>"
+          }
+        },
+        "57853723-0e81-4b7c-bcbc-be9560f5d409": {
+          "type": "text-line",
+          "settings": {
+            "line": "<p>Oplader, oortjes en simpin meegeleverd<\/p>"
+          }
+        },
+        "1882e84e-5c01-4c38-841c-e05c8eba2889": {
+          "type": "text-line",
+          "settings": {
+            "line": "<p>Klantenservice staat dagelijks voor je klaar<\/p>"
+          }
+        },
+        "2b039e07-3549-4e04-a774-d94f69998ad7": {
+          "type": "text-line",
+          "settings": {
+            "line": "<p>Op werkdagen voor 22:00 uur besteld is morgen in huis<\/p>"
+          }
+        },
+        "443976c6-cda2-4765-aeb0-d0dc85bc8c7e": {
+          "type": "text-line",
+          "settings": {
+            "line": "<p>De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1aba00d-4839-4ba6-81b9-d016c4565186",
+        "57853723-0e81-4b7c-bcbc-be9560f5d409",
+        "1882e84e-5c01-4c38-841c-e05c8eba2889",
+        "2b039e07-3549-4e04-a774-d94f69998ad7",
+        "443976c6-cda2-4765-aeb0-d0dc85bc8c7e"
+      ],
+      "settings": {
+        "blog_read_more": "Read more",
+        "number_of_blog_posts": 3,
+        "menu": "page-side-menu"
+      }
     }
   },
-  "order": ["template"]
+  "order": [
+    "template"
+  ]
 }

@@ -1,51 +1,101 @@
-<div>
-  {% paginate blog.articles by section.settings.number_of_blog_posts %}
-    <h1>{{ blog.title }}</h1>
-    {% for article in blog.articles %}
-      <div>
-        {% if article.image %}
-          <a href="{{ article.url }}"><img src="{{ article.image | img_url: 'medium' }}" alt="{{ article.image.alt }}"></a>
-        {% else %}
-          {{ 'image' | placeholder_svg_tag: '' }}
-        {% endif %}
-
-        <div>
-          <h1>{{ article.title }}</h1>
-          {% if article.excerpt.size > 0 %}
-            <p>{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
-          {% else %}
-            <p>{{ article.content | strip_html | truncatewords: 15 }}</p>
-          {% endif %}
-          <a href="{{ article.url }}">{{ section.settings.blog_read_more }}</a>
+<div class="container order-and-pickup contact">
+  <div class="row">
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <section class="content-text">
+          <h1 class="mt-2 mt-lg-0">{{ blog.title }}</h1>
+          <div class="news-items">
+            <div class="row">
+              {% for article in blog.articles %}
+                <div class="col-12 col-md-6 item-parent">
+                  <a href="{{ article.url }}" class="item">
+                    <div style="float: left; width: 100%; height: 200px; overflow: hidden;">
+                      <img
+                        src="{{ article.image | img_url: 'master' }}"
+                        alt="{{ article.image.alt }}"
+                        style="max-width:100%;">
+                    </div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content | truncatewords: 20 }}</p>
+                  </a>
+                  <a href="{{ article.url }}" class="blue-underline">
+                    <p>Lees meer</p>
+                    <i class="far fa-arrow-right"></i>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="right-sidebar col-12 col-lg-3">
+      <div class="inner">
+        <div class="customer-support-nav mobile-line-before">
+          <h4>Klantenservice</h4>
+          <ul>
+            {% for link in linklists[section.settings.menu].links -%}
+              <li class="mobile-line-before">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="why-buy-here mobile-line-after">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'text-line' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{ block.settings.line }}</p>
+                </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-    {% endfor %}
-      
-    {% render 'pagination', pagination: paginate %}
-    
-  {% endpaginate %}
+    </section>
+  </div>
 </div>
 
 
 {% schema %}
-{
-  "name": "Blog",
-  "settings": [
-    {
-      "type": "text",
-      "id": "blog_read_more",
-      "label": "Read more label",
-      "default": "Read more"
-    },
-    {
-      "type": "range",
-      "id": "number_of_blog_posts",
-      "step": 1,
-      "min": 1,
-      "max": 6,
-      "label": "Blog posts per page",
-      "default": 3
-    }
-  ]
-}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "blog_read_more",
+        "label": "Read more label",
+        "default": "Read more"
+      }, {
+        "type": "range",
+        "id": "number_of_blog_posts",
+        "step": 1,
+        "min": 1,
+        "max": 6,
+        "label": "Blog posts per page",
+        "default": 3
+      }, {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Side Text Line",
+        "type": "text-line",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "line",
+            "label": "Text Line"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

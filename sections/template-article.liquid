@@ -1,107 +1,154 @@
-<article itemscope itemtype="http://schema.org/BlogPosting">
-  {% for block in section.blocks %}
-    {% case block.type %}
-      {% when 'article_title' %} 
-        <h1 itemprop="headline">{{ article.title }}</h1>
-      {% when 'article_author' %}
-        <div itemscope itemtype="http://schema.org/Person">
-          {% if section.settings.enable_author %}
-            <small itemprop="author">{{ article.author }}</small>
-          {% endif %}
+<div class="container order-and-pickup contact">
+  <div class="row">
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <section class="content-text">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'article_title' %}
+              <h1 class="mt-2 mt-lg-0">{{ article.title }}</h1>
+            {% endcase %}
+          {% endfor %}
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'featured_image' %}
+              <p class="MsoNormal"><img
+                  src="{{ article.image | img_url: 'master' }}"
+                  alt="{{ article.image.alt }}"
+                  style="width: 100%;"></p>
+            {% endcase %}
+          {% endfor %}
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'article_content' %}
+              <p class="MsoNormal">
+                <span style="font-size: 11pt; font-family: Arial, sans-serif;">{{ article.content }}</span>
+              </p>
+            {% endcase %}
+          {% endfor %}
+        </section>
+      </div>
+    </section>
+    <section class="right-sidebar col-12 col-lg-3">
+      <div class="inner">
+        <div class="customer-support-nav mobile-line-before">
+          <h4>Klantenservice</h4>
+          <ul>
+            {% for link in linklists[section.settings.menu].links -%}
+              <li class="mobile-line-before">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-      {% when 'article_published_date' %}
-        {% if section.settings.enable_published_date %}
-          <time itemprop="datePublished dateCreated" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'on_date' }}</time>
-        {% endif %}
-      {% when 'featured_image' %}
-        <div itemprop="image">
-          {% if article.image != blank %}
-            <img width="{{ article.image.width }}" height="{{ article.image.height }}" src="{{ article.image | image_url: 'large' }}" alt="{{ article.image.alt }}">
-          {% else %}
-            {% assign placeholder_image = 'lifestyle-1' %}
-            {{ placeholder_image | placeholder_svg_tag: '' }}
-          {% endif %}
+        <div class="why-buy-here mobile-line-after">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'text-line' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{ block.settings.line }}</p>
+                </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
         </div>
-      {% when 'article_content' %}
-        <div itemprop="articleBody">
-          {{ article.content }}
-        </div>
-      {% else %}
-    {% endcase %}
-  {% endfor %}
-</article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="divider-line d-none d-md-block">
+  <div class="container">
+    <div class="line"></div>
+  </div>
+</div>
 
 <script type="application/ld+json">
-{
+  {
   "@context": "http://schema.org",
-  "@type": "BlogPosting",
-  "headline": {{ article.title | json }},
+            "@type": "BlogPosting",
+            "headline": {{ article.title | json }},
   "articleBody": {{ article.content | strip_html | json }},
   {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
+    "description": {{ article.excerpt | strip_html | json }},
   {% endif %}
   {% if article.image %}
     "image": [
-      {{ article.image | img_url: "medium" | prepend: 'https:' | json }} 
+    {{ article.image | img_url: "medium" | prepend: 'https:' | json }}
     ],
   {% endif %}
   "datePublished": {{ article.published_at | date: format: "default" | json }},
   "dateCreated": {{ article.created_at | date: format: "default" | json }},
   "author": {
-    "@type": "Person",
-    "name": {{ article.author | json }}
+              "@type": "Person",
+              "name": {{ article.author | json }}
   },
   "publisher": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }}
+              "@type": "Organization",
+              "name": {{ shop.name | json }}
   }
-}
+  }
 </script>
 
 
 {% schema %}
-{
-  "name": "Template Article",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_author",
-      "default": true,
-      "label": "Display Author Name"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_published_date",
-      "default": true,
-      "label": "Display Published Date"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "article_title",
-      "name": "Title",
-      "limit": 1
-    },
-    {
-      "type": "article_author",
-      "name": "Author",
-      "limit": 1
-    },
-    {
-      "type": "article_published_date",
-      "name": "Published Date",
-      "limit": 1
-    },
-    {
-      "type": "featured_image",
-      "name": "Thumbnail",
-      "limit": 1
-    },
-    {
-      "type": "article_content",
-      "name": "Content",
-      "limit": 1
-    }
-  ]
-}
+  {
+    "name": "Template Article",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_author",
+        "default": true,
+        "label": "Display Author Name"
+      }, {
+        "type": "checkbox",
+        "id": "enable_published_date",
+        "default": true,
+        "label": "Display Published Date"
+      }, {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article_title",
+        "name": "Title",
+        "limit": 1
+      },
+      {
+        "type": "article_author",
+        "name": "Author",
+        "limit": 1
+      },
+      {
+        "type": "article_published_date",
+        "name": "Published Date",
+        "limit": 1
+      },
+      {
+        "type": "featured_image",
+        "name": "Thumbnail",
+        "limit": 1
+      }, {
+        "type": "article_content",
+        "name": "Content",
+        "limit": 1
+      }, {
+        "name": "Side Text Line",
+        "type": "text-line",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "line",
+            "label": "Text Line"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
