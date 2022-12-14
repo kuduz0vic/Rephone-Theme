@@ -47,7 +47,8 @@
 
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet"
+    <link
+    rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous">
@@ -63,7 +64,8 @@
       href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css"
       integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
       crossorigin="anonymous">
-    <link rel="stylesheet"
+    <link
+    rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"
       integrity="sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU"
       crossorigin="anonymous">
@@ -89,6 +91,7 @@
       {{ content_for_layout }}
     </main>
     {% section 'footer' %}
+    {% section 'sidecart' %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="SlickNav/jquery.slicknav.min.js"></script>
@@ -112,22 +115,22 @@
     <script type="text/javascript">
       function _defineProperty(obj, key, value) {
       if (key in obj) {
-                Object.defineProperty(obj, key, {
-                  value: value,
-                  enumerable: true,
-                  configurable: true,
-                  writable: true
-                });
-              } else {
-                obj[key] = value;
-              }
-              return obj;
-            }
-      
-            $('.thumb').click(function() {
-              var src = $(this).attr('src');
-              $('.headthumb').attr('src', src);
-            });
+                                  Object.defineProperty(obj, key, {
+                                    value: value,
+                                    enumerable: true,
+                                    configurable: true,
+                                    writable: true
+                                  });
+                                } else {
+                                  obj[key] = value;
+                                }
+                                return obj;
+                              }
+                        
+                              $('.thumb').click(function() {
+                                var src = $(this).attr('src');
+                                $('.headthumb').attr('src', src);
+                              });
     </script>
 
   </body>
@@ -142,4 +145,15 @@
       };
     }
   </script>
+  <script type="application/json" data-ajax-cart-initial-state>
+    {{ cart | json }}
+  </script>
+
+  <script type="module">
+    import '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}';
+  </script>
+  <script type="application/json" data-ajax-cart-configuration>
+    {
+    "addToCartCssClass": "js-my-cart-open"
+          }</script>
 </html>
