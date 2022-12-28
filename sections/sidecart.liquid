@@ -103,299 +103,161 @@
     </script>
     
     <div jd-cloak>
-      <div class="sidebar-container" data-ajax-cart-section>
+      <div class="sidebar-container">
         {% assign freeShippingPrice = section.settings.freeshipping_threshold | plus: 0 %}
-        {% assign freeGiftPrice = section.settings.freegift_threshold | plus: 0 %}
         {% assign cartPriceCents = cart.total_price | plus: 0 %}
-        {% assign giftProduct = section.settings.gift_product %}
+        {% assign width = cartPriceCents | times: 100 | divided_by: freeShippingPrice %}
     
-        <div class="sidebar-cart">
-          <div class="sidebar-top-bar">
-            <div>
-              <div class="text-xl cart_title">
-                <span class="cart-title">{{ section.settings.title }}</span>
-                <span class="cart-title gray"
-                  >(
-                  {{- cart.item_count }} items)</span
-                >
-              </div>
-    
-              <div class="cart-subtitle">
-                😍 Goede keuze! <span class="cart-subtitle gray">Je hondje gaat hier van houden!</span>
+        <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
+        <div class="slidecart">
+          <div class="slidecart-body">
+            <div class="slidecart-header" data-ajax-cart-section>
+              <h1 class="cart-heading">Je Winkelwagen <span class="text-span">(</span><span class="text-span" data-ajax-cart-bind-state="cart.item_count">{{ cart.item_count }} </span><span class="text-span"> Items)</span></h1>
+              <div class="slidecart-close" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"><img src="images/ic24-close.svg" loading="lazy" alt="" class="image"></div>
+            </div>
+            <div class="slidecart-rewards" data-ajax-cart-section>
+              {% if freeShippingPrice <= cartPriceCents %}
+              <p class="rewards-message">Gefeliciteerd! Je hebt Gratis verzending!</p>
+              {% else %}
+              <p class="rewards-message">Voeg nog {{ freeShippingPrice | minus: cartPriceCents | money }} en ontvang gratis verzending</p>
+              
+              <div class="slidecart-progress">
+                <div class="slidecart-progress-active"></div>
               </div>
             </div>
-            <div
-              data-ajax-cart-toggle-class-button="js-my-cart-open | remove"
-              class="sidebar-close-btn"
-            >
-              <img
-                src="{{ 'close-icon.svg' | asset_url }}"
-                loading="lazy"
-                alt
-                class="sidebar-close-icon"
-              >
-            </div>
-          </div>
-          <div class="sidebar-div" style="margin-top:16px">
-            <div class="sidebar-info">
-              <div class="text-s text-bold text-caps black-60-color letter-spacing-0-03em margin-bottom-16px">
-                {{ section.settings.rewards_title }}
-              </div>
-    
-              <div class="tag_reward_wrapper">
-                <p class="tag_reward {% if freeShippingPrice <= cartPriceCents %}reward_added{% endif %}">
-                  📦 FREE SHIPPING
-                </p>
-                {% if giftProduct != blank %}
-                  <p class="tag_reward {% if freeGiftPrice <= cartPriceCents %}reward_added{% endif %}">🎁 FREE GIFT</p>
-                {% endif %}
-              </div>
-    
-              {% assign width = cartPriceCents | times: 100 | divided_by: freeGiftPrice %}
-    
-              <div class="amount-bar-container">
-                <div
-                  class="amount-bar"
-                  style="width:{{ width }}%;max-width:100%;{% if width >= 100 %}background-color:#34a853{% endif %}"
-                ></div>
-              </div>
-    
-              <span class="reward-text">
-                {% if giftProduct != blank %}
-                  {% if freeGiftPrice <= cartPriceCents and freeShippingPrice <= cartPriceCents %}
-                    🎉 Gefeliciteerd! Je hebt Gratis verzending + een gratis gift!
-                  {% elsif freeGiftPrice > cartPriceCents and freeShippingPrice <= cartPriceCents %}
-                    You are {{ freeGiftPrice | minus: cartPriceCents | money }} away from free gift!
-                  {% else %}
-                    You are {{ freeShippingPrice | minus: cartPriceCents | money }} away from free shipping!
-                  {% endif %}
-                {% else %}
-                  {% if freeShippingPrice <= cartPriceCents %}
-                    🎉 Gefeliciteerd! Je hebt Gratis verzending!
-                  {% else %}
-                    You are {{ freeShippingPrice | minus: cartPriceCents | money }} away from free shipping!
-                  {% endif %}
-                {% endif %}
-              </span>
-            </div>
-          </div>
-          <div class="cart-product-container">
-            {% for item in cart.items %}
-              <div class="cart-product-block">
-                <div class="cart-product-info">
-                  <div class="cart-product-image-div">
-                    <img
-                      src="{{ item.image | img_url: '80x80' }}"
-                      loading="lazy"
-                      alt
-                      class="cart-product-image"
-                    >
-                    <a
-                      class="remove-product-btn"
-                      data-ajax-cart-request-button
-                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
-                      ><img
-                        src="{{ 'Trash.svg' | asset_url }}"
-                        loading="lazy"
-                        alt
-                        class="remove-product-icon"
-                    ></a>
-                  </div>
-                  <div>
-                    <div class="text-m text-bold">{{ item.title }}</div>
-                    <div style="display:flex;gap:4px;align-items:center">
-                      {% if item.product.compare_at_price %}
-                        <div class="side-cart-compare-at-price">
-                          {{ item.product.compare_at_price | times: item.quantity | money }}
-                        </div>
-                      {% endif %}
-                      <div class="side-cart-price">
-                        {{ item.final_line_price | money }}
+            <div class="slidecart-items">
+              {% for item in cart.items %}
+              <div class="slidecart-item">
+                <div class="item-slidecart-wrapper" data-ajax-cart-section>
+                  <div class="slidecart-item-details">
+                    <div class="cart-item-image-wrapper"><img src="{{item.image | img_url: 'master'}}" loading="lazy" alt="" class="cart-image">
+                      <a href="#" class="bin w-inline-block"><img src="{{'trash.svg' | img_url: 'master'}}" loading="lazy" alt="" class="bin-img"></a>
+                    </div>
+                    <div id="w-node-_4802795b-3f9d-a5cf-4e2f-cdc8b26f6f95-37cba332" class="item-details-wrapper">
+                      <div class="item-information">
+                        <div class="item-title-slidecart">{{ item.title }}</div>
+                        <div class="tagline-slidecart">256GB | A-Grade | 2 jaar garantie</div>
                       </div>
-                      <div class="cart-save-badge">
-                        SAVE
-                        {{
-                          item.product.compare_at_price
-                          | times: item.quantity
-                          | minus: item.final_line_price
-                          | money
-                          | replace: '-', ''
-                        }}
+                      <div class="item-shipping-cart-info"><img src="{{'shipping-truck.png' | img_url: 'master'}}" loading="lazy" alt="">
+                        <div class="shipping-p-slidecart">Vandaag besteld, morgen in huis</div>
+                      </div>
+                    </div>
+                    <div id="w-node-_4802795b-3f9d-a5cf-4e2f-cdc8b26f6f9f-37cba332" class="price-wrapper-slidecart">
+                      <div class="slidecart-price">{{ item.final_price | money }}</div>
+                    </div>
+                  </div>
+                  <div class="item-guarantee-slidecart">
+                    <div class="guarantee-icon-slidecart">
+                      <div class="guarantee-icon w-embed"><svg width="100%" height="100%" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.4482 0.71622C11.994 1.17884 12.6838 1.43251 13.3963 1.43251C14.8671 1.43251 16.1254 2.49923 16.3808 3.96241C16.5046 4.67127 16.8715 5.3134 17.4173 5.77602C18.5439 6.73098 18.8292 8.36537 18.0938 9.65195C17.7375 10.2753 17.61 11.0054 17.7337 11.7143C17.9892 13.1775 17.1678 14.6146 15.7857 15.1228C15.1162 15.369 14.5539 15.8456 14.1977 16.4688C13.4623 17.7556 11.9186 18.3231 10.5365 17.815C9.86698 17.5688 9.13296 17.5688 8.46342 17.815C7.08135 18.3231 5.53774 17.7556 4.80228 16.469C4.44601 15.8456 3.88378 15.369 3.21424 15.1228C1.83217 14.6147 1.01089 13.1775 1.26619 11.7143C1.38994 11.0054 1.26244 10.2753 0.906177 9.65195C0.170862 8.36522 0.456016 6.73098 1.58264 5.77602C2.12843 5.3134 2.49537 4.67127 2.61912 3.96241C2.87456 2.49923 4.13288 1.43251 5.60365 1.43251C6.31618 1.43251 7.00591 1.17898 7.5517 0.71622C8.67833 -0.23874 10.321 -0.23874 11.4478 0.71622H11.4482Z" fill="#4DAB70"></path>
+                          <path d="M8.60517 12.2117C8.33862 12.2117 8.08289 12.1059 7.89437 11.9178L5.94257 9.96959C5.54996 9.57779 5.54996 8.94236 5.94257 8.55056C6.33518 8.15875 6.9717 8.15875 7.36431 8.55056L8.60531 9.78921L12.0442 6.35666C12.4368 5.96485 13.0733 5.96485 13.4659 6.35666C13.8585 6.74846 13.8585 7.38389 13.4659 7.77569L9.31625 11.9177C9.12774 12.1058 8.87201 12.2116 8.60546 12.2116L8.60517 12.2117Z" fill="white"></path>
+                        </svg></div>
+                    </div>
+                    <div>Twee jaar garantie op je refurbished apparaat</div>
+                  </div>
+                </div>
+                <div class="slidecart-dropdown-wrapper">
+                  <div class="slidecart-dropdown-content-wrapper collapse" id="collapseExample">
+                    <div class="slidecart-dropdown-content">
+                      <div class="slidecart-dropdown-p">De {{ item.title }} zo gloed als nieuw omdat hoge kwaliteit refurbished producten een tweede leven verdienen. Met onze twee jaar garantie ben je verzekerd van de best mogelijke kwaliteit!</div>
+                      <div class="slidecart-item-benefits-list">
+                        <div class="slidecart-benefit">
+                          <div class="benefit-icon-slidecart w-embed"><svg width="100%" height="100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
+                              <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            </svg></div>
+                          <div class="slidecart-benefit-p">2 jaar garantie op de {{ item.title }}.</div>
+                        </div>
+                        <div class="slidecart-benefit">
+                          <div class="benefit-icon-slidecart w-embed"><svg width="100%" height="100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
+                              <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            </svg></div>
+                          <div class="slidecart-benefit-p">30 dagen niet goed, geld terug.</div>
+                        </div>
+                        <div class="slidecart-benefit">
+                          <div class="benefit-icon-slidecart w-embed"><svg width="100%" height="100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
+                              <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            </svg></div>
+                          <div class="slidecart-benefit-p">Op tientallen technische punten gecontroleerd.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="slidecart" data-w-id="4802795b-3f9d-a5cf-4e2f-cdc8b26f6fb9" class="slidecart-item-dropdown-trigger"> 
+                    <div id="collapse-button" class="cart-dropdown-text-preview collapse-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      <div class="dropdown-text-preview">DETAILS & ONZE GARANTIE</div>
+                      <div class="chevron-dropdown">
+                        <div class="w-embed"><svg width="15" height="8" viewbox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z" fill="currentcolor"></path>
+                          </svg></div>
+                      </div>
+                    </div>
+                    <div id="collapse-button-close" class="cart-dropdown-text-active collapse-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      <div class="dropdown-text-preview">Verberg</div>
+                      <div class="chevron-dropdown active">
+                        <div class="w-embed"><svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z" fill="currentcolor"></path>
+                        </svg></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="product-bar-plus-minus-button">
-                  <a
-                    class="product-bar-minus-button"
-                    data-ajax-cart-request-button
-                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
-                  >
-                    <div>-</div>
-                  </a>
-                  <input
-                    class="product-quantity-input"
-                    name="updates[]"
-                    type="text"
-                    data-ajax-cart-quantity-input="{{ forloop.index }}"
-                    value="{{ item.quantity }}"
-                  >
-                  <a
-                    class="product-bar-plus-button"
-                    data-ajax-cart-request-button
-                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
-                  >
-                    <div>+</div>
-                  </a>
-                </div>
               </div>
-            {% endfor %}
-          </div>
-    
-          {% assign totalUpsells = 0 %}
-          {% for item in cart.items %}
-            {% if item.product.metafields.custom.product_cart_upsell != blank %}
-              {% for upsell in item.product.metafields.custom.product_cart_upsell.value %}
-                {% if upsell.available %}
-                  {% assign totalUpsells = totalUpsells | plus: 1 %}
-                {% endif %}
               {% endfor %}
-            {% endif %}
-          {% endfor %}
-    
-          {% if totalUpsells != 0 %}
-            <div style="padding-bottom: 16px">
-              <div id="upsellSlider" class="swiper-container upsellSlider">
-                <div class="swiper-wrapper">
-                  {% for item in cart.items %}
-                    {% if item.product.metafields.custom.product_cart_upsell != blank %}
-                      {% for upsell in item.product.metafields.custom.product_cart_upsell.value %}
-                        {% if upsell.available %}
-                          <div class="swiper-slide">
-                            <div class="wrapper-for-upsells">
-                              <div class="upsell-header">
-                                {{ section.settings.maak_af }}
-                              </div>
-                              <div class="upsell-line"></div>
-                              {% render 'product-card-upsell', product: upsell %}
-                            </div>
-                          </div>
-                        {% endif %}
-                      {% endfor %}
-                    {% endif %}
-                  {% endfor %}
-                </div>
-    
-                <div class="upsell-pagination"></div>
+            </div>
+          </div>
+          <div class="slidecart-footer" data-ajax-cart-section>
+            <div class="sc-text-rows-wrapper">
+              <div class="sc-footer-text-row">
+                <div class="sc-text-subject">Verzendkosten</div>
+                <div class="sc-text-content">€4,95</div>
+              </div>
+              <div class="sc-footer-text-row">
+                <div class="sc-text-subject">Totaal</div>
+                <div class="sc-text-content">{{ cart.total_price | money_with_currency }}</div>
               </div>
             </div>
-          {% endif %}
-    
-          {% assign chosenDeal = section.settings.chosendeal %}
-    
-          {% assign upsell_in_cart = false %}
-    
-          {% for item in cart.items %}
-            {% if item.title == chosenDeal.title %}
-              {% assign upsell_in_cart = true %}
-            {% endif %}
-          {% endfor %}
-    
-          <div class="cart-payment-info">
-            <div class="cart-payment-text-block">
-              <div class="text-s text-bold">Rewards</div>
-    
-              <div class="tag_reward_wrapper">
-                {% if freeShippingPrice > cartPriceCents %}
-                  <p class="tag_reward">😥 NO REWARDS</p>
-                {% endif %}
-                {% if freeShippingPrice <= cartPriceCents %}
-                  <p class="tag_reward reward_added">📦 FREE SHIPPING</p>
-                {% endif %}
-                {% if giftProduct != blank and freeGiftPrice <= cartPriceCents %}
-                  <p class="tag_reward reward_added">🎁 FREE GIFT</p>
-                {% endif %}
-              </div>
-            </div>
-    
-            <div class="cart-payment-text-block">
-              <div class="text-s text-bold">{{ section.settings.shipping_text }}</div>
-    
-              {% if cartPriceCents < freeShippingPrice %}
-                <div class="text-s text-bold">
-                  {{ section.settings.shipping | money }}
-                  <span class="black-70-color">
-                    {{- section.settings.free_from1 }}
-                    {{ freeShippingPrice | money -}}
-                    {{ section.settings.free_from2 -}}
-                  </span>
-                </div>
-              {% else %}
-                <div class="text-s text-bold">
-                  Gratis
-                  <span class="black-70-color"
-                    >(vanaf
-                    {{ freeShippingPrice | money -}}
-                    !)</span
-                  >
-                </div>
-              {% endif %}
-            </div>
-    
-            <div class="cart-payment-text-block">
-              <div class="text-s text-bold">{{ section.settings.total }}</div>
-    
-              {% if cartPriceCents < freeShippingPrice %}
-                <div class="text-s text-bold">
-                  {{ cartPriceCents | plus: section.settings.shipping | money }}
-                </div>
-              {% else %}
-                <div class="text-s text-bold">{{ cartPriceCents | money }}</div>
-              {% endif %}
-            </div>
-    
-            <div class="cart-payment-text-block">
-              <div class="text-s text-bold">Kortingscode?</div>
-              <div class="text-s text-bold">Toevoegen tijdens checkout</div>
-            </div>
-    
-            <a
-              href="/checkout"
-              class="cta-primairy even w-inline-block ATC-like-button"
-              onclick="this.classList.toggle('ATC-like-button--loading')"
-            >
-              <span class="loader"></span>
-              <div>{{ section.settings.checkout_btn }}</div>
-              <div class="icon-embed-xsmall w-embed">
-                <svg
-                  width="auto"
-                  height="auto"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.8618 6.60177C19.5359 5.97049 18.7492 5.46855 17.6282 5.1766C16.7089 4.93728 15.1645 4.93564 14.2528 5.17316C12.1856 5.71148 11.3025 7.03381 12.282 8.12395C13.003 8.92644 14.0457 9.31488 15.645 9.37679C17.2513 9.43897 18.5047 9.11245 19.3579 8.40954C19.9608 7.91266 20.1633 7.1861 19.8618 6.60177ZM19.7866 12.0924C19.5088 11.6371 18.8357 11.1883 17.9769 10.8854C17.348 10.6636 17.2089 10.6474 15.9337 10.6474C14.6585 10.6474 14.5194 10.6636 13.8905 10.8854C12.6558 11.3208 11.9793 11.9327 11.8943 12.6913C11.7919 13.6043 12.6527 14.3951 14.1968 14.8064C16.2714 15.3592 18.7469 14.8489 19.6825 13.6756C20.0481 13.2172 20.0894 12.5885 19.7866 12.0924ZM14.7702 1.5928C14.293 0.623396 12.784 0.0043262 10.8879 2.64261e-05C9.34405 -0.00349939 8.17488 0.340562 7.42939 1.01776C6.97338 1.432 6.81132 1.75034 6.81132 2.23208C6.81132 3.37176 8.388 4.29155 10.503 4.38563C12.574 4.47781 14.3035 3.8111 14.7907 2.73282C14.9937 2.28333 14.9894 2.03791 14.7702 1.5928ZM14.8255 17.3618C14.6544 16.8828 14.2254 16.4778 13.5391 16.1471C11.1894 15.0149 7.49729 15.6832 6.86203 17.3557C6.6525 17.9074 6.80028 18.3841 7.33719 18.8892C7.84092 19.3629 8.27998 19.5911 9.12024 19.8159C9.96263 20.0412 11.5663 20.0636 12.395 19.8615C14.1901 19.4238 15.1937 18.3916 14.8255 17.3618ZM10.7534 9.41317C10.4894 7.36695 9.42837 5.85105 7.29597 4.47351C5.37378 3.23167 3.00619 2.50933 1.67445 2.75836C0.349198 3.0062 -0.243128 4.06573 0.106143 5.56383C0.1826 5.89155 0.434292 6.59575 0.665543 7.12857C1.29379 8.57636 1.43772 9.11477 1.43772 10.0167C1.43772 10.9821 1.29841 11.5284 0.700949 12.9059C0.441134 13.5048 0.169772 14.2469 0.0977622 14.555C-0.172402 15.7121 0.123932 16.6503 0.905517 17.1122C1.29088 17.34 1.35861 17.3507 2.37846 17.3452C3.66232 17.3381 4.4362 17.1346 5.9472 16.4066C8.54416 15.1556 10.2189 13.3776 10.6185 11.4474C10.8001 10.57 10.835 10.0451 10.7534 9.41317Z" fill="currentcolor"></path>
-                </svg>
-              </div>
+            <a href="#" class="sc-checkout-button w-inline-block">
+              <div>Doorgaan naar afrekenen</div>
+              <div class="icon-24 w-embed"><svg width="100%" height="100%" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.9286 21.8214C11.722 21.8212 11.5207 21.7564 11.3528 21.6361L7.73535 19.0523C6.58103 18.2263 5.64012 17.1371 4.99054 15.875C4.34096 14.6129 4.00141 13.2142 4 11.7947V4.40431C3.99993 4.25679 4.0328 4.11113 4.09619 3.97793C4.15959 3.84474 4.25192 3.72737 4.36645 3.6344C4.48097 3.54143 4.61481 3.4752 4.75819 3.44054C4.90157 3.40588 5.05088 3.40366 5.19523 3.43405C6.25436 3.6567 7.34786 3.66015 8.40837 3.4442C9.46888 3.22824 10.474 2.79745 11.3617 2.17836C11.5279 2.06226 11.7258 2 11.9286 2C12.1313 2 12.3292 2.06226 12.4955 2.17836C13.3831 2.79756 14.3882 3.22841 15.4487 3.44437C16.5093 3.66033 17.6028 3.65681 18.6619 3.43405C18.8063 3.40366 18.9556 3.40588 19.099 3.44054C19.2423 3.4752 19.3762 3.54143 19.4907 3.6344C19.6052 3.72737 19.6976 3.84474 19.7609 3.97793C19.8243 4.11113 19.8572 4.25679 19.8571 4.40431V11.7947C19.8557 13.2142 19.5162 14.6129 18.8666 15.875C18.217 17.1371 17.2761 18.2263 16.1218 19.0523L12.5044 21.6361C12.3365 21.7564 12.1351 21.8212 11.9286 21.8214V21.8214Z" fill="white" fill-opacity="0.34"></path>
+                  <path d="M10.7888 14.5866C10.5259 14.5866 10.2739 14.4821 10.0881 14.2962L8.50236 12.7105C8.32183 12.5236 8.22193 12.2733 8.22419 12.0134C8.22645 11.7535 8.33068 11.505 8.51443 11.3212C8.69818 11.1375 8.94676 11.0332 9.20661 11.031C9.46647 11.0287 9.71681 11.1286 9.90373 11.3091L10.7888 12.1942L13.4577 9.52522C13.5491 9.43056 13.6585 9.35506 13.7794 9.30312C13.9003 9.25118 14.0304 9.22384 14.162 9.22269C14.2936 9.22155 14.4241 9.24663 14.5459 9.29646C14.6677 9.34629 14.7783 9.41988 14.8714 9.51293C14.9644 9.60599 15.038 9.71664 15.0878 9.83844C15.1377 9.96024 15.1628 10.0907 15.1616 10.2223C15.1605 10.3539 15.1331 10.484 15.0812 10.6049C15.0292 10.7258 14.9537 10.8352 14.8591 10.9266L11.4894 14.2962C11.3036 14.4821 11.0516 14.5866 10.7888 14.5866V14.5866Z" fill="white"></path>
+                </svg></div>
             </a>
-    
-            <div class="payment-container">
-              {% assign enabled_payment_types = section.settings.payments | remove: ' ' | split: ',' %}
-    
-              {%- for type in enabled_payment_types -%}
-                {{ type | payment_type_svg_tag: class: 'payment-cart icon--full-color' }}
-              {%- endfor -%}
-            </div>
+            <div class="sc-payment-icons"><img src="images/Klarna-payment.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-1.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-2.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-3.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-4.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-5.svg" loading="lazy" alt="" class="payment-icon"><img src="images/Frame-6.svg" loading="lazy" alt="" class="payment-icon"></div>
           </div>
         </div>
-        <div
-          data-ajax-cart-toggle-class-button="js-my-cart-open | remove"
-          class="sidebar-bg"
-        ></div>
       </div>
     </div>
+
+<script>
+  $('#collapseExample').on('show.bs.collapse', function () {
+    // Hide the #collapse-button div and show the #collapse-button-close div when the collapse is opened
+    $('#collapse-button').css('display', 'none');
+    $('#collapse-button-close').css('display', 'flex');
+  });
+  
+  $('#collapseExample').on('hide.bs.collapse', function () {
+    // Hide the #collapse-button-close div and show the #collapse-button div when the collapse is closed
+    $('#collapse-button-close').css('display', 'none');
+    $('#collapse-button').css('display', 'flex');
+  });
+</script>
     
     <style>
+
+    .slidecart-progress-active {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      width: {{width}};
+      border-radius: 100px;
+      background-color: #51a5bc;
+    }
+    
+
       .pointer {
         cursor: pointer;
       }

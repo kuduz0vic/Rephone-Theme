@@ -374,6 +374,8 @@
               <div style="clear: both; width: 100%; height: 20px;"></div>
             </div>
           </div>
+
+
           <div class="condition mt-5 mt-lg-0">
             <div class="cart">
               <div class="title">
@@ -396,61 +398,136 @@
                   width: 100% !important;
                   cursor: pointer;
                 }
-
                 @media screen and (max-width: 991px) {
                   .btn-cart {
                     font-size: 11px;
                   }
                 }
               </style>
-              {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'grade_buttons' %}
-                  <div class="cart-item mobile-line-after mobile-line-before" style="opacity:100%;">
-                    <div class="row no-gutters">
-                      <div class="col-4 col-md-3">
-                        <p>
-                          {{ block.settings.grade-text }}
-                          <br>
-                          <span>
-                            {{ block.settings.grade-sub-text }}
-                          </span>
-                        </p>
-                      </div>
-                      <div class="col-4 col-md-3 price">
-                        <p class="blue">{{ block.settings.grade-price }}</p>
-                      </div>
+
+              {% for variant in product.variants %}
+                <div class="cart-item mobile-line-after mobile-line-before"{% if option_value.quantity == 0 %}style="opacity:100%;"{% endif %}>
+                  <div class="row no-gutters">
+                    <div class="col-4 col-md-3">
+                      <p>
+                        {% if variant.title == 'Als nieuw' %}A Grade{% endif %}
+                        {% if variant.title == 'Lichte gebruikssporen' %}B Grade{% endif %}
+                        {% if variant.title == 'Zichtbare gebruikssporen' %}C Grade{% endif %}
+                        {% if variant.title == 'Nieuw' %}Nieuw{% endif %}
+                        <br>
+                        <span>
+                          {% if variant.title == 'Als nieuw' %}Als nieuw{% endif %}
+                          {% if variant.title == 'Lichte gebruikssporen' %}Licht gebruikt{% endif %}
+                          {% if variant.title == 'Zichtbare gebruikssporen' %}Zichtbaar gebruikt{% endif %}
+                          {% if variant.title == 'Nieuw' %}Gloednieuw{% endif %}
+                        </span>
+                      </p>
+                    </div>
+                    <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
+                      <p class="blue">{{ variant.price | money }}</p>
+                    </div>
+
+                    {% if variant.quantity == 0 %}
                       <div class="stock no-stock col-3 d-none d-md-flex">
                         <p>Uitverkocht</p>
                         <p>Ontvang een e-mail bij voorraad</p>
                       </div>
-                      <div class="col-4 col-md-3 d-flex justify-content-end">
-                        <div
-                          class="btn-cart stockemail"
-                          data-toggle="modal"
-                          data-product-option="option[{{ option.product_option_id }}]"
-                          data-product-option-value-id="{{ option_value.product_option_value_id }}"
-                          data-product-option-value-name="{{ option_value.name }}"
-                          data-product-id="{{ product_id }}"
-                          data-product-option-value-price="{{ option_value.voor }}"
-                          data-option-value-id="{{ option_value.option_value_id }}"
-                          data-target="#stockemail"
-                          style="background:  #29a7bf; border-bottom: #29a7bf;">
-                          <i class="fal fa-envelope"></i>&nbsp;
-                          {{ block.settings.grade-button-label }}
-                        </div>
+                    {% elsif variant.quantity < 200 %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>In voorraad</p>
+                        <p>Voor 22:30 besteld, {{ nextday }} in huis</p>
                       </div>
+                    {% elsif variant.quantity == 200 %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>4 stuks in voorraad</p>
+                        <p>{{ supplier_delivery }}</p>
+                      </div>
+                    {% elsif variant.quantity == 300 %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>4 stuks in voorraad</p>
+                        <p>{{ supplier_minpex_delivery }}</p>
+                      </div>
+                    {% endif %}
+                    <div class="col-4 col-md-3 d-flex justify-content-end">
+                      <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
+
+                      <form method="post" action="/cart/add">
+                        {% if variant.inventory_quantity == 0 %}
+                          <div
+                            class="btn-cart stockemail"
+                            data-toggle="modal"
+                            data-product-option="option[{{ variant.product_option_id }}]"
+                            data-product-option-value-id="{{ variant.product_option_value_id }}"
+                            data-product-option-value-name="{{ variant.name }}"
+                            data-product-id="{{ product_id }}"
+                            data-product-option-value-price="{{ variant.price }}"
+                            data-option-value-id="{{ variant.option_value_id }}"
+                            data-target="#stockemail"
+                            style="background:  #29a7bf; border-bottom: #29a7bf;">
+                            <i class="fal fa-envelope"></i>&nbsp;
+                            E-mail mij
+                          </div>
+                        {% else %}
+                          <button
+                            class="btn-cart addtocart"
+                            data-product-option="option[{{ variant.product_option_id }}]"
+                            data-product-option-value-id="{{ variant.product_option_value_id }}"
+                            data-product-option-value-name="{{ variant.name }}"
+                            data-product-id="{{ product_id }}"
+                            data-product-option-value-price="{{ variant.price }}"
+                            type="submit"
+                            value="Add to cart">
+                            <i class="fal fa-shopping-cart">
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="{{ product.variants.first.id }}" />
+                              <input
+                                type="hidden"
+                                min="1"
+                                type="number"
+                                id="quantity"
+                                name="quantity"
+                                value="1" />
+                            </i>&nbsp;Toevoegen
+                          </button>
+                        {% endif %}
+                      </form>
                     </div>
-                    <div class="row no-gutters mobile">
-                      <div class="stock no-stock col-12 d-none">
+
+                  </div>
+
+                  <div class="row no-gutters mobile">
+                    {% if variant.inventory_quantity == 0 %}
+                      <div class="stock no-stock col-12">
                         <p>Uitverkocht ontvang een e-mail bij voorraad</p>
                       </div>
-                    </div>
+                    {% elsif variant.inventory_quantity <= 200 %}
+                      <div class="stock in-stock col-12">
+                        <p>{{ variant.inventory_quantity }} stuks in voorraad voor 22:30 besteld, {{ nextday }} in huis</p>
+                      </div>
+                    {% elsif variant.inventory_quantity == 200 %}
+                      <div class="stock in-stock col-12">
+                        <p>In voorraad bij leverancier, {{ supplier_delivery }}</p>
+                      </div>
+                    {% elsif variant.inventory_quantity == 300 %}
+                      <div class="stock in-stock col-12">
+                        <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
+                      </div>
+                    {% else %}
+                      <div class="stock in-stock col-12">
+                        <p>Onbekend aantal stuks in voorraad</p>
+                      </div>
+                    {% endif %}
                   </div>
-                {% endcase %}
+
+                </div>
               {% endfor %}
             </div>
           </div>
+
+
+
           <p>* Al onze aparaten zijn ingekocht van Nederlandse consumenten waardoor marge BTW van toepassing is</p>
         </div>
 
@@ -792,127 +869,127 @@
 <script type="text/javascript">
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   $('.thumb').click(function () {
-    var src = $(this).attr('src');
-    $('.headthumb').attr('src', src);
-  });
-  
-  $('.btn-cart.stockemail').on('click', function () {
-    var _preppedArray;
-  
-    var option_value_id = $(this).attr('data-option-value-id');
-    
-    
-    var product_option = $(this).attr('data-product-option');
-    var product_option_value_id = $(this).attr('data-product-option-value-id');
-    var product_option_value_name = $(this).attr('data-product-option-value-name');
-    var product_option_value_price = $(this).attr('data-product-option-value-price');
-    var product_id = $(this).attr('data-product-id');
-    
-    $('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
-    $('.stockemailinfo[name="product_id"]').val(product_id);
-    
-    
-    $('.addtocartlink').attr('data-product-option',product_option);
-    $('.addtocartlink').attr('data-product-option-value-id',product_option_value_id);
-    $('.addtocartlink').attr('data-product-option-value-name',product_option_value_name);
-    $('.addtocartlink').attr('data-product-option-value-price',product_option_value_price);
-    $('.addtocartlink').attr('data-product-id',product_id);
-    
-    
-    
-    
-  
-  });
-  
-  $('.addtocartlink').click(function(){
-      $('#stockemail').modal('hide');
-      
-  })
-  
-  $('#stockalertsubmit').click(function(){
-      console.log('test');
-      var form = $('#stockalert');
-      var url = 'index.php?route=product/product/stockalert';
-  
-      $.ajax({
-         type: "POST",
-         url: url,
-         data: form.serialize(), // serializes the form's elements.
-         success: function(data)
-         {
-             console.log(data); // show response from the php script.
-             $('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
-         }
-       }); 
-       
-       return false;
-      
-  })
-  
-  
-  
-  
-  $('.addtocart').on('click', function () {
-    var _preppedArray;
-  
-    var product_option = $(this).attr('data-product-option');
-    var product_option_value_id = $(this).attr('data-product-option-value-id');
-    var product_option_value_name = $(this).attr('data-product-option-value-name');
-    var product_option_value_price = $(this).attr('data-product-option-value-price');
-    var product_id = $(this).attr('data-product-id');
-    console.log("AAAAA" + product_option_value_name);
-    var preppedArray = (_preppedArray = {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
-    var gradeArray = {
-      'Als nieuw': 'A Grade',
-      'Lichte gebruikssporen': 'B Grade',
-      'Zichtbare gebruikssporen': 'C Grade'
-    };
-    console.log(preppedArray);
-    $.ajax({
-      url: 'index.php?route=checkout/cart/add',
-      type: 'post',
-      // data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-      data: preppedArray,
-      dataType: 'json',
-      beforeSend: function beforeSend() {
-        $('#button-cart').button('loading');
-      },
-      complete: function complete() {
-        $('#button-cart').button('reset');
-      },
-      success: function success(json) {
-        // show modal
-        console.log('SUCCESS!');
-        $('#addToCartModal #submitted_condition').text(product_option_value_name);
-        $('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
-        $('#addToCartModal #submitted_price').text(product_option_value_price);
-        $('#addToCartModal').modal('show');
-        $('.alert-dismissible, .text-danger').remove();
-        $('.form-group').removeClass('has-error');
-  
-        if (json['error']) {
-          if (json['error']['option']) {
-            for (i in json['error']['option']) {
-              var element = $('#input-option' + i.replace('_', '-'));
-  
-              if (element.parent().hasClass('input-group')) {
-                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                                                                                                    var src = $(this).attr('src');
+                                                                                                                    $('.headthumb').attr('src', src);
+                                                                                                                  });
+                                                                                                                  
+                                                                                                                  $('.btn-cart.stockemail').on('click', function () {
+                                                                                                                    var _preppedArray;
+                                                                                                                  
+                                                                                                                    var option_value_id = $(this).attr('data-option-value-id');
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    var product_option = $(this).attr('data-product-option');
+                                                                                                                    var product_option_value_id = $(this).attr('data-product-option-value-id');
+                                                                                                                    var product_option_value_name = $(this).attr('data-product-option-value-name');
+                                                                                                                    var product_option_value_price = $(this).attr('data-product-option-value-price');
+                                                                                                                    var product_id = $(this).attr('data-product-id');
+                                                                                                                    
+                                                                                                                    $('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
+                                                                                                                    $('.stockemailinfo[name="product_id"]').val(product_id);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    $('.addtocartlink').attr('data-product-option',product_option);
+                                                                                                                    $('.addtocartlink').attr('data-product-option-value-id',product_option_value_id);
+                                                                                                                    $('.addtocartlink').attr('data-product-option-value-name',product_option_value_name);
+                                                                                                                    $('.addtocartlink').attr('data-product-option-value-price',product_option_value_price);
+                                                                                                                    $('.addtocartlink').attr('data-product-id',product_id);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                  
+                                                                                                                  });
+                                                                                                                  
+                                                                                                                  $('.addtocartlink').click(function(){
+                                                                                                                      $('#stockemail').modal('hide');
+                                                                                                                      
+                                                                                                                  })
+                                                                                                                  
+                                                                                                                  $('#stockalertsubmit').click(function(){
+                                                                                                                      console.log('test');
+                                                                                                                      var form = $('#stockalert');
+                                                                                                                      var url = 'index.php?route=product/product/stockalert';
+                                                                                                                  
+                                                                                                                      $.ajax({
+                                                                                                                         type: "POST",
+                                                                                                                         url: url,
+                                                                                                                         data: form.serialize(), // serializes the form's elements.
+                                                                                                                         success: function(data)
+                                                                                                                         {
+                                                                                                                             console.log(data); // show response from the php script.
+                                                                                                                             $('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
+                                                                                                                         }
+                                                                                                                       }); 
+                                                                                                                       
+                                                                                                                       return false;
+                                                                                                                      
+                                                                                                                  })
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  $('.addtocart').on('click', function () {
+                                                                                                                    var _preppedArray;
+                                                                                                                  
+                                                                                                                    var product_option = $(this).attr('data-product-option');
+                                                                                                                    var product_option_value_id = $(this).attr('data-product-option-value-id');
+                                                                                                                    var product_option_value_name = $(this).attr('data-product-option-value-name');
+                                                                                                                    var product_option_value_price = $(this).attr('data-product-option-value-price');
+                                                                                                                    var product_id = $(this).attr('data-product-id');
+                                                                                                                    console.log("AAAAA" + product_option_value_name);
+                                                                                                                    var preppedArray = (_preppedArray = {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
+                                                                                                                    var gradeArray = {
+                                                                                                                      'Als nieuw': 'A Grade',
+                                                                                                                      'Lichte gebruikssporen': 'B Grade',
+                                                                                                                      'Zichtbare gebruikssporen': 'C Grade'
+                                                                                                                    };
+                                                                                                                    console.log(preppedArray);
+                                                                                                                    $.ajax({
+                                                                                                                      url: 'index.php?route=checkout/cart/add',
+                                                                                                                      type: 'post',
+                                                                                                                      // data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+                                                                                                                      data: preppedArray,
+                                                                                                                      dataType: 'json',
+                                                                                                                      beforeSend: function beforeSend() {
+                                                                                                                        $('#button-cart').button('loading');
+                                                                                                                      },
+                                                                                                                      complete: function complete() {
+                                                                                                                        $('#button-cart').button('reset');
+                                                                                                                      },
+                                                                                                                      success: function success(json) {
+                                                                                                                        // show modal
+                                                                                                                        console.log('SUCCESS!');
+                                                                                                                        $('#addToCartModal #submitted_condition').text(product_option_value_name);
+                                                                                                                        $('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
+                                                                                                                        $('#addToCartModal #submitted_price').text(product_option_value_price);
+                                                                                                                        $('#addToCartModal').modal('show');
+                                                                                                                        $('.alert-dismissible, .text-danger').remove();
+                                                                                                                        $('.form-group').removeClass('has-error');
+                                                                                                                  
+                                                                                                                        if (json['error']) {
+                                                                                                                          if (json['error']['option']) {
+                                                                                                                            for (i in json['error']['option']) {
+                                                                                                                              var element = $('#input-option' + i.replace('_', '-'));
+                                                                                                                  
+                                                                                                                              if (element.parent().hasClass('input-group')) {
+                                                                                                                                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
   } else {
-                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                                                                                                                                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
   }
-            }
-          }
-  
-          if (json['error']['recurring']) {
-            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                  
+                                                                                                                          if (json['error']['recurring']) {
+                                                                                                                            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
   } // Highlight any found errors
-  
-  
-          $('.text-danger').parent().addClass('has-error');
-        }
-  
-        if (json['success']) {
-          $('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button
+                                                                                                                  
+                                                                                                                  
+                                                                                                                          $('.text-danger').parent().addClass('has-error');
+                                                                                                                        }
+                                                                                                                  
+                                                                                                                        if (json['success']) {
+                                                                                                                          $('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button
       type="button"
       class="close"
       data-dismiss="alert">&times;</button>
@@ -921,17 +998,17 @@
     <i class="fa fa-shopping-cart"></i>
     ' + json['total'] + '</span>');
   $('html, body').animate({
-            scrollTop: 0
-          }, 'slow');
-          $('#cart > ul').load('index.php?route=common/cart/info ul li');
-        }
-      },
-      error: function error(xhr, ajaxOptions, thrownError) {
-        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-      }
-    });
-    return false;
-  });</script>
+                                                                                                                            scrollTop: 0
+                                                                                                                          }, 'slow');
+                                                                                                                          $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                                                                                                                        }
+                                                                                                                      },
+                                                                                                                      error: function error(xhr, ajaxOptions, thrownError) {
+                                                                                                                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                                                                                      }
+                                                                                                                    });
+                                                                                                                    return false;
+                                                                                                                  });</script>
 
 
 

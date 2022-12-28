@@ -79,7 +79,13 @@
     {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
     {{ 'slicknav.css' | asset_url | stylesheet_tag }}
 
-
+    <style>
+      .slidecart-body {
+        overflow-y: scroll !important;
+        overflow-x: hidden !important;
+        width: inherit;
+      }
+    </style>
   </head>
   <body>
     {% section 'header' %}
@@ -115,22 +121,22 @@
     <script type="text/javascript">
       function _defineProperty(obj, key, value) {
       if (key in obj) {
-                                  Object.defineProperty(obj, key, {
-                                    value: value,
-                                    enumerable: true,
-                                    configurable: true,
-                                    writable: true
-                                  });
-                                } else {
-                                  obj[key] = value;
-                                }
-                                return obj;
-                              }
-                        
-                              $('.thumb').click(function() {
-                                var src = $(this).attr('src');
-                                $('.headthumb').attr('src', src);
-                              });
+                                                                Object.defineProperty(obj, key, {
+                                                                  value: value,
+                                                                  enumerable: true,
+                                                                  configurable: true,
+                                                                  writable: true
+                                                                });
+                                                              } else {
+                                                                obj[key] = value;
+                                                              }
+                                                              return obj;
+                                                            }
+                                                      
+                                                            $('.thumb').click(function() {
+                                                              var src = $(this).attr('src');
+                                                              $('.headthumb').attr('src', src);
+                                                            });
     </script>
 
   </body>
@@ -155,5 +161,16 @@
   <script type="application/json" data-ajax-cart-configuration>
     {
     "addToCartCssClass": "js-my-cart-open"
-          }</script>
+                              }</script>
+
+
+  <script type="module">
+    import { subscribeToCartSectionsUpdate } from '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}'
+    subscribeToCartSectionsUpdate( sections => {
+        console.log('Sections are updated: ', sections);
+        // Place your code here
+      });</script>
+
+
+
 </html>

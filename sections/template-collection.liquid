@@ -28,107 +28,433 @@
 
 <div class="section-{{ section.id }}-padding">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-  {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
-    <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
-      <form class="facets-vertical-form" id="FacetSortForm">
-        <div class="facet-filters sorting caption">
-          <div class="facet-filters__field">
-            <h2 class="facet-filters__label caption-large text-body">
-              <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-            </h2>
-            <div class="select">
-              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-              <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
-                {%- for option in collection.sort_options -%}
-                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                {%- endfor -%}
-              </select>
-              {% render 'icon-caret' %}
-            </div>
-          </div>
-          <noscript>
-            <button type="submit" class="facets__button-no-js button button--secondary">{{ 'products.facets.sort_button' | t }}</button>
-          </noscript>
-        </div>
 
-        <div class="product-count-vertical light" role="status">
-          <h2 class="product-count__text text-body">
-            <span id="ProductCountDesktop">
-              {%- if collection.results_count -%}
-                {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
-              {%- elsif collection.products_count == collection.all_products_count -%}
-                {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
-              {%- else -%}
-                {{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
-              {%- endif -%}
-            </span>
-          </h2>
-          <div class="loading-overlay__spinner">
-            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-            </svg>
-          </div>
-        </div>  
-      </form>
-    </facet-filters-form>
-  {%- endif -%}
 
   <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
-        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
+        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, filter_type: section.settings.filter_type %}
       </aside>
     {%- endif -%}
 
-    <div class="product-grid-container" id="ProductGridContainer">
-      {%- paginate collection.products by section.settings.products_per_page -%}
-        {%- if collection.products.size == 0 -%}
-          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-            <div class="loading-overlay gradient"></div>
-            <div class="title-wrapper center">
-              <h2 class="title title--primary">
-                {{ 'sections.collection_template.empty' | t }}<br>
-                {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
-              </h2>
+
+
+    <section class="left-sidebar mobile-menu-bar col-12 col-lg-3" style="width:100%;">
+      <div class="inner">
+        <div class="product-filter">
+          <script type="text/javascript">
+            $(function() {
+              let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+              if (isMobile) { // Conditional script here
+                $('.collapse').removeClass('show');
+                $('.collapse').addClass('hide');
+
+              }
+
+              $('#close').click(function() {
+                var menu = $('.mobile-menu-bar');
+                menu.css('left', '-100%').removeClass('menu-open');
+
+              });
+
+            });
+          </script>
+          <style>
+            #close {
+              width: 97%;
+              margin-right: 3%;
+              height: 42px;
+              font-size: 21px;
+              display: block;
+              text-align: right;
+              line-height: 42px;
+            }
+          </style>
+          <a id="close">X</a>
+          <div class="inner">
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="heading2">
+                  <h5 class="mb-0">
+                    <button class="btn" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                      <p>Type</p>
+                      <i class="fal fa-arrow-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse2" class="collapse show" aria-labelledby="heading2" data-parent="#accordion">
+                  <div class="card-body">
+
+                    <div class="product-filter-item">
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="checkbox" name="filter[]" value="44" id="filter-44" checked="checked" class="filter-item">
+                        </div>
+                        <div class="col-9">
+                          <p style="line-height: 14px;">
+                            <label for="filter-44" style="cursor: pointer;">Apple iPhone 8</label>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading3">
+                  <h5 class="mb-0">
+                    <button class="btn" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                      <p>Opslag</p>
+                      <i class="fal fa-arrow-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse3" class="collapse show" aria-labelledby="heading3" data-parent="#accordion">
+                  <div class="card-body">
+
+
+                    <div class="product-filter-item">
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="checkbox" name="filter[]" value="12" id="filter-12" class="filter-item">
+                        </div>
+                        <div class="col-9">
+                          <p style="line-height: 14px;">
+                            <label for="filter-12" style="cursor: pointer;">32GB</label>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading4">
+                  <h5 class="mb-0">
+                    <button class="btn" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                      <p>Kleuren</p>
+                      <i class="fal fa-arrow-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse4" class="collapse show" aria-labelledby="heading4" data-parent="#accordion">
+                  <div class="card-body">
+
+                    <div class="product-filter-item">
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="checkbox" name="filter[]" value="55" id="filter-55" class="filter-item">
+                        </div>
+                        <div class="col-9">
+                          <p style="line-height: 14px;">
+                            <label for="filter-55" style="cursor: pointer;">Blue</label>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        {%- else -%}
-          <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
-            <div class="loading-overlay gradient"></div>
-    
-            <ul id="product-grid" data-id="{{ section.id }}" class="
+        </div>
+        <div class="d-none d-lg-block why-buy-here">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Goede kwaliteit/prijs verhouding</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Uitvoerig nagekeken, getest en gereinigd</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Twee jaar garantie</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Op werkdagen voor 23:59 uur besteld is morgen in huis</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-lg-block reviews">
+          <h4 class="mb-3">Onze reviews</h4>
+          <div class="review">
+            <div class="title">
+              <p>They van Haeff | Roermond</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 80%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>Ik heb een rephone besteld engekregen wat ze beloofd hadden. &amp;quot;Als nieuw&amp;quot; klopt inderdaad. Geen schrammetje te vinden.</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>Security Partners Nederland BV | Hoorn</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 100%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>IPhone 7 refurbished besteld en er is een heel mooi exemplaar ontvangen.
+                - snelle levering
+                                                                              - goede communicatie
+                                                                              - volledig product
+                                                                              - nagenoeg geen beschadigingen</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>Elsbeth | Baarn</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 90%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>Duidelijke informatie, alles klopte, tijdige levering. Refurbished telefoon zag er zeer goed uit, netjes verpakt, compleet, echt zo goed als nieuw.</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>
+                |
+              </p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 80%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>Goede informatie over het product.Correcte afhandeling.
+                Nu nog afwachten of de iphone in het gebruik ook voldoet.
+                                                                              Lijkt wel goed te zijn,gezien ook de manier van aanbieden en afhandelen.</p>
+            </div>
+          </div>
+          <a href="https://www.kiyoh.nl/rephone/" target="_blank" class="blue-underline">
+            <p>Lees alle reviews</p>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-content col-12 col-lg-9 product-grid-container" id="ProductGridContainer">
+      <div class="inner">
+        <div class="content-banner">
+          <div class="container p-0">
+            <div class="inner">
+              <h1>{{collection.title}}</h1>
+              <p class="d-none d-md-block"></p>
+              {{section.settings.collection-description}}
+            </div>
+          </div>
+        </div>
+
+        <div class="filter d-none d-md-block" style="display: none!important;">
+          <div class="row">
+            <div class="left-side col-6">
+              <div class="row no-gutters">
+                <div class="col-3 item">
+                  <p>1 - 4 van 4</p>
+                </div>
+                <div class="col-6 item">
+                  <p>Aantal items per pagina</p>
+                </div>
+                <div class="offset-1 col-2 item">
+                  <select name="" id="items-per-page">
+                    <option value="">20</option>
+                    <option value="">21</option>
+                    <option value="">22</option>
+                    <option value="">23</option>
+                    <option value="">24</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="right-side col-6">
+              <div class="row no-gutters">
+                <div class="offset-6 col-3 item">
+                  <p>Sorteer op</p>
+                </div>
+                <div class="col-3 item">
+                  <select name="" id="date">
+                    <option value="">Datum</option>
+                    <option value="">item 1</option>
+                    <option value="">item 2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-mobile d-md-none mt-3 mb-3">
+          <div class="inner d-flex align-items-center justify-content-between nohide">
+            <h4 class="mb-0">Filter uw producten (249)</h4>
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+
+          <div class="product-items collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" style="margin-top: 20px;">
+            <div id="product-grid" data-id="{{ section.id }}" class="row
               grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
               grid--{{ section.settings.columns_desktop }}-col-desktop">
-              {%- for product in collection.products -%}
-                {% assign lazy_load = false %}
-                {%- if forloop.index > 2 -%}
-                  {%- assign lazy_load = true -%}
-                {%- endif -%}
-                <li class="grid__item">
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    lazy_load: lazy_load,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id
 
-                  %}
-                </li>
-              {%- endfor -%}
-            </ul>
+              <style>
+                @media(max-width: 991.98px) {
+                  p.title {
+                    font-size: 11px;
+                  }
+                  .price p {
+                    font-size: 11px !important;
+                  }
+                  .price span {
+                    font-size: 20px !important;
+                  }
+                  .btn-green {
+                    min-height: 0;
+                    line-height: 30px;
+                    font-family: sans-serif;
+                  }
+  
+                }
+              </style>
+  
+              {% for product in collection.products %}
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-4 item-parent">
+                  <div class="item">
+                    <a href="{{ product.url }}" class="inner" style="display:block; padding: 0 10px !important;"></a>
+                    <div class="row">
+                      <a href="{{ product.url }}" class="inner" style="display:block; padding: 0 10px !important;">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  d-md-none mobile-img d-flex align-items-center justify-content-center">
+                          <img src="{{ product.featured_image | img_url: 'master' }}" alt="Apple iPhone 8 64GB Space Grey" title="Apple iPhone 8 64GB Space Grey" style="max-width: 100%;">
+                        </div>
+                      </a>
+                      <div class="col-md-12 col-lg-12">
+                        <a href="{{ product.url }}" class="inner" style="display:block; padding: 0 10px !important;">
+                          <p class="title" style="height: 44px;">{{ product.title }}<br>
+                          </p>
+                          <div class="row" style="margin-left: 0px;">
+                            <div class="col-4 d-none d-md-block" style="overflow: hidden;">
+                              <img src="{{ product.featured_image | img_url: 'master' }}" alt="Apple iPhone 8 64GB Space Grey" title="Apple iPhone 8 64GB Space Grey" style="height: 130px; margin-left: -30px; position: relative; z-index: -1;">
+                            </div>
+                            <div class="col-7 d-flex flex-column-reverse flex-md-column">
+                              <div class="price">
+                                <p>Vanaf <br>
+                                  <span>{{ product.price | money }}-</span>
+                                </p>
+                              </div>
+                              <div class="grades"></div>
+                              <div class="grades" style="display:none;">
+                                <ul></ul>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="{{ product.url }}" class="btn-green d-md-none">Product bekijken</a>
+                      </div>
+                    </div>
+                    <a href="{{ product.url }}" class="btn-green d-md-block d-none mt-2">Product bekijken</a>
+                  </div>
+                </div>
+              {% else %}
+                <p>There are no products in this collection</p>
+              {% endfor %}
+            </div>
     
-            {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
-            {%- endif -%}
+
           </div>
-        {%- endif -%}
-      {%- endpaginate -%}
     </div>
+    </div>
+        </div>
+        <div>
+          <h3>Koop een refurbished iPhone bij Rephone</h3>
+          <p>Zoek je een iPhone met dezelfde kwaliteit als een nieuwe iPhone, maar tegen een lagere prijs? Dan is Rephone dé plek voor jou. Rephone levert dagelijks refurbished Apple devices aan mensen in binnen- en buitenland. Hieronder lees je alles wat je moet weten over de iPhone van Apple!</p>
+          <h4>Wat maakt de iPhone zo uniek?</h4>
+          <p>Voor de introductie van de oorspronkelijke iPhone was Apple's kijk op mobiele telefoons dat deze ingewikkeld om te gebruiken waren en dat de mobiele telefoon van toen over functies beschikte die niemand begreep. Als reactie hierop ontwikkelde Apple een mobiele telefoon met slimme functies dat in 2007 zou worden gepresenteerd als de eerste iPhone.</p>
+          <h4>iPhone generaties: deze modellen bestaan er</h4>
+          <p><br></p>
+          <li>2017:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">iPhone 8</a>
+          </li>
+          <h4>iPhone functies</h4>
+          <ul>
+            <li>
+              <strong>Touchscreen</strong>
+            </li>
+          </ul>
+          <p>iPhones uit 2010 en nieuwer beschikken over een Retina-display. Met deze technologie zijn individuele pixels met het blote oog niet zichtbaar en ervaar je als gebruiker een scherper beeld.</p>
+          <h4>De voordelen en kwaliteit van een Refurbished iPhone bij Rephone</h4>
+          <p>Een refurbished iPhone is een
+            <a href="https://www.rephone.nl/tweedehands-iphone/">tweedehands IPhone</a>
+            die door een van onze experts wordt nagekeken en in orde wordt gemaakt zodat alles als nieuw werkt. Een refurbished iPhone is goedkoper dan een nieuw toestel maar met dezelfde kwaliteit als een nieuwe iPhone. Om dit te onderstrepen krijg je 2 jaar garantie op een iPhone van Rephone. Elke refurbished iPhone die je bij Rephone kunt kopen is simlockvrij. Hierdoor kan je gebruik blijven maken van je eigen simkaart. Lees ook
+            <a href="https://www.rephone.nl/blog/">onze blogs</a>
+            om het meeste uit uw toestel te halen!<br></p>
+        </div>
+      </div>
   </div>
 </div>
 
