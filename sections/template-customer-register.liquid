@@ -99,10 +99,10 @@
           <div class="form-group">
             <div class="col-12">
               <label class="radio-inline">
-                <input type="radio" name="customer[note][Newsletter]" value="1" checked="checked" />
+                <input type="radio" id="newsletter_yes" name="customer[newsletter]" value="yes" {{ form.newsletter }} checked="checked" />
                 Ja</label>&nbsp;&nbsp;
               <label class="radio-inline">
-                <input type="radio" name="customer[note][Newsletter]" value="0" />
+                <input type="radio" id="newsletter_no" name="customer[newsletter]" value="no" {{ form.newsletter }} />
                 Nee</label>
             </div>
         </fieldset>
