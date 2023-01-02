@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  {% form 'create_customer' %}
+  {% form 'create_customer', onsubmit="return checkPasswords();" %}
   {% if form.errors %}
   {{ form.errors | default_errors }}
   {% endif %}
@@ -188,12 +188,13 @@
 </script>
 
 <script>
-  $(function(){
-    $('#create_customer').submit(function(e) {     
-      if ( $('input[name="customer[password]"]').val() != $('input[name="customer[password_confirmation]"]').val()) {
-        e.preventDefault();
-        alert('Passwords do not match.');
-      }
-    });
-  });
-</script>​
+  function checkPasswords() {
+    var password = document.getElementById("password").value;
+    var passwordConfirmation = document.getElementById("password-confirmation").value;
+    if (password != passwordConfirmation) {
+      alert("Passwords do not match");
+      return false;
+    }
+  }
+</script>
+​
