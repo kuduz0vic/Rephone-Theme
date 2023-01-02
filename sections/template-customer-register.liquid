@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  {% form 'create_customer', onsubmit="return checkPasswords();" %}
+  {% form 'create_customer', onSubmit: 'return checkPasswords();' %}
   {% if form.errors %}
   {{ form.errors | default_errors }}
   {% endif %}
