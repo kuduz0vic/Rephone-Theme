@@ -1,17 +1,199 @@
-<div id="login-form">
-  <h1>Register an account</h1>
+<div id="account-register" class="container">
+
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        {% for breadcrumb in breadcrumbs %}
+        <li class="item">
+          <a href="{{ breadcrumb.href }}">
+            <p>{{ breadcrumb.text }}</p>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
   {% form 'create_customer' %}
-    {% if form.errors %}
-      {{ form.errors | default_errors }}
-    {% endif %}
-    <label for="first_name">First name</label>
-    <input type="text" name="customer[first_name]" id="first_name" autocomplete="given-name" placeholder="First name">
-    <label for="last_name">Last name</label>
-    <input type="text" name="customer[last_name]" id="last_name" autocomplete="family-name" placeholder="Last name">
-    <label for="email_address">Email</label>
-    <input type="email" name="customer[email]" id="email_address" autocomplete="email" placeholder="Email">
-    <label for="password">Password</label>
-    <input type="password" name="customer[password]" id="password" autocomplete="new-password" placeholder="Password">
-    <button type="submit">Create account</button>
-  {% endform %}
+  {% if form.errors %}
+  {{ form.errors | default_errors }}
+  {% endif %}
+  <div id="content">
+    <h1>Account</h1>
+    <p>Als u al een account heeft kunt u hier
+      <a href="/account/login">inloggen.</a>
+    </p>
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset id="account">
+          <legend>Uw persoonlijke gegevens</legend>
+          <div class="form-group required">
+            <label class="col-12 control-label">{{ entry_customer_group }}</label>
+            <div class="col-12">
+              {% for customer_group in customer_groups %}
+              {% if customer_group.customer_group_id == customer_group_id %}
+              <div class="radio">
+                <label>
+                  <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}"
+                    checked="checked" />
+                  {{ customer_group.name }}</label>
+              </div>
+              {% else %}
+              <div class="radio">
+                <label>
+                  <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" />
+                  {{ customer_group.name }}</label>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="first_name">Voornaam *</label>
+            <div class="col-12">
+              <input type="text" name="customer[first_name]" id="first_name" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="last_name">Achternaam *</label>
+            <div class="col-12">
+              <input type="text" name="customer[last_name]" id="last_name" required class="form-control" />
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="email_address">E-mailadres *</label>
+            <div class="col-12">
+              <input type="email" name="customer[email]" id="email_address" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="phone_number">Telefoon *</label>
+            <div class="col-12">
+              <input type="tel" name="customer[note][Phone Number]" id="phone_number" class="form-control" required />
+            </div>
+          </div>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+          <legend>Wachtwoord</legend>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="password">Kies wachtwoord *</label>
+            <div class="col-12">
+              <input type="password" name="customer[password]" id="password" class="form-control" autocomplete="off"
+                required />
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-12 control-label" for="password-confirmation">Bevestig wachtwoord *</label>
+            <div class="col-12">
+              <input id="password-confirmation" type="password" name="customer[password]" class="form-control"
+                autocomplete="off" required />
+            </div>
+          </div>
+        </fieldset>
+        <hr>
+        <fieldset>
+          <legend>Nieuwsbrief</legend>
+          <div class="form-group">
+            <div class="col-12">
+              <label class="radio-inline">
+                <input type="radio" name="customer[note][Newsletter]" value="1" checked="checked" />
+                Ja</label>&nbsp;&nbsp;
+              <label class="radio-inline">
+                <input type="radio" name="customer[note][Newsletter]" value="0" />
+                Nee</label>
+            </div>
+        </fieldset>
+      </div>
+      <div class="col-sm-6">
+        <legend>Bedrijfsinformatie</legend>
+        <div class="form-group col-12">
+          <label for="company_name">Bedrijfsnaam *</label>
+          <input class="form-control" type="text" name="customer[note][Company Name]" id="company_name" value="" required="">
+        </div>
+        <div class="form-group col-12 coc-number">
+          <label for="coc_number">KvK-nummer *</label>
+          <input class="form-control" type="text" name="customer[note][Coc Number]" id="coc_number" value="" required="">
+        </div>
+        <div class="form-group col-12 vat-number">
+          <label for="vat_number">Btw-nummer *</label>
+          <input class="form-control" type="text" name="customer[note][Vat Number]" id="vat_number" value="" required="">
+        </div>
+        <div class="form-group col-12">
+          <label for="country">Land *</label>
+          <select class="form-control" name="customer[note][Country ID]" id="country" required="">
+            <option value="14">Austria</option>
+            <option value="21">België</option>
+            <option value="74">France</option>
+            <option value="81">Germany</option>
+            <option value="105">Italy</option>
+            <option value="124">Luxembourg</option>
+            <option value="150" selected="selected">Nederland</option>
+            <option value="195">Spain</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <div class="row">
+            <div class="left-side col-12 col-sm-5 mb-3 mb-sm-0">
+              <label for="postcode">Postcode *</label>
+              <input class="form-control" type="text" name="customer[note][Postcode]" id="postcode" value="" required="required">
+            </div>
+            <div class="middle-side col-6 col-sm-3">
+              <label for="housenumber">Huisnummer *</label>
+              <input class="form-control" type="text" name="customer[note][Adress 2]" id="housenumber" value="" required="required">
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label for="fulladress">Straatnaam *</label>
+          <input class="form-control" type="text" name="customer[note][Adress 1]" id="fulladress" value="" required="required">
+        </div>
+        <div class="form-group col-12">
+          <label for="place">Plaats *</label>
+          <input class="form-control" type="text" name="customer[note][City]" id="place" value="" required="required">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 text-right">
+  <input style="float:none; vertical-align: middle;" type="checkbox" id="agree" />
+  <label style="display:inline; float:none" for="agree">
+    Ik heb de Algemene voorwaarden gelezen en ga hiermee akkoord
+   </label>
+        <div class="text-right">
+          <input type="submit" name="register" value="Account aanmaken" class="btn-green mt-3 d-inline-block" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+{% endform %}
+
+<script>
+  $(document).ready(function() {
+    $('body').on('click', '[name="register"]', function() {
+      if ($('#agree').is(':checked')) {
+        $(this).submit();
+      }
+      else {
+        alert("You must agree with the terms and conditions of sales to check out.");
+        return false;
+      }
+    });
+  });
+</script>
+
+<script>
+  $(function(){
+    $('#create_customer').submit(function(e) {     
+      if ( $('input[name="customer[password]"]').val() != $('input[name="customer[password_confirmation]"]').val()) {
+        e.preventDefault();
+        alert('Passwords do not match.');
+      }
+    });
+  });
+</script>​

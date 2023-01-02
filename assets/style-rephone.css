@@ -6397,3 +6397,14 @@ margin-top: -3px;
   max-width: 70px;
   height: auto;
 }
+
+.filter-label {
+  font-size: 14px;
+display: flex;
+gap: 30px;
+text-transform: capitalize;
+}
+
+.filter-label:hover {
+  color: black;
+}

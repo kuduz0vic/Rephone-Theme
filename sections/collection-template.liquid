@@ -1,0 +1,507 @@
+<div class="container product-overview homepage">
+  <section class="breadcrumbs">
+    <div class="item-parent col">
+      <ul class="item-parent">
+        <li class="item">
+          <a href="">
+            <p>Home</p>
+          </a>
+        </li>
+        <li class="item">
+          <a href="https://www.rephone.nl/refurbished-iphone/">
+            <p>iPhone</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <div class="row flex-column-reverse flex-lg-row">
+    <section class="left-sidebar mobile-menu-bar col-12 col-lg-3" style="width:100%;">
+      <div class="inner">
+        <div class="product-filter">
+          <script type="text/javascript">
+            $(function() {      
+            let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                if (isMobile) {
+                                                                                                                                                                                                                                                                    //Conditional script here
+                                                                                                                                                                                                                                                                    $('.collapse').removeClass('show');
+                                                                                                                                                                                                                                                                    $('.collapse').addClass('hide');
+                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                $('#close').click(function (){
+                                                                                                                                                                                                                                                                    var menu = $('.mobile-menu-bar');
+                                                                                                                                                                                                                                                                    menu.css('left', '-100%').removeClass('menu-open');
+                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                             });
+          </script>
+          <style>
+            #close {
+              width: 97%;
+              margin-right: 3%;
+              height: 42px;
+              font-size: 21px;
+              display: block;
+              text-align: right;
+              line-height: 42px;
+            }
+          </style>
+          <a id="close">X</a>
+          <div class="inner">
+            <div id="accordion">
+
+
+              <form class="filter-form" id="filter-form">
+                {%- for filter in collection.filters -%}
+                  <div class="card">
+                    <div class="card-header" id="heading4">
+                      <h5 class="mb-0">
+                        <button
+                          class="btn"
+                          data-toggle="collapse"
+                          data-target="#collapse4"
+                          aria-expanded="false"
+                          aria-controls="collapse4">
+                          <p>{{ filter.label }}</p>
+                          <i class="fal fa-arrow-down"></i>
+                        </button>
+                      </h5>
+                    </div>
+                    <div
+                      id="collapse4"
+                      class="collapse show"
+                      aria-labelledby="heading4"
+                      data-parent="#accordion">
+                      <div class="card-body">
+                        {%- for filter_value in filter.values -%}
+                          <div class="product-filter-item">
+                            <label class="filter-label" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                              <input
+                                type="checkbox"
+                                name="{{ filter_value.param_name }}"
+                                value="{{ filter_value.value }}"
+                                id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                {% if filter_value.active -%}checked{%- endif %}
+                                {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                onclick="applyFilters()">{{ filter_value.label }}</label>
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </form>
+
+
+
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-lg-block why-buy-here">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Goede kwaliteit/prijs verhouding</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Uitvoerig nagekeken, getest en gereinigd</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Twee jaar garantie</p>
+            </div>
+            <div class="check-mark">
+              <i class="fal fa-check-circle"></i>
+              <p>Op werkdagen voor 23:59 uur besteld is morgen in huis</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-lg-block reviews">
+          <h4 class="mb-3">Onze reviews</h4>
+          <div class="review">
+            <div class="title">
+              <p>Marijn | Oud Gastel</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 100%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>iPhone 5s gekocht bij Rephone. Werkt helemaal naar behoren en ziet er nog mooi uit. Ik zou Rephone zeker aanraden!</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>Angelique | BROEKHUIZENVORST</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 80%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>telefoon gister pas gekregen. Zag er verder goed uit. Verder nog moeilijk te beoordelen. Is nog niet in gebruik.</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>Blanckaert Jean | Oedelem BelgiÃ«</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 100%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>Ik was wat achterdochtig door enkele tegenslagen in het verleden, doch onmiddellijk antwoord op mijn mails, en correcte afhandeling van mijn bestelling</p>
+            </div>
+          </div>
+          <div class="review">
+            <div class="title">
+              <p>
+                | Oost-Vlaanderen</p>
+            </div>
+            <div class="star-ratings-css blue-stars">
+              <div class="star-ratings-css-top" style="width: 80%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div class="star-ratings-css-bottom">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <div class="text">
+              <p>Heel correct. Aangekocht via Belgisch bedrijf. BTW eerst betaald maar nadat Rephone BTW nr. gecontroleerd heeft krijg je direct de factuur en de BTW teruggestort.</p>
+            </div>
+          </div>
+          <a
+            href="https://www.kiyoh.nl/rephone/"
+            target="_blank"
+            class="blue-underline">
+            <p>Lees alle reviews</p>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <div class="content-banner">
+          <div class="container p-0">
+            <div class="inner">
+              <h1>{{ collection.title }}</h1>
+              <p class="d-none d-md-block"></p>
+              <p>{{ collection.description }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="filter d-none d-md-block" style="display: none!important;">
+          <div class="row">
+            <div class="left-side col-6">
+              <div class="row no-gutters">
+                <div class="col-3 item">
+                  <p>1 - 4 van 4</p>
+                </div>
+                <div class="col-6 item">
+                  <p>Aantal items per pagina</p>
+                </div>
+                <div class="offset-1 col-2 item">
+                  <select name="" id="items-per-page">
+                    <option value="">20</option>
+                    <option value="">21</option>
+                    <option value="">22</option>
+                    <option value="">23</option>
+                    <option value="">24</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="right-side col-6">
+              <div class="row no-gutters">
+                <div class="offset-6 col-3 item">
+                  <p>Sorteer op</p>
+                </div>
+                <div class="col-3 item">
+                  <select name="" id="date">
+                    <option value="">Datum</option>
+                    <option value="">item 1</option>
+                    <option value="">item 2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-mobile d-md-none mt-3 mb-3">
+          <div class="inner d-flex align-items-center justify-content-between nohide">
+            <h4 class="mb-0">Filter uw producten (249)</h4>
+            <i class="far fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="product-items" style="margin-top: 20px;">
+          <div class="row">
+            <style>
+              @media(max-width: 991.98px) {
+                p.title {
+                  font-size: 11px;
+                }
+                .price p {
+                  font-size: 11px !important;
+                }
+                .price span {
+                  font-size: 20px !important;
+                }
+                .btn-green {
+                  min-height: 0;
+                  line-height: 30px;
+                  font-family: sans-serif;
+                }
+
+              }
+            </style>
+
+            {% for product in collection.products %}
+              <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-4 item-parent">
+                <div class="item">
+                  <a
+                    href="{{ product.url }}"
+                    class="inner"
+                    style="display:block; padding: 0 10px !important;"></a>
+                  <div class="row">
+                    <a
+                      href="{{ product.url }}"
+                      class="inner"
+                      style="display:block; padding: 0 10px !important;">
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  d-md-none mobile-img d-flex align-items-center justify-content-center">
+                        <img
+                          src="{{product.featured_image | img_url: 'master'}}"
+                          alt="{{product.title}}"
+                          title="{{product.title}}"
+                          style="max-width: 100%;">
+                      </div>
+                    </a>
+                    <div class="col-md-12 col-lg-12">
+                      <a
+                        href="{{ product.url }}"
+                        class="inner"
+                        style="display:block; padding: 0 10px !important;">
+                        <p class="title" style="height: 44px;">{{ product.title }}<br>
+                        </p>
+                        <div class="row" style="margin-left: 0px;">
+                          <div class="col-4 d-none d-md-block" style="overflow: hidden;">
+                            <img
+                              src="{{product.featured_image | img_url: 'master'}}"
+                              alt="{{product.title}}"
+                              title="{{product.title}}"
+                              style="height: 130px; margin-left: -30px; position: relative; z-index: -1;">
+                          </div>
+                          <div class="col-7 d-flex flex-column-reverse flex-md-column">
+                            <div class="price">
+                              <p>Vanaf <br>
+                                <span>{{ product.price | money }}</span>
+                              </p>
+                            </div>
+                            <div class="grades" style="display:none;">
+                              <ul>
+                                <li>
+                                  <p>C Grade</p>
+                                </li>
+                              </ul>
+                            </div>
+                            {% if product.available %}
+                              <div class="grades">
+                                <ul>
+                                  <li>
+                                    <p>Direct leverbaar</p>
+                                  </li>
+                                </ul>
+                              </div>
+                            {% else %}
+                              <div class="grades" style="display: none;">
+                                <ul>
+                                  <li>
+                                    <p>Niet direct leverbaar</p>
+                                  </li>
+                                </ul>
+                              </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </a>
+                      <a href="{{ product.url }}" class="btn-green d-md-none">Product bekijken</a>
+                    </div>
+                  </div>
+
+                  <a href="{{ product.url }}" class="btn-green d-md-block d-none mt-2">Product bekijken</a>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+        <div>
+          <h3>Koop een refurbished iPhone bij Rephone</h3>
+          <p>Zoek je een iPhone met dezelfde kwaliteit als een nieuwe iPhone, maar tegen een lagere prijs? Dan is Rephone dé plek voor jou. Rephone levert dagelijks refurbished Apple devices aan mensen in binnen- en buitenland. Hieronder lees je alles wat je moet weten over de iPhone van Apple!</p>
+          <h4>Wat maakt de iPhone zo uniek?</h4>
+          <p>Voor de introductie van de oorspronkelijke iPhone was Apple's kijk op mobiele telefoons dat deze ingewikkeld om te gebruiken waren en dat de mobiele telefoon van toen over functies beschikte die niemand begreep. Als reactie hierop ontwikkelde Apple een mobiele telefoon met slimme functies dat in 2007 zou worden gepresenteerd als de eerste iPhone.</p>
+          <p>Door de vele functies waarover een iPhone beschikt is een mobiel tegenwoordig veel meer dan een apparaat waar je alleen maar mee kunt bellen en smsen. Dankzij de iPhone zijn mensen aanzienlijk meer gebruik gaan maken van het internet, worden apps geïnstalleerd om meer uit je smartphone te halen en leren mensen hun telefoon op een geheel nieuwe manier gebruiken.</p>
+          <p>Een ander aspect dat de iPhone zo uniek maakt is de naadloze integratie tussen fysieke componenten en software. Doordat Apple zowel haar eigen producten als eigen software maakt, zijn beide onderdelen optimaal op elkaar afgestemd. Als gebruiker van een iPhone zie je dit terug in de snelheid en gebruiksvriendelijkheid waarmee functies op de iPhone werken.</p>
+          <h4>iPhone generaties: deze modellen bestaan er</h4>
+          <p><br></p>
+          <li>2021:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-pro-max/">iPhone 12 Pro Max</a>
+          </li>
+          <li>2021:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-pro/">iPhone 12 Pro</a>
+          </li>
+          <li>2021:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-mini/">iPhone 12 Mini</a>
+          </li>
+          <li>2021:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12/">iPhone 12</a>
+          </li>
+          <li>2020:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-se-2020/">iPhone SE (2020)</a>
+          </li>
+          <li>2020:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-11-pro-max/">iPhone 11 Pro Max</a>
+          </li>
+          <li>2020:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-11-pro/">iPhone 11 Pro</a>
+          </li>
+          <li>2019:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-11/">iPhone 11</a>
+          </li>
+          <li>2018:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-xs-max/">iPhone Xs Max</a>
+          </li>
+          <li>2018:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-xs/">iPhone Xs</a><br></li>
+          <li>2018:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-xr/">iPhone Xr</a>
+          </li>
+          <li>2017:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-x/">iPhone X</a>
+          </li>
+          <li>2017:
+            <a href="https://www.rephone.nl/refurbished-iphone/iphone-8-plus/">iPhone 8&nbsp;Plus</a>
+          </li>
+          <li>2017:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">iPhone 8</a>
+          </li>
+          <li>2016: iPhone 7&nbsp;Plus</li>
+          <li>2016: iPhone 7</li>
+          <li>2016: iPhone SE</li>
+          <li>2015: iPhone 6s Plus</li>
+          <li>2015: iPhone 6s</li>
+          <li>2014: iPhone 6 Plus</li>
+          <li>2014: iPhone 6</li>
+          <li>2013: iPhone 5s</li>
+          <li>2013: iPhone 5c</li>
+          <li>2012: iPhone 5</li>
+          <li>2011: iPhone 4s</li>
+          <li>2010: iPhone 4</li>
+          <li>2009: iPhone 3GS</li>
+          <li>2008: iPhone 3G</li>
+          <li>2007: iPhone</li>
+          <h4>iPhone functies</h4>
+          <ul>
+            <li>
+              <strong>Touchscreen</strong>
+            </li>
+          </ul>
+          <p>iPhones uit 2010 en nieuwer beschikken over een Retina-display. Met deze technologie zijn individuele pixels met het blote oog niet zichtbaar en ervaar je als gebruiker een scherper beeld.</p>
+          <p>In de loop der jaren heeft Apple haar Retina-display verder verbeterd en sinds 2015 beschikken de meeste iPhone-modellen ook over 3D Touch. Deze technologie maakt het scherm drukgevoelig en hierdoor kunnen acties sneller uitgevoerd worden. Dankzij 3D Touch is het mogelijk om slimmer en sneller te interacteren met iOS. De iPhone 8 en nieuwer beschikken tot slot over een functie genaamd True Tone. Met deze technologie stemt het scherm zich automatisch af op jouw omgeving wat het scherm prettiger maakt om naar te kijken.</p>
+          <ul>
+            <li>
+              <strong>iOS</strong>
+            </li>
+          </ul>
+          <p>iOS is het besturingssysteem van de iPhone en zorgt ervoor dat je prettig, veilig en snel met je iPhone kunt werken. Het besturingssysteem bevat diverse standaard apps zoals Safari, iMessage en Mail. Hierdoor kan je een iPhone meteen gebruiken zonder eerst apps te moeten downloaden. Een andere app die je altijd terugziet op de iPhone is de App Store. Via dit platform vind je bijna twee miljoen apps die jouw iPhone-ervaring personaliseren.</p>
+          <ul>
+            <li>
+              <strong>Synchronisatie via iCloud</strong>
+            </li>
+          </ul>
+          <p>iCloud is een dienst die het mogelijk maakt om verschillende apparaten van Apple op een slimme manier met elkaar te laten samenwerken. Een foto die je met een iPhone maakt bijvoorbeeld bekijk je vervolgens zonder zelf iets te hoeven doen op een iPad die aan hetzelfde iCloud-account gekoppeld is. De kracht van iCloud ligt niet alleen in het slim laten samenwerken van verschillende apparaten. Met behulp van iCloud is het tevens mogelijk om een backups te maken van je waardevolle gegevens. Mocht je iPhone onverhoopt kapot gaan, dan stel je je nieuwe iPhone gemakkelijk op dezelfde manier in dankzij een eerder gemaakte iCloud-backup.</p>
+          <ul>
+            <li>
+              <strong>iPhone als camera</strong>
+            </li>
+          </ul>
+          <p>De iPhone heeft ervoor gezorgd dat veel mensen geen digitale camera meer meenemen wanneer ze op vakantie gaan. De camera van de iPhone voldoet namelijk voor velen aan de verwachtingen wanneer het gaat om het maken van mooie foto's. Apple voert regelmatig verbeteringen door ter verbetering van de camera- en fotokwaliteit zoals het toevoegen van optische beeldstabilisatie, betere zoom en het maken van foto's in portretmodus.</p>
+          <ul>
+            <li>
+              <strong>Andere kenmerkende functies</strong>
+            </li>
+          </ul>
+          <p>Naast de hierboven genoemde functies zijn er nog een aantal andere functies die kenmerkend zijn voor de iPhone. Eén van deze functies is Face ID. Met deze technologie is het mogelijk om een iPhone te ontgrendelen aan de hand van gezichtsherkenning. Een gezicht wordt al dan niet herkend door een combinatie van sensoren die met elkaar samenwerken. Hierdoor verhoogt de veiligheid van het systeem en is het bijvoorbeeld niet mogelijk om met een foto van de eigenaar een iPhone te ontgrendelen. Face ID is beschikbaar op iPhone Xr en nieuwer.</p>
+          <p>Een andere functie waarmee Apple zich onderscheidt is met de betaaldienst Apple Pay. Deze dienst van Apple maakt het mogelijk om contactloos te betalen met een iPhone. Om gebruik te kunnen maken van Apple Pay zal een koppeling gemaakt moeten worden met je eigen bank en ondersteuning van Apple Pay kan per bank verschillen. De dienst werkt vanaf de iPhone 6 en nieuwer en vanaf de iPhone 5 wanneer je beschikt over een Apple Watch.</p>
+          <h4>De voordelen en kwaliteit van een Refurbished iPhone bij Rephone</h4>
+          <p>Een refurbished iPhone is een
+            <a href="https://www.rephone.nl/tweedehands-iphone/">tweedehands IPhone</a>
+            die door een van onze experts wordt nagekeken en in orde wordt gemaakt zodat alles als nieuw werkt. Een refurbished iPhone is goedkoper dan een nieuw toestel maar met dezelfde kwaliteit als een nieuwe iPhone. Om dit te onderstrepen krijg je 2 jaar garantie op een iPhone van Rephone. Elke refurbished iPhone die je bij Rephone kunt kopen is simlockvrij. Hierdoor kan je gebruik blijven maken van je eigen simkaart. Lees ook
+            <a href="https://www.rephone.nl/blog/">onze blogs</a>
+            om het meeste uit uw toestel te halen!<br></p>
+          <h4>Meer uit je bestaande iPhone halen?</h4>
+          <p>Op onze
+            <a href="https://www.rephone.nl/blog/">blog</a>
+            lees je onder andere hoe je zoveel mogelijk uit je iPhone haalt, laten we je graag kennismaken met handige apps binnen diverse categorien en geven we tips mee op het gebied van de keuze en het gebruik van technologie. Ben je nieuwsgierig geworden? Klik dan hier! <br></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  function applyFilters() {
+    var form = document.getElementById('filter-form');
+    form.submit();
+  }
+</script>
