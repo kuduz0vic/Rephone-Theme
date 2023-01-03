@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  {% form 'create_customer' %}
+  {% form 'create_customer', onSuccess: '/account' %}
   {% if form.errors %}
   {{ form.errors | default_errors }}
   {% endif %}

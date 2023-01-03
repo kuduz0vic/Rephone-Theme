@@ -27,7 +27,7 @@
             <a href="javascript:void(0)" onclick="resetPassword()">Wachtwoord</a>
           </li>
           <li>
-            <a href="{{ address }}">Adresboek</a>
+            <a href="javascript:void(0)" onclick="changeAddress()">Adresboek</a>
           </li>
         </ul>
         {% if customer.orders.size > 0 %}
@@ -43,7 +43,7 @@
         <h2>Mijn bestellingen</h2>
         <ul class="list-unstyled">
           <li>
-            <a href="{{ order }}">Bestelhistorie</a>
+            <a onclick="orderList()">Bestelhistorie</a>
           </li>
         </ul>
         <h2>Nieuwsbrief</h2>
@@ -73,6 +73,20 @@
   {% render 'password' %}
 </div>
 
+<div
+  id="account-address"
+  class="container"
+  style="display: none;">
+  {% render 'adress_form' %}
+</div>
+
+<div
+  id="account-order"
+  class="container"
+  style="display: none;">
+  {% render 'order_info' %}
+</div>
+
 <script>
   function toggleEditForm() {
     const loginForm = document.getElementById("account-account");
@@ -91,6 +105,34 @@
   function resetPassword() {
     const loginForm = document.getElementById("account-account");
     const recoverForm = document.getElementById("account-password");
+    if (recoverForm.style.display === "none") {
+      recoverForm.style.display = "block";
+      loginForm.style.display = "none";
+    } else {
+      recoverForm.style.display = "none";
+      loginForm.style.display = "block";
+    }
+  }
+</script>
+
+<script>
+  function changeAddress() {
+    const loginForm = document.getElementById("account-account");
+    const recoverForm = document.getElementById("account-address");
+    if (recoverForm.style.display === "none") {
+      recoverForm.style.display = "block";
+      loginForm.style.display = "none";
+    } else {
+      recoverForm.style.display = "none";
+      loginForm.style.display = "block";
+    }
+  }
+</script>
+
+<script>
+  function orderList() {
+    const loginForm = document.getElementById("account-account");
+    const recoverForm = document.getElementById("account-address");
     if (recoverForm.style.display === "none") {
       recoverForm.style.display = "block";
       loginForm.style.display = "none";
