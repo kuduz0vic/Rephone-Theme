@@ -1,46 +1,58 @@
-
 <div id="account-account" class="container">
-  
+
   <section class="breadcrumbs">
-      <div class="item-parent col-12 col-lg-6">
-          <ul class="item-parent">
-              {% for breadcrumb in breadcrumbs %}
-              <li class="item"><a href="{{ breadcrumb.href }}"><p>{{ breadcrumb.text }}</p></a></li>
-              {% endfor %}
-          </ul>
-      </div>
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="item">
+            <a href="{{ breadcrumb.href }}">
+              <p>{{ breadcrumb.text }}</p>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   </section>
 
 
   <div class="row">
-<div class="col-sm-8">
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h2>Persoonlijke gegevens</h2>
-      <ul class="list-unstyled">
-        <li><a href="{{ edit }}">Gegevens wijzigen</a></li>
-        <li><a href="{{ password }}">Wachtwoord</a></li>
-        <li><a href="{{ address }}">Adresboek</a></li>
-      </ul>
-      {% if customer.orders.size > 0 %}
-      <h2>{{ text_credit_card }}</h2>
-      <ul class="list-unstyled">
-        {% for order in customer.orders %}
-          {% for transaction in order.transactions %}
-            <li>{{ transaction.source_name }}</li>
-          {% endfor %}
-        {% endfor %}
-      </ul>
-    {% endif %}    
-      <h2>Mijn bestellingen</h2>
-      <ul class="list-unstyled">
-        <li><a href="{{ order }}">Bestelhistorie</a></li>
-      </ul>
-      
-      <h2>{{ text_my_newsletter }}</h2>
-      <ul class="list-unstyled">
-        <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-      </ul>
-       </div>
-     {% render 'column_right' %}</div>
-     
+    <div class="col-sm-8">
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h2>Persoonlijke gegevens</h2>
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{ edit }}">Gegevens wijzigen</a>
+          </li>
+          <li>
+            <a href="{{ password }}">Wachtwoord</a>
+          </li>
+          <li>
+            <a href="{{ address }}">Adresboek</a>
+          </li>
+        </ul>
+        {% if customer.orders.size > 0 %}
+          <h2>{{ text_credit_card }}</h2>
+          <ul class="list-unstyled">
+            {% for order in customer.orders %}
+              {% for transaction in order.transactions %}
+                <li>{{ transaction.source_name }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <h2>Mijn bestellingen</h2>
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{ order }}">Bestelhistorie</a>
+          </li>
+        </ul>
+        <h2>{{ text_my_newsletter }}</h2>
+        <ul class="list-unstyled">
+          <li>
+            <a href="{{ newsletter }}">{{ text_newsletter }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% render 'column_right' %}</div>
 </div>
