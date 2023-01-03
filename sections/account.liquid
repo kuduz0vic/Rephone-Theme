@@ -21,7 +21,7 @@
         <h2>Persoonlijke gegevens</h2>
         <ul class="list-unstyled">
           <li>
-            <a href="/account/edit">Gegevens wijzigen</a>
+            <a href="javascript:void(0)" onclick="toggleEditForm()">Gegevens wijzigen</a>
           </li>
           <li>
             <a href="{{ password }}">Wachtwoord</a>
@@ -56,3 +56,25 @@
     </div>
     {% render 'column_right' %}</div>
 </div>
+
+
+
+<div id="account-edit" class="container">
+  {% render 'edit' %}
+</div>
+
+
+
+<script>
+  function toggleEditForm() {
+    const loginForm = document.getElementById("account-account");
+    const recoverForm = document.getElementById("account-edit");
+    if (recoverForm.style.display === "none") {
+      recoverForm.style.display = "initial";
+      loginForm.style.display = "none";
+    } else {
+      recoverForm.style.display = "none";
+      loginForm.style.display = "initial";
+    }
+  }
+</script>
