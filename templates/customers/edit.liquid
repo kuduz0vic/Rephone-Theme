@@ -69,7 +69,7 @@
                   id="phone_number"
                   class="form-control"
                   required
-                  value="{{ customer.note['Phone Number'] }}" />
+                  value="{{ customer.note.get('Phone Number', '') }}" />
               </div>
             </div>
             <div class="form-group col-12 coc-number">
@@ -79,7 +79,7 @@
                 type="text"
                 name="customer[note][Coc Number]"
                 id="coc_number"
-                value="{{ customer.note['Coc Number'] }}"
+                value="{{ customer.note.get('Coc Number', '') }}"
                 required="">
             </div>
             <div class="form-group col-12 vat-number">
@@ -89,7 +89,7 @@
                 type="text"
                 name="customer[note][Vat Number]"
                 id="vat_number"
-                value="{{ customer.note['Vat Number'] }}"
+                value="{{ customer.note.get('Vat Number', '') }}"
                 required="">
             </div>
           </fieldset>
