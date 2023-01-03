@@ -17,11 +17,11 @@
 
   <div class="row">
     <div class="col-sm-8">
-      <div id="content" class="{{ class }}">{{ content_top }}
+      <div id="content" class="{{ class }}">
         <h2>Persoonlijke gegevens</h2>
         <ul class="list-unstyled">
           <li>
-            <a href="{{ edit }}">Gegevens wijzigen</a>
+            <a href="{% render 'edit' %}">Gegevens wijzigen</a>
           </li>
           <li>
             <a href="{{ password }}">Wachtwoord</a>
