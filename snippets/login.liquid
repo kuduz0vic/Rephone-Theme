@@ -1,0 +1,52 @@
+{{ header }}
+<div id="account-login" class="container">
+  <section class="breadcrumbs">
+      <div class="item-parent col-12 col-lg-6">
+          <ul class="item-parent">
+              {% for breadcrumb in breadcrumbs %}
+              <li class="item"><a href="{{ breadcrumb.href }}"><p>{{ breadcrumb.text }}</p></a></li>
+              {% endfor %}
+          </ul>
+      </div>
+  </section>
+
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+  {% endif %}
+  {% if error_warning %}
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  {% endif %}
+  <div class="row">
+    <div id="content" class="col-sm-12">{{ content_top }}
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="well">
+            <h2>Nieuwe klant</h2>
+            <p><strong>{{ text_register }}</strong></p>
+            <p>{{ text_register_account }}</p>
+            <a href="{{ register }}" class="btn-green mt-4">Registreer mijn account</a></div>
+        </div>
+        <div class="col col-md-6">
+          <div class="well">
+            <h2>{{ text_returning_customer }}</h2>
+            <form action="{{ action }}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label class="control-label" for="input-email">{{ entry_email }}</label>
+                <input type="text" name="email" value="{{ email }}" id="input-email" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="input-password">{{ entry_password }}</label>
+                <input type="password" name="password" value="{{ password }}"  id="input-password" class="form-control" autocomplete="off" />
+                <a href="{{ forgotten }}">{{ text_forgotten }}</a></div>
+                <button type="submit" value="{{ button_login }}" class="btn-green">{{ button_login }}</button>
+              {% if redirect %}
+              <input type="hidden" name="redirect" value="{{ redirect }}" />
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+      {{ content_bottom }}</div>
+    </div>
+</div>
+{{ footer }}
