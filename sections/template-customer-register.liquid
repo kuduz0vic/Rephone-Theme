@@ -1,18 +1,14 @@
 <div id="account-register" class="container">
 
-  <section class="breadcrumbs">
-    <div class="item-parent col-12 col-lg-6">
-      <ul class="item-parent">
-        {% for breadcrumb in breadcrumbs %}
-        <li class="item">
-          <a href="{{ breadcrumb.href }}">
-            <p>{{ breadcrumb.text }}</p>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+<section class="breadcrumbs">
+<div class="item-parent col-12 col-lg-6">
+<ul class="item-parent">
+<li class="item"><a href="{{routes.root_url}}"><p><i class="fa fa-home"></i></p></a></li>
+<li class="item"><a href="/account"><p>Account</p></a></li>
+<li class="item"><a href="/account/register"><p>Registreren</p></a></li>
+</ul>
+</div>
+</section>
 
   {% form 'create_customer', onSuccess: '/account' %}
   {% if form.errors %}

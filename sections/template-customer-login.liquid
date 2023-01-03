@@ -1,4 +1,27 @@
 <div id="login-form" class="container">
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        <li class="item">
+          <a href="{{routes.root_url}}">
+            <p>
+              <i class="fa fa-home"></i>
+            </p>
+          </a>
+        </li>
+        <li class="item">
+          <a href="/account">
+            <p>Account</p>
+          </a>
+        </li>
+        <li class="item">
+          <a href="/account/login">
+            <p>Inloggen</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
   {% if form.errors %}
     <div class="alert alert-danger alert-dismissible">
       <i class="fa fa-exclamation-circle"></i>
@@ -126,9 +149,9 @@
           href="javascript:void(0)"
           onclick="toggleRecoverPasswordForm()"
           class="list-group-item">Wachtwoord vergeten</a>
-        <a href="https://www.rephone.nl/index.php?route=account/account" class="list-group-item">Mijn Account</a>
-        <a href="https://www.rephone.nl/index.php?route=account/address" class="list-group-item">Adresboek</a>
-        <a href="https://www.rephone.nl/index.php?route=account/order" class="list-group-item">Bestelhistorie</a>
+        <a href="/account" class="list-group-item">Mijn Account</a>
+        <a href="/account" class="list-group-item">Adresboek</a>
+        <a href="/account" class="list-group-item">Bestelhistorie</a>
       </div>
     </aside>
   </div>

@@ -8,8 +8,8 @@
           </a>
         </li>
         <li class="item">
-          <a href="https://www.rephone.nl/refurbished-iphone/">
-            <p>iPhone</p>
+          <a href="{{collection.url}}">
+            <p>{{ collection.title }}</p>
           </a>
         </li>
       </ul>
@@ -22,21 +22,21 @@
           <script type="text/javascript">
             $(function() {      
             let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                if (isMobile) {
-                                                                                                                                                                                                                                                                    //Conditional script here
-                                                                                                                                                                                                                                                                    $('.collapse').removeClass('show');
-                                                                                                                                                                                                                                                                    $('.collapse').addClass('hide');
-                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                $('#close').click(function (){
-                                                                                                                                                                                                                                                                    var menu = $('.mobile-menu-bar');
-                                                                                                                                                                                                                                                                    menu.css('left', '-100%').removeClass('menu-open');
-                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                                                                });
-                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                             });
+                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                        if (isMobile) {
+                                                                                                                                                                                                                                                                                            //Conditional script here
+                                                                                                                                                                                                                                                                                            $('.collapse').removeClass('show');
+                                                                                                                                                                                                                                                                                            $('.collapse').addClass('hide');
+                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                        $('#close').click(function (){
+                                                                                                                                                                                                                                                                                            var menu = $('.mobile-menu-bar');
+                                                                                                                                                                                                                                                                                            menu.css('left', '-100%').removeClass('menu-open');
+                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                     });
           </script>
           <style>
             #close {
@@ -77,17 +77,19 @@
                       data-parent="#accordion">
                       <div class="card-body">
                         {%- for filter_value in filter.values -%}
-                          <div class="product-filter-item">
-                            <label class="filter-label" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
-                              <input
-                                type="checkbox"
-                                name="{{ filter_value.param_name }}"
-                                value="{{ filter_value.value }}"
-                                id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
-                                {% if filter_value.active -%}checked{%- endif %}
-                                {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
-                                onclick="applyFilters()">{{ filter_value.label }}</label>
-                          </div>
+                          {% if filter_value.variant_name != "Grades" %}
+                            <div class="product-filter-item">
+                              <label class="filter-label" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                                <input
+                                  type="checkbox"
+                                  name="{{ filter_value.param_name }}"
+                                  value="{{ filter_value.value }}"
+                                  id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                  {% if filter_value.active -%}checked{%- endif %}
+                                  {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                                  onclick="applyFilters()">{{ filter_value.label }}</label>
+                            </div>
+                          {% endif %}
                         {%- endfor -%}
                       </div>
                     </div>

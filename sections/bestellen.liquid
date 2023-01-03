@@ -1,12 +1,28 @@
 <div class="container order-and-pickup contact">
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        <li class="item">
+          <p>
+            <a href="{{routes.root_url}}">Home</a>
+          </p>
+        </li>
+        <li class="item">
+          <p>
+            <a href="">Bestellen &amp; Betalen</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
   <div class="row">
     <section class="main-content col-12 col-lg-9">
       <div class="inner">
         <section class="content-text">
-          <h1 class="mt-2 mt-lg-0">{{section.settings.title}}</h1>
+          <h1 class="mt-2 mt-lg-0">{{ section.settings.title }}</h1>
           <div class="text">
-            <h3>{{section.settings.bottom-title}}</h3>
-            {{section.settings.bottom-title}}
+            <h3>{{ section.settings.bottom-title }}</h3>
+            {{ section.settings.bottom-title }}
           </div>
           <div class="text">
             <h3>Wat zijn de betaalmogelijkheden</h3>
@@ -14,10 +30,10 @@
               {% for block in section.blocks %}
                 {% case block.type %}
                   {% when 'main-text-line' %}
-                    <div class="check-mark">
-                      <i class="fal fa-check-circle"></i>
-                      <p>{{block.settings.main-line}}</p>
-                    </div>
+                  <div class="check-mark">
+                    <i class="fal fa-check-circle"></i>
+                    <p>{{ block.settings.main-line }}</p>
+                  </div>
                 {% endcase %}
               {% endfor %}
             </div>
@@ -32,7 +48,7 @@
           <ul>
             {% for link in linklists[section.settings.menu].links -%}
               <li class="mobile-line-before">
-                <a href="{{link.url}}">{{link.title}}</a>
+                <a href="{{link.url}}">{{ link.title }}</a>
               </li>
             {% endfor %}
           </ul>
@@ -43,10 +59,10 @@
             {% for block in section.blocks %}
               {% case block.type %}
                 {% when 'text-line' %}
-                  <div class="check-mark">
-                    <i class="fal fa-check-circle"></i>
-                    <p>{{block.settings.line}}</p>
-                  </div>
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{ block.settings.line }}</p>
+                </div>
               {% endcase %}
             {% endfor %}
           </div>

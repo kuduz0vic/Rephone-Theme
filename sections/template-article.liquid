@@ -1,4 +1,20 @@
 <div class="container order-and-pickup contact">
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        <li class="item">
+          <p>
+            <a href="{{routes.root_url}}">Home</a>
+          </p>
+        </li>
+        <li class="item">
+          <p>
+            <a href="{{article.url}}">{{ article.title }}</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
   <div class="row">
     <section class="main-content col-12 col-lg-9">
       <div class="inner">
@@ -69,8 +85,8 @@
 <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-            "@type": "BlogPosting",
-            "headline": {{ article.title | json }},
+              "@type": "BlogPosting",
+              "headline": {{ article.title | json }},
   "articleBody": {{ article.content | strip_html | json }},
   {% if article.excerpt != blank %}
     "description": {{ article.excerpt | strip_html | json }},
@@ -83,12 +99,12 @@
   "datePublished": {{ article.published_at | date: format: "default" | json }},
   "dateCreated": {{ article.created_at | date: format: "default" | json }},
   "author": {
-              "@type": "Person",
-              "name": {{ article.author | json }}
+                "@type": "Person",
+                "name": {{ article.author | json }}
   },
   "publisher": {
-              "@type": "Organization",
-              "name": {{ shop.name | json }}
+                "@type": "Organization",
+                "name": {{ shop.name | json }}
   }
   }
 </script>
