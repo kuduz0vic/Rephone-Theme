@@ -24,7 +24,7 @@
             <a href="javascript:void(0)" onclick="toggleEditForm()">Gegevens wijzigen</a>
           </li>
           <li>
-            <a href="{{ password }}">Wachtwoord</a>
+            <a href="javascript:void(0)" onclick="resetPassword()">Wachtwoord</a>
           </li>
           <li>
             <a href="{{ address }}">Adresboek</a>
@@ -66,10 +66,29 @@
   {% render 'edit' %}
 </div>
 
-
+<div
+  id="account-password"
+  class="container"
+  style="display: none;">
+  {% render 'password' %}
+</div>
 
 <script>
   function toggleEditForm() {
+    const loginForm = document.getElementById("account-account");
+    const recoverForm = document.getElementById("account-edit");
+    if (recoverForm.style.display === "none") {
+      recoverForm.style.display = "initial";
+      loginForm.style.display = "none";
+    } else {
+      recoverForm.style.display = "none";
+      loginForm.style.display = "initial";
+    }
+  }
+</script>
+
+<script>
+  function resetPassword() {
     const loginForm = document.getElementById("account-account");
     const recoverForm = document.getElementById("account-edit");
     if (recoverForm.style.display === "none") {
