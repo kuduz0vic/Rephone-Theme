@@ -124,19 +124,6 @@
               <td class="text-right">{{ product.quantity }}</td>
               <td class="text-right">{{ product.price }}</td>
               <td class="text-right">{{ product.total }}</td>
-              {% if not voucher %}
-                <td class="text-center">
-                  {% if product.return %}
-                    <a
-                      href="{{ product.return }}"
-                      data-toggle="tooltip"
-                      title="{{ button_return }}"
-                      class="btn btn-primary">
-                      <i class="fa fa-mail-reply"></i>
-                    </a>
-                  {% endif %}
-                </td>
-              {% endif %}
             </tr>
           {% endfor %}
           {% for voucher in vouchers %}
