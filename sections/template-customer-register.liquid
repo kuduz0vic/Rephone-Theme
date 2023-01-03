@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  {% form 'create_customer', onSubmit: 'return checkPasswords();' %}
+  {% form 'create_customer' %}
   {% if form.errors %}
   {{ form.errors | default_errors }}
   {% endif %}
@@ -165,7 +165,7 @@
     Ik heb de Algemene voorwaarden gelezen en ga hiermee akkoord
    </label>
         <div class="text-right">
-          <input type="submit" name="register" value="Account aanmaken" class="btn-green mt-3 d-inline-block" />
+          <input type="submit" name="register" onclick="checkPasswords()" value="Account aanmaken" class="btn-green mt-3 d-inline-block" />
         </div>
       </div>
     </div>
