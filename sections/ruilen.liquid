@@ -1,0 +1,107 @@
+<div class="container order-and-pickup contact">
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        <li class="item">
+          <p>
+            <a href="{{routes.root_url}}">Home</a>
+          </p>
+        </li>
+        <li class="item">
+          <p>
+            <a href="{{section.settings.repair-link}}">Ruilen &amp; Retouren</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <div class="row">
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <section class="content-text">
+          <h1 class="mt-2 mt-lg-0">Ruilen &amp; Retouren</h1>
+          <div class="contact-method">
+            <h3>Probleem met uw apparaat?</h3>
+            <p>Heeft u probleem met uw apparaat. Meld uw apparaat online aan voor garantie.</p>
+            <a
+              href=""
+              class="btn-green"
+              style="width: 300px;">Aanmelden garantie</a>
+          </div>
+          <br>
+          <br>
+          <h3>Ruilen &amp; Retouren</h3>
+          <h4>Hoe kan ik mijn bestelling ruilen?</h4>
+          <p>Het is mogelijk om uw bestelling te ruilen voor een ander toestel. Het beste kunt u daarvoor contact opnemen met de klantenservice op 085 1301 646, zij kunnen u het beste door het ruilproces heen helpen.</p>
+          <h4>Hoe kan ik mijn bestelling retour sturen?</h4>
+          <p>Retour sturen van een bestelling is gemakkelijk en gratis. Het beste kunt u daarvoor contact opnemen met de klantenservice op 085 1301 646. Zij zullen de retour aanmelden en u een gratis retourlabel sturen.&nbsp;Uiteraard kunt u de producten ook zonder contact met de klantenservice retourneren, dan zijn de kosten wel voor u.</p>
+          <h4>Herroepingsrecht</h4>
+          <p>U heeft het recht om binnen een termijn van 14 dagen zonder opgave van redenen de overeenkomst te herroepen. De herroepingstermijn verstrijkt 14 dagen na de dag waarop u of een door u aangewezen derde, die niet de vervoerder is, het goed fysiek in bezit krijgt. Om het herroepingsrecht uit te oefenen, moet u ons via een ondubbelzinnige verklaring (bijvoorbeeld schriftelijk, per post of e-mail) op de hoogte stellen de overeenkomst te herroepen. U kunt hiervoor gebruikmaken van het
+            <a href="https://www.thuiswinkel.org/data/uploads/reglementen/Modelformulier_voor_herroeping.docx" target="_blank">Europees modelformulier voor herroeping</a>
+            voor herroeping, maar bent hiertoe niet verplicht. Om de herroepingstermijn na te leven volstaat het om uw mededeling betreffende uw uitoefening van het herroepingsrecht te verzenden voordat de herroepingstermijn is verstreken.</p>
+          <h5>Gevolgen van de herroeping</h5>
+          <p>Als u de overeenkomst herroept, ontvangt u alle betalingen die u tot op dat moment heeft gedaan, inclusief leveringskosten (met uitzondering van eventuele extra kosten ten gevolge van uw keuze voor een andere wijze van levering dan de door ons geboden goedkoopste standaard levering) onverwijld en in ieder geval niet later dan 14 dagen nadat wij op de hoogte zijn gesteld van uw beslissing de overeenkomst te herroepen, van ons terug. Indien je slechts een deel van je bestelling retour stuurt dan worden de kosten voor levering niet teruggestort. Wij betalen u terug met hetzelfde betaalmiddel als waarmee u de oorspronkelijke transactie heeft verricht, tenzij u uitdrukkelijk anderszins heeft ingestemd; in ieder geval zullen u voor zulke terugbetaling geen kosten in rekening worden gebracht. Wij mogen wachten met terugbetaling tot wij de goederen hebben teruggekregen, of u heeft aangetoond dat u de goederen heeft teruggezonden, al naar gelang welk tijdstip eerst valt. U bent alleen aansprakelijk voor de waardevermindering van de goederen die het gevolg is van het gebruik van de goederen, dat verder gaat dan nodig is om de aard, de kenmerken en de werking van de goederen vast te stellen. U dient de goederen onverwijld, doch in ieder geval niet later dan 14 dagen na de dag waarop u het besluit de overeenkomst te herroepen aan ons heeft medegedeeld, aan ons terug te zenden of te overhandigen. U bent op tijd als u de goederen terugstuurt voordat de termijn van 14 dagen is verstreken. De directe kosten van het terugzenden van de goederen komen voor onze rekening wanneer u eerst contact met ons opneemt om uw retour aan te melden. Wij sturen u dan een gratis retourlabel. Mocht u zonder voorafgaande melding iets terug willen sturen, dan zijn de directe kosten voor het terugsturen voor uw eigen rekening. Ons retouradres: Simon Stevinweg 26, 3241MD, Middelharnis.</p>
+        </section>
+      </div>
+    </section>
+    <section class="right-sidebar col-12 col-lg-3">
+      <div class="inner">
+        <div class="customer-support-nav mobile-line-before">
+          <h4>Klantenservice</h4>
+          <ul>
+            {% for link in linklists[section.settings.menu].links -%}
+              <li class="mobile-line-before">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="why-buy-here mobile-line-after">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'text-line' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{ block.settings.line }}</p>
+                </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ruilen",
+    "class": "section",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }, {
+        "type": "url",
+        "id": "repair-link",
+        "label": "Repair Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Side Text Line",
+        "type": "text-line",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "line",
+            "label": "Text Line"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

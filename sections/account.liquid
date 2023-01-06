@@ -1,144 +1,48 @@
-<div id="account-account" class="container">
+<h1>Account Information</h1>
 
-  <section class="breadcrumbs">
-    <div class="item-parent col-12 col-lg-6">
-      <ul class="item-parent">
-        {% for breadcrumb in breadcrumbs %}
-          <li class="item">
-            <a href="{{ breadcrumb.href }}">
-              <p>{{ breadcrumb.text }}</p>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+<p>
+  Name: {{ customer.first_name }} {{ customer.last_name }}<br>
+  Email: {{ customer.email }}<br>
+  Phone: {{ customer.phone }}
+</p>
 
+<h2>Shipping Address</h2>
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div id="content" class="{{ class }}">
-        <h2>Persoonlijke gegevens</h2>
-        <ul class="list-unstyled">
-          <li>
-            <a href="javascript:void(0)" onclick="toggleEditForm()">Gegevens wijzigen</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" onclick="resetPassword()">Wachtwoord</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" onclick="changeAddress()">Adresboek</a>
-          </li>
-        </ul>
-        {% if customer.orders.size > 0 %}
-          <h2>{{ text_credit_card }}</h2>
-          <ul class="list-unstyled">
-            {% for order in customer.orders %}
-              {% for transaction in order.transactions %}
-                <li>{{ transaction.source_name }}</li>
-              {% endfor %}
-            {% endfor %}
-          </ul>
-        {% endif %}
-        <h2>Mijn bestellingen</h2>
-        <ul class="list-unstyled">
-          <li>
-            <a href="javascript:void(0)" onclick="orderList()">Bestelhistorie</a>
-          </li>
-        </ul>
-        <h2>Nieuwsbrief</h2>
-        <ul class="list-unstyled">
-          <li>
-            <a href="{{ newsletter }}">Nieuwsbrief</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    {% render 'column_right' %}</div>
-</div>
+{% if customer.default_address %}
+  {{ customer.default_address | default_customer_address }}
+{% else %}
+  <p>No shipping address on file.</p>
+{% endif %}
 
+<h2>Billing Address</h2>
 
+{% if customer.default_address %}
+  {{ customer.default_address | default_customer_address }}
+{% else %}
+  <p>No billing address on file.</p>
+{% endif %}
 
-<div
-  id="account-edit"
-  class="container"
-  style="display: none;">
-  {% render 'edit' %}
-</div>
+<h2>Order History</h2>
 
-<div
-  id="account-password"
-  class="container"
-  style="display: none;">
-  {% render 'password' %}
-</div>
+{% for order in customer.orders %}
+  <p>
+    Date: {{ order.created_at | date: "%B %d, %Y" }}<br>
+    Order Number: {{ order.name }}<br>
+    Total: {{ order.total_price | money }}
+  </p>
+{% endfor %}
 
-<div
-  id="account-address"
-  class="container"
-  style="display: none;">
-  {% render 'address_form' %}
-</div>
+<h2>Wish List</h2>
 
-<div
-  id="account-order"
-  class="container"
-  style="display: none;">
-  {% render 'order_info' %}
-</div>
-
-<script>
-  function toggleEditForm() {
-    const loginForm = document.getElementById("account-account");
-    const recoverForm = document.getElementById("account-edit");
-    if (recoverForm.style.display === "none") {
-      recoverForm.style.display = "initial";
-      loginForm.style.display = "none";
-    } else {
-      recoverForm.style.display = "none";
-      loginForm.style.display = "initial";
-    }
-  }
-</script>
-
-<script>
-  function resetPassword() {
-    const loginForm = document.getElementById("account-account");
-    const recoverForm = document.getElementById("account-password");
-    if (recoverForm.style.display === "none") {
-      recoverForm.style.display = "block";
-      loginForm.style.display = "none";
-    } else {
-      recoverForm.style.display = "none";
-      loginForm.style.display = "block";
-    }
-  }
-</script>
-
-<script>
-  function changeAddress() {
-    const loginForm = document.getElementById("account-account");
-    const recoverForm = document.getElementById("account-address");
-    if (recoverForm.style.display === "none") {
-      recoverForm.style.display = "block";
-      loginForm.style.display = "none";
-    } else {
-      recoverForm.style.display = "none";
-      loginForm.style.display = "block";
-    }
-  }
-</script>
-
-<script>
-  function orderList() {
-    const loginForm = document.getElementById("account-account");
-    const recoverForm = document.getElementById("account-order");
-    if (recoverForm.style.display === "none") {
-      recoverForm.style.display = "block";
-      loginForm.style.display = "none";
-    } else {
-      recoverForm.style.display = "none";
-      loginForm.style.display = "block";
-    }
-  }
-</script>
+{% if customer.wishlists.size > 0 %}
+  {% for wishlist in customer.wishlists %}
+    <h3>{{ wishlist.name }}</h3>
+    <ul>
+      {% for item in wishlist.line_items %}
+        <li>{{ item.product.title }}</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% else %}
+  <p>No items in wish list.</p>
+{% endif %}

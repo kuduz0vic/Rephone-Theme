@@ -1,0 +1,8 @@
+{
+    "sections": {
+      "template": {
+        "type": "garantie-small"
+      }
+    },
+    "order": ["template"]
+  }

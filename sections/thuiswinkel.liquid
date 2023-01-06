@@ -1,0 +1,96 @@
+<div class="container order-and-pickup contact">
+  <section class="breadcrumbs">
+    <div class="item-parent col-12 col-lg-6">
+      <ul class="item-parent">
+        <li class="item">
+          <p>
+            <a href="{{routes.root_url}}">Home</a>
+          </p>
+        </li>
+        <li class="item">
+          <p>
+            <a href="">Thuiswinkel waarborg</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <div class="row">
+    <section class="main-content col-12 col-lg-9">
+      <div class="inner">
+        <section class="content-text">
+          <h1 class="mt-2 mt-lg-0">Thuiswinkel waarborg</h1>
+          <p>
+            <span style="font-size: 14px;">Rephone heeft het Thuiswinkel.org kwaliteitskeurmerk. Daardoor weet je dus dat je vertrouwd en veilig een aankoop bij ons kunt doen.&nbsp;Thuiswinkel Waarborg is het kwaliteitskeurmerk voor online winkelen. Inmiddels zijn meer dan 2.200 webwinkels aangesloten. Het keurmerk wordt door de Consumentenbond ondersteund. Je kunt erop rekenen dat webshops met het Thuiswinkel Waarborg veilige shops zijn die eerlijk handelen. Ze voldoen aan strenge eisen op het gebied van wet- en regelgeving, veiligheid en financiële stabiliteit.</span>
+          </p>
+          <p>
+            <span style="font-size: 14px;">
+              <b>Beveiliging van persoonsgegevens<br></b>
+            </span>
+            <span style="font-size: 14px;">Veiligheid is een belangrijk thema voor webwinkels en hun klanten, zeker als het om persoonsgegevens gaat. Thuiswinkel.org neemt haar verantwoordelijkheid door webwinkels regelmatig te informeren over de laatste ontwikkelingen op het gebied van veiligheid. Daarnaast worden leden getoetst op veiligheid van persoonsgegevens en gescreend op veel voorkomende kwetsbaarheden. De veiligheid van webwinkels is echter altijd een momentopname. Veiligheid en beveiliging van webwinkels is daarom op de eerste plaats de verantwoordelijkheid van webwinkels zelf. Het Thuiswinkel Waarborg biedt geen garantie voor 100% veilige webwinkels, maar we helpen leden wel om hun webwinkels veilig te maken.</span>
+          </p>
+          <p>
+            <a href="https://www.thuiswinkel.org/leden/rephone/certificaat" target="_blank">
+              <span style="font-size: 14px;">https://www.thuiswinkel.org/leden/rephone/certificaat</span>
+            </a>
+            <span style="font-size: 14px;">&nbsp;</span><br><br></p>
+        </section>
+      </div>
+    </section>
+    <section class="right-sidebar col-12 col-lg-3">
+      <div class="inner">
+        <div class="customer-support-nav mobile-line-before">
+          <h4>Klantenservice</h4>
+          <ul>
+            {% for link in linklists[section.settings.menu].links -%}
+              <li class="mobile-line-before">
+                <a href="{{link.url}}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="why-buy-here mobile-line-after">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'text-line' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>{{ block.settings.line }}</p>
+                </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Thuiswinkel",
+    "class": "section",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Side Text Line",
+        "type": "text-line",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "line",
+            "label": "Text Line"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
