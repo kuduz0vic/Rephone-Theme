@@ -110,6 +110,23 @@
           ],
           "benefit-line": ""
         }
+      },
+      "global-settings": {
+        "type": "global-settings",
+        "blocks": {
+          "b95b45e8-7ce6-4791-81df-fbb0db7301a9": {
+            "type": "swatch",
+            "settings": {
+              "name": "Red",
+              "code": "#e22120"
+            }
+          }
+        },
+        "block_order": [
+          "b95b45e8-7ce6-4791-81df-fbb0db7301a9"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
