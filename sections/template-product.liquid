@@ -371,46 +371,127 @@
               </div>
             </div>
           </div>
-          <div class="options mobile-line-after mobile-line-before">
-            <div class="row">
-              <div class="col-12 col-lg-8 color-options">
-                <h4>Kleur</h4>
-                <div class="row">
-                  {% for block in section.blocks %}
-                    {% case block.type %}
-                      {% when 'color_selector' %}
-                      <a href="{{block.settings.variant-link}}" class="color col-2 col-lg-2">
-                        <div class="img" style="background:{{block.settings.variant-color}};margin: 0px auto;"></div>
-                        <p>{{ block.settings.variant-text }}</p>
-                      </a>
-                    {% endcase %}
-                  {% endfor %}
-                </div>
-              </div>
-              <div style="clear: both; width: 100%;"></div>
-              <div class="col-12 col-lg-8 storage-options">
-                <h4>Opslag</h4>
-                <div class="row">
-                  {% for block in section.blocks %}
-                    {% case block.type %}
-                      {% when 'storage_selector' %}
-                      <a href="{{block.settings.storage-link}}" class="storage col-2 col-lg-2">
-                        <div class="img" style="margin: 0px auto;">
-                          <p>{{ block.settings.storage-text }}</p>
-                        </div>
-                      </a>
-                    {% endcase %}
-                  {% endfor %}
-                </div>
-              </div>
-              <div style="clear: both; width: 100%; height: 20px;"></div>
+
+
+
+
+
+
+
+          <div id="w-node-d245611c-7933-5a60-ab8e-f280be7e29bf-ed85433a" class="product-atc-area">
+            <div class="product-form w-form">
+              <form
+                @submit.prevent="submit"
+                id="wf-form-Product-Form"
+                name="wf-form-Product-Form"
+                method="get"
+                class="form-wrapper"
+              >
+                  {% if product.available == true %}
+                    {% if product.variants.size > 1 %}
+                      <div class="choice-container" x-data="{ showSizePopup: false }">
+                        <template x-for="option of Object.keys(productOptions)">
+                          <div class="choice-box">
+                            <div class="choice-information">
+                              <div class="alert-box">
+                                <div class="text-s text-bold _0-05-spacing" x-text="option"></div>
+                                <a
+                                  style="cursor:pointer"
+                                  x-show="option.toLowerCase() === 'size'"
+                                  @click="showSizePopup = true"
+                                  class="text-s text-bold opacity-56 underlined w-inline-block"
+                                >
+                                  {{- section.settings.size_label -}}
+                                </a>
+                              </div>
+                              <div
+                                class="text-s text-medium opacity-56"
+                                x-text="currentOptions[option] || 'Maak een keuze'"
+                              ></div>
+                            </div>
+                            <div class="size-container">
+                              <template x-for="value of productOptions[option]">
+                                <label
+                                  style="position:relative"
+                                  id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
+                                  class="variant-size-radio w-radio"
+                                  :class="`swatch-${value.toLowerCase()}`"
+                                >
+                                  <img
+                                    src="{{ 'istockphoto-1189244140-170667a-1-Traced.svg' | asset_url }}"
+                                    style="position:absolute; z-index:99"
+                                    x-transition
+                                    x-show="currentOptions[option] === value && option === 'COLOR'"
+                                  >
+                                  <div
+                                    class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button"
+                                    :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'"
+                                  ></div>
+                                  <input
+                                    @change="currentOptions[option] = value"
+                                    type="radio"
+                                    id="radio"
+                                    :name="option"
+                                    :value="value"
+                                    style="opacity:0;position:absolute;z-index:-1"
+    
+                                  ><span
+                                    :style="currentOptions[option] === value ? 'color:#fbf3eb': 'color:#514135'"
+                                    class="size-radio-button-label w-form-label"
+                                    for="radio"
+                                    x-text="value"
+                                  ></span>
+                                </label>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
+    
+
+                        {% if product.metafields.custom.requires_tag_name.value == true %}
+                          <div class="choice-box hide">
+                            <div class="choice-information">
+                              <div class="alert-box">
+                                <div class="text-s text-bold _0-05-spacing">Label naam</div>
+                              </div>
+                              <div
+                                x-text="labelName || ' '"
+                                class="text-s text-medium opacity-56"
+                              ></div>
+                            </div>
+                            <div class="name-field-wrapper">
+                              <input
+                                x-model="labelName"
+                                type="text"
+                                class="product-field-input w-input"
+                                maxlength="256"
+                                name="properties[Tag name]"
+                                placeholder="The name of your dog..."
+                                id="Product-input"
+                                required=""
+                              >
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                    {% endif %}
+              </form>
             </div>
           </div>
+
+
+
+
+
+
+
+
 
           {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %}
 
 
-          <div class="condition mt-5 mt-lg-0">
+          <div class="condition mt-5 mt-lg-0" style="display: none;">
             <div class="cart">
               <div class="title">
                 <div class="row">
@@ -1195,6 +1276,153 @@ $('.addtocart').on('click', function() {
       swiper: swiper
     }
   });
+</script>
+
+
+
+
+<script>
+  
+  
+  
+  
+  
+  
+  
+  let upsellProduct = null;
+  {% if product.metafields.custom.product_upsell != blank %}
+    	upsellProduct = {{ product.metafields.custom.product_upsell.value | json }};
+  {% endif %}
+
+  function app() {
+    return {
+      labelName: '',
+      product: {{ product | json }},
+      upsold: false,
+      currentOptions: {},
+
+      init() {
+        const swiper = new Swiper('#Product-Images-Slider', {
+          /*direction: 'horizontal',
+          navigation: {
+            nextEl: '#swiper-next',
+            prevEl: '#swiper-prev',
+          },
+
+          pagination: {
+            el: '.swiper-pagination',
+          },*/
+
+          spaceBetween: 16,
+          slidesPerView: 1,
+          freeMode: false,
+          loop: true,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          // Enable lazy loading
+          lazy: true,
+          // If we need pagination
+          pagination: {
+            el: '.swiper-pagination-pdp',
+          },
+          navigation: {
+            nextEl: '#product-right-arrow',
+            prevEl: '#product-left-arrow',
+          },
+          keyboard: {
+            enabled: true,
+          },
+        });
+
+        this.$watch('variant', () => {
+          const variant = this.variant;
+          if (!variant || !variant.featured_image) return;
+          const imgId = variant.featured_image.id.toString();
+          for (let i = 0; i < swiper.slides.length; i++) {
+            const slide = swiper.slides[i];
+            const slideImgId = slide.getAttribute("img-id");
+            if (slideImgId === imgId) {
+              swiper.slideTo(i);
+              break;
+            }
+          }
+        });
+
+        this.selectFirstAvailableVariant();
+      },
+
+      priceToCurr(price) {
+        const n = parseInt(price);
+        return `€${(n / 100).toFixed(2).replace('.', ',')}`;
+      },
+
+      selectFirstAvailableVariant() {
+        let firstVariant;
+        for (const variant of this.product.variants) {
+          if (variant.available) {
+            firstVariant = variant;
+            break;
+          }
+        }
+
+        if (firstVariant) {
+          const keys = Object.keys(this.productOptions);
+          for (let i = 0; i < keys.length; i++) {
+            this.currentOptions[keys[i]] = firstVariant[`option${i + 1}`];
+          }
+        }
+      },
+
+      submit() {
+        const items = [{ id: this.variant.id, quantity: 1 }];
+
+        if (this.upsold && upsellProduct) {
+          items.push({ id: upsellProduct.variants[0].id, quantity: 1 });
+        }
+
+        liquidAjaxCart.cartRequestAdd({ items });
+
+        const openClass = 'js-my-cart-open';
+        const classList = document.body.classList;
+        if (!classList.contains(openClass)) classList.add(openClass);
+
+        this.labelName = '';
+      },
+
+      get variant() {
+        for (const variant of this.product.variants) {
+          if (
+            JSON.stringify(Object.values(this.currentOptions).sort()) ===
+            JSON.stringify(variant.options.sort())
+          ) {
+            return variant;
+          }
+        }
+
+            console.log(null);
+        return null;
+      },
+
+      get productOptions() {
+        return this.product.variants.reduce((prev, curr) => {
+          for (let i = 0; i < curr.options.length; i++) {
+            if (!prev[this.product.options[i]]) prev[this.product.options[i]] = [];
+            prev[this.product.options[i]].push(curr[`option${i + 1}`]);
+            prev[this.product.options[i]] = [...new Set(prev[this.product.options[i]])];
+          }
+
+          return prev;
+        }, {});
+      },
+    };
+  }
+
+
+
+
+
+
+
 </script>
 
 {% schema %}
