@@ -1,3 +1,6 @@
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
 {% assign selected_variant = product.selected_or_first_available_variant %}
 <style>
   .variant-a {
@@ -83,27 +86,41 @@
     itemtype="http://schema.org/Product">
     <section class="left-sidebar col-12 col-lg-4">
       <div class="inner">
-        <div class="product d-none d-lg-block">
-          <img
-            itemprop="image"
-            src="{{ product.featured_image | img_url: 'master' }}"
-            class="headthumb"
-            title="{{ product.title }}"
-            alt="{{ product.title }}"
-            style="width: 288px ;" />
-        </div>
+                <div class="product d-none d-lg-block">
+                  <div id="mySwiper2" class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
+                      {% for media in product.media %}
+                  <div class="swiper-slide">
+                  <img
+                    itemprop="image"
+                    src="{{ media | image_url }}"
+                    class="headthumb"
+                    title="{{ product.title }}"
+                    alt="{{ product.title }}"
+                    style="width: 288px ;" />
+                </div>
+              {% endfor %}
+              </div>
+              </div>
+              </div>
         <div class="product-images d-none d-lg-block">
           <div class="item-parent">
-            {% for media in product.media %}
-              <div class="item">
-                <img
-                  src="{{ media | image_url }}"
-                  class="thumb"
-                  title="{{ product.title }}"
-                  alt="{{ product.title }}"
-                  style="height: 50px;" />
-              </div>
-            {% endfor %}
+                    <div class="item">
+                      <div id="mySwiper3" thumbsSlider="" class="swiper mySwiper3">
+                        <div class="swiper-wrapper">
+                          {% for media in product.media %}
+                      <div class="swiper-slide">
+                      <img
+                        src="{{ media | image_url }}"
+                        class="thumb"
+                        title="{{ product.title }}"
+                        alt="{{ product.title }}"
+                        style="height: 50px;" />
+                    </div>
+                  {% endfor %}
+                  </div>
+                  </div>
+                  </div>
           </div>
         </div>
         <div class="unboxing" style="display: none;">
@@ -912,149 +929,160 @@
   name="product_id"
   value="{{ product_id }}" />
 
-<script type="text/javascript">
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-  $('.thumb').click(function () {
-                                                                                                                                                                  var src = $(this).attr('src');
-                                                                                                                                                                  $('.headthumb').attr('src', src);
-                                                                                                                                                                });
-                                                                                                                                                                
-                                                                                                                                                                $('.btn-cart.stockemail').on('click', function () {
-                                                                                                                                                                  var _preppedArray;
-                                                                                                                                                                
-                                                                                                                                                                  var option_value_id = $(this).attr('data-option-value-id');
-                                                                                                                                                                  
-                                                                                                                                                                  
-                                                                                                                                                                  var product_option = $(this).attr('data-product-option');
-                                                                                                                                                                  var product_option_value_id = $(this).attr('data-product-option-value-id');
-                                                                                                                                                                  var product_option_value_name = $(this).attr('data-product-option-value-name');
-                                                                                                                                                                  var product_option_value_price = $(this).attr('data-product-option-value-price');
-                                                                                                                                                                  var product_id = $(this).attr('data-product-id');
-                                                                                                                                                                  
-                                                                                                                                                                  $('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
-                                                                                                                                                                  $('.stockemailinfo[name="product_id"]').val(product_id);
-                                                                                                                                                                  
-                                                                                                                                                                  
-                                                                                                                                                                  $('.addtocartlink').attr('data-product-option',product_option);
-                                                                                                                                                                  $('.addtocartlink').attr('data-product-option-value-id',product_option_value_id);
-                                                                                                                                                                  $('.addtocartlink').attr('data-product-option-value-name',product_option_value_name);
-                                                                                                                                                                  $('.addtocartlink').attr('data-product-option-value-price',product_option_value_price);
-                                                                                                                                                                  $('.addtocartlink').attr('data-product-id',product_id);
-                                                                                                                                                                  
-                                                                                                                                                                  
-                                                                                                                                                                  
-                                                                                                                                                                  
-                                                                                                                                                                
-                                                                                                                                                                });
-                                                                                                                                                                
-                                                                                                                                                                $('.addtocartlink').click(function(){
-                                                                                                                                                                    $('#stockemail').modal('hide');
-                                                                                                                                                                    
-                                                                                                                                                                })
-                                                                                                                                                                
-                                                                                                                                                                $('#stockalertsubmit').click(function(){
-                                                                                                                                                                    console.log('test');
-                                                                                                                                                                    var form = $('#stockalert');
-                                                                                                                                                                    var url = 'index.php?route=product/product/stockalert';
-                                                                                                                                                                
-                                                                                                                                                                    $.ajax({
-                                                                                                                                                                       type: "POST",
-                                                                                                                                                                       url: url,
-                                                                                                                                                                       data: form.serialize(), // serializes the form's elements.
-                                                                                                                                                                       success: function(data)
-                                                                                                                                                                       {
-                                                                                                                                                                           console.log(data); // show response from the php script.
-                                                                                                                                                                           $('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
-                                                                                                                                                                       }
-                                                                                                                                                                     }); 
-                                                                                                                                                                     
-                                                                                                                                                                     return false;
-                                                                                                                                                                    
-                                                                                                                                                                })
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                $('.addtocart').on('click', function () {
-                                                                                                                                                                  var _preppedArray;
-                                                                                                                                                                
-                                                                                                                                                                  var product_option = $(this).attr('data-product-option');
-                                                                                                                                                                  var product_option_value_id = $(this).attr('data-product-option-value-id');
-                                                                                                                                                                  var product_option_value_name = $(this).attr('data-product-option-value-name');
-                                                                                                                                                                  var product_option_value_price = $(this).attr('data-product-option-value-price');
-                                                                                                                                                                  var product_id = $(this).attr('data-product-id');
-                                                                                                                                                                  console.log("AAAAA" + product_option_value_name);
-                                                                                                                                                                  var preppedArray = (_preppedArray = {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
-                                                                                                                                                                  var gradeArray = {
-                                                                                                                                                                    'Als nieuw': 'A Grade',
-                                                                                                                                                                    'Lichte gebruikssporen': 'B Grade',
-                                                                                                                                                                    'Zichtbare gebruikssporen': 'C Grade'
-                                                                                                                                                                  };
-                                                                                                                                                                  console.log(preppedArray);
-                                                                                                                                                                  $.ajax({
-                                                                                                                                                                    url: 'index.php?route=checkout/cart/add',
-                                                                                                                                                                    type: 'post',
-                                                                                                                                                                    // data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-                                                                                                                                                                    data: preppedArray,
-                                                                                                                                                                    dataType: 'json',
-                                                                                                                                                                    beforeSend: function beforeSend() {
-                                                                                                                                                                      $('#button-cart').button('loading');
-                                                                                                                                                                    },
-                                                                                                                                                                    complete: function complete() {
-                                                                                                                                                                      $('#button-cart').button('reset');
-                                                                                                                                                                    },
-                                                                                                                                                                    success: function success(json) {
-                                                                                                                                                                      // show modal
-                                                                                                                                                                      console.log('SUCCESS!');
-                                                                                                                                                                      $('#addToCartModal #submitted_condition').text(product_option_value_name);
-                                                                                                                                                                      $('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
-                                                                                                                                                                      $('#addToCartModal #submitted_price').text(product_option_value_price);
-                                                                                                                                                                      $('#addToCartModal').modal('show');
-                                                                                                                                                                      $('.alert-dismissible, .text-danger').remove();
-                                                                                                                                                                      $('.form-group').removeClass('has-error');
-                                                                                                                                                                
-                                                                                                                                                                      if (json['error']) {
-                                                                                                                                                                        if (json['error']['option']) {
-                                                                                                                                                                          for (i in json['error']['option']) {
-                                                                                                                                                                            var element = $('#input-option' + i.replace('_', '-'));
-                                                                                                                                                                
-                                                                                                                                                                            if (element.parent().hasClass('input-group')) {
-                                                                                                                                                                              element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-  } else {
-                                                                                                                                                                              element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-  }
-                                                                                                                                                                          }
-                                                                                                                                                                        }
-                                                                                                                                                                
-                                                                                                                                                                        if (json['error']['recurring']) {
-                                                                                                                                                                          $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-  } // Highlight any found errors
-                                                                                                                                                                
-                                                                                                                                                                
-                                                                                                                                                                        $('.text-danger').parent().addClass('has-error');
-                                                                                                                                                                      }
-                                                                                                                                                                
-                                                                                                                                                                      if (json['success']) {
-                                                                                                                                                                        $('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button
-      type="button"
-      class="close"
-      data-dismiss="alert">&times;</button>
-  </div>');
-  $('#cart > button').html('<span id="cart-total">
-    <i class="fa fa-shopping-cart"></i>
-    ' + json['total'] + '</span>');
-  $('html, body').animate({
-                                                                                                                                                                          scrollTop: 0
-                                                                                                                                                                        }, 'slow');
-                                                                                                                                                                        $('#cart > ul').load('index.php?route=common/cart/info ul li');
-                                                                                                                                                                      }
-                                                                                                                                                                    },
-                                                                                                                                                                    error: function error(xhr, ajaxOptions, thrownError) {
-                                                                                                                                                                      alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                                                                                                                                                                    }
-                                                                                                                                                                  });
-                                                                                                                                                                  return false;
-                                                                                                                                                                });</script>
+  <script type = "text/javascript">
+	function _defineProperty(obj, key, value) {
+		if (key in obj) {
+			Object.defineProperty(obj, key, {
+				value: value,
+				enumerable: true,
+				configurable: true,
+				writable: true
+			});
+		} else {
+			obj[key] = value;
+		}
+		return obj;
+	}
+$('.thumb1').click(function() {
+	var src = $(this).attr('src');
+	$('.headthumb').attr('src', src);
+});
+
+$('.btn-cart.stockemail').on('click', function() {
+	var _preppedArray;
+
+	var option_value_id = $(this).attr('data-option-value-id');
+
+
+	var product_option = $(this).attr('data-product-option');
+	var product_option_value_id = $(this).attr('data-product-option-value-id');
+	var product_option_value_name = $(this).attr('data-product-option-value-name');
+	var product_option_value_price = $(this).attr('data-product-option-value-price');
+	var product_id = $(this).attr('data-product-id');
+
+	$('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
+	$('.stockemailinfo[name="product_id"]').val(product_id);
+
+
+	$('.addtocartlink').attr('data-product-option', product_option);
+	$('.addtocartlink').attr('data-product-option-value-id', product_option_value_id);
+	$('.addtocartlink').attr('data-product-option-value-name', product_option_value_name);
+	$('.addtocartlink').attr('data-product-option-value-price', product_option_value_price);
+	$('.addtocartlink').attr('data-product-id', product_id);
+
+
+
+
+
+});
+
+$('.addtocartlink').click(function() {
+	$('#stockemail').modal('hide');
+
+})
+
+$('#stockalertsubmit').click(function() {
+	console.log('test');
+	var form = $('#stockalert');
+	var url = 'index.php?route=product/product/stockalert';
+
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: form.serialize(), // serializes the form's elements.
+		success: function(data) {
+			console.log(data); // show response from the php script.
+			$('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
+		}
+	});
+
+	return false;
+
+})
+
+
+
+
+$('.addtocart').on('click', function() {
+			var _preppedArray;
+
+			var product_option = $(this).attr('data-product-option');
+			var product_option_value_id = $(this).attr('data-product-option-value-id');
+			var product_option_value_name = $(this).attr('data-product-option-value-name');
+			var product_option_value_price = $(this).attr('data-product-option-value-price');
+			var product_id = $(this).attr('data-product-id');
+			console.log("AAAAA" + product_option_value_name);
+			var preppedArray = (_preppedArray = {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
+			var gradeArray = {
+				'Als nieuw': 'A Grade',
+				'Lichte gebruikssporen': 'B Grade',
+				'Zichtbare gebruikssporen': 'C Grade'
+			};
+			console.log(preppedArray);
+			$.ajax({
+				url: 'index.php?route=checkout/cart/add',
+				type: 'post',
+				// data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+				data: preppedArray,
+				dataType: 'json',
+				beforeSend: function beforeSend() {
+					$('#button-cart').button('loading');
+				},
+				complete: function complete() {
+					$('#button-cart').button('reset');
+				},
+				success: function success(json) {
+					// show modal
+					console.log('SUCCESS!');
+					$('#addToCartModal #submitted_condition').text(product_option_value_name);
+					$('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
+					$('#addToCartModal #submitted_price').text(product_option_value_price);
+					$('#addToCartModal').modal('show');
+					$('.alert-dismissible, .text-danger').remove();
+					$('.form-group').removeClass('has-error');
+
+					if (json['error']) {
+						if (json['error']['option']) {
+							for (i in json['error']['option']) {
+								var element = $('#input-option' + i.replace('_', '-'));
+
+								if (element.parent().hasClass('input-group')) {
+									element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+								} else {
+									element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+								}
+							}
+						}
+
+						if (json['error']['recurring']) {
+							$('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+						} // Highlight any found errors
+
+
+						$('.text-danger').parent().addClass('has-error');
+					}
+
+					if (json['success']) {
+						$('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button
+								type = "button"
+								class = "close"
+								data - dismiss = "alert" > & times; < /button> <
+								/div>');
+								$('#cart > button').html('<span id="cart-total"> <
+									i class = "fa fa-shopping-cart" > < /i>
+									' + json['
+									total '] + ' < /span>');
+									$('html, body').animate({
+										scrollTop: 0
+									}, 'slow'); $('#cart > ul').load('index.php?route=common/cart/info ul li');
+								}
+							},
+							error: function error(xhr, ajaxOptions, thrownError) {
+								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							}
+					});
+				return false;
+			}); </script>
 
 
 
@@ -1149,6 +1177,23 @@
     $(".info-title").click(function() {
       $(this).closest('.info-tab').toggleClass('no-border');
     });
+  });
+</script>
+
+
+<script>
+  var swiper = new Swiper("#mySwiper3", {
+    loop: true,
+    spaceBetween: 10,
+    freeMode: true,
+    watchSlidesProgress: true
+  });
+  var swiper2 = new Swiper("#mySwiper2", {
+    loop: true,
+    spaceBetween: 10,
+    thumbs: {
+      swiper: swiper
+    }
   });
 </script>
 

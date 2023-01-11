@@ -86,6 +86,30 @@
           "blog-pick": "iphone",
           "blog-link": "shopify:\/\/blogs\/iphone"
         }
+      },
+      "sidecart": {
+        "type": "sidecart",
+        "settings": {
+          "title": "Je Winkelwagen",
+          "rewards_title": "Rewards",
+          "shipping_text": "Verzending",
+          "freeshipping_threshold": 4000,
+          "freegift_threshold": 6000,
+          "gift_product": "",
+          "shipping": 499,
+          "free_from1": "(Gratis vanaf",
+          "free_from2": ")",
+          "maak_af": "Eenmalige Deal!",
+          "total": "Totaal",
+          "checkout_btn": "Veilig Afrekenen",
+          "payments": "klarna,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay",
+          "swiper-products": [
+            "airpods-1",
+            "lightning-naar-usb-kabel-1m",
+            "usb-lichtnetadapter-20w-2"
+          ],
+          "benefit-line": ""
+        }
       }
     },
     "content_for_index": [

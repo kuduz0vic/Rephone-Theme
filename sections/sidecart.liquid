@@ -1,92 +1,107 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+
 {% schema %}
 {
-  "name": "Sidecart",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "placeholder": "Je Winkelwagen",
-      "default": "Je Winkelwagen",
-      "label": "Winkelwagen titel"
-    },
-    {
-      "type": "text",
-      "id": "rewards_title",
-      "placeholder": "Rewards",
-      "default": "Rewards",
-      "label": "Rewards titel"
-    },
-    {
-      "type": "textarea",
-      "id": "shipping_text",
-      "placeholder": "Verzending",
-      "default": "Verzending",
-      "label": "Verzending titel"
-    },
-    {
-      "type": "number",
-      "id": "freeshipping_threshold",
-      "default": 4000,
-      "label": "Free shipping threshold"
-    },
-    {
-      "type": "number",
-      "id": "freegift_threshold",
-      "default": 6000,
-      "label": "Free gift threshold"
-    },
-    {
-      "type": "product",
-      "id": "gift_product",
-      "label": "Gift product"
-    },
-    {
-      "type": "number",
-      "id": "shipping",
-      "default": 499,
-      "label": "Shipping price"
-    },
-    {
-      "type": "text",
-      "id": "free_from1",
-      "placeholder": "(Gratis vanaf",
-      "default": "(Gratis vanaf",
-      "label": "Free From 1"
-    },
-    {
-      "type": "text",
-      "id": "free_from2",
-      "placeholder": ")",
-      "default": ")",
-      "label": "Free From 2"
-    },
-    {
-      "type": "textarea",
-      "id": "maak_af",
-      "default": "Eenmalige Deal!",
-      "label": "Upsell Titel"
-    },
-    {
-      "type": "textarea",
-      "id": "total",
-      "placeholder": "Totaal",
-      "default": "Totaal",
-      "label": "Totaal Text"
-    },
-    {
-      "type": "textarea",
-      "id": "checkout_btn",
-      "placeholder": "Veilig Afrekenen",
-      "default": "Veilig Afrekenen",
-      "label": "ATC Button text"
-    },
-    {
-      "id": "payments",
-      "label": "Payment Icons",
-      "type": "textarea",
-      "default": "klarna,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay"
-    }
-  ]
+"name": "Sidecart",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"placeholder": "Je Winkelwagen",
+"default": "Je Winkelwagen",
+"label": "Winkelwagen titel"
+},
+{
+"type": "text",
+"id": "rewards_title",
+"placeholder": "Rewards",
+"default": "Rewards",
+"label": "Rewards titel"
+},
+{
+"type": "textarea",
+"id": "shipping_text",
+"placeholder": "Verzending",
+"default": "Verzending",
+"label": "Verzending titel"
+},
+{
+"type": "number",
+"id": "freeshipping_threshold",
+"default": 4000,
+"label": "Free shipping threshold"
+},
+{
+"type": "number",
+"id": "freegift_threshold",
+"default": 6000,
+"label": "Free gift threshold"
+},
+{
+"type": "product",
+"id": "gift_product",
+"label": "Gift product"
+},
+{
+"type": "number",
+"id": "shipping",
+"default": 499,
+"label": "Shipping price"
+},
+{
+"type": "text",
+"id": "free_from1",
+"placeholder": "(Gratis vanaf",
+"default": "(Gratis vanaf",
+"label": "Free From 1"
+},
+{
+"type": "text",
+"id": "free_from2",
+"placeholder": ")",
+"default": ")",
+"label": "Free From 2"
+},
+{
+"type": "textarea",
+"id": "maak_af",
+"default": "Eenmalige Deal!",
+"label": "Upsell Titel"
+},
+{
+"type": "textarea",
+"id": "total",
+"placeholder": "Totaal",
+"default": "Totaal",
+"label": "Totaal Text"
+},
+{
+"type": "textarea",
+"id": "checkout_btn",
+"placeholder": "Veilig Afrekenen",
+"default": "Veilig Afrekenen",
+"label": "ATC Button text"
+},
+{
+"id": "payments",
+"label": "Payment Icons",
+"type": "textarea",
+"default": "klarna,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay"
+},
+{
+  "id": "swiper-products",
+  "type": "product_list",
+  "label": "Swiper Products"
+},
+{
+"type": "liquid",
+"id": "benefit-line",
+"label": "Benefit Line"
+}
+]
 }
 {% endschema %}
 
@@ -96,6 +111,9 @@
   }
 </style>
 
+
+
+
 <script>
   setTimeout(() => {
     [...document.querySelectorAll('[jd-cloak]')].forEach((el) => el.removeAttribute('jd-cloak'));
@@ -103,70 +121,60 @@
 </script>
 
 <form action="{{ routes.cart_url }}" method="post">
-<div jd-cloak>
-  <div class="sidebar-container">
-    {% assign freeShippingPrice = section.settings.freeshipping_threshold | plus: 0 %}
-    {% assign cartPriceCents = cart.total_price | plus: 0 %}
-    {% assign width = cartPriceCents | times: 100 | divided_by: freeShippingPrice %}
+  <div jd-cloak>
+    <div class="sidebar-container" data-ajax-cart-section>
+      {% assign freeShippingPrice = section.settings.freeshipping_threshold | plus: 0 %}
+      {% assign cartPriceCents = cart.total_price | plus: 0 %}
+      {% assign width = cartPriceCents | times: 100 | divided_by: freeShippingPrice %}
 
-    <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
-    <div class="slidecart">
-      <div class="slidecart-body">
-        <div class="slidecart-header" data-ajax-cart-section>
-          <h1 class="cart-heading">
-            Je Winkelwagen <span class="text-span">(</span
-            ><span class="text-span" data-ajax-cart-bind-state="cart.item_count">{{ cart.item_count }} </span
-            ><span class="text-span"> Items)</span>
-          </h1>
-          <div class="slidecart-close" data-ajax-cart-toggle-class-button="js-my-cart-open | remove">
-            <img src="{{'close-icon.svg' | asset_url}}" loading="lazy" alt="" class="image">
+      <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
+      <div class="slidecart">
+        <div class="slidecart-body">
+          <div class="slidecart-header">
+            <h1 class="cart-heading">
+              Je Winkelwagen <span class="text-span">(</span><span class="text-span"
+                data-ajax-cart-bind-state="cart.item_count">{{ cart.item_count }} </span><span class="text-span">
+                Items)</span>
+            </h1>
+            <div class="slidecart-close" data-ajax-cart-toggle-class-button="js-my-cart-open | remove">
+              <img src="{{'close-icon.svg' | asset_url}}" loading="lazy" alt="" class="image">
+            </div>
           </div>
-        </div>
-        <div class="slidecart-rewards" data-ajax-cart-section>
-          {% if freeShippingPrice <= cartPriceCents %}
-            <p class="rewards-message">Gefeliciteerd! Je hebt Gratis verzending!</p>
-          {% else %}
-            <p class="rewards-message">
-              Voeg nog {{ freeShippingPrice | minus: cartPriceCents | money }} en ontvang gratis verzending
-            </p>
-          {% endif %}
-          <div class="slidecart-progress">
-            <div class="slidecart-progress-active" style="width:{{width}}%; max-width: 100%;"></div>
+          <div class="slidecart-rewards">
+            {% if freeShippingPrice <= cartPriceCents %} <p class="rewards-message">Gefeliciteerd! Je hebt Gratis
+              verzending!</p>
+              {% else %}
+              <p class="rewards-message">
+                Voeg nog {{ freeShippingPrice | minus: cartPriceCents | money }} en ontvang gratis verzending
+              </p>
+              {% endif %}
+              <div class="slidecart-progress">
+                <div class="slidecart-progress-active" style="width:{{width}}%; max-width: 100%;"></div>
+              </div>
           </div>
-        </div>
-        <div class="slidecart-items" data-ajax-cart-section>
-          {% for item in cart.items %}
+          <div class="slidecart-items" >
+            {% for item in cart.items %}
             <div class="slidecart-item">
               <div class="item-slidecart-wrapper">
                 <div class="slidecart-item-details">
                   <div class="cart-item-image-wrapper">
-                    <img
-                      src="{{item.image | img_url: 'master'}}"
-                      loading="lazy"
-                      alt=""
-                      class="cart-image"
-
-                    ><a data-ajax-cart-request-button href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="bin w-inline-block"
-                      ><img
-                        src="{{'trash.svg' | asset_url}}"
-                        loading="lazy"
-                        alt=""
-                        class="bin-img"
-                    ></a>
+                    <img src="{{item.image | img_url: 'master'}}" loading="lazy" alt="" class="cart-image"><a
+                      data-ajax-cart-request-button
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
+                      class="bin w-inline-block"><img src="{{'trash.svg' | asset_url}}" loading="lazy" alt=""
+                        class="bin-img"></a>
                   </div>
                   <div id="w-node-_4802795b-3f9d-a5cf-4e2f-cdc8b26f6f95-37cba332" class="item-details-wrapper">
                     <div class="item-information">
                       <div class="item-title-slidecart">{{item.title}}</div>
-{% comment %}
+                      {% comment %}
                       <div class="tagline-slidecart">256GB | A-Grade | 2 jaar garantie</div>
-          {% endcomment %}
+                      {% endcomment %}
                     </div>
                     <div class="item-shipping-cart-info">
                       <img
                         src="https://uploads-ssl.webflow.com/63a42a74efca111200cba331/63a433425b9cd798913d1e79_shipping-infotruck.png"
-                        loading="lazy"
-                        alt=""
-                      >
+                        loading="lazy" alt="">
                       <div class="shipping-p-slidecart">Vandaag besteld, morgen in huis</div>
                     </div>
                   </div>
@@ -177,15 +185,14 @@
                 <div class="item-guarantee-slidecart">
                   <div class="guarantee-icon-slidecart">
                     <div class="guarantee-icon w-embed">
-                      <svg
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 19 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M11.4482 0.71622C11.994 1.17884 12.6838 1.43251 13.3963 1.43251C14.8671 1.43251 16.1254 2.49923 16.3808 3.96241C16.5046 4.67127 16.8715 5.3134 17.4173 5.77602C18.5439 6.73098 18.8292 8.36537 18.0938 9.65195C17.7375 10.2753 17.61 11.0054 17.7337 11.7143C17.9892 13.1775 17.1678 14.6146 15.7857 15.1228C15.1162 15.369 14.5539 15.8456 14.1977 16.4688C13.4623 17.7556 11.9186 18.3231 10.5365 17.815C9.86698 17.5688 9.13296 17.5688 8.46342 17.815C7.08135 18.3231 5.53774 17.7556 4.80228 16.469C4.44601 15.8456 3.88378 15.369 3.21424 15.1228C1.83217 14.6147 1.01089 13.1775 1.26619 11.7143C1.38994 11.0054 1.26244 10.2753 0.906177 9.65195C0.170862 8.36522 0.456016 6.73098 1.58264 5.77602C2.12843 5.3134 2.49537 4.67127 2.61912 3.96241C2.87456 2.49923 4.13288 1.43251 5.60365 1.43251C6.31618 1.43251 7.00591 1.17898 7.5517 0.71622C8.67833 -0.23874 10.321 -0.23874 11.4478 0.71622H11.4482Z" fill="#4DAB70"></path>
-                        <path d="M8.60517 12.2117C8.33862 12.2117 8.08289 12.1059 7.89437 11.9178L5.94257 9.96959C5.54996 9.57779 5.54996 8.94236 5.94257 8.55056C6.33518 8.15875 6.9717 8.15875 7.36431 8.55056L8.60531 9.78921L12.0442 6.35666C12.4368 5.96485 13.0733 5.96485 13.4659 6.35666C13.8585 6.74846 13.8585 7.38389 13.4659 7.77569L9.31625 11.9177C9.12774 12.1058 8.87201 12.2116 8.60546 12.2116L8.60517 12.2117Z" fill="white"></path>
+                      <svg width="100%" height="100%" viewBox="0 0 19 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M11.4482 0.71622C11.994 1.17884 12.6838 1.43251 13.3963 1.43251C14.8671 1.43251 16.1254 2.49923 16.3808 3.96241C16.5046 4.67127 16.8715 5.3134 17.4173 5.77602C18.5439 6.73098 18.8292 8.36537 18.0938 9.65195C17.7375 10.2753 17.61 11.0054 17.7337 11.7143C17.9892 13.1775 17.1678 14.6146 15.7857 15.1228C15.1162 15.369 14.5539 15.8456 14.1977 16.4688C13.4623 17.7556 11.9186 18.3231 10.5365 17.815C9.86698 17.5688 9.13296 17.5688 8.46342 17.815C7.08135 18.3231 5.53774 17.7556 4.80228 16.469C4.44601 15.8456 3.88378 15.369 3.21424 15.1228C1.83217 14.6147 1.01089 13.1775 1.26619 11.7143C1.38994 11.0054 1.26244 10.2753 0.906177 9.65195C0.170862 8.36522 0.456016 6.73098 1.58264 5.77602C2.12843 5.3134 2.49537 4.67127 2.61912 3.96241C2.87456 2.49923 4.13288 1.43251 5.60365 1.43251C6.31618 1.43251 7.00591 1.17898 7.5517 0.71622C8.67833 -0.23874 10.321 -0.23874 11.4478 0.71622H11.4482Z"
+                          fill="#4DAB70"></path>
+                        <path
+                          d="M8.60517 12.2117C8.33862 12.2117 8.08289 12.1059 7.89437 11.9178L5.94257 9.96959C5.54996 9.57779 5.54996 8.94236 5.94257 8.55056C6.33518 8.15875 6.9717 8.15875 7.36431 8.55056L8.60531 9.78921L12.0442 6.35666C12.4368 5.96485 13.0733 5.96485 13.4659 6.35666C13.8585 6.74846 13.8585 7.38389 13.4659 7.77569L9.31625 11.9177C9.12774 12.1058 8.87201 12.2116 8.60546 12.2116L8.60517 12.2117Z"
+                          fill="white"></path>
                       </svg>
                     </div>
                   </div>
@@ -193,7 +200,7 @@
                 </div>
               </div>
               <div class="slidecart-dropdown-wrapper">
-                <div class="slidecart-dropdown-content-wrapper collapse" id="collapseExample">
+                <div class="slidecart-dropdown-content-wrapper collapse" id="collapseExample-{{ forloop.index }}">
                   <div class="slidecart-dropdown-content">
                     <div class="slidecart-dropdown-p">
                       De {{ item.title }} zo gloed als nieuw omdat hoge kwaliteit refurbished producten een tweede leven
@@ -202,45 +209,36 @@
                     <div class="slidecart-item-benefits-list">
                       <div class="slidecart-benefit">
                         <div class="benefit-icon-slidecart w-embed">
-                          <svg
-                            width="100%"
-                            height="100%"
-                            viewbox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            <path
+                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
+                              fill="#4DAB70"></path>
                           </svg>
                         </div>
                         <div class="slidecart-benefit-p">2 jaar garantie op de {{ item.title }}.</div>
                       </div>
                       <div class="slidecart-benefit">
                         <div class="benefit-icon-slidecart w-embed">
-                          <svg
-                            width="100%"
-                            height="100%"
-                            viewbox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            <path
+                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
+                              fill="#4DAB70"></path>
                           </svg>
                         </div>
                         <div class="slidecart-benefit-p">30 dagen niet goed, geld terug.</div>
                       </div>
                       <div class="slidecart-benefit">
                         <div class="benefit-icon-slidecart w-embed">
-                          <svg
-                            width="100%"
-                            height="100%"
-                            viewbox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z" fill="#4DAB70"></path>
+                            <path
+                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
+                              fill="#4DAB70"></path>
                           </svg>
                         </div>
                         <div class="slidecart-benefit-p">Op tientallen technische punten gecontroleerd.</div>
@@ -248,43 +246,32 @@
                     </div>
                   </div>
                 </div>
-                <div
-                  id="slidecart"
-                  data-w-id="4802795b-3f9d-a5cf-4e2f-cdc8b26f6fb9"
-                  class="slidecart-item-dropdown-trigger"
-                >
-                  <div
-                    id="collapse-button"
-                    class="cart-dropdown-text-preview collapse-button"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseExample"
-                    aria-expanded="false"
-                    aria-controls="collapseExample"
-                  >
+                <div id="slidecart-{{ forloop.index }}" data-w-id="4802795b-3f9d-a5cf-4e2f-cdc8b26f6fb9"
+                  class="slidecart-item-dropdown-trigger">
+                  <div id="collapse-button" class="cart-dropdown-text-preview hide-me collapse-button" type="button"
+                    data-toggle="collapse" data-target="#collapseExample-{{ forloop.index }}" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="dropdown-text-preview">DETAILS & ONZE GARANTIE</div>
                     <div class="chevron-dropdown">
                       <div class="w-embed">
                         <svg width="15" height="8" viewbox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z" fill="currentcolor"></path>
+                          <path
+                            d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z"
+                            fill="currentcolor"></path>
                         </svg>
                       </div>
                     </div>
                   </div>
-                  <div
-                    id="collapse-button-close"
-                    class="cart-dropdown-text-active collapse-button"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapseExample"
-                    aria-expanded="false"
-                    aria-controls="collapseExample"
-                  >
+                  <div id="collapse-button-close" class="cart-dropdown-text-active show-me collapse-button" type="button"
+                    data-toggle="collapse" data-target="#collapseExample-{{ forloop.index }}" aria-expanded="false"
+                    aria-controls="collapseExample">
                     <div class="dropdown-text-preview">Verberg</div>
                     <div class="chevron-dropdown active">
                       <div class="w-embed">
                         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z" fill="currentcolor"></path>
+                          <path
+                            d="M0.808163 0.305919C1.00554 0.110039 1.2732 0 1.55229 0C1.83138 0 2.09904 0.110039 2.29642 0.305919L7.50638 5.47794L12.7163 0.305919C12.9148 0.115591 13.1808 0.0102748 13.4567 0.0126555C13.7326 0.0150361 13.9967 0.124923 14.1918 0.318647C14.3869 0.512371 14.4977 0.774434 14.5 1.04839C14.5024 1.32235 14.3963 1.58628 14.2047 1.78334L8.25051 7.69408C8.05314 7.88996 7.78548 8 7.50638 8C7.22729 8 6.95963 7.88996 6.76226 7.69408L0.808163 1.78334C0.610846 1.58741 0.5 1.32169 0.5 1.04463C0.5 0.767572 0.610846 0.501858 0.808163 0.305919Z"
+                            fill="currentcolor"></path>
                         </svg>
                       </div>
                     </div>
@@ -292,1162 +279,1196 @@
                 </div>
               </div>
             </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
+
+         <div class="swiper-main-wrapper">
+          <h1 class="swiper-title">Maak jouw bestelling compleet</h1>
+          <div id="upsellSlider" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              {% for product in section.settings.swiper-products %}
+                <div class="swiper-slide">
+                  <div class="top-wrapper">
+                    <div class="image-wrapper">
+                      <img src="{{ product.featured_image | img_url }}" class="product-image_slide">
+                    </div>
+                    <div class="text-wrapper">
+                      <p class="title">{{ product.title }}</p>
+                      <p class="benefit">{{ product.metafields.custom.upsell_benefit_tagline }}</p>
+                      <div class="delivery-line">
+                        <img src="{{'benefit-truck.svg' | asset_url}}">
+                        <p class="delivery">Vandaag besteld, morgen in huis</p>
+                      </div>
+                    </div>
+                    <div class="price-wrapper">{{ product.price | money }}</div>
+                  </div>
+                  <a
+                    class="button-wrapper"
+                    style="border: none;"
+                    href="/cart/add?id={{ product.selected_or_first_available_variant.id }}"
+                    type="submit"
+                    data-ajax-cart-request-button
+                    style="transition: opacity 0.3s ease">
+                    <div class="cart-icon"><img src="{{'cart-icon.svg' | asset_url}}"></div>
+                    <div class="button-text">IN WINKELWAGEN</div>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          </div>
+
+          <div class="slidecart-footer">
+            <div class="sc-text-rows-wrapper">
+              <div class="sc-footer-text-row">
+                <div class="sc-text-subject">Verzendkosten</div>
+                <div class="sc-text-content">{% if freeShippingPrice <= cartPriceCents %} GRATIS {% else %} {{
+                    section.settings.shipping | money }} {% endif %}</div>
+                </div>
+                <div class="sc-footer-text-row">
+                  <div class="sc-text-subject">Totaal</div>
+                  <div class="sc-text-content">{{ cart.total_price | money_with_currency }}</div>
+                </div>
+              </div>
+              <button type="submit" name="checkout" class="sc-checkout-button w-inline-block">
+                <div>Doorgaan naar afrekenen</div>
+                <div class="icon-24 w-embed">
+                  <svg width="100%" height="100%" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M11.9286 21.8214C11.722 21.8212 11.5207 21.7564 11.3528 21.6361L7.73535 19.0523C6.58103 18.2263 5.64012 17.1371 4.99054 15.875C4.34096 14.6129 4.00141 13.2142 4 11.7947V4.40431C3.99993 4.25679 4.0328 4.11113 4.09619 3.97793C4.15959 3.84474 4.25192 3.72737 4.36645 3.6344C4.48097 3.54143 4.61481 3.4752 4.75819 3.44054C4.90157 3.40588 5.05088 3.40366 5.19523 3.43405C6.25436 3.6567 7.34786 3.66015 8.40837 3.4442C9.46888 3.22824 10.474 2.79745 11.3617 2.17836C11.5279 2.06226 11.7258 2 11.9286 2C12.1313 2 12.3292 2.06226 12.4955 2.17836C13.3831 2.79756 14.3882 3.22841 15.4487 3.44437C16.5093 3.66033 17.6028 3.65681 18.6619 3.43405C18.8063 3.40366 18.9556 3.40588 19.099 3.44054C19.2423 3.4752 19.3762 3.54143 19.4907 3.6344C19.6052 3.72737 19.6976 3.84474 19.7609 3.97793C19.8243 4.11113 19.8572 4.25679 19.8571 4.40431V11.7947C19.8557 13.2142 19.5162 14.6129 18.8666 15.875C18.217 17.1371 17.2761 18.2263 16.1218 19.0523L12.5044 21.6361C12.3365 21.7564 12.1351 21.8212 11.9286 21.8214V21.8214Z"
+                      fill="white" fill-opacity="0.34"></path>
+                    <path
+                      d="M10.7888 14.5866C10.5259 14.5866 10.2739 14.4821 10.0881 14.2962L8.50236 12.7105C8.32183 12.5236 8.22193 12.2733 8.22419 12.0134C8.22645 11.7535 8.33068 11.505 8.51443 11.3212C8.69818 11.1375 8.94676 11.0332 9.20661 11.031C9.46647 11.0287 9.71681 11.1286 9.90373 11.3091L10.7888 12.1942L13.4577 9.52522C13.5491 9.43056 13.6585 9.35506 13.7794 9.30312C13.9003 9.25118 14.0304 9.22384 14.162 9.22269C14.2936 9.22155 14.4241 9.24663 14.5459 9.29646C14.6677 9.34629 14.7783 9.41988 14.8714 9.51293C14.9644 9.60599 15.038 9.71664 15.0878 9.83844C15.1377 9.96024 15.1628 10.0907 15.1616 10.2223C15.1605 10.3539 15.1331 10.484 15.0812 10.6049C15.0292 10.7258 14.9537 10.8352 14.8591 10.9266L11.4894 14.2962C11.3036 14.4821 11.0516 14.5866 10.7888 14.5866V14.5866Z"
+                      fill="white"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="sc-payment-icons">
+                <img src="{{'Klarna-payment.svg' | asset_url}}" loading="lazy" alt="" class="payment-icon"><img
+                  src="{{'Frame.svg' | asset_url}}" loading="lazy" alt="" class="payment-icon"><img src="{{'Frame-1.svg' | asset_url}}"
+                  loading="lazy" alt="" class="payment-icon"><img src="{{'Frame-2.svg' | asset_url}}" loading="lazy" alt=""
+                  class="payment-icon"><img src="{{'Frame-3.svg' | asset_url}}" loading="lazy" alt="" class="payment-icon"><img
+                  src="{{'Frame-4.svg' | asset_url}}" loading="lazy" alt="" class="payment-icon"><img src="{{'Frame-5.svg' | asset_url}}"
+                  loading="lazy" alt="" class="payment-icon"><img src="{{'Frame-6.svg' | asset_url}}" loading="lazy" alt=""
+                  class="payment-icon">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="slidecart-footer" data-ajax-cart-section>
-        <div class="sc-text-rows-wrapper">
-          <div class="sc-footer-text-row">
-            <div class="sc-text-subject">Verzendkosten</div>
-            <div class="sc-text-content">{% if freeShippingPrice <= cartPriceCents %}
-            GRATIS
-            {% else %}
-            {{ section.settings.shipping | money }}
-            {% endif %}</div>
-          </div>
-          <div class="sc-footer-text-row">
-            <div class="sc-text-subject">Totaal</div>
-            <div class="sc-text-content">{{ cart.total_price | money_with_currency }}</div>
-          </div>
-        </div>
-        <button type="submit" name="checkout" class="sc-checkout-button w-inline-block">
-          <div>Doorgaan naar afrekenen</div>
-          <div class="icon-24 w-embed">
-            <svg width="100%" height="100%" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11.9286 21.8214C11.722 21.8212 11.5207 21.7564 11.3528 21.6361L7.73535 19.0523C6.58103 18.2263 5.64012 17.1371 4.99054 15.875C4.34096 14.6129 4.00141 13.2142 4 11.7947V4.40431C3.99993 4.25679 4.0328 4.11113 4.09619 3.97793C4.15959 3.84474 4.25192 3.72737 4.36645 3.6344C4.48097 3.54143 4.61481 3.4752 4.75819 3.44054C4.90157 3.40588 5.05088 3.40366 5.19523 3.43405C6.25436 3.6567 7.34786 3.66015 8.40837 3.4442C9.46888 3.22824 10.474 2.79745 11.3617 2.17836C11.5279 2.06226 11.7258 2 11.9286 2C12.1313 2 12.3292 2.06226 12.4955 2.17836C13.3831 2.79756 14.3882 3.22841 15.4487 3.44437C16.5093 3.66033 17.6028 3.65681 18.6619 3.43405C18.8063 3.40366 18.9556 3.40588 19.099 3.44054C19.2423 3.4752 19.3762 3.54143 19.4907 3.6344C19.6052 3.72737 19.6976 3.84474 19.7609 3.97793C19.8243 4.11113 19.8572 4.25679 19.8571 4.40431V11.7947C19.8557 13.2142 19.5162 14.6129 18.8666 15.875C18.217 17.1371 17.2761 18.2263 16.1218 19.0523L12.5044 21.6361C12.3365 21.7564 12.1351 21.8212 11.9286 21.8214V21.8214Z" fill="white" fill-opacity="0.34"></path>
-              <path d="M10.7888 14.5866C10.5259 14.5866 10.2739 14.4821 10.0881 14.2962L8.50236 12.7105C8.32183 12.5236 8.22193 12.2733 8.22419 12.0134C8.22645 11.7535 8.33068 11.505 8.51443 11.3212C8.69818 11.1375 8.94676 11.0332 9.20661 11.031C9.46647 11.0287 9.71681 11.1286 9.90373 11.3091L10.7888 12.1942L13.4577 9.52522C13.5491 9.43056 13.6585 9.35506 13.7794 9.30312C13.9003 9.25118 14.0304 9.22384 14.162 9.22269C14.2936 9.22155 14.4241 9.24663 14.5459 9.29646C14.6677 9.34629 14.7783 9.41988 14.8714 9.51293C14.9644 9.60599 15.038 9.71664 15.0878 9.83844C15.1377 9.96024 15.1628 10.0907 15.1616 10.2223C15.1605 10.3539 15.1331 10.484 15.0812 10.6049C15.0292 10.7258 14.9537 10.8352 14.8591 10.9266L11.4894 14.2962C11.3036 14.4821 11.0516 14.5866 10.7888 14.5866V14.5866Z" fill="white"></path>
-            </svg>
-          </div>
-        </button>
-        <div class="sc-payment-icons">
-          <img src="images/Klarna-payment.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-1.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-2.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-3.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-4.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-5.svg" loading="lazy" alt="" class="payment-icon"
-          ><img src="images/Frame-6.svg" loading="lazy" alt="" class="payment-icon">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </form>
 
-<script>
-  $('#collapseExample').on('show.bs.collapse', function () {
-    // Hide the #collapse-button div and show the #collapse-button-close div when the collapse is opened
-    $('#collapse-button').css('display', 'none');
-    $('#collapse-button-close').css('display', 'flex');
-  });
 
-  $('#collapseExample').on('hide.bs.collapse', function () {
-    // Hide the #collapse-button-close div and show the #collapse-button div when the collapse is closed
-    $('#collapse-button-close').css('display', 'none');
-    $('#collapse-button').css('display', 'flex');
-  });
-</script>
+
+
+
 
 <style>
+
+.hide-me[aria-expanded="true"] {display: none;}
+
+.show-me[aria-expanded="false"] {display: none;}
+
   .slidecart-progress-active {
     position: absolute;
     top: 0px;
     bottom: 0px;
-    width: {{width}};
     border-radius: 100px;
     background-color: #51a5bc;
   }
 
+  .pointer {
+    cursor: pointer;
+  }
 
-    .pointer {
-      cursor: pointer;
-    }
+  .swiper-container {
+    overflow: visible !important;
+  }
 
-    .swiper-container {
-      overflow: visible !important;
-    }
+  .sidebar-container {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+  }
 
-    .sidebar-container {
-      display: flex;
-      opacity: 0;
-      visibility: hidden;
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    }
+  .sidebar-container .sidebar-cart {
+    transform: translate(100%);
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    opacity: 0;
+  }
 
-    .sidebar-container .sidebar-cart {
-      transform: translate(100%);
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      opacity: 0;
-    }
+  .cart-payment-info {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+  }
 
-    .cart-payment-info {
-      position: sticky;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 9;
-    }
+  .cart-product-block {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
 
-    .cart-product-block {
-      opacity: 1;
-      transition: opacity 0.2s;
-    }
+  .full-width {
+    width: 100%;
+  }
 
-    .full-width {
-      width: 100%;
-    }
+  .amount-bar {
+    border-radius: 100px;
+  }
 
-    .amount-bar {
-      border-radius: 100px;
-    }
+  .amount-bar-container {
+    background-color: #e8e5df;
+    margin: 0.5rem 0px;
+  }
 
-    .amount-bar-container {
-      background-color: #e8e5df;
-      margin: 0.5rem 0px;
-    }
+  .product-quantity-input {
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 24px;
+    background-color: transparent;
+  }
 
-    .product-quantity-input {
-      text-align: center;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      border: none;
-      width: 24px;
-      background-color: transparent;
-    }
+  .swiper-container {
+    overflow: unset;
+  }
 
-    .swiper-container {
-      overflow: unset;
-    }
+  .wrapper-for-upsells {
+    background-color: #faeced;
+    padding: 16px;
+    width: 100%;
+  }
 
-    .wrapper-for-upsells {
-      background-color: #faeced;
-      padding: 16px;
-      width: 100%;
-    }
 
-    #upsellSlider {
-      padding: 0 32px 20px 32px;
-      margin-bottom: 0;
-    }
 
-    .text-underline {
-      text-decoration: underline;
-    }
+  .text-underline {
+    text-decoration: underline;
+  }
 
-    .white-color {
-      color: #fff;
-    }
+  .white-color {
+    color: #fff;
+  }
 
-    .swiper-container {
-      width: 100%;
-    }
+  .swiper-container {
+    width: 100%;
+  }
 
-    .letter-spacing-0-03em {
-      letter-spacing: 0.03em;
-    }
+  .letter-spacing-0-03em {
+    letter-spacing: 0.03em;
+  }
 
+  .payment-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 8px;
+  }
+
+  .product-bar-plus-minus-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #270e24;
+    border-radius: 56px;
+    background-color: #e5e2e5;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .product-bar-minus-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 56px;
+    padding-right: 10px;
+    padding-left: 32px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .product-bar-plus-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 56px;
+    padding-right: 32px;
+    padding-left: 10px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .sidebar-cart {
+    position: relative;
+    left: auto;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 10;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 576px;
+    height: 100vh;
+    max-width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+  }
+
+  .sidebar-top-bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 16px 32px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #fff;
+  }
+
+  .sidebar-close-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edeef0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .sidebar-close-icon {
+    width: 24px;
+    height: 24px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .sidebar-div {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .sidebar-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 12px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-row-gap: 8px;
+    border-radius: 12px;
+    background-color: #f9f7ef;
+  }
+
+  .sidebar-payment-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .amount-bar-container {
+    overflow: hidden;
+    height: 8px;
+    border-radius: 22px;
+  }
+
+  .amount-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #514135;
+  }
+
+  .cart-product-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 16px 32px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-row-gap: 10px;
+  }
+
+  .cart-product-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    box-shadow: inset 0 -1px #edeef0;
+  }
+
+  .cart-product-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 10px;
+  }
+
+  .cart-product-image-div {
+    position: relative;
+  }
+
+  .cart-product-image {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edeef0;
+    border-radius: 50%;
+  }
+
+  .remove-product-btn {
+    position: absolute;
+    left: -6px;
+    top: -6px;
+    right: auto;
+    bottom: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e5e6e9;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .remove-product-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cart-product-mysterybox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 24px 32px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    grid-row-gap: 16px;
+    background-color: #070e1b;
+  }
+
+  .cart-mysterybox-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    grid-column-gap: 12px;
+  }
+
+  .cart-mysterybox-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 10px;
+  }
+
+  .cart-mysterybox-image {
+    width: 64px;
+    height: 64px;
+    min-height: 64px;
+    min-width: 64px;
+    border-radius: 50%;
+  }
+
+  .mysterybox-add-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 64px;
+    height: 64px;
+    min-height: 64px;
+    min-width: 64px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #679d34;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .cart-payment-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 32px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-row-gap: 16px;
+    background-color: #f9f7ef;
+  }
+
+  .cart-payment-text-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .cart-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding: 16px 16px 16px 28px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 18px;
+    border-radius: 16px;
+    background-color: #d9dbde;
+    color: #070e1b8f;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .cart-button-icon {
+    width: 18px;
+    opacity: 0.56;
+  }
+
+  .sidebar-container {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 1000;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    background-color: #0006;
+    opacity: 0;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .sidebar-bg {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+  }
+
+  @media screen and (max-width: 991px) {
     .payment-container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      margin-right: auto;
-      margin-left: auto;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 8px;
-    }
-
-    .product-bar-plus-minus-button {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      overflow: hidden;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      color: #270e24;
-      border-radius: 56px;
-      background-color: #e5e2e5;
-      font-size: 12px;
-      line-height: 24px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .product-bar-minus-button {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      height: 56px;
-      padding-right: 10px;
-      padding-left: 32px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .product-bar-plus-button {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      height: 56px;
-      padding-right: 32px;
-      padding-left: 10px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .sidebar-cart {
-      position: relative;
-      left: auto;
-      top: 0%;
-      right: 0%;
-      bottom: 0%;
-      z-index: 10;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      width: 576px;
-      height: 100vh;
-      max-width: 100%;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      background-color: #fff;
+      position: static;
     }
 
     .sidebar-top-bar {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 0px;
-      z-index: 100;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding: 16px 32px;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      background-color: #fff;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .sidebar-top-bar {
+      padding: 16px 24px;
     }
 
-    .sidebar-close-btn {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 36px;
-      height: 36px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #edeef0;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .sidebar-close-icon {
-      width: 24px;
-      height: 24px;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-
-    .sidebar-div {
-      padding-right: 32px;
-      padding-left: 32px;
-    }
-
-    .sidebar-info {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding: 12px;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      grid-row-gap: 8px;
-      border-radius: 12px;
-      background-color: #f9f7ef;
-    }
-
-    .sidebar-payment-info {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .amount-bar-container {
-      overflow: hidden;
-      height: 8px;
-      border-radius: 22px;
-    }
-
-    .amount-bar {
-      width: 100%;
-      height: 100%;
-      background-color: #514135;
-    }
-
-    .cart-product-container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding: 16px 32px;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      grid-row-gap: 10px;
-    }
-
-    .cart-product-block {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      box-shadow: inset 0 -1px #edeef0;
-    }
-
-    .cart-product-info {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 10px;
-    }
-
-    .cart-product-image-div {
-      position: relative;
-    }
-
-    .cart-product-image {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      min-height: 56px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #edeef0;
-      border-radius: 50%;
-    }
-
-    .remove-product-btn {
-      position: absolute;
-      left: -6px;
-      top: -6px;
-      right: auto;
-      bottom: auto;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 24px;
-      height: 24px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #e5e6e9;
-      border-radius: 50%;
-      background-color: #fff;
-      cursor: pointer;
-    }
-
-    .remove-product-icon {
-      width: 14px;
-      height: 14px;
-    }
-
+    .sidebar-div,
+    .cart-product-container,
     .cart-product-mysterybox {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding: 24px 32px;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-align: start;
-      -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-      align-items: flex-start;
-      grid-row-gap: 16px;
-      background-color: #070e1b;
+      padding-right: 24px;
+      padding-left: 24px;
     }
 
-    .cart-mysterybox-block {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 100%;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      grid-column-gap: 12px;
-    }
 
-    .cart-mysterybox-info {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 10px;
-    }
-
-    .cart-mysterybox-image {
-      width: 64px;
-      height: 64px;
-      min-height: 64px;
-      min-width: 64px;
-      border-radius: 50%;
-    }
-
+    .cart-mysterybox-image,
     .mysterybox-add-button {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 64px;
-      height: 64px;
-      min-height: 64px;
-      min-width: 64px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      border-radius: 50%;
-      background-color: #679d34;
-      color: #fff;
-      font-weight: 700;
-      text-align: center;
-      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      min-height: 48px;
+      min-width: 48px;
     }
 
     .cart-payment-info {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding: 32px;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-row-gap: 16px;
-      background-color: #f9f7ef;
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .main-button {
+      width: 100%;
     }
 
-    .cart-payment-text-block {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 100%;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
+    .payment-icon {
+      margin-right: 8px;
+      margin-bottom: 8px;
     }
 
-    .cart-button {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 100%;
-      padding: 16px 16px 16px 28px;
+    .payment-container {
+      display: block;
+    }
+
+    .product-bar-plus-minus-button {
       -webkit-box-pack: center;
       -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 18px;
-      border-radius: 16px;
-      background-color: #d9dbde;
-      color: #070e1b8f;
-      font-size: 16px;
-      font-weight: 700;
     }
 
-    .cart-button-icon {
-      width: 18px;
-      opacity: 0.56;
+    .product-bar-minus-button {
+      height: 48px;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
     }
 
-    .sidebar-container {
-      position: fixed;
-      left: 0%;
-      top: 0%;
-      right: 0%;
-      bottom: 0%;
-      z-index: 1000;
-      display: none;
-      width: 100vw;
-      height: 100vh;
+    .product-bar-plus-button {
+      height: 48px;
       -webkit-box-pack: end;
       -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
       justify-content: flex-end;
-      background-color: #0006;
-      opacity: 0;
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
     }
 
-    .sidebar-bg {
-      position: absolute;
-      left: 0%;
-      top: 0%;
-      right: 0%;
-      bottom: 0%;
+    .sidebar-top-bar,
+    .cart-product-container,
+    .cart-product-mysterybox,
+    .cart-payment-info {
+      padding: 16px;
     }
 
-    @media screen and (max-width: 991px) {
-      .payment-container {
-        position: static;
-      }
-
-      .sidebar-top-bar {
-        padding-top: 24px;
-        padding-bottom: 24px;
-      }
+    .sidebar-div {
+      padding: 0px 16px;
     }
 
-    @media screen and (max-width: 767px) {
-      .sidebar-top-bar {
-        padding: 16px 24px;
-      }
-
-      .sidebar-div,
-      .cart-product-container,
-      .cart-product-mysterybox {
-        padding-right: 24px;
-        padding-left: 24px;
-      }
-
-      #upsellSlider {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .cart-mysterybox-image,
-      .mysterybox-add-button {
-        width: 48px;
-        height: 48px;
-        min-height: 48px;
-        min-width: 48px;
-      }
-
-      .cart-payment-info {
-        padding-right: 24px;
-        padding-left: 24px;
-      }
+    .cart-button {
+      width: 100%;
     }
+  }
 
-    @media screen and (max-width: 479px) {
-      .main-button {
-        width: 100%;
-      }
+  .sidebar-container {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+  }
 
-      .payment-icon {
-        margin-right: 8px;
-        margin-bottom: 8px;
-      }
+  /* Show the floating cart if the 'js-my-cart-open' CSS class exists */
+  .js-my-cart-open .sidebar-container {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+  }
 
-      .payment-container {
-        display: block;
-      }
+  .sidebar-container.sidebar-bg {
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    opacity: 0;
+  }
 
-      .product-bar-plus-minus-button {
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-      }
+  .js-my-cart-open .sidebar-bg {
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    opacity: 1;
+  }
 
-      .product-bar-minus-button {
-        height: 48px;
-        -webkit-box-pack: start;
-        -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-      }
+  .sidebar-container .sidebar-cart {
+    transform: translateX(100%);
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    opacity: 0;
+  }
 
-      .product-bar-plus-button {
-        height: 48px;
-        -webkit-box-pack: end;
-        -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-        justify-content: flex-end;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-      }
+  .js-my-cart-open .sidebar-cart {
+    transform: translateX(0%);
+    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+    opacity: 1;
+  }
 
-      .sidebar-top-bar,
-      .cart-product-container,
-      .cart-product-mysterybox,
-      .cart-payment-info {
-        padding: 16px;
-      }
-
-      .sidebar-div {
-        padding: 0px 16px;
-      }
-
-      .cart-button {
-        width: 100%;
-      }
-    }
-
-    .sidebar-container {
-      display: flex;
-      opacity: 0;
-      visibility: hidden;
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    }
-
-    /* Show the floating cart if the 'js-my-cart-open' CSS class exists */
-    .js-my-cart-open .sidebar-container {
-      display: flex;
-      opacity: 1;
-      visibility: visible;
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    }
-
-    .sidebar-container.sidebar-bg {
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      opacity: 0;
-    }
-
-    .js-my-cart-open .sidebar-bg {
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      opacity: 1;
-    }
-
-    .sidebar-container .sidebar-cart {
-      transform: translateX(100%);
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      opacity: 0;
-    }
-
-    .js-my-cart-open .sidebar-cart {
-      transform: translateX(0%);
-      webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-      opacity: 1;
-    }
-
-    @media screen and (max-width: 767px) {
-      .swiper-image {
-        max-height: 120px;
-      }
-    }
-
-    .product-card-upsell-img {
-      width: 80px;
-      height: auto;
-      margin: 0 8px;
-    }
-
-    .product-card-upsell-wrapper {
-      align-items: flex-start;
-      text-align: left;
-      padding-top: 16px;
-    }
-
-    .product-card-upsell {
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .swiper-block {
-      position: relative;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      grid-row-gap: 16px;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #edeef000;
-      border-radius: 12px;
-      background-color: #fff;
-      -webkit-transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-      border-color: #edeef0;
-      box-shadow: 0 4px 12px #0000000a;
-    }
-
-    .swiper-block:hover {
-      border-color: #edeef0;
-      box-shadow: 0 4px 12px #00000014;
-    }
-
+  @media screen and (max-width: 767px) {
     .swiper-image {
-      width: auto;
-      max-height: 300px;
-      object-fit: contain;
-      margin: 16px 0;
+      max-height: 120px;
+    }
+  }
+
+  .product-card-upsell-img {
+    width: 80px;
+    height: auto;
+    margin: 0 8px;
+  }
+
+  .product-card-upsell-wrapper {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 16px;
+  }
+
+  .product-card-upsell {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .swiper-block {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-row-gap: 16px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #edeef000;
+    border-radius: 12px;
+    background-color: #fff;
+    -webkit-transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border-color: #edeef0;
+    box-shadow: 0 4px 12px #0000000a;
+  }
+
+  .swiper-block:hover {
+    border-color: #edeef0;
+    box-shadow: 0 4px 12px #00000014;
+  }
+
+  .swiper-image {
+    width: auto;
+    max-height: 300px;
+    object-fit: contain;
+    margin: 16px 0;
+  }
+
+  .swiper-div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .swiper-star-grid {
+    display: -ms-grid;
+    display: grid;
+    margin-bottom: 2px;
+    grid-auto-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+  }
+
+  .swiper-star {
+    height: 18px;
+  }
+
+  .swiper-price-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-column-gap: 8px;
+  }
+
+  .swiper-price-div {
+    padding: 2px 12px;
+    border-radius: 70px;
+    background-color: #34a853;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .swiper-store-icon-div {
+    position: absolute;
+    left: auto;
+    top: 16px;
+    right: 16px;
+    bottom: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 48px;
+    height: 48px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 50%;
+
+    background-color: {
+        {
+        settings.colors_accent_1
+      }
+    }
+
+    ;
+    box-shadow: inset 0 -6px #00000052;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 800;
+    text-align: center;
+    padding: 0;
+  }
+
+  .swiper-store-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .swiper-block {
+      grid-row-gap: 8px;
     }
 
     .swiper-div {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      padding-right: 16px;
-      padding-bottom: 16px;
-      padding-left: 16px;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      text-align: center;
+      padding-right: 8px;
+      padding-bottom: 8px;
+      padding-left: 8px;
     }
+  }
 
-    .swiper-star-grid {
-      display: -ms-grid;
-      display: grid;
-      margin-bottom: 2px;
-      grid-auto-columns: 1fr;
-      -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      -ms-grid-rows: auto;
-      grid-template-rows: auto;
-    }
+  #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829a-1328b10d,
+  #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829b-1328b10d,
+  #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829c-1328b10d,
+  #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829d-1328b10d,
+  #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829e-1328b10d {
+    -ms-grid-column: span 1;
+    grid-column-start: span 1;
+    -ms-grid-column-span: 1;
+    grid-column-end: span 1;
+    -ms-grid-row: span 1;
+    grid-row-start: span 1;
+    -ms-grid-row-span: 1;
+    grid-row-end: span 1;
+  }
 
-    .swiper-star {
-      height: 18px;
-    }
+  .product-card-upsell-img {
+    width: 80px;
+    height: auto;
+    margin: 0px 8px;
+  }
 
-    .swiper-price-container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      margin-top: 0px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 8px;
-    }
+  .product-card-upsell-wrapper {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 16px;
+    color: black;
+  }
 
-    .swiper-price-div {
-      padding: 2px 12px;
-      border-radius: 70px;
-      background-color: #34a853;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      text-align: center;
-    }
+  .product-card-upsell {
+    flex-direction: row;
+  }
 
-    .swiper-store-icon-div {
-      position: absolute;
-      left: auto;
-      top: 16px;
-      right: 16px;
-      bottom: auto;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      width: 48px;
-      height: 48px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      border-radius: 50%;
-      background-color: {{ settings.colors_accent_1 }};
-      box-shadow: inset 0 -6px #00000052;
-      color: #fff;
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 800;
-      text-align: center;
-      padding: 0;
-    }
+  .wrapper-for-upsells {
+    padding-left: 16px;
+  }
 
-    .swiper-store-icon {
-      width: 20px;
-      height: 20px;
-    }
+  .text-left {
+    text-align: left;
+  }
 
-    @media screen and (max-width: 767px) {
-      .swiper-block {
-        grid-row-gap: 8px;
-      }
+  .cart_title {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
 
-      .swiper-div {
-        padding-right: 8px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-      }
-    }
+  .product-bar-plus-minus-button>a {
+    color: #270e24;
+  }
 
-    #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829a-1328b10d,
-    #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829b-1328b10d,
-    #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829c-1328b10d,
-    #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829d-1328b10d,
-    #w-node-_10e4c92e-b458-31a5-2fe3-a23631ca829e-1328b10d {
-      -ms-grid-column: span 1;
-      grid-column-start: span 1;
-      -ms-grid-column-span: 1;
-      grid-column-end: span 1;
-      -ms-grid-row: span 1;
-      grid-row-start: span 1;
-      -ms-grid-row-span: 1;
-      grid-row-end: span 1;
-    }
+  .cart-product-block {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
 
-    .product-card-upsell-img {
-      width: 80px;
-      height: auto;
-      margin: 0px 8px;
-    }
-    .product-card-upsell-wrapper {
-      align-items: flex-start;
-      text-align: left;
-      padding-top: 16px;
-      color: black;
-    }
+  /* Make the area with controls visually disabled */
+  body.js-ajax-cart-request-in-progress .cart-product-block {
+    opacity: 0.7;
+  }
 
-    .product-card-upsell {
-      flex-direction: row;
-    }
+  .tag_reward_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    gap: 8px;
+  }
 
-    .wrapper-for-upsells {
-      padding-left: 16px;
-    }
+  .tag_reward {
+    padding: 6px 12px;
+    background: rgba(39, 14, 36, 0.12);
+    border-radius: 24px;
+    ont-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 20px;
+    /* identical to box height, or 167% */
+    text-transform: uppercase;
+    color: #270e24;
+    opacity: 0.64;
+    display: inline-block;
+    transition: all 0.25s ease-in-out;
+  }
 
-    .text-left {
-      text-align: left;
-    }
+  .tag_reward.reward_added {
+    background: #34a853;
+    transition: all 0.25s ease-in-out;
+    color: #fff;
+    opacity: 1;
+  }
 
-    .cart_title {
-      font-size: 20px;
-      line-height: 24px;
-      text-align: left;
-      margin-bottom: 8px;
-    }
-    .product-bar-plus-minus-button > a {
-      color: #270e24;
-    }
+  .cart-title {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: #270e24;
+  }
 
-    .cart-product-block {
-      opacity: 1;
-      transition: opacity 0.2s;
-    }
+  .cart-title.gray {
+    color: #a9acb2;
+    font-weight: 500;
+  }
 
-    /* Make the area with controls visually disabled */
-    body.js-ajax-cart-request-in-progress .cart-product-block {
-      opacity: 0.7;
-    }
+  .cart-subtitle {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: capitalize;
+    color: #242222;
+  }
 
-    .tag_reward_wrapper {
-      display: flex;
-      flex-direction: row;
-      align-content: flex-start;
-      gap: 8px;
-    }
+  .cart-subtitle.gray {
+    color: #270e24;
+    opacity: 0.6;
+    font-weight: 500;
+  }
 
-    .tag_reward {
-      padding: 6px 12px;
-      background: rgba(39, 14, 36, 0.12);
-      border-radius: 24px;
-      ont-style: normal;
-      font-weight: 800;
-      font-size: 12px;
-      line-height: 20px;
-      /* identical to box height, or 167% */
-      text-transform: uppercase;
-      color: #270e24;
-      opacity: 0.64;
-      display: inline-block;
-      transition: all 0.25s ease-in-out;
-    }
+  .wrapper-for-upsells {
+    border-radius: 12px;
+  }
 
-    .tag_reward.reward_added {
-      background: #34a853;
-      transition: all 0.25s ease-in-out;
-      color: #fff;
-      opacity: 1;
-    }
+  .upsell-pagination {
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    left: 0;
+    display: flex;
+    justify-content: center;
+  }
 
-    .cart-title {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 28px;
-      text-transform: capitalize;
-      color: #270e24;
-    }
+  .upsell-line {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(39, 14, 36, 0.08);
+    margin: 12px 0;
+  }
 
-    .cart-title.gray {
-      color: #a9acb2;
-      font-weight: 500;
-    }
+  .upsell-header {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #270e24;
+  }
 
-    .cart-subtitle {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      text-transform: capitalize;
-      color: #242222;
-    }
+  .swiper-block {
+    background-color: transparent;
+    box-shadow: none;
+  }
 
-    .cart-subtitle.gray {
-      color: #270e24;
-      opacity: 0.6;
-      font-weight: 500;
-    }
+  .swiper-block:hover {
+    background-color: transparent;
+    box-shadow: none;
+  }
 
-    .wrapper-for-upsells {
-      border-radius: 12px;
-    }
+  .side-cart-price {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #270e24;
+  }
 
-    .upsell-pagination {
-      position: absolute;
-      bottom: 0;
-      z-index: 999;
-      left: 0;
-      display: flex;
-      justify-content: center;
-    }
+  .side-cart-compare-at-price {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration-line: line-through;
+    text-transform: uppercase;
+    color: rgba(39, 14, 36, 0.56);
+  }
 
-    .upsell-line {
-      height: 1px;
-      width: 100%;
-      background-color: rgba(39, 14, 36, 0.08);
-      margin: 12px 0;
-    }
+  .cart-save-badge {
+    white-space: nowrap;
+    background: #514135;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 6px;
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
 
-    .upsell-header {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 24px;
-      color: #270e24;
-    }
-
-    .swiper-block {
-      background-color: transparent;
-      box-shadow: none;
-    }
-
-    .swiper-block:hover {
-      background-color: transparent;
-      box-shadow: none;
-    }
-
-    .side-cart-price {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 14px;
-      line-height: 20px;
-      text-transform: uppercase;
-      color: #270e24;
-    }
-
-    .side-cart-compare-at-price {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      text-decoration-line: line-through;
-      text-transform: uppercase;
-      color: rgba(39, 14, 36, 0.56);
-    }
-
-    .cart-save-badge {
-      white-space: nowrap;
-      background: #514135;
-      border-radius: 24px;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      padding: 2px 6px;
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 12px;
-      line-height: 20px;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .reward-text {
-      font-family: 'Puppy Talk';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      text-transform: capitalize;
-      color: #242222;
-    }
+  .reward-text {
+    font-family: 'Puppy Talk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: capitalize;
+    color: #242222;
+  }
 </style>
+
 
 <script>
   setInterval(() => {
@@ -1455,15 +1476,11 @@
     if (!el.swiper) {
       new Swiper(el, {
         // Optional parameters
-        spaceBetween: 16,
-        slidesPerView: 1,
-        freeMode: false,
-        loop: false,
-        pagination: { el: '.upsell-pagination', type: 'bullets' },
-        // Enable lazy loading
-        lazy: true,
-        keyboard: { enabled: true },
+        pagination: {
+          el: ".swiper-pagination",
+          type: "progressbar"
+        },
       });
     }
-  }, 250);
+  },250);
 </script>
