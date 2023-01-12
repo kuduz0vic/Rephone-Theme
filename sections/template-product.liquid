@@ -40,7 +40,6 @@
   }
 
   input:checked+span {
-    background: #29a7bf;
     color: white;
   }
 
@@ -322,54 +321,42 @@
 
                 {% if product.available == true %}
                 {% if product.variants.size > 1 %}
-
                 <div class="options mobile-line-after mobile-line-before choice-container" x-data="{ showSizePopup: false }">
                   <template x-for="option of Object.keys(productOptions)">
-                    {% if option == "Grades" %}
-                    {% continue %}
-                    {% endif %}
-                        <div class="col-12 col-lg-8 color-options">
-                          <div class="row">
-
-                        {% if product.metafields.custom.requires_tag_name.value == true %}
-                        <div class="choice-box hide">
-                          <div class="choice-information">
-                            <div class="alert-box">
-                              <div class="text-s text-bold _0-05-spacing">Label naam</div>
-                            </div>
-                            <div x-text="labelName || ' '" class="text-s text-medium opacity-56"></div>
-                          </div>
-                          <div class="name-field-wrapper">
-                            <input x-model="labelName" type="text" class="product-field-input w-input" maxlength="256"
-                              name="properties[Tag name]" placeholder="The name of your dog..." id="Product-input"
-                              required="">
-                          </div>
-                        </div>
-                        {% endif %}
-
+                    
+                    <div class="col-12 col-lg-8 color-options" :class="`swatch-${optionName}`" x-data="{ optionName: option }">
+                      <div class="row">
                         <template x-for="value of productOptions[option]">
                           <div class="color col-2 col-lg-2">
-                          <label style="position:relative" id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
-                            class="variant-size-radio w-radio" :class="`swatch-${value.toLowerCase()}`">
-                            <div
-                              class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button"
-                              :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'">
-                            </div>
-                            <input @change="currentOptions[option] = value" type="radio" id="radio" :name="option"
-                              :value="value" style="opacity:0;position:absolute;z-index:-1">
-                              <span
-                              :style="currentOptions[option] === value ? 'color:#fbf3eb': 'color:#514135'"
-                              class="size-radio-button-label w-form-label" for="radio" x-text="value"></span>
-                          </label>
+                            <label style="position:relative" id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
+                                    class="variant-size-radio w-radio" 
+                                    :class="`swatch-${value.toLowerCase()}`">
+                              <div
+                                class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button"
+                                :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'">
+                              </div>
+                              <input @change="currentOptions[option] = value" type="radio" id="radio" :name="option"
+                                :value="value" style="opacity:0;position:absolute;z-index:-1">
+                                <span
+                                :style="currentOptions[option] === value ? 'color:#fff': 'color:#343a40'"
+                                class="size-radio-button-label swatch-text-inside w-form-label" for="radio" x-text="value"></span>
+                            </label>
+                            <span
+                            :style="currentOptions[option] === value ? 'color:#343a40': 'color:#697C83'"
+                            class="size-radio-button-label swatch-text-outside w-form-label" for="radio" x-text="value"></span>
                           </div>
+
                         </template>
-                        </div>
-                        </div>
-                        <div style="clear: both; width: 100%;"></div>
-                  </template>
+                      </div>
+                    </div>
+
+                    <div style="clear: both; width: 100%;"></div>
+                  </template>                  
                 </div>
+              
+              {% endif %}
                 {% endif %}
-                {% endif %}
+
 
 
 
