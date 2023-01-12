@@ -6581,5 +6581,40 @@ padding-bottom: 18px;
   top: auto !important;
 }
 
+.swatch-Grades {
+  display: none;
+}
 
+.swatch-Kleur .variant-size-radio {
+  border-radius: 8px;
+height: 40px;
+width: 40px;
+border: none;
+}
 
+.swatch-Kleur .size-radio-button-label:hover {
+border: 3px solid #29a7bf;
+}
+
+.swatch-Kleur .variant-size-radio input:checked+span {
+  border: 3px solid #29a7bf;
+  color: white;
+}
+
+.swatch-Opslag .variant-size-radio input:checked+span {
+  background: #29a7bf;
+  color: white;
+}
+
+.swatch-Opslag .variant-size-radio input:checked label span {
+  background: #29a7bf;
+  color: white;
+}
+
+.swatch-Kleur .swatch-text-inside {
+  display: none;
+}
+
+.swatch-Opslag .swatch-text-outside {
+  display: none;
+}
