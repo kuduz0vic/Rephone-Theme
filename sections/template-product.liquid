@@ -323,7 +323,6 @@
                 {% if product.variants.size > 1 %}
                 <div class="options mobile-line-after mobile-line-before choice-container" x-data="{ showSizePopup: false }">
                   <template x-for="option of Object.keys(productOptions)">
-                    
                     <div class="col-12 col-lg-8 color-options" :class="`swatch-${optionName}`" x-data="{ optionName: option }">
                       <div class="row">
                         <template x-for="value of productOptions[option]">

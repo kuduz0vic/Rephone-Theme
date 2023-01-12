@@ -117,13 +117,29 @@
           "b95b45e8-7ce6-4791-81df-fbb0db7301a9": {
             "type": "swatch",
             "settings": {
+              "name": "Black",
+              "code": "#2e3033"
+            }
+          },
+          "0ec06054-602f-4c99-bff9-04604ced9420": {
+            "type": "swatch",
+            "settings": {
               "name": "Red",
-              "code": "#e22120"
+              "code": "#a5282c"
+            }
+          },
+          "6914abf4-e6b0-4df0-9a76-12497667fe4f": {
+            "type": "swatch",
+            "settings": {
+              "name": "White",
+              "code": "#f9f6ef"
             }
           }
         },
         "block_order": [
-          "b95b45e8-7ce6-4791-81df-fbb0db7301a9"
+          "b95b45e8-7ce6-4791-81df-fbb0db7301a9",
+          "0ec06054-602f-4c99-bff9-04604ced9420",
+          "6914abf4-e6b0-4df0-9a76-12497667fe4f"
         ],
         "settings": {
         }
