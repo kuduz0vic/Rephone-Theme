@@ -6592,21 +6592,25 @@ width: 40px;
 border: none;
 }
 
-.swatch-Kleur .size-radio-button-label:hover {
-border: 3px solid #29a7bf;
+.swatch-Kleur .variant-size-radio:hover .size-radio-button-label {
+color: black;
 }
 
-.swatch-Kleur .variant-size-radio input:checked+span {
+.swatch-Kleur .variant-size-radio:hover {
   border: 3px solid #29a7bf;
-  color: white;
-}
+  }
 
-.swatch-Opslag .variant-size-radio input:checked+span {
+.swatch-Opslag .variant-size-radio:hover {
   background: #29a7bf;
   color: white;
 }
 
-.swatch-Opslag .variant-size-radio input:checked label span {
+.swatch-Opslag .variant-size-radio input:checked+span{
+  background: #29a7bf;
+  color: white;
+}
+
+.swatch-Opslag .variant-size-radio input:checked label+span {
   background: #29a7bf;
   color: white;
 }
@@ -6617,4 +6621,14 @@ border: 3px solid #29a7bf;
 
 .swatch-Opslag .swatch-text-outside {
   display: none;
+}
+
+.swatch-text-outside {
+font-size: 12px;
+line-height: 15px;
+margin: 5px 0px;
+}
+
+.variant-size-radio {
+  margin: 0;
 }

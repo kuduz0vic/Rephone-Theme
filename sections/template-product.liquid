@@ -39,7 +39,7 @@
     margin: 5px 0;
   }
 
-  input:checked+span {
+  input:checked + span {
     color: white;
   }
 
@@ -49,300 +49,376 @@
 </style>
 
 
-
-<div class="container product-details">
-  <section class="breadcrumbs">
-    <div class="item-parent col-12 col-lg-6">
-      <ul class="item-parent">
-        <li class="item">
-          <a href="">
-            <p>Home</p>
-          </a>
-        </li>
-        <li class="item">
-          <a href="https://www.rephone.nl/refurbished-iphone/">
-            <p>iPhone</p>
-          </a>
-        </li>
-        <li class="item">
-          <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">
-            <p>iPhone 8</p>
-          </a>
-        </li>
-        <li class="item">
-          <a
-            href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/refurbished-apple-iphone-8-64gb-black/">
-            <p>Apple iPhone 8 64GB Space Grey</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="brands d-md-none mobile-line-after" style="display: none;">
-    <a href="https://www.thuiswinkel.org/leden/rephone/certificaat" target="_blank">
-      <div class="img"></div>
-      <div class="img"></div>
-      <div class="img"></div>
-    </a>
-  </section>
-  <div class="row d-flex flex-column-reverse flex-lg-row" itemscope itemtype="http://schema.org/Product">
-    <section class="left-sidebar col-12 col-lg-4">
-      <div class="inner">
-        <div class="product d-none d-lg-block">
-          <div id="mySwiper2" class="swiper mySwiper2">
-            <div class="swiper-wrapper">
-              {% for media in product.media %}
-              <div class="swiper-slide">
-                <img itemprop="image" src="{{ media | image_url }}" class="headthumb" title="{{ product.title }}"
-                  alt="{{ product.title }}" style="width: 288px ;" />
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div class="product-images d-none d-lg-block">
-          <div class="item-parent">
-            <div class="item">
-              <div id="mySwiper3" thumbsSlider="" class="swiper mySwiper3">
-                <div class="swiper-wrapper">
-                  {% for media in product.media %}
-                  <div class="swiper-slide">
-                    <img src="{{ media | image_url }}" class="thumb" title="{{ product.title }}"
-                      alt="{{ product.title }}" style="height: 50px;" />
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="unboxing" style="display: none;">
-          <h4>Unboxing Rephone</h4>
-          <div class="img"></div>
-        </div>
-        <div class="included d-lg-none mb-0">
-          <h4 class="mb-3">Standaard meegeleverd</h4>
-          <div class="item-parent">
-            <div class="row">
-              {% for block in section.blocks %}
-              {% case block.type %}
-              {% when 'addition' %}
-              <div class="item col-6 mb-3">
-                <div class="inner">
-                  <img src="{{block.settings.addition-image | img_url: 'master'}}" class="img" alt="Apple Earpods"
-                    style="width: 50px;" />
-                </div>
-              </div>
-              {% endcase %}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div class="text-content d-lg-none mt-3">
-          <div class="text">
-            <p>{{ product.description }}</p>
-          </div>
-        </div>
-        <div class="lookouts-accordion d-lg-none mt-4">
-          <div id="accordion">
-            <div class="card" style="display: none;">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                    aria-controls="collapseOne">
-                    <h4>Waar moet ik op letten?</h4>
-                    <i class="fal fa-chevron-down"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <h4>Rephone op TV</h4>
-                    <i class="fal fa-chevron-down"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                  <iframe
-                    src="https://www.youtube.com/embed/fDWeSPuKdu0?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.rephone.nl"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""
-                    data-gtm-yt-inspected-8="true" id="807589892" data-gtm-yt-inspected-8312312_46="true"
-                    title="Rephone item Doe maar Duurzaam S11E12 RTLZ 23 december 2018" width="375" height="210"
-                    frameborder="0"></iframe>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="display: none;">
-              <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
-                    aria-controls="collapseThree">
-                    <h4>Wat zijn de specs</h4>
-                    <i class="fal fa-chevron-down"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                  <button class="btn" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
-                    aria-controls="collapseFour">
-                    <h4>Reviews</h4>
-                    <i class="fal fa-chevron-down"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-body">
-                  {% for block in section.blocks %}
-                  {% case block.type %}
-                  {% when 'accordion-reviews' %}
-                  <div class="review">
-                    <div class="title">
-                      <p>{{ block.settings.person-name }} | {{ block.settings.person-city }}</p>
-                    </div>
-                    <div class="star-ratings-css blue-stars">
-                      <div class="star-ratings-css-top" style="width: 100%">
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                      </div>
-                      <div class="star-ratings-css-bottom">
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                      </div>
-                    </div>
-                    <div class="text">
-                      {{ block.settings.person-description }}
-                    </div>
-                  </div>
-                  {% endcase %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="unboxing" id="fixedOnScroll">
-          <div class="why-buy-here mt-4">
-            <div class="inner">
-              <h4>Waarom bij ons kopen</h4>
-              <div class="check-marks green">
-                {% for block in section.blocks %}
-                {% case block.type %}
-                {% when 'additional-lines' %}
-                <div class="check-mark">
-                  <i class="fal fa-check-circle"></i>
-                  <p>
-                    <a href="{{block.settings.line-link}}">{{ block.settings.line-text }}</a>
-                  </p>
-                </div>
-                {% endcase %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
+{% form 'product', product %}
+  <div class="container product-details">
+    <section class="breadcrumbs">
+      <div class="item-parent col-12 col-lg-6">
+        <ul class="item-parent">
+          <li class="item">
+            <a href="">
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="item">
+            <a href="https://www.rephone.nl/refurbished-iphone/">
+              <p>iPhone</p>
+            </a>
+          </li>
+          <li class="item">
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">
+              <p>iPhone 8</p>
+            </a>
+          </li>
+          <li class="item">
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/refurbished-apple-iphone-8-64gb-black/">
+              <p>Apple iPhone 8 64GB Space Grey</p>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
-
-    <section class="main-content mt-lg-0 col-12 col-lg-8" x-data="app()">
-      <div class="inner">
-        <div class="options-info">
-          {% for block in section.blocks %}
-          {% case block.type %}
-          {% when 'title' %}
-          <div class="title">
-            <h1 itemprop="name" style="font-size: 40px; margin:0;">{{ product.title }}</h1>
-            <h3>{{ block.settings.product-info-text }}</h3>
-            <h4>Volledig functioneel & simlockvrij</h4>
-          </div>
-          {% endcase %}
-          {% endfor %}
-          <div style="display: none;" itemprop="description">{{ description }}</div>
-          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display: none;">
-            <span itemprop="priceCurrency" content="EUR">&euro;</span>
-            <span itemprop="price" content="{{ rs_price }}">{{ price }}</span>
-            {% if quantity > 0 %}
-            <link itemprop="availability" href="http://schema.org/InStock" />
-            {% else %}
-            <link itemprop="availability" href="http://schema.org/OutOfStock" />
-            {% endif %}
-            <span itemprop="priceValidUntil">2030-01-01</span>
-            <span itemprop="url">{{ href }}</span>
-          </div>
-          <div class="product d-lg-none">
-            <div class="row">
-              <div class="col-9 thumbnail-big">
-                <div class="inner">
-                  <img src="{{ product.featured_image | img_url: 'master' }}" class="headthumb"
-                    title="{{ product.title }}" alt="{{ product.title }}" style="height: 190px;" />
-                </div>
-              </div>
-              <div class="col-2 thumbnail-small">
+    <section class="brands d-md-none mobile-line-after" style="display: none;">
+      <a href="https://www.thuiswinkel.org/leden/rephone/certificaat" target="_blank">
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+      </a>
+    </section>
+    <div
+      class="row d-flex flex-column-reverse flex-lg-row"
+      itemscope
+      itemtype="http://schema.org/Product">
+      <section class="left-sidebar col-12 col-lg-4">
+        <div class="inner">
+          <div class="product d-none d-lg-block">
+            <div id="mySwiper2" class="swiper mySwiper2">
+              <div class="swiper-wrapper">
                 {% for media in product.media %}
-                <div class="item">
-                  <div class="inner">
-                    <img src="{{ media | image_url }}" class="thumb" title="{{ product.title }}"
-                      alt="{{ product.title }}" style="height: 38px;" />
+                  <div class="swiper-slide">
+                    <img
+                      itemprop="image"
+                      src="{{ media | image_url }}"
+                      class="headthumb"
+                      title="{{ product.title }}"
+                      alt="{{ product.title }}"
+                      style="width: 288px ;" />
                   </div>
-                </div>
                 {% endfor %}
               </div>
             </div>
           </div>
+          <div class="product-images d-none d-lg-block">
+            <div class="item-parent">
+              <div class="item">
+                <div
+                  id="mySwiper3"
+                  thumbsSlider=""
+                  class="swiper mySwiper3">
+                  <div class="swiper-wrapper">
+                    {% for media in product.media %}
+                      <div class="swiper-slide">
+                        <img
+                          src="{{ media | image_url }}"
+                          class="thumb"
+                          title="{{ product.title }}"
+                          alt="{{ product.title }}"
+                          style="height: 50px;" />
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="unboxing" style="display: none;">
+            <h4>Unboxing Rephone</h4>
+            <div class="img"></div>
+          </div>
+          <div class="included d-lg-none mb-0">
+            <h4 class="mb-3">Standaard meegeleverd</h4>
+            <div class="item-parent">
+              <div class="row">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'addition' %}
+                    <div class="item col-6 mb-3">
+                      <div class="inner">
+                        <img
+                          src="{{block.settings.addition-image | img_url: 'master'}}"
+                          class="img"
+                          alt="Apple Earpods"
+                          style="width: 50px;" />
+                      </div>
+                    </div>
+                  {% endcase %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="text-content d-lg-none mt-3">
+            <div class="text">
+              <p>{{ product.description }}</p>
+            </div>
+          </div>
+          <div class="lookouts-accordion d-lg-none mt-4">
+            <div id="accordion">
+              <div class="card" style="display: none;">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne">
+                      <h4>Waar moet ik op letten?</h4>
+                      <i class="fal fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="true"
+                      aria-controls="collapseTwo">
+                      <h4>Rephone op TV</h4>
+                      <i class="fal fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <iframe
+                      src="https://www.youtube.com/embed/fDWeSPuKdu0?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.rephone.nl"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""
+                      data-gtm-yt-inspected-8="true"
+                      id="807589892"
+                      data-gtm-yt-inspected-8312312_46="true"
+                      title="Rephone item Doe maar Duurzaam S11E12 RTLZ 23 december 2018"
+                      width="375"
+                      height="210"
+                      frameborder="0"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="card" style="display: none;">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="true"
+                      aria-controls="collapseThree">
+                      <h4>Wat zijn de specs</h4>
+                      <i class="fal fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseThree"
+                  class="collapse"
+                  aria-labelledby="headingThree"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn"
+                      data-toggle="collapse"
+                      data-target="#collapseFour"
+                      aria-expanded="true"
+                      aria-controls="collapseFour">
+                      <h4>Reviews</h4>
+                      <i class="fal fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseFour"
+                  class="collapse"
+                  aria-labelledby="headingFour"
+                  data-parent="#accordion">
+                  <div class="card-body">
+                    {% for block in section.blocks %}
+                      {% case block.type %}
+                        {% when 'accordion-reviews' %}
+                        <div class="review">
+                          <div class="title">
+                            <p>{{ block.settings.person-name }} | {{ block.settings.person-city }}</p>
+                          </div>
+                          <div class="star-ratings-css blue-stars">
+                            <div class="star-ratings-css-top" style="width: 100%">
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                            </div>
+                            <div class="star-ratings-css-bottom">
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                              <span>★</span>
+                            </div>
+                          </div>
+                          <div class="text">
+                            {{ block.settings.person-description }}
+                          </div>
+                        </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="unboxing" id="fixedOnScroll">
+            <div class="why-buy-here mt-4">
+              <div class="inner">
+                <h4>Waarom bij ons kopen</h4>
+                <div class="check-marks green">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'additional-lines' %}
+                      <div class="check-mark">
+                        <i class="fal fa-check-circle"></i>
+                        <p>
+                          <a href="{{block.settings.line-link}}">{{ block.settings.line-text }}</a>
+                        </p>
+                      </div>
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-content mt-lg-0 col-12 col-lg-8" x-data="app()">
+        <div class="inner">
+          <div class="options-info">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'title' %}
+                <div class="title">
+                  <h1 itemprop="name" style="font-size: 40px; margin:0;">{{ product.title }}</h1>
+                  <h3>{{ block.settings.product-info-text }}</h3>
+                  <h4>Volledig functioneel & simlockvrij</h4>
+                </div>
+              {% endcase %}
+            {% endfor %}
+            <div style="display: none;" itemprop="description">{{ description }}</div>
+            <div
+              itemprop="offers"
+              itemscope
+              itemtype="http://schema.org/Offer"
+              style="display: none;">
+              <span itemprop="priceCurrency" content="EUR">&euro;</span>
+              <span itemprop="price" content="{{ rs_price }}">{{ price }}</span>
+              {% if quantity > 0 %}
+                <link itemprop="availability" href="http://schema.org/InStock" />
+              {% else %}
+                <link itemprop="availability" href="http://schema.org/OutOfStock" />
+              {% endif %}
+              <span itemprop="priceValidUntil">2030-01-01</span>
+              <span itemprop="url">{{ href }}</span>
+            </div>
+            <div class="product d-lg-none">
+              <div class="row">
+                <div class="col-9 thumbnail-big">
+                  <div class="inner">
+                    <img
+                      src="{{ product.featured_image | img_url: 'master' }}"
+                      class="headthumb"
+                      title="{{ product.title }}"
+                      alt="{{ product.title }}"
+                      style="height: 190px;" />
+                  </div>
+                </div>
+                <div class="col-2 thumbnail-small">
+                  {% for media in product.media %}
+                    <div class="item">
+                      <div class="inner">
+                        <img
+                          src="{{ media | image_url }}"
+                          class="thumb"
+                          title="{{ product.title }}"
+                          alt="{{ product.title }}"
+                          style="height: 38px;" />
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
 
 
 
-
-
-
-                {% if product.available == true %}
-                {% if product.variants.size > 1 %}
+            {% if product.available == true %}
+              {% if product.variants.size > 1 %}
                 <div class="options mobile-line-after mobile-line-before choice-container" x-data="{ showSizePopup: false }">
                   <template x-for="option of Object.keys(productOptions)">
-                    <div class="col-12 col-lg-8 color-options" :class="`swatch-${optionName}`" x-data="{ optionName: option }">
+                    <div
+                      class="col-12 col-lg-8 color-options"
+                      :class="`swatch-${optionName}`"
+                      x-data="{ optionName: option }">
+                      <h4 x-text="optionName"></h4>
                       <div class="row">
                         <template x-for="value of productOptions[option]">
-                          <div class="color col-2 col-lg-2">
-                            <label style="position:relative" id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
-                                    class="variant-size-radio w-radio" 
-                                    :class="`swatch-${value.toLowerCase()}`">
-                              <div
-                                class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button"
-                                :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'">
-                              </div>
-                              <input @change="currentOptions[option] = value" type="radio" id="radio" :name="option"
-                                :value="value" style="opacity:0;position:absolute;z-index:-1">
-                                <span
-                                :style="currentOptions[option] === value ? 'color:#fff': 'color:#343a40'"
-                                class="size-radio-button-label swatch-text-inside w-form-label" for="radio" x-text="value"></span>
+                          <div
+                            class="color col-2 col-lg-2">
+                            <label
+                              style="position:relative"
+                              id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
+                              class="variant-size-radio w-radio"
+                              :class="`swatch-${value.toLowerCase()}`">
+                              <div class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button" :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'"></div>
+                              <input
+                                id="radio"
+                                type="radio"
+                                :name="option"
+                                :value="value"
+                                style="opacity:0;position:absolute;z-index:-1">
+                              <span
+                                :style="currentOptions[option] === value ? 'color:#fff';"
+                                class="size-radio-button-label swatch-text-inside w-form-label"
+                                for="radio"
+                                x-text="value"></span>
                             </label>
+
                             <span
-                            :style="currentOptions[option] === value ? 'color:#343a40': 'color:#697C83'"
-                            class="size-radio-button-label swatch-text-outside w-form-label" for="radio" x-text="value"></span>
+                              :style="currentOptions[option] === value ? 'color:#343a40': 'color:#697C83'"
+                              class="size-radio-button-label swatch-text-outside w-form-label"
+                              for="radio"
+                              x-text="value"></span>
                           </div>
 
                         </template>
@@ -350,372 +426,388 @@
                     </div>
 
                     <div style="clear: both; width: 100%;"></div>
-                  </template>                  
+                  </template>
                 </div>
-              
+
               {% endif %}
-                {% endif %}
+            {% endif %}
 
 
 
+            {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %}
 
-          {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %}
 
-
-          <div class="condition mt-5 mt-lg-0" style="display: none;">
-            <div class="cart">
-              <div class="title">
-                <div class="row">
-                  <div class="col-4 col-md-6">
-                    <h4>Behuizing</h4>
-                  </div>
-                  <div class="col-8 col-md-6">
-                    <div class="blue" data-toggle="modal" data-target="#productConditions">
-                      <p>Meer weten over de behuizingconditie?</p>
+            <div class="condition mt-5 mt-lg-0">
+              <div class="cart">
+                <div class="title">
+                  <div class="row">
+                    <div class="col-4 col-md-6">
+                      <h4>Behuizing</h4>
+                    </div>
+                    <div class="col-8 col-md-6">
+                      <div
+                        class="blue"
+                        data-toggle="modal"
+                        data-target="#productConditions">
+                        <p>Meer weten over de behuizingconditie?</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <style>
-                .btn-cart {
-                  width: 100% !important;
-                  cursor: pointer;
-                }
-
-                @media screen and (max-width: 991px) {
+                <style>
                   .btn-cart {
-                    font-size: 11px;
+                    width: 100% !important;
+                    cursor: pointer;
                   }
-                }
-              </style>
 
-              {% for variant in product.variants %}
-              <div class="cart-item mobile-line-after mobile-line-before" {% if option_value.quantity==0
-                %}style="opacity:100%;" {% endif %}>
-                <div class="row no-gutters">
-                  <div class="col-4 col-md-3">
-                    <p>
-                      {% if variant.title == 'Als nieuw' %}A Grade{% endif %}
-                      {% if variant.title == 'Lichte gebruikssporen' %}B Grade{% endif %}
-                      {% if variant.title == 'Zichtbare gebruikssporen' %}C Grade{% endif %}
-                      {% if variant.title == 'Nieuw' %}Nieuw{% endif %}
-                      <br>
-                      <span>
-                        {% if variant.title == 'Als nieuw' %}Als nieuw{% endif %}
-                        {% if variant.title == 'Lichte gebruikssporen' %}Licht gebruikt{% endif %}
-                        {% if variant.title == 'Zichtbare gebruikssporen' %}Zichtbaar <br> gebruikt{% endif %}
-                        {% if variant.title == 'Nieuw' %}Gloednieuw{% endif %}
-                      </span>
-                    </p>
-                  </div>
-                  <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
-                    <p class="blue">{{ variant.price | money }}</p>
-                  </div>
+                  @media screen and (max-width: 991px) {
+                    .btn-cart {
+                      font-size: 11px;
+                    }
+                  }
+                </style>
 
-                  {% if variant.inventory_quantity == 0 %}
-                  <div class="stock no-stock col-3 d-none d-md-flex">
-                    <p>Uitverkocht</p>
-                    <p>Ontvang een e-mail bij voorraad</p>
-                  </div>
-                  {% elsif variant.inventory_quantity < 200 %} {% assign tomorrow='now' | date: '%s' | plus: 86400 %} {%
-                    assign tomorrow_en=tomorrow | date: '%A' %} <div class="stock in-stock col-3 d-none d-md-flex">
-                    <p>In voorraad</p>
-                    <p>Voor 22:30 besteld,
-                      {% case tomorrow_en %}
-                      {% when 'Monday' %} maandag
-                      {% when 'Tuesday' %} dinsdag
-                      {% when 'Wednesday' %} woensdag
-                      {% when 'Thursday' %} donderdag
-                      {% when 'Friday' %} vrijdag
-                      {% when 'Saturday' %} zaterdag
-                      {% when 'Sunday' %} zondag
-                      {% endcase %}
-                      in huis</p>
-                </div>
-
-                {% elsif variant.inventory_quantity == 200 %}
-                <div class="stock in-stock col-3 d-none d-md-flex">
-                  <p>4 stuks in voorraad</p>
-                  <p>{{ supplier_delivery }}</p>
-                </div>
-                {% elsif variant.inventory_quantity == 300 %}
-                <div class="stock in-stock col-3 d-none d-md-flex">
-                  <p>4 stuks in voorraad</p>
-                  <p>{{ supplier_minpex_delivery }}</p>
-                </div>
-                {% endif %}
-                <div class="col-4 col-md-3 d-flex justify-content-end">
-                  <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
-
-                  <form method="post" class="atc-form" action="/cart/add">
-                    {% if variant.inventory_quantity == 0 %}
-                    <div class="btn-cart stockemail" data-toggle="modal"
-                      data-product-option="option[{{ variant.product_option_id }}]"
-                      data-product-option-value-id="{{ variant.product_option_value_id }}"
-                      data-product-option-value-name="{{ variant.name }}" data-product-id="{{ product_id }}"
-                      data-product-option-value-price="{{ variant.price }}"
-                      data-option-value-id="{{ variant.option_value_id }}" data-target="#stockemail"
-                      style="background:  #29a7bf; border-bottom: #29a7bf;">
-                      <i class="fal fa-envelope"></i>&nbsp;
-                      E-mail mij
+                {% for variant in product.variants %}
+                  <div class="cart-item mobile-line-after mobile-line-before" {% if option_value.quantity == 0 %}style="opacity:100%;"{% endif %}>
+                    <div class="row no-gutters">
+                      <div class="col-4 col-md-3">
+                        <p>
+                          {{ variant.title }}
+                        </span>
+                      </p>
                     </div>
-                    {% else %}
-                    <button class="btn-cart addtocart" data-product-option="option[{{ variant.product_option_id }}]"
-                      data-product-option-value-id="{{ variant.product_option_value_id }}"
-                      data-product-option-value-name="{{ variant.name }}" data-product-id="{{ product_id }}"
-                      data-product-option-value-price="{{ variant.price }}" type="submit" value="Add to cart">
-                      <i class="fal fa-shopping-cart">
-                        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-                        <input type="hidden" min="1" type="number" id="quantity" name="quantity" value="1" />
-                      </i>&nbsp;Toevoegen
-                    </button>
+                    <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
+                      <p class="blue">{{ variant.price | money }}</p>
+                    </div>
+
+                    {% if variant.inventory_quantity == 0 %}
+                      <div class="stock no-stock col-3 d-none d-md-flex">
+                        <p>Uitverkocht</p>
+                        <p>Ontvang een e-mail bij voorraad</p>
+                      </div>
+                    {% elsif variant.inventory_quantity < 200 %}
+                      {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
+   assign tomorrow_en = tomorrow | date: '%A' %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>In voorraad</p>
+                        <p>Voor 22:30 besteld,
+                          {% case tomorrow_en %}
+                            {% when 'Monday' %} maandag
+                            {% when 'Tuesday' %} dinsdag
+                            {% when 'Wednesday' %} woensdag
+                            {% when 'Thursday' %} donderdag
+                            {% when 'Friday' %} vrijdag
+                            {% when 'Saturday' %} zaterdag
+                            {% when 'Sunday' %} zondag
+                          {% endcase %}
+                          in huis</p>
+                      </div>
+
+                    {% elsif variant.inventory_quantity == 200 %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>4 stuks in voorraad</p>
+                        <p>{{ supplier_delivery }}</p>
+                      </div>
+                    {% elsif variant.inventory_quantity == 300 %}
+                      <div class="stock in-stock col-3 d-none d-md-flex">
+                        <p>4 stuks in voorraad</p>
+                        <p>{{ supplier_minpex_delivery }}</p>
+                      </div>
                     {% endif %}
-                  </form>
-                </div>
+                    <div class="col-4 col-md-3 d-flex justify-content-end">
+                      <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
 
-              </div>
+                      {% if variant.inventory_quantity == 0 %}
+                        <div
+                          class="btn-cart stockemail"
+                          data-toggle="modal"
+                          data-product-option="option[{{ variant.product_option_id }}]"
+                          data-product-option-value-id="{{ variant.product_option_value_id }}"
+                          data-product-option-value-name="{{ variant.name }}"
+                          data-product-id="{{ product_id }}"
+                          data-product-option-value-price="{{ variant.price }}"
+                          data-option-value-id="{{ variant.option_value_id }}"
+                          data-target="#stockemail"
+                          style="background:  #29a7bf; border-bottom: #29a7bf;">
+                          <i class="fal fa-envelope"></i>&nbsp;
+                          E-mail mij
+                        </div>
+                      {% else %}
+                        <a
+                          class="btn-cart addtocart"
+                          href="/cart/add?id={{ product.selected_or_first_available_variant.id }}"
+                          type="submit"
+                          data-ajax-cart-request-button>
+                          <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
+                        </a>
+                      {% endif %}
+                    </div>
 
-              <div class="row no-gutters mobile">
-                {% if variant.inventory_quantity == 0 %}
-                <div class="stock no-stock col-12 d-none">
-                  <p>Uitverkocht ontvang een e-mail bij voorraad</p>
+                  </div>
+
+                  <div class="row no-gutters mobile">
+                    {% if variant.inventory_quantity == 0 %}
+                      <div class="stock no-stock col-12 d-none">
+                        <p>Uitverkocht ontvang een e-mail bij voorraad</p>
+                      </div>
+                    {% elsif variant.inventory_quantity <= 200 %}
+                      {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
+   assign tomorrow_en = tomorrow | date: '%A' %}
+                      <div class="stock in-stock col-12 d-none">
+                        <p>{{ variant.inventory_quantity }} stuks in voorraad voor 22:30 besteld,
+                          {% case tomorrow_en %}
+                            {% when 'Monday' %} maandag
+                            {% when 'Tuesday' %} dinsdag
+                            {% when 'Wednesday' %} woensdag
+                            {% when 'Thursday' %} donderdag
+                            {% when 'Friday' %} vrijdag
+                            {% when 'Saturday' %} zaterdag
+                            {% when 'Sunday' %} zondag
+                          {% endcase %}
+                          in huis</p>
+                      </div>
+                    {% elsif variant.inventory_quantity == 200 %}
+                      <div class="stock in-stock col-12 d-none">
+                        <p>In voorraad bij leverancier, {{ supplier_delivery }}</p>
+                      </div>
+                    {% elsif variant.inventory_quantity == 300 %}
+                      <div class="stock in-stock col-12 d-none">
+                        <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
+                      </div>
+                    {% else %}
+                      <div class="stock in-stock col-12 d-none">
+                        <p>Onbekend aantal stuks in voorraad</p>
+                      </div>
+                    {% endif %}
+                  </div>
+
                 </div>
-                {% elsif variant.inventory_quantity <= 200 %} {% assign tomorrow='now' | date: '%s' | plus: 86400 %} {%
-                  assign tomorrow_en=tomorrow | date: '%A' %} <div class="stock in-stock col-12 d-none">
-                  <p>{{ variant.inventory_quantity }} stuks in voorraad voor 22:30 besteld,
-                    {% case tomorrow_en %}
-                    {% when 'Monday' %} maandag
-                    {% when 'Tuesday' %} dinsdag
-                    {% when 'Wednesday' %} woensdag
-                    {% when 'Thursday' %} donderdag
-                    {% when 'Friday' %} vrijdag
-                    {% when 'Saturday' %} zaterdag
-                    {% when 'Sunday' %} zondag
-                    {% endcase %}
-                    in huis</p>
-              </div>
-              {% elsif variant.inventory_quantity == 200 %}
-              <div class="stock in-stock col-12 d-none">
-                <p>In voorraad bij leverancier, {{ supplier_delivery }}</p>
-              </div>
-              {% elsif variant.inventory_quantity == 300 %}
-              <div class="stock in-stock col-12 d-none">
-                <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
-              </div>
-              {% else %}
-              <div class="stock in-stock col-12 d-none">
-                <p>Onbekend aantal stuks in voorraad</p>
-              </div>
-              {% endif %}
+              {% endfor %}
             </div>
-
           </div>
-          {% endfor %}
+
+
+
+          <p>* Al onze aparaten zijn ingekocht van Nederlandse consumenten waardoor marge BTW van toepassing is</p>
         </div>
-      </div>
 
-
-
-      <p>* Al onze aparaten zijn ingekocht van Nederlandse consumenten waardoor marge BTW van toepassing is</p>
-  </div>
-
-  {% if name_split.type != '' %}
-  <div class="included d-none d-lg-block">
-    <h4>Wat zit er nog meer in de doos?</h4>
-    <div class="item-parent">
-      {% for block in section.blocks %}
-      {% case block.type %}
-      {% when 'addition' %}
-      <div class="item">
-        <img src="{{block.settings.addition-image | img_url: 'master'}}" alt="Simpin" class="img" />
-      </div>
-      {% endcase %}
-      {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <p class="blue" style="font-size: 40px; font-weight: bold; margin-bottom: 20px;">{{ price }}</p>
-  <a class="btn-cart btn-green addtocart" data-product-id="{{ product_id }}" style="color: #fff;">Voeg toe aan
-    winkelwagen</a>
-  {% endif %}
-  {% for block in section.blocks %}
-  {% case block.type %}
-  {% when 'description' %}
-  <div class="text-content d-none d-lg-block">
-    <div class="text">
-      <p>{{ product.description }}</p>
-    </div>
-  </div>
-  {% endcase %}
-  {% endfor %}
-  <div class="lookouts d-none d-lg-block" style="display: none!important;">
-    <h3>Waar moet ik op letten?</h3>
-    <div class="row">
-      <div class="col-6">
-        <div class="check-marks pros">
-          <div class="check-mark">
-            <i class="fal fa-check-circle"></i>
-            <p>Ontgrendel razendsnel jouw telefoon met je gezicht (Face ID)</p>
+        {% if name_split.type != '' %}
+          <div class="included d-none d-lg-block">
+            <h4>Wat zit er nog meer in de doos?</h4>
+            <div class="item-parent">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'addition' %}
+                  <div class="item">
+                    <img
+                      src="{{block.settings.addition-image | img_url: 'master'}}"
+                      alt="Simpin"
+                      class="img" />
+                  </div>
+                {% endcase %}
+              {% endfor %}
+            </div>
           </div>
-          <div class="check-mark">
-            <i class="fal fa-check-circle"></i>
-            <p>Maak professionele foto�s en video�s met twee 12-megapixel camera�s</p>
-          </div>
-          <div class="check-mark">
-            <i class="fal fa-check-circle"></i>
-            <p>Geen kabel bij de hand? Je kunt de iPhone X ook draadloos opladen</p>
-          </div>
-          <div class="check-mark">
-            <i class="fal fa-check-circle"></i>
-            <p>De nieuwe A11-processor maakt de iPhone X krachtiger en energiezuiniger dan andere iPhones</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="check-marks cons">
-          <div class="check-mark">
-            <i class="fal fa-minus-circle"></i>
-            <p>Als je een voorkeur hebt voor touch ID, dan kan Face ID even wennen zijn</p>
-          </div>
-          <div class="check-mark">
-            <i class="fal fa-minus-circle"></i>
-            <p>De iPhone X heeft geen hoofdtelefoon aansluiting (headphone jack)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="specs d-none d-lg-block" style="display: none!important;">
-    <h3>Wat zijn de specs?</h3>
-
-    <div class="spec">
-      <div class="row no-gutters">
-        <p class="col-6">Processor</p>
-        <p class="col-6">Apple A11 Bionic</p>
-      </div>
-      <div class="row no-gutters">
-        <p class="col-6">Kleur</p>
-        <p class="col-6">Zwart / Space Grey</p>
-      </div>
-      <div class="row no-gutters">
-        <p class="col-6">Geheugen</p>
-        <p class="col-6">64gb</p>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section class="right-sidebar col-12 col-lg-3 d-none d-lg-block" style="display: none!important;">
-  <div class="inner">
-    <div class="why-buy-here" style="display:none;">
-      <h4>Waarom bij ons kopen</h4>
-      <div class="check-marks">
+        {% else %}
+          <p class="blue" style="font-size: 40px; font-weight: bold; margin-bottom: 20px;">{{ price }}</p>
+          <a
+            class="btn-cart btn-green addtocart"
+            data-product-id="{{ product_id }}"
+            style="color: #fff;">Voeg toe aan
+            winkelwagen</a>
+        {% endif %}
         {% for block in section.blocks %}
-        {% case block.type %}
-        {% when 'additional-lines' %}
-        <div class="check-mark">
-          <i class="fal fa-check-circle"></i>
-          <p>
-            <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
-          </p>
-        </div>
-        {% endcase %}
+          {% case block.type %}
+            {% when 'description' %}
+            <div class="text-content d-none d-lg-block">
+              <div class="text">
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+          {% endcase %}
         {% endfor %}
-      </div>
-    </div>
-
-    <a href="https://www.thuiswinkel.org/leden/rephone/certificaat" target="_blank" class="brands d-none d-lg-flex">
-      <div class="img"></div>
-      <div class="img"></div>
-      <div class="img"></div>
-    </a>
-
-    <div class="questions d-none d-lg-block">
-      <div class="row ask">
-        <div class="col-8">
-          <h3>Vragen?</h3>
+        <div class="lookouts d-none d-lg-block" style="display: none!important;">
+          <h3>Waar moet ik op letten?</h3>
+          <div class="row">
+            <div class="col-6">
+              <div class="check-marks pros">
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>Ontgrendel razendsnel jouw telefoon met je gezicht (Face ID)</p>
+                </div>
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>Maak professionele foto�s en video�s met twee 12-megapixel camera�s</p>
+                </div>
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>Geen kabel bij de hand? Je kunt de iPhone X ook draadloos opladen</p>
+                </div>
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>De nieuwe A11-processor maakt de iPhone X krachtiger en energiezuiniger dan andere iPhones</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="check-marks cons">
+                <div class="check-mark">
+                  <i class="fal fa-minus-circle"></i>
+                  <p>Als je een voorkeur hebt voor touch ID, dan kan Face ID even wennen zijn</p>
+                </div>
+                <div class="check-mark">
+                  <i class="fal fa-minus-circle"></i>
+                  <p>De iPhone X heeft geen hoofdtelefoon aansluiting (headphone jack)</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row mt-1 mb-2">
-        <div class="col-12 contact">
-          <div class="call">
-            <i class="far fa-phone"></i>
-            <p>
-              <a href="tel:085 1301 646"
-                onclick="ga('send', 'event', { eventCategory: 'klik op telnr', eventAction: 'bellen', eventLabel: 'contact'});">085
-                1301 646</a>
-            </p>
+        <div class="specs d-none d-lg-block" style="display: none!important;">
+          <h3>Wat zijn de specs?</h3>
+
+          <div class="spec">
+            <div class="row no-gutters">
+              <p class="col-6">Processor</p>
+              <p class="col-6">Apple A11 Bionic</p>
+            </div>
+            <div class="row no-gutters">
+              <p class="col-6">Kleur</p>
+              <p class="col-6">Zwart / Space Grey</p>
+            </div>
+            <div class="row no-gutters">
+              <p class="col-6">Geheugen</p>
+              <p class="col-6">64gb</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="openings-hours">
-        <div class="item">
-          <div class="row no-gutters">
-            <p class="col-12">maandag t/m vrijdag: <br>8:00 - 18:00</p>
+    </section>
+
+    <section class="right-sidebar col-12 col-lg-3 d-none d-lg-block" style="display: none!important;">
+      <div class="inner">
+        <div class="why-buy-here" style="display:none;">
+          <h4>Waarom bij ons kopen</h4>
+          <div class="check-marks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'additional-lines' %}
+                <div class="check-mark">
+                  <i class="fal fa-check-circle"></i>
+                  <p>
+                    <a href="garantie/">Twee jaar garantie op je refurbished apparaat</a>
+                  </p>
+                </div>
+              {% endcase %}
+            {% endfor %}
           </div>
+        </div>
+
+        <a
+          href="https://www.thuiswinkel.org/leden/rephone/certificaat"
+          target="_blank"
+          class="brands d-none d-lg-flex">
+          <div class="img"></div>
+          <div class="img"></div>
+          <div class="img"></div>
+        </a>
+
+        <div class="questions d-none d-lg-block">
+          <div class="row ask">
+            <div class="col-8">
+              <h3>Vragen?</h3>
+            </div>
+          </div>
+          <div class="row mt-1 mb-2">
+            <div class="col-12 contact">
+              <div class="call">
+                <i class="far fa-phone"></i>
+                <p>
+                  <a href="tel:085 1301 646" onclick="ga('send', 'event', { eventCategory: 'klik op telnr', eventAction: 'bellen', eventLabel: 'contact'});">085
+                    1301 646</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="openings-hours">
+            <div class="item">
+              <div class="row no-gutters">
+                <p class="col-12">maandag t/m vrijdag: <br>8:00 - 18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews d-none d-lg-block">
+          <h4 class="mb-3">Reviews over dit product</h4>
+          {% for review in kiyoh_reviews %}
+            <div class="review">
+              <div class="title">
+                <p>{{ review.customer_name }} | {{ review.customer_place }}</p>
+              </div>
+              <div class="star-ratings-css blue-stars">
+                <div class="star-ratings-css-top" style="width: {{ review.percentage }}%">
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                </div>
+                <div class="star-ratings-css-bottom">
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                  <span>&starf;</span>
+                </div>
+              </div>
+              <div class="text">
+                <p>{{ review.positive }}</p>
+              </div>
+            </div>
+          {% endfor %}
+
+
+          <a
+            href="https://www.kiyoh.nl/rephone/"
+            target="_blank"
+            rel="nofollow"
+            class="blue-underline">
+            <p>Lees alle reviews</p>
+            <i class="far fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="trade-old-phone d-none d-lg-block">
+          <h4>Oude iPhone inruilen?</h4>
+          <p>
+            Oude iPhone waar je nog geld voor kan krijgen? Lever hem bij ons in en ontvang binnen 24 uur je geld!
+          </p>
+
+          <a href="inruilen/" class="btn-green">Ruil je iPhone in</a>
         </div>
       </div>
-    </div>
-
-    <div class="reviews d-none d-lg-block">
-      <h4 class="mb-3">Reviews over dit product</h4>
-      {% for review in kiyoh_reviews %}
-      <div class="review">
-        <div class="title">
-          <p>{{ review.customer_name }} | {{ review.customer_place }}</p>
-        </div>
-        <div class="star-ratings-css blue-stars">
-          <div class="star-ratings-css-top" style="width: {{ review.percentage }}%">
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-          </div>
-          <div class="star-ratings-css-bottom">
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-            <span>&starf;</span>
-          </div>
-        </div>
-        <div class="text">
-          <p>{{ review.positive }}</p>
-        </div>
-      </div>
-      {% endfor %}
-
-
-      <a href="https://www.kiyoh.nl/rephone/" target="_blank" rel="nofollow" class="blue-underline">
-        <p>Lees alle reviews</p>
-        <i class="far fa-arrow-right"></i>
-      </a>
-    </div>
-
-    <div class="trade-old-phone d-none d-lg-block">
-      <h4>Oude iPhone inruilen?</h4>
-      <p>
-        Oude iPhone waar je nog geld voor kan krijgen? Lever hem bij ons in en ontvang binnen 24 uur je geld!
-      </p>
-
-      <a href="inruilen/" class="btn-green">Ruil je iPhone in</a>
-    </div>
+    </section>
   </div>
-</section>
-</div>
-</div>
-
+{% endform %}
 
 <!-- Modal Product condities-->
-<div class="modal fade productConditions" id="productConditions" tabindex="-1" role="dialog"
-  aria-labelledby="productConditions" aria-hidden="true">
+<div
+  class="modal fade productConditions"
+  id="productConditions"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="productConditions"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Behuizingconditie</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -749,7 +841,7 @@
             <p>
               Een B Grade iPhone ziet er ook bijna ongebruikt uit. Het scherm kan enkele lichte krasjes bevatten, op de
               achterkant kunnen een paar kleine gebruikssporen te zien zijn. Het hele apparaat is gewoon intact en werkt
-              even goed als een A Grade.
+                                          even goed als een A Grade.
             </p>
           </div>
 
@@ -760,9 +852,9 @@
             <p>
               Een C Grade iPhone kun je zien als een gebruikte iPhone. Vaak zijn deze apparaten langer dan een jaar
               gebruikt door de vorige eigenaar en dit kun je ook zien aan de beschadigingen. Uiteraard ziet het scherm
-              er wel helemaal goed uit, er zitten geen barsten etc in. Op de achterkant is wel duidelijk te zien dat het
-              apparaat gebruikt is, denk bijvoorbeeld aan krassen of deukjes. Het hele apparaat is wel intact en werkt
-              even goed als een A of B Grade.
+                                          er wel helemaal goed uit, er zitten geen barsten etc in. Op de achterkant is wel duidelijk te zien dat het
+                                          apparaat gebruikt is, denk bijvoorbeeld aan krassen of deukjes. Het hele apparaat is wel intact en werkt
+                                          even goed als een A of B Grade.
             </p>
           </div>
         </div>
@@ -774,28 +866,57 @@
 
 
 <!-- Modal Stock email -->
-<div class="modal fade stockemail" id="stockemail" tabindex="-1" role="dialog" aria-labelledby="stockemail"
+<div
+  class="modal fade stockemail"
+  id="stockemail"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="stockemail"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Ontvang een e-mail bij voorraad</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="inner">
           <form id="stockalert">
-            <input type="hidden" class="stockemailinfo" name="product_option_value_id" />
-            <input type="hidden" class="stockemailinfo" name="product_id" />
-            Dit model is tijdelijk uitverkocht.<br /> Ontvang een e-mailbericht zodra dit product weer leverbaar is.
-            <input type="email" id="stockemail" name="email" class="form-control" style="margin: 20px 0px;" />
+            <input
+              type="hidden"
+              class="stockemailinfo"
+              name="product_option_value_id" />
+            <input
+              type="hidden"
+              class="stockemailinfo"
+              name="product_id" />
+            Dit model is tijdelijk uitverkocht.<br/> Ontvang een e-mailbericht zodra dit product weer leverbaar is.
+            <input
+              type="email"
+              id="stockemail"
+              name="email"
+              class="form-control"
+              style="margin: 20px 0px;" />
 
-            <input type="submit" id="stockalertsubmit" class="btn-green"
-              style="margin: 20px 0px; border:none; width: 100%; cursor:pointer;" value="Houd mij op de hoogte" />
-            <a data-product-option="" data-product-option-value-id="" data-product-option-value-name=""
-              data-product-option-value-price="" data-product-id="" class="blue-underline addtocartlink addtocart"
+            <input
+              type="submit"
+              id="stockalertsubmit"
+              class="btn-green"
+              style="margin: 20px 0px; border:none; width: 100%; cursor:pointer;"
+              value="Houd mij op de hoogte" />
+            <a
+              data-product-option=""
+              data-product-option-value-id=""
+              data-product-option-value-name=""
+              data-product-option-value-price=""
+              data-product-id=""
+              class="blue-underline addtocartlink addtocart"
               style="display: block; text-align: center; cursor:pointer;">Of product bestellen met langere levertijd</a>
 
           </form>
@@ -807,252 +928,13 @@
   </div>
 </div>
 
-<input type="hidden" name="product_id" value="{{ product_id }}" />
-
-<script type="text/javascript">
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-    return obj;
-  }
-  $('.thumb1').click(function () {
-    var src = $(this).attr('src');
-    $('.headthumb').attr('src', src);
-  });
-
-  $('.btn-cart.stockemail').on('click', function () {
-    var _preppedArray;
-
-    var option_value_id = $(this).attr('data-option-value-id');
+<input
+  type="hidden"
+  name="product_id"
+  value="{{ product_id }}" />
 
 
-    var product_option = $(this).attr('data-product-option');
-    var product_option_value_id = $(this).attr('data-product-option-value-id');
-    var product_option_value_name = $(this).attr('data-product-option-value-name');
-    var product_option_value_price = $(this).attr('data-product-option-value-price');
-    var product_id = $(this).attr('data-product-id');
-
-    $('.stockemailinfo[name="product_option_value_id"]').val(option_value_id);
-    $('.stockemailinfo[name="product_id"]').val(product_id);
-
-
-    $('.addtocartlink').attr('data-product-option', product_option);
-    $('.addtocartlink').attr('data-product-option-value-id', product_option_value_id);
-    $('.addtocartlink').attr('data-product-option-value-name', product_option_value_name);
-    $('.addtocartlink').attr('data-product-option-value-price', product_option_value_price);
-    $('.addtocartlink').attr('data-product-id', product_id);
-
-
-
-
-
-  });
-
-  $('.addtocartlink').click(function () {
-    $('#stockemail').modal('hide');
-
-  })
-
-  $('#stockalertsubmit').click(function () {
-    console.log('test');
-    var form = $('#stockalert');
-    var url = 'index.php?route=product/product/stockalert';
-
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: form.serialize(), // serializes the form's elements.
-      success: function (data) {
-        console.log(data); // show response from the php script.
-        $('#stockalert').html('We hebben je e-mailadres goed ontvangen. Zodra er voorraad is op dit model ontvang je van ons een e-mail!');
-      }
-    });
-
-    return false;
-
-  })
-
-
-
-
-  $('.addtocart').on('click', function () {
-    var _preppedArray;
-
-    var product_option = $(this).attr('data-product-option');
-    var product_option_value_id = $(this).attr('data-product-option-value-id');
-    var product_option_value_name = $(this).attr('data-product-option-value-name');
-    var product_option_value_price = $(this).attr('data-product-option-value-price');
-    var product_id = $(this).attr('data-product-id');
-    console.log("AAAAA" + product_option_value_name);
-    var preppedArray = (_preppedArray = {}, _defineProperty(_preppedArray, product_option, product_option_value_id), _defineProperty(_preppedArray, "product_id", product_id), _preppedArray);
-    var gradeArray = {
-      'Als nieuw': 'A Grade',
-      'Lichte gebruikssporen': 'B Grade',
-      'Zichtbare gebruikssporen': 'C Grade'
-    };
-    console.log(preppedArray);
-    $.ajax({
-      url: 'index.php?route=checkout/cart/add',
-      type: 'post',
-      // data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-      data: preppedArray,
-      dataType: 'json',
-      beforeSend: function beforeSend() {
-        $('#button-cart').button('loading');
-      },
-      complete: function complete() {
-        $('#button-cart').button('reset');
-      },
-      success: function success(json) {
-        // show modal
-        console.log('SUCCESS!');
-        $('#addToCartModal #submitted_condition').text(product_option_value_name);
-        $('#addToCartModal #submitted_grade').text(gradeArray[product_option_value_name]);
-        $('#addToCartModal #submitted_price').text(product_option_value_price);
-        $('#addToCartModal').modal('show');
-        $('.alert-dismissible, .text-danger').remove();
-        $('.form-group').removeClass('has-error');
-
-        if (json['error']) {
-          if (json['error']['option']) {
-            for (i in json['error']['option']) {
-              var element = $('#input-option' + i.replace('_', '-'));
-
-              if (element.parent().hasClass('input-group')) {
-                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-              } else {
-                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-              }
-            }
-          }
-
-          if (json['error']['recurring']) {
-            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-          } // Highlight any found errors
-
-
-          $('.text-danger').parent().addClass('has-error');
-        }
-
-        if (json['success']) {
-          $('.breadcrumb').after('<div class="alert alert-success alert-dismissible">' + json['success'] + '<button
-								type = "button"
-								class = "close"
-								data - dismiss = "alert" > & times; < /button> <
-            / div > ');
-          $('#cart > button').html('<span id="cart-total"> <
-									i class = "fa fa-shopping-cart" > < /i>
-									' + json['
-									total '] + ' < /span>');
-									$('html, body').animate({
-            scrollTop: 0
-          }, 'slow'); $('#cart > ul').load('index.php?route=common/cart/info ul li');
-        }
-      },
-      error: function error(xhr, ajaxOptions, thrownError) {
-        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-      }
-    });
-    return false;
-  }); </script>
-
-
-
-<script>
-  class VariantSelector extends HTMLElement {
-    constructor() {
-      super();
-      this.addEventListener("change", this.onVariantChange);
-    }
-
-    onVariantChange() {
-      this.getSelectedOptions();
-      this.getSelectedVariant();
-      if (this.currentVariant) {
-        this.updateURL();
-        this.updateFormID();
-        this.updatePrice();
-      }
-    }
-
-    getSelectedOptions() {
-      this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
-      console.log(this.options);
-    }
-
-    getVariantJSON() {
-      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
-      return this.variantData;
-    }
-
-    getSelectedVariant() {
-      this.currentVariant = this.getVariantJSON().find(variant => {
-        const findings = !variant.options.map((option, index) => {
-          return this.options[index] === option;
-        }).includes(false);
-        if (findings)
-          return variant;
-
-
-
-
-      });
-      console.log(this.currentVariant);
-    }
-
-    updateURL() {
-      if (!this.currentVariant)
-        return;
-
-
-
-
-      window.history.replaceState({}, '', `${this.dataset.url
-        }?variant=${this.currentVariant.id
-        }`);
-    }
-
-    updateFormID() {
-      const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
-      form_input.value = this.currentVariant.id;
-    }
-
-    updatePrice() {
-      fetch(`${this.dataset.url
-        }?variant=${this.currentVariant.id
-        }&section_id=${this.dataset.section
-        }`).then((response) => response.text()).then((responseText) => {
-          const id = `price-${this.dataset.section
-            }`;
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const oldPrice = document.getElementById(id);
-          const newPrice = html.getElementById(id);
-          if (oldPrice && newPrice)
-            oldPrice.innerHTML = newPrice.innerHTML;
-
-
-
-
-        });
-    }
-  }
-  customElements.define("variant-selector", VariantSelector);
-</script>
-<script>
-  jQuery(function ($) {
-    $(".info-title").click(function () {
-      $(this).closest('.info-tab').toggleClass('no-border');
-    });
-  });
-</script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
 <script>
@@ -1071,141 +953,136 @@
   });
 </script>
 
-
-
-
 <script>
 
-  let upsellProduct = null;
-  {% if product.metafields.custom.product_upsell != blank %}
-  upsellProduct = {{ product.metafields.custom.product_upsell.value | json }};
-  {% endif %}
-
-  function app() {
+  let upsellProduct = null;{% if product.metafields.custom.product_upsell != blank %}upsellProduct = {{ product.metafields.custom.product_upsell.value | json }};{% endif %}function app() {
     return {
       labelName: '',
       product: {{ product | json }}
-  },
-  upsold: false,
-    currentOptions: { },
+    },
+    upsold : false,
+    currentOptions : {},
 
-  init() {
-    this.$watch('variant', () => {
-      const variant = this.variant;
-      if (!variant || !variant.featured_image) return;
-      const imgId = variant.featured_image.id.toString();
-      for (let i = 0; i < swiper.slides.length; i++) {
-        const slide = swiper.slides[i];
-        const slideImgId = slide.getAttribute("img-id");
-        if (slideImgId === imgId) {
-          swiper.slideTo(i);
+    init() {
+      this.$watch('variant', () => {
+        const variant = this.variant;
+        if (! variant || ! variant.featured_image) 
+          return;
+        
+
+        const imgId = variant.featured_image.id.toString();
+        for (let i = 0; i < swiper.slides.length; i++) {
+          const slide = swiper.slides[i];
+          const slideImgId = slide.getAttribute("img-id");
+          if (slideImgId === imgId) {
+            swiper.slideTo(i);
+            break;
+          }
+        }
+      });
+
+      this.selectFirstAvailableVariant();
+    },
+
+    priceToCurr(price) {
+      const n = parseInt(price);
+      return `€${
+        (n / 100).toFixed(2).replace('.', ',')
+      }`;
+    },
+
+    selectFirstAvailableVariant() {
+      let firstVariant;
+      for (const variant of this.product.variants) {
+        if (variant.available) {
+          firstVariant = variant;
           break;
         }
       }
-    });
 
-    this.selectFirstAvailableVariant();
-  },
-
-  priceToCurr(price) {
-    const n = parseInt(price);
-    return `€${(n / 100).toFixed(2).replace('.', ',')}`;
-  },
-
-  selectFirstAvailableVariant() {
-    let firstVariant;
-    for (const variant of this.product.variants) {
-      if (variant.available) {
-        firstVariant = variant;
-        break;
+      if (firstVariant) {
+        const keys = Object.keys(this.productOptions);
+        for (let i = 0; i < keys.length; i++) {
+          this.currentOptions[keys[i]] = firstVariant[`option${
+              i + 1
+            }`];
+        }
       }
-    }
+    },
 
-    if (firstVariant) {
-      const keys = Object.keys(this.productOptions);
-      for (let i = 0; i < keys.length; i++) {
-        this.currentOptions[keys[i]] = firstVariant[`option${i + 1}`];
-      }
-    }
-  },
+    submit() {
+      const items = [{
+          id: this.variant.id,
+          quantity: 1
+        }];
 
-  submit() {
-    const items = [{ id: this.variant.id, quantity: 1 }];
-
-    if (this.upsold && upsellProduct) {
-      items.push({ id: upsellProduct.variants[0].id, quantity: 1 });
-    }
-
-    liquidAjaxCart.cartRequestAdd({ items });
-
-    const openClass = 'js-my-cart-open';
-    const classList = document.body.classList;
-    if (!classList.contains(openClass)) classList.add(openClass);
-
-    this.labelName = '';
-  },
-
-      get variant() {
-    for (const variant of this.product.variants) {
-      if (
-        JSON.stringify(Object.values(this.currentOptions).sort()) ===
-        JSON.stringify(variant.options.sort())
-      ) {
-        return variant;
-      }
-    }
-
-    console.log(null);
-    return null;
-  },
-
-      get productOptions() {
-    return this.product.variants.reduce((prev, curr) => {
-      for (let i = 0; i < curr.options.length; i++) {
-        if (!prev[this.product.options[i]]) prev[this.product.options[i]] = [];
-        prev[this.product.options[i]].push(curr[`option${i + 1}`]);
-        prev[this.product.options[i]] = [...new Set(prev[this.product.options[i]])];
+      if (this.upsold && upsellProduct) {
+        items.push({id: upsellProduct.variants[0].id, quantity: 1});
       }
 
-      return prev;
-    }, {});
-  },
-    };
-  }
+      liquidAjaxCart.cartRequestAdd({items});
+
+      const openClass = 'js-my-cart-open';
+      const classList = document.body.classList;
+      if (! classList.contains(openClass)) 
+        classList.add(openClass);
+      
 
 
+      this.labelName = '';
+    },
 
+    get variant() {
+      for (const variant of this.product.variants) {
+        if (JSON.stringify(Object.values(this.currentOptions).sort()) === JSON.stringify(variant.options.sort())) {
+          return variant;
+        }
+      }
 
+      console.log(null);
+      return null;
+    },
 
+    get productOptions() {
+      return this.product.variants.reduce((prev, curr) => {
+        for (let i = 0; i < curr.options.length; i++) {
+          if (!prev[this.product.options[i]]) 
+            prev[this.product.options[i]] = [];
+          
 
+          prev[this.product.options[i]].push(curr[`option${
+              i + 1
+            }`]);
+          prev[this.product.options[i]] = [...new Set(prev[this.product.options[i]])];
+        }
 
+        return prev;
+      }, {});
+    }
+  };
+}
 </script>
 
 
-
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script>
 
 
   const colorMap = {
     {% for block in section.blocks %}
-  {% if block.type == 'color' %}
-  '{{ block.settings.name }}': '{{ block.settings.code }}',
-    {% endif %}
-  {% endfor %}
+      {% if block.type == 'color' %}
+        '{{ block.settings.name }}' : '{{ block.settings.code }}',{% endif %}{% endfor %}
   };
 
   const allProducts = [
-    {{ product | json }},
-  {% for p in product.metafields.custom.linked_products.value %}
-  { { p | json } },
-  {% endfor %}
+    {{ product | json }},{% for p in product.metafields.custom.linked_products.value %}{
+        {
+          p | json
+        }
+      },{% endfor %}
   ];
 
-  function app() {
+  function app () {
     return {
       allProducts,
       product: allProducts[0],
@@ -1213,27 +1090,33 @@
       currentOptions: {},
 
       init() {
-        const swiper = new Swiper('#swiper-{{ section.id }}', {
+        const swiper = new Swiper('#swiper-  {{ section.id }}', {
           direction: 'horizontal',
           navigation: {
             nextEl: '#swiper-next',
-            prevEl: '#swiper-prev',
+            prevEl: '#swiper-prev'
           },
 
           pagination: {
-            el: '.swiper-pagination',
-          },
+            el: '.swiper-pagination'
+          }
         });
 
         this.$watch('product', () => swiper.update());
         this.$watch('variant', () => {
           const variant = this.variant;
-          if (!variant || !variant.featured_image) return;
+          if (! variant || ! variant.featured_image) 
+            return;
+          
+
           const imgSrc = variant.featured_image.src;
           for (let i = 0; i < swiper.slides.length; i++) {
             const slide = swiper.slides[i];
             const img = slide.querySelector('img');
-            if (!img) continue;
+            if (! img) 
+              continue;
+            
+
             if (img.getAttribute("src") === imgSrc) {
               swiper.slideTo(i);
               break;
@@ -1244,15 +1127,14 @@
 
       priceToCurr(price) {
         const n = parseInt(price);
-        return `$${(n / 100).toFixed(2)}`;
+        return `$${
+          (n / 100).toFixed(2)
+        }`;
       },
 
       get variant() {
         for (const variant of this.product.variants) {
-          if (
-            JSON.stringify(Object.values(this.currentOptions).sort()) ===
-            JSON.stringify(variant.options.sort())
-          ) {
+          if (JSON.stringify(Object.values(this.currentOptions).sort()) === JSON.stringify(variant.options.sort())) {
             return variant;
           }
         }
@@ -1262,8 +1144,13 @@
       get productOptions() {
         const x = this.product.variants.reduce((prev, curr) => {
           for (let i = 0; i < curr.options.length; i++) {
-            if (!prev[this.product.options[i]]) prev[this.product.options[i]] = [];
-            prev[this.product.options[i]].push(curr[`option${i + 1}`]);
+            if (!prev[this.product.options[i]]) 
+              prev[this.product.options[i]] = [];
+            
+
+            prev[this.product.options[i]].push(curr[`option${
+                i + 1
+              }`]);
             prev[this.product.options[i]] = [...new Set(prev[this.product.options[i]])];
           }
 
@@ -1271,161 +1158,179 @@
         }, {});
 
         return x;
-      },
+      }
     };
   }
-
-
 </script>
 
-
 <script>
-  function setColor(color) {
-    var label = document.querySelector(".variant-size-radio");
-    label.style.background = color;
+  function filterVariants () {
+    var selectedSwatches = [];
+    $('.options input[type="radio"]').each(function() {
+      if ($(this).is(':checked')) {
+        selectedSwatches.push($(this).val());
+      }
+    });
+    $('.cart-item.mobile-line-after.mobile-line-before').show();
+    $('.cart-item.mobile-line-after.mobile-line-before').filter(function() {
+      var variantTitle = $(this).find('p:first-child').text();
+      var match = true;
+      for (var i = 0; i < selectedSwatches.length; i++) {
+        if (variantTitle.indexOf(selectedSwatches[i]) === -1) {
+          match = false;
+        }
+      }
+      return ! match;
+    }).hide();
   }
+
+  $(document).ready(function() {
+    $('.options input[type="radio"]').change(function() {
+      filterVariants();
+    });
+  });
 </script>
 
 
 
 {% schema %}
-{
-"name": "Product Section",
-"tag": "section",
-"class": "products",
-"settings": [],
-"blocks": [
-{
-"type": "title",
-"name": "Title",
-"limit": 1,
-"settings": [
-{
-"type": "text",
-"id": "product-info-text",
-"label": "Product Informatie"
-}
-]
-},
-{
-"type": "description",
-"name": "Description",
-"limit": 1
-},
-{
-"type": "review",
-"name": "Review",
-"limit": 1,
-"settings": [
-{
-"type": "liquid",
-"id": "review",
-"label": "Review"
-}
-]
-},
-{
-"type": "price",
-"name": "Price",
-"limit": 1
-}, {
-"type": "color_selector",
-"name": "Color Selector",
-"settings": [
-{
-"type": "url",
-"id": "variant-link",
-"label": "Color Link"
-}, {
-"type": "color",
-"id": "variant-color",
-"label": "Color"
-}, {
-"type": "text",
-"id": "variant-text",
-"label": "Color Text"
-}
-]
-}, {
-"type": "storage_selector",
-"name": "Storage Selector",
-"settings": [
-{
-"type": "url",
-"id": "storage-link",
-"label": "Storage Link"
-}, {
-"type": "text",
-"id": "storage-text",
-"label": "Color Text"
-}
-]
-}, {
-"type": "grade_buttons",
-"name": "Grade Buttons",
-"limit": 3,
-"settings": [
-{
-"type": "text",
-"id": "grade-text",
-"label": "Grade Text"
-}, {
-"type": "text",
-"id": "grade-sub-text",
-"label": "Grade Sub Text"
-}, {
-"type": "text",
-"id": "grade-price",
-"label": "Grade Price"
-}, {
-"type": "text",
-"id": "grade-button-label",
-"label": "Grade Button Label"
-}
-]
-}, {
-"type": "additional-lines",
-"name": "Additional Lines",
-"settings": [
-{
-"type": "url",
-"id": "line-link",
-"label": "Line Link"
-}, {
-"type": "text",
-"id": "line-text",
-"label": "Line Text"
-}
-]
-}, {
-"type": "accordion-reviews",
-"name": "Accordion Reviews",
-"settings": [
-{
-"type": "text",
-"id": "person-name",
-"label": "Name"
-}, {
-"type": "text",
-"id": "person-city",
-"label": "City"
-}, {
-"type": "richtext",
-"id": "person-description",
-"label": "Review"
-}
-]
-}, {
-"type": "addition",
-"name": "Box Items",
-"settings": [
-{
-"type": "image_picker",
-"id": "addition-image",
-"label": "Addition Image"
-}
-]
-}
-]
-}
+  {
+    "name": "Product Section",
+    "tag": "section",
+    "class": "products",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "title",
+        "name": "Title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "product-info-text",
+            "label": "Product Informatie"
+          }
+        ]
+      },
+      {
+        "type": "description",
+        "name": "Description",
+        "limit": 1
+      },
+      {
+        "type": "review",
+        "name": "Review",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "liquid",
+            "id": "review",
+            "label": "Review"
+          }
+        ]
+      },
+      {
+        "type": "price",
+        "name": "Price",
+        "limit": 1
+      }, {
+        "type": "color_selector",
+        "name": "Color Selector",
+        "settings": [
+          {
+            "type": "url",
+            "id": "variant-link",
+            "label": "Color Link"
+          }, {
+            "type": "color",
+            "id": "variant-color",
+            "label": "Color"
+          }, {
+            "type": "text",
+            "id": "variant-text",
+            "label": "Color Text"
+          }
+        ]
+      }, {
+        "type": "storage_selector",
+        "name": "Storage Selector",
+        "settings": [
+          {
+            "type": "url",
+            "id": "storage-link",
+            "label": "Storage Link"
+          }, {
+            "type": "text",
+            "id": "storage-text",
+            "label": "Color Text"
+          }
+        ]
+      }, {
+        "type": "grade_buttons",
+        "name": "Grade Buttons",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "text",
+            "id": "grade-text",
+            "label": "Grade Text"
+          }, {
+            "type": "text",
+            "id": "grade-sub-text",
+            "label": "Grade Sub Text"
+          }, {
+            "type": "text",
+            "id": "grade-price",
+            "label": "Grade Price"
+          }, {
+            "type": "text",
+            "id": "grade-button-label",
+            "label": "Grade Button Label"
+          }
+        ]
+      }, {
+        "type": "additional-lines",
+        "name": "Additional Lines",
+        "settings": [
+          {
+            "type": "url",
+            "id": "line-link",
+            "label": "Line Link"
+          }, {
+            "type": "text",
+            "id": "line-text",
+            "label": "Line Text"
+          }
+        ]
+      }, {
+        "type": "accordion-reviews",
+        "name": "Accordion Reviews",
+        "settings": [
+          {
+            "type": "text",
+            "id": "person-name",
+            "label": "Name"
+          }, {
+            "type": "text",
+            "id": "person-city",
+            "label": "City"
+          }, {
+            "type": "richtext",
+            "id": "person-description",
+            "label": "Review"
+          }
+        ]
+      }, {
+        "type": "addition",
+        "name": "Box Items",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "addition-image",
+            "label": "Addition Image"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
