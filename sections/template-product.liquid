@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-
+<p class="size-metafield">{{product.metafields.custom.product_size}}</p>
+<p class="color-metafield">{{product.metafields.custom.product_color}}</p>
 {% assign selected_variant = product.selected_or_first_available_variant %}
 <style>
   .variant-a {
@@ -91,13 +92,13 @@
       <section class="left-sidebar col-12 col-lg-4">
         <div class="inner">
           <div class="product d-none d-lg-block">
-            <div id="mySwiper2" class="swiper mySwiper2">
+            <div class="swiper mySwiper2">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
-                  <div class="swiper-slide">
+                  <div class="swiper-slide mySwiper2-slide" data-value="{{media.alt}}" alt="{{media.alt}}">
                     <img
                       itemprop="image"
-                      src="{{ media | image_url }}"
+                      src="{{ media  | img_url: 'master' }}"
                       class="headthumb"
                       title="{{ product.title }}"
                       alt="{{ product.title }}"
@@ -107,29 +108,30 @@
               </div>
             </div>
           </div>
-          <div class="product-images d-none d-lg-block">
-            <div class="item-parent">
-              <div class="item">
-                <div
-                  id="mySwiper3"
-                  thumbsSlider=""
-                  class="swiper mySwiper3">
-                  <div class="swiper-wrapper">
-                    {% for media in product.media %}
-                      <div class="swiper-slide">
-                        <img
-                          src="{{ media | image_url }}"
-                          class="thumb"
-                          title="{{ product.title }}"
-                          alt="{{ product.title }}"
-                          style="height: 50px;" />
-                      </div>
-                    {% endfor %}
-                  </div>
+          <div thumbsSlider="" class="swiper mySwiper3 product-images d-none d-lg-block">
+            <div class="swiper-wrapper item-parent">
+              {% for media in product.media %}
+                <div class="swiper-slide item mySwiper3-slide" data-value="{{media.alt}}" style="max-width: 55px;" alt="{{media.alt}}">
+                  <img
+                    src="{{ media | image_url }}"
+                    class="thumb"
+                    title="{{ product.title }}"
+                    alt="{{ product.title }}"
+                    style="height: 50px;" />
                 </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
+
+
+
+
+
+
+
+
+          
+
           <div class="unboxing" style="display: none;">
             <h4>Unboxing Rephone</h4>
             <div class="img"></div>
@@ -351,31 +353,41 @@
               <span itemprop="priceValidUntil">2030-01-01</span>
               <span itemprop="url">{{ href }}</span>
             </div>
+
+
             <div class="product d-lg-none">
               <div class="row">
                 <div class="col-9 thumbnail-big">
-                  <div class="inner">
-                    <img
-                      src="{{ product.featured_image | img_url: 'master' }}"
-                      class="headthumb"
-                      title="{{ product.title }}"
-                      alt="{{ product.title }}"
-                      style="height: 190px;" />
+                  <div class="swiper mySwiper4 inner">
+                    <div class="swiper-wrapper">
+                      {% for media in product.media %}
+                        <div class="swiper-slide" alt="{{media.alt}}">
+                          <img
+                            src="{{ media | img_url: 'master'}}"
+                            class="headthumb"
+                            title="{{ product.title }}"
+                            alt="{{ product.title }}"
+                            style="height: 190px;">
+                        </div>
+                      {% endfor %}
+                    </div>
                   </div>
                 </div>
-                <div class="col-2 thumbnail-small">
-                  {% for media in product.media %}
-                    <div class="item">
-                      <div class="inner">
-                        <img
-                          src="{{ media | image_url }}"
-                          class="thumb"
-                          title="{{ product.title }}"
-                          alt="{{ product.title }}"
-                          style="height: 38px;" />
+                <div thumbsSlider="" class="swiper mySwiper5">
+                  <div class="swiper-wrapper col-2 thumbnail-small">
+                    {% for media in product.media %}
+                      <div class="swiper-slide item" alt="{{media.alt}}" style="max-width: 55px;">
+                        <div class="inner">
+                          <img
+                            src="{{ media | img_url}}"
+                            class="thumb"
+                            title="{{ product.title }}"
+                            alt="{{ product.title }}"
+                            style="height: 38px;">
+                        </div>
                       </div>
-                    </div>
-                  {% endfor %}
+                    {% endfor %}
+                  </div>
                 </div>
               </div>
             </div>
@@ -393,8 +405,14 @@
                       <h4 x-text="optionName"></h4>
                       <div class="row">
                         <template x-for="value of productOptions[option]">
-                          <div
-                            class="color col-2 col-lg-2">
+                          <div class="color col-2 col-lg-2 color-container" style="max-width: 71.5px;" id="swatchesjs">
+                            <input 
+                            class="color-input" 
+                            type="radio" 
+                            :name="option" 
+                            :value="value"
+                            x-on:click="handleClick()"
+                            style="opacity:0;position:absolute;z-index:-1;z-index: 1000; width: 60%; height: 100%; left: 15px;">
                             <label
                               style="position:relative"
                               id="w-node-_045e9f5f-eff7-ef5b-527f-acc17b273d01-ed85433a"
@@ -402,20 +420,19 @@
                               :class="`swatch-${value.toLowerCase()}`">
                               <div class="bg-fix w-form-formradioinput w-form-formradioinput--inputType-custom w-radio-input cursor-pointer size-radio-button" :style="currentOptions[option] === value ? 'border:2px solid var(--section-bg-color-2);color:#fbf3eb;background-color:#514135': 'background-color:#fbf3eb;color:#514135'"></div>
                               <input
-                                id="radio"
-                                type="radio"
-                                :name="option"
-                                :value="value"
-                                style="opacity:0;position:absolute;z-index:-1">
+                              id="radio"  class="size-input"
+                              type="radio"
+                              :name="option"
+                              :value="value"
+                              style="opacity:0;position:absolute;z-index:-1">
                               <span
                                 :style="currentOptions[option] === value ? 'color:#fff';"
                                 class="size-radio-button-label swatch-text-inside w-form-label"
                                 for="radio"
                                 x-text="value"></span>
                             </label>
-
                             <span
-                              :style="currentOptions[option] === value ? 'color:#343a40': 'color:#697C83'"
+                              :style="currentOptions[option] === value ?"
                               class="size-radio-button-label swatch-text-outside w-form-label"
                               for="radio"
                               x-text="value"></span>
@@ -431,7 +448,6 @@
 
               {% endif %}
             {% endif %}
-
 
 
             {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %}
@@ -472,9 +488,19 @@
                     <div class="row no-gutters">
                       <div class="col-4 col-md-3">
                         <p>
-                          {{ variant.title }}
+                        {% if variant.title contains 'Als nieuw' %}A Grade{% endif %}
+                        {% if variant.title contains 'Lichte gebruikssporen' %}B Grade{% endif %}
+                        {% if variant.title contains 'Zichtbare gebruikssporen' %}C Grade{% endif %}
+                        {% if variant.title contains 'Nieuw' %}Nieuw{% endif %}
+                        <br>
+                        <span>
+                          {% if variant.title contains 'Als nieuw' %}Als nieuw{% endif %}
+                          {% if variant.title contains 'Lichte gebruikssporen' %}Licht gebruikt{% endif %}
+                          {% if variant.title contains 'Zichtbare gebruikssporen' %}Zichtbaar <br> gebruikt{% endif %}
+                          {% if variant.title contains 'Nieuw' %}Gloednieuw{% endif %}
                         </span>
                       </p>
+                      <p style="display: none;">{{variant.title}}</p>
                     </div>
                     <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
                       <p class="blue">{{ variant.price | money }}</p>
@@ -841,7 +867,7 @@
             <p>
               Een B Grade iPhone ziet er ook bijna ongebruikt uit. Het scherm kan enkele lichte krasjes bevatten, op de
               achterkant kunnen een paar kleine gebruikssporen te zien zijn. Het hele apparaat is gewoon intact en werkt
-                                          even goed als een A Grade.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    even goed als een A Grade.
             </p>
           </div>
 
@@ -852,9 +878,9 @@
             <p>
               Een C Grade iPhone kun je zien als een gebruikte iPhone. Vaak zijn deze apparaten langer dan een jaar
               gebruikt door de vorige eigenaar en dit kun je ook zien aan de beschadigingen. Uiteraard ziet het scherm
-                                          er wel helemaal goed uit, er zitten geen barsten etc in. Op de achterkant is wel duidelijk te zien dat het
-                                          apparaat gebruikt is, denk bijvoorbeeld aan krassen of deukjes. Het hele apparaat is wel intact en werkt
-                                          even goed als een A of B Grade.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    er wel helemaal goed uit, er zitten geen barsten etc in. Op de achterkant is wel duidelijk te zien dat het
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    apparaat gebruikt is, denk bijvoorbeeld aan krassen of deukjes. Het hele apparaat is wel intact en werkt
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    even goed als een A of B Grade.
             </p>
           </div>
         </div>
@@ -937,21 +963,218 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
+
 <script>
-  var swiper = new Swiper("#mySwiper3", {
-    loop: true,
-    spaceBetween: 10,
-    freeMode: true,
-    watchSlidesProgress: true
+  var swiper3 = new Swiper(".mySwiper3", {
+    slidesPerView: 1,
+    watchSlidesProgress: true,
+    allowSlideNext: false,
+    allowSlidePrev: false
   });
-  var swiper2 = new Swiper("#mySwiper2", {
-    loop: true,
-    spaceBetween: 10,
+  var swiper2 = new Swiper(".mySwiper2", {
     thumbs: {
-      swiper: swiper
+      swiper: swiper3
     }
   });
+
+  var originalSlides = [];
+  var originalThumbs = [];
+
+  function handleClick() {
+    // Save the original slides if they haven't been saved yet
+    if (originalSlides.length === 0) {
+      let slides = document.querySelectorAll('.mySwiper2-slide');
+      for (let slide of slides) {
+        originalSlides.push(slide.cloneNode(true));
+      }
+    }
+
+    if (originalThumbs.length === 0) {
+      let thumbs = document.querySelectorAll('.mySwiper3-slide');
+      for (let thumb of thumbs) {
+        originalThumbs.push(thumb.cloneNode(true));
+      }
+    }
+  
+    let parent = event.target.parentElement;
+    let swatchText = parent.querySelector('.swatch-text-outside');
+    let value = swatchText.textContent;
+  
+    // Remove all current slides
+    let currentSlides = document.querySelectorAll('.mySwiper2-slide');
+    for (let slide of currentSlides) {
+      let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
+      swiper2.removeSlide(index);
+    }
+  
+    let currentThumbs = document.querySelectorAll('.mySwiper3-slide');
+    for (let thumb of currentThumbs) {
+      let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
+      swiper3.removeSlide(index);
+    }
+
+    // Add the original slides back
+    for (let slide of originalSlides) {
+      swiper2.appendSlide(slide);
+    }
+
+    for (let thumb of originalThumbs) {
+      swiper3.appendSlide(thumb);
+    }
+  
+    let targetSlide;
+    for (let slide of originalSlides) {
+        if (slide.getAttribute('data-value') == value) {
+            targetSlide = slide;
+            break;
+        }
+    }
+
+    let targetThumb;
+    for (let thumb of originalThumbs) {
+        if (thumb.getAttribute('data-value') == value) {
+            targetThumb = thumb;
+            break;
+        }
+    }
+  
+    if (targetSlide) {
+        let index = Array.prototype.indexOf.call(targetSlide.parentNode.children, targetSlide);
+        swiper2.slideTo(index);
+    }
+
+    if (targetThumb) {
+      let index = Array.prototype.indexOf.call(targetThumb.parentNode.children, targetThumb);
+      swiper3.slideTo(index);
+  }
+  
+    // remove all non-active slides after swiper2 is updated
+    originalSlides.forEach(function(slide) {
+      if (slide.getAttribute('data-value') != value) {
+        let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
+        swiper2.removeSlide(index);
+      }
+    });
+
+    originalThumbs.forEach(function(thumb) {
+      if (thumb.getAttribute('data-value') != value) {
+        let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
+        swiper3.removeSlide(index);
+      }
+    });
+    swiper2.update();
+    swiper3.update();
+  }
 </script>
+
+
+
+
+<script>
+  var swiper5 = new Swiper(".mySwiper5", {
+    slidesPerView: 1,
+    watchSlidesProgress: true,
+    allowSlideNext: false,
+    allowSlidePrev: false
+  });
+  var swiper4 = new Swiper(".mySwiper4", {
+    thumbs: {
+      swiper: swiper5
+    }
+  });
+
+  
+  var originalSlides = [];
+  var originalThumbs = [];
+
+  function handleClick() {
+    // Save the original slides if they haven't been saved yet
+    if (originalSlides.length === 0) {
+      let slides = document.querySelectorAll('.mySwiper4-slide');
+      for (let slide of slides) {
+        originalSlides.push(slide.cloneNode(true));
+      }
+    }
+
+    if (originalThumbs.length === 0) {
+      let thumbs = document.querySelectorAll('.mySwiper5-slide');
+      for (let thumb of thumbs) {
+        originalThumbs.push(thumb.cloneNode(true));
+      }
+    }
+  
+    let parent = event.target.parentElement;
+    let swatchText = parent.querySelector('.swatch-text-outside');
+    let value = swatchText.textContent;
+  
+    // Remove all current slides
+    let currentSlides = document.querySelectorAll('.mySwiper4-slide');
+    for (let slide of currentSlides) {
+      let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
+      swiper2.removeSlide(index);
+    }
+  
+    let currentThumbs = document.querySelectorAll('.mySwiper5-slide');
+    for (let thumb of currentThumbs) {
+      let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
+      swiper3.removeSlide(index);
+    }
+
+    // Add the original slides back
+    for (let slide of originalSlides) {
+      swiper2.appendSlide(slide);
+    }
+
+    for (let thumb of originalThumbs) {
+      swiper3.appendSlide(thumb);
+    }
+  
+    let targetSlide;
+    for (let slide of originalSlides) {
+        if (slide.getAttribute('data-value') == value) {
+            targetSlide = slide;
+            break;
+        }
+    }
+
+    let targetThumb;
+    for (let thumb of originalThumbs) {
+        if (thumb.getAttribute('data-value') == value) {
+            targetThumb = thumb;
+            break;
+        }
+    }
+  
+    if (targetSlide) {
+        let index = Array.prototype.indexOf.call(targetSlide.parentNode.children, targetSlide);
+        swiper2.slideTo(index);
+    }
+
+    if (targetThumb) {
+      let index = Array.prototype.indexOf.call(targetThumb.parentNode.children, targetThumb);
+      swiper3.slideTo(index);
+  }
+  
+    // remove all non-active slides after swiper2 is updated
+    originalSlides.forEach(function(slide) {
+      if (slide.getAttribute('data-value') != value) {
+        let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
+        swiper2.removeSlide(index);
+      }
+    });
+
+    originalThumbs.forEach(function(thumb) {
+      if (thumb.getAttribute('data-value') != value) {
+        let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
+        swiper3.removeSlide(index);
+      }
+    });
+    swiper4.update();
+    swiper5.update();
+  }
+</script>
+
+
 
 <script>
 
@@ -969,6 +1192,8 @@
         if (! variant || ! variant.featured_image) 
           return;
         
+
+
 
         const imgId = variant.featured_image.id.toString();
         for (let i = 0; i < swiper.slides.length; i++) {
@@ -1029,6 +1254,7 @@
       
 
 
+
       this.labelName = '';
     },
 
@@ -1049,6 +1275,8 @@
           if (!prev[this.product.options[i]]) 
             prev[this.product.options[i]] = [];
           
+
+
 
           prev[this.product.options[i]].push(curr[`option${
               i + 1
@@ -1090,7 +1318,7 @@
       currentOptions: {},
 
       init() {
-        const swiper = new Swiper('#swiper-  {{ section.id }}', {
+        const swiper = new Swiper('#swiper-                                                                             {{ section.id }}', {
           direction: 'horizontal',
           navigation: {
             nextEl: '#swiper-next',
@@ -1109,6 +1337,8 @@
             return;
           
 
+
+
           const imgSrc = variant.featured_image.src;
           for (let i = 0; i < swiper.slides.length; i++) {
             const slide = swiper.slides[i];
@@ -1116,6 +1346,8 @@
             if (! img) 
               continue;
             
+
+
 
             if (img.getAttribute("src") === imgSrc) {
               swiper.slideTo(i);
@@ -1148,6 +1380,8 @@
               prev[this.product.options[i]] = [];
             
 
+
+
             prev[this.product.options[i]].push(curr[`option${
                 i + 1
               }`]);
@@ -1163,7 +1397,15 @@
   }
 </script>
 
+
+
+
 <script>
+  var sizeMetafield = document.querySelector('.size-metafield').innerText;
+  var colorMetafield = document.querySelector('.color-metafield').innerText;
+  var size = sizeMetafield;
+  var color = colorMetafield;
+
   function filterVariants () {
     var selectedSwatches = [];
     $('.options input[type="radio"]').each(function() {
@@ -1171,28 +1413,32 @@
         selectedSwatches.push($(this).val());
       }
     });
+    for (var i = 0; i < selectedSwatches.length; i++) {
+      if (selectedSwatches[i] === "size") {
+        size = selectedSwatches[i+1];
+      }
+      if (selectedSwatches[i] === "color") {
+        color = selectedSwatches[i+1];
+      }
+    }
     $('.cart-item.mobile-line-after.mobile-line-before').show();
     $('.cart-item.mobile-line-after.mobile-line-before').filter(function() {
-      var variantTitle = $(this).find('p:first-child').text();
+      var variantTitle = $(this).find('p:nth-child(2)').text();
       var match = true;
-      for (var i = 0; i < selectedSwatches.length; i++) {
-        if (variantTitle.indexOf(selectedSwatches[i]) === -1) {
-          match = false;
-        }
+      if (variantTitle.indexOf(size) === -1 || variantTitle.indexOf(color) === -1) {
+        match = false;
       }
-      return ! match;
+      return !match;
     }).hide();
   }
 
   $(document).ready(function() {
-    $('.options input[type="radio"]').change(function() {
+    filterVariants();
+    $(document).on('change', '.options input[type="radio"]', function() {
       filterVariants();
     });
   });
 </script>
-
-
-
 {% schema %}
   {
     "name": "Product Section",

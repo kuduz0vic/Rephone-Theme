@@ -6529,7 +6529,7 @@ margin-bottom: 0;
   padding-right: 8px;
 }
 
-.swiper-slide {
+.sidecart-slide {
   background: white;
   padding: 30px 25px;
   border-radius: 12px;
@@ -6557,7 +6557,7 @@ padding: 0px 16px;
 padding-bottom: 18px;
 }
 
-.swiper {
+.sidecart-swiper {
   margin: 0px 16px !important;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.02);
   padding-bottom: 17px !important;
@@ -6632,3 +6632,26 @@ margin: 5px 0px;
 .variant-size-radio {
   margin: 0;
 }
+
+.swatch-Kleur .size-input {
+  display: none;
+}
+
+.swatch-Opslag .color-input {
+  display: none;
+}
+
+.swatch-Kleur .color-input:checked+label {
+  border: 3px solid #29a7bf;
+  color: #000;
+}
+
+.swatch-Kleur .color-input:hover +label {
+  border: 3px solid #29a7bf;
+  color: #000;
+}
+
+.color-container:hover .swatch-text-outside {
+  color: black;
+  }
+

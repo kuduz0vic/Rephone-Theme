@@ -284,10 +284,10 @@
 
          <div class="swiper-main-wrapper">
           <h1 class="swiper-title">Maak jouw bestelling compleet</h1>
-          <div id="upsellSlider" class="swiper mySwiper">
+          <div id="upsellSlider" class="swiper mySwiper sidecart-swiper">
             <div class="swiper-wrapper">
               {% for product in section.settings.swiper-products %}
-                <div class="swiper-slide">
+                <div class="swiper-slide sidecart-slide">
                   <div class="top-wrapper">
                     <div class="image-wrapper">
                       <img src="{{ product.featured_image | img_url }}" class="product-image_slide">
