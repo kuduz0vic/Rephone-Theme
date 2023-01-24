@@ -3,6 +3,7 @@
 
 
 
+
 {% schema %}
 {
 "name": "Sidecart",
@@ -123,7 +124,7 @@
 <form action="{{ routes.cart_url }}" method="post">
   <div jd-cloak>
     <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
-    <div class="sidebar-container" data-ajax-cart-section>
+    <div id="sidecart" class="sidebar-container" data-ajax-cart-section>
       {% assign freeShippingPrice = section.settings.freeshipping_threshold | plus: 0 %}
       {% assign cartPriceCents = cart.total_price | plus: 0 %}
       {% assign width = cartPriceCents | times: 100 | divided_by: freeShippingPrice %}
@@ -294,14 +295,15 @@
                       <img src="{{ product.featured_image | img_url }}" class="product-image_slide">
                     </div>
                     <div class="text-wrapper">
-                      <p class="title">{{ product.title }}</p>
+                      <p class="upsell-title">{{ product.title }}</p>
                       <p class="benefit">{{ product.metafields.custom.upsell_benefit_tagline }}</p>
+                      <div class="price-wrapper-mobile">{{ product.price | money_without_trailing_zeros | remove: '€' }},-</div>
                       <div class="delivery-line">
                         <img src="{{'benefit-truck.svg' | asset_url}}">
                         <p class="delivery">Vandaag besteld, morgen in huis</p>
                       </div>
                     </div>
-                    <div class="price-wrapper">{{ product.price | money }}</div>
+                    <div class="price-wrapper">{{ product.price | money_without_trailing_zeros | remove: '€' }},-</div>
                   </div>
                   <a
                     class="button-wrapper"
@@ -365,7 +367,12 @@
 
 
 
+
 <style>
+
+
+
+
 
 
 @keyframes slidein {
@@ -983,10 +990,6 @@
       width: 100%;
     }
 
-    .payment-icon {
-      margin-right: 8px;
-      margin-bottom: 8px;
-    }
 
     .payment-container {
       display: block;

@@ -6,18 +6,20 @@
           {% when 'product' %}
           {% assign product = block.settings.product %}
           <div class="col-6 col-sm item-parent">
-            <div class="item">
-              <img src="{{product.featured_image | img_url: 'master'}}" style="width:200px;margin-left:-50px;">
-              <p class="title">{{ product.title }}<br>
-                <span>{{ block.settings.variant }}</span>
-              </p>
-              <div class="price">
-                <p>Vanaf <br>
-                  <span>{{ product.price | money_without_trailing_zeros | remove: '€' }},-</span>
+            <a href="{{product.url}}">
+              <div class="item">
+                <img src="{{product.featured_image | img_url: 'master'}}" style="width:200px;margin-left:-50px;">
+                <p class="title">{{ product.title }}<br>
+                  <span>{{ block.settings.variant }}</span>
                 </p>
-              </div>
-            </img>
-          </div>
+                <div class="price">
+                  <p>Vanaf <br>
+                    <span>{{ product.price | money_without_trailing_zeros | remove: '€' }},-</span>
+                  </p>
+                </div>
+              </img>
+            </div>
+          </a>
         </div>
       {% endcase %}
     {% endfor %}

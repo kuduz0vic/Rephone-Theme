@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<p class="size-metafield">{{product.metafields.custom.product_size}}</p>
-<p class="color-metafield">{{product.metafields.custom.product_color}}</p>
+<p class="size-metafield" style="display: none;">{{product.metafields.custom.product_size}}</p>
+<p class="color-metafield" style="display: none;">{{product.metafields.custom.product_color}}</p>
 {% assign selected_variant = product.selected_or_first_available_variant %}
 <style>
   .variant-a {
@@ -61,18 +61,8 @@
             </a>
           </li>
           <li class="item">
-            <a href="https://www.rephone.nl/refurbished-iphone/">
-              <p>iPhone</p>
-            </a>
-          </li>
-          <li class="item">
-            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">
-              <p>iPhone 8</p>
-            </a>
-          </li>
-          <li class="item">
-            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/refurbished-apple-iphone-8-64gb-black/">
-              <p>Apple iPhone 8 64GB Space Grey</p>
+            <a href="{{product.url}}">
+              <p>{{product.title}}</p>
             </a>
           </li>
         </ul>
@@ -122,6 +112,7 @@
               {% endfor %}
             </div>
           </div>
+
 
 
 
@@ -361,7 +352,7 @@
                   <div class="swiper mySwiper4 inner">
                     <div class="swiper-wrapper">
                       {% for media in product.media %}
-                        <div class="swiper-slide" alt="{{media.alt}}">
+                        <div class="swiper-slide mySwiper4-slide" data-value="{{media.alt}}" alt="{{media.alt}}">
                           <img
                             src="{{ media | img_url: 'master'}}"
                             class="headthumb"
@@ -376,7 +367,7 @@
                 <div thumbsSlider="" class="swiper mySwiper5">
                   <div class="swiper-wrapper col-2 thumbnail-small">
                     {% for media in product.media %}
-                      <div class="swiper-slide item" alt="{{media.alt}}" style="max-width: 55px;">
+                      <div class="swiper-slide item mySwiper5-slide" data-value="{{media.alt}}" alt="{{media.alt}}" style="max-width: 55px;">
                         <div class="inner">
                           <img
                             src="{{ media | img_url}}"
@@ -391,6 +382,7 @@
                 </div>
               </div>
             </div>
+
 
 
 
@@ -412,7 +404,7 @@
                             type="radio" 
                             :name="option" 
                             :value="value"
-                            x-on:click="handleClick()"
+                            @click="[handleClick(), handleClick2()]"
                             style="opacity:0;position:absolute;z-index:-1;z-index: 1000; width: 60%; height: 100%; left: 15px;">
                             <label
                               style="position:relative"
@@ -501,7 +493,7 @@
                           {% if variant.title contains 'Nieuw' %}Gloednieuw{% endif %}
                         </span>
                       </p>
-                      <p class="variant-title">{{variant.title}}</p>
+                      <p class="variant-title" style="display: none;">{{variant.title}}</p>
                     </div>
                     <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
                       <p class="blue">{{ variant.price | money_without_trailing_zeros | remove: '€' }},-</p>
@@ -1052,7 +1044,7 @@ var originalThumbs = [];
     }
   }
 
-  
+
   var colorField = document.querySelector(".color-metafield");
   var color = colorField.innerText;
   
@@ -1076,6 +1068,171 @@ var originalThumbs = [];
     }
   }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+var originalSlides2 = [];
+var originalThumbs2 = [];
+
+  // Save the original slides if they haven't been saved yet
+  if (originalSlides2.length === 0) {
+    let slides2 = document.querySelectorAll('.mySwiper4-slide');
+    for (let slide2 of slides2) {
+      originalSlides2.push(slide2.cloneNode(true));
+    }
+  }
+
+  if (originalThumbs2.length === 0) {
+    let thumbs2 = document.querySelectorAll('.mySwiper5-slide');
+    for (let thumb2 of thumbs2) {
+      originalThumbs2.push(thumb2.cloneNode(true));
+    }
+  }
+
+
+  var colorField2 = document.querySelector(".color-metafield");
+  var color2 = colorField2.innerText;
+  
+  var mySwiper4 = document.querySelector(".mySwiper4");
+  var mySwiper4Slides = mySwiper4.querySelectorAll(".swiper-slide");
+  
+  for (var i = 0; i < mySwiper4Slides.length; i++) {
+    var slide2 = mySwiper4Slides[i];
+    if (slide2.getAttribute("data-value") != color2) {
+      slide2.parentElement.removeChild(slide2);
+    }
+  }
+
+  var mySwiper5 = document.querySelector(".mySwiper5");
+  var mySwiper5Slides = mySwiper5.querySelectorAll(".swiper-slide");
+  
+  for (var i = 0; i < mySwiper5Slides.length; i++) {
+    var slide2 = mySwiper5Slides[i];
+    if (slide2.getAttribute("data-value") != color2) {
+      slide2.parentElement.removeChild(slide2);
+    }
+  }
+</script>
+
+
+
+
+
+<script>
+  var swiper5 = new Swiper(".mySwiper5", {
+    slidesPerView: 1,
+    watchSlidesProgress: true,
+    allowSlideNext: false,
+    allowSlidePrev: false
+  });
+  var swiper4 = new Swiper(".mySwiper4", {
+    thumbs: {
+      swiper: swiper5
+    }
+  });
+
+  function handleClick2() {
+
+        // Add the original slides back
+        for (let slide2 of originalSlides2) {
+          swiper4.appendSlide(slide2);
+        }
+    
+        for (let thumb2 of originalThumbs2) {
+          swiper5.appendSlide(thumb2);
+        }
+  
+  
+    let parent2 = event.target.parentElement;
+    let swatchText2 = parent2.querySelector('.swatch-text-outside');
+    let value2 = swatchText2.textContent;
+  
+    // Remove all current slides
+    let currentSlides2 = document.querySelectorAll('.mySwiper4-slide');
+    for (let slide2 of currentSlides2) {
+      let index2 = Array.prototype.indexOf.call(slide2.parentNode.children, slide2);
+      swiper4.removeSlide(index2);
+    }
+  
+    let currentThumbs2 = document.querySelectorAll('.mySwiper5-slide');
+    for (let thumb2 of currentThumbs2) {
+      let index2 = Array.prototype.indexOf.call(thumb2.parentNode.children, thumb2);
+      swiper5.removeSlide(index2);
+    }
+
+    // Add the original slides back
+    for (let slide2 of originalSlides2) {
+      swiper4.appendSlide(slide2);
+    }
+
+    for (let thumb2 of originalThumbs2) {
+      swiper5.appendSlide(thumb2);
+    }
+  
+    let targetSlide2;
+    for (let slide2 of originalSlides2) {
+        if (slide2.getAttribute('data-value') == value2) {
+            targetSlide2 = slide2;
+            break;
+        }
+    }
+
+    let targetThumb2;
+    for (let thumb2 of originalThumbs2) {
+        if (thumb2.getAttribute('data-value') == value2) {
+            targetThumb2 = thumb2;
+            break;
+        }
+    }
+  
+    if (targetSlide2) {
+        let index2 = Array.prototype.indexOf.call(targetSlide2.parentNode.children, targetSlide2);
+        swiper4.slideTo(index2);
+    }
+
+    if (targetThumb2) {
+      let index2 = Array.prototype.indexOf.call(targetThumb2.parentNode.children, targetThumb2);
+      swiper5.slideTo(index2);
+  }
+  
+    // remove all non-active slides after swiper2 is updated
+    originalSlides2.forEach(function(slide2) {
+      if (slide2.getAttribute('data-value') != value2) {
+        let index2 = Array.prototype.indexOf.call(slide2.parentNode.children, slide2);
+        swiper4.removeSlide(index2);
+      }
+    });
+
+    originalThumbs2.forEach(function(thumb2) {
+      if (thumb2.getAttribute('data-value') != value2) {
+        let index2 = Array.prototype.indexOf.call(thumb2.parentNode.children, thumb2);
+        swiper5.removeSlide(index2);
+      }
+    });
+    swiper4.update();
+    swiper5.update();
+  }
+</script>
+
+
+
+
+
+
+
+
+
 
 
 <script>

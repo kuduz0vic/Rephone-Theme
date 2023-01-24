@@ -85,6 +85,22 @@
       }
     </style>
 
+    <style>
+      @font-face {
+        font-family: 'CustomUbuntu';
+        src: url('{{'Ubuntu-Bold.woff' | asset_url}}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'CustomUbuntu';
+        src: url('{{'Ubuntu-Medium.woff' | asset_url}}') format('woff');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
 
   </head>
   <body>
@@ -120,6 +136,20 @@
       });
     </script>
 
+
+    <script>
+      var section = document.getElementById("sidecart");
+      if (section) {
+        var script1 = document.createElement("script");
+        script1.src = "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js";
+        script1.type = "text/javascript";
+        section.appendChild(script1);
+
+        var script2 = document.createElement("script");
+        script2.innerHTML = "WebFont.load({  google: {    families: ['Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic']  }});"
+        section.appendChild(script2);
+      }
+    </script>
   </body>
   <script>
     function debounce(func, timeout = 300) {
@@ -142,14 +172,14 @@
   <script type="application/json" data-ajax-cart-configuration>
     {
     "addToCartCssClass": "js-my-cart-open"
-                                                                                                                  }</script>
+                                                                                                                                              }</script>
 
 
   <script type="module">
     import { subscribeToCartSectionsUpdate } from '{{ "liquid-ajax-cart-v1.10.3.js" | asset_url }}'
     subscribeToCartSectionsUpdate( sections => {
-                                                                                            console.log('Sections are updated: ', sections);
-                                });</script>
+                                                                                                                        console.log('Sections are updated: ', sections);
+                                                            });</script>
 
 
 </html>
