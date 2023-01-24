@@ -372,7 +372,9 @@
 
 
 
-
+body.js-my-cart-open {
+  overflow: none;
+}
 
 
 @keyframes slidein {
@@ -925,7 +927,6 @@
 
   .sidebar-container {
     position: fixed;
-    top: 0%;
     right: 0%;
     bottom: 0%;
     z-index: 1000;
@@ -937,6 +938,7 @@
     justify-content: flex-end;
     transform: translateX(100%);
    max-width: 576px;
+   transition: all 0.35s ease-in-out;
   }
 
   .sidebar-bg {

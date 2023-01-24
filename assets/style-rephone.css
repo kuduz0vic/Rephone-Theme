@@ -5639,8 +5639,8 @@ footer {
   
   .slidecart {
     position: fixed;
-    top: 0px;
     right: 0px;
+    bottom: 0;
     overflow: hidden;
     width: 100%;
     height: 100%;
