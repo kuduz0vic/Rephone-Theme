@@ -109,7 +109,7 @@
             "usb-lichtnetadapter-20w-2"
           ],
           "benefit-line": "",
-          "upsell-description": "{{product.metafields.custom.upsell_description}}"
+          "upsell-description": ""
         }
       },
       "global-settings": {
