@@ -552,9 +552,9 @@
                           E-mail mij
                         </div>
                       {% else %}
-                        <a
+                        <a id="add-to-cart-button"
                           class="btn-cart addtocart"
-                          href="/cart/add?id={{ product.selected_or_first_available_variant.id }}"
+                          href="/cart/add?id={{ variant.id }}"
                           type="submit"
                           data-ajax-cart-request-button>
                           <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
@@ -563,6 +563,7 @@
                     </div>
 
                   </div>
+
 
                   <div class="row no-gutters mobile">
                     {% if variant.inventory_quantity == 0 %}
@@ -954,6 +955,8 @@
 
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
 
 
 <script>

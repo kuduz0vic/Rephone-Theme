@@ -160,7 +160,7 @@
               <div class="item-slidecart-wrapper">
                 <div class="slidecart-item-details">
                   <div class="cart-item-image-wrapper">
-                    <img src="{{item.image | img_url: 'master'}}" loading="lazy" alt="" class="cart-image"><a
+                    <img src="{{ item.variant.featured_image | img_url: 'master'}}" loading="lazy" alt="" class="cart-image"><a
                       data-ajax-cart-request-button
                       href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
                       class="bin w-inline-block"><img src="{{'trash.svg' | asset_url}}" loading="lazy" alt=""
@@ -168,10 +168,9 @@
                   </div>
                   <div id="w-node-_4802795b-3f9d-a5cf-4e2f-cdc8b26f6f95-37cba332" class="item-details-wrapper">
                     <div class="item-information">
-                      <div class="item-title-slidecart">{{item.title}}</div>
-                      {% comment %}
-                      <div class="tagline-slidecart">256GB | A-Grade | 2 jaar garantie</div>
-                      {% endcomment %}
+                      <div class="item-title-slidecart">{{item.title | split: ' - ' | first}}</div>
+                      <div class="tagline-slidecart">
+                      {{ item.title | split: ' - ' | last | replace: '/', ' | ' | replace: 'Als nieuw', 'A-Grade' | replace: 'Lichte gebruikssporen', 'B-Grade' | replace: 'Zichtbare gebruikssporen', 'C-Grade'  }}</div>
                     </div>
                     <div class="item-shipping-cart-info">
                       <img
@@ -361,11 +360,6 @@
         </div>
       </div>
 </form>
-
-
-
-
-
 
 
 <style>
