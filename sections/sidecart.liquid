@@ -101,6 +101,11 @@
 "type": "liquid",
 "id": "benefit-line",
 "label": "Benefit Line"
+},
+{
+"type": "liquid",
+"id": "upsell-description",
+"label": "Upsell Description"
 }
 ]
 }
@@ -204,46 +209,23 @@
                 <div class="slidecart-dropdown-content-wrapper collapse" id="collapseExample-{{ forloop.index }}">
                   <div class="slidecart-dropdown-content">
                     <div class="slidecart-dropdown-p">
-                      De {{ item.title }} zo gloed als nieuw omdat hoge kwaliteit refurbished producten een tweede leven
-                      verdienen. Met onze twee jaar garantie ben je verzekerd van de best mogelijke kwaliteit!
+                      {{section.settings.upsell-description}}
                     </div>
                     <div class="slidecart-item-benefits-list">
-                      <div class="slidecart-benefit">
-                        <div class="benefit-icon-slidecart w-embed">
-                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path
-                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
-                              fill="#4DAB70"></path>
-                          </svg>
+                      {% for benefit in product.metafields.custom.benefits.value %}
+                        <div class="slidecart-benefit">
+                          <div class="benefit-icon-slidecart w-embed">
+                            <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
+                              <path
+                                d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
+                                fill="#4DAB70"></path>
+                            </svg>
+                          </div>
+                          <div class="slidecart-benefit-p">{{benefit}}</div>
                         </div>
-                        <div class="slidecart-benefit-p">2 jaar garantie op de {{ item.title }}.</div>
-                      </div>
-                      <div class="slidecart-benefit">
-                        <div class="benefit-icon-slidecart w-embed">
-                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path
-                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
-                              fill="#4DAB70"></path>
-                          </svg>
-                        </div>
-                        <div class="slidecart-benefit-p">30 dagen niet goed, geld terug.</div>
-                      </div>
-                      <div class="slidecart-benefit">
-                        <div class="benefit-icon-slidecart w-embed">
-                          <svg width="100%" height="100%" viewbox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect width="100%" height="100%" rx="10" fill="#E1EDE4"></rect>
-                            <path
-                              d="M8.91613 13C8.65327 13 8.40108 12.8968 8.21517 12.7132L6.29038 10.8122C5.90321 10.4299 5.90321 9.80982 6.29038 9.4275C6.67756 9.04519 7.30526 9.04519 7.69244 9.4275L8.91627 10.6362L12.3076 7.28674C12.6947 6.90442 13.3224 6.90442 13.7096 7.28674C14.0968 7.66905 14.0968 8.28909 13.7096 8.6714L9.61738 12.7131C9.43147 12.8966 9.17928 12.9999 8.91642 12.9999L8.91613 13Z"
-                              fill="#4DAB70"></path>
-                          </svg>
-                        </div>
-                        <div class="slidecart-benefit-p">Op tientallen technische punten gecontroleerd.</div>
-                      </div>
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
