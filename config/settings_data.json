@@ -1,6 +1,9 @@
 {
   "current": {
-    "checkout_header_image": "shopify:\/\/shop_images\/Spacw-grey.png",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#06b35a",
     "sections": {
       "header": {
         "type": "header",
