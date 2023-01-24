@@ -108,7 +108,8 @@
             "lightning-naar-usb-kabel-1m",
             "usb-lichtnetadapter-20w-2"
           ],
-          "benefit-line": ""
+          "benefit-line": "",
+          "upsell-description": ""
         }
       },
       "global-settings": {
