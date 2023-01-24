@@ -88,6 +88,7 @@
                                   {% if filter_value.active -%}checked{%- endif %}
                                   {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
                                   onclick="applyFilters()">{{ filter_value.label }}</label>
+                                  
                             </div>
                           {% endif %}
                         {%- endfor -%}
@@ -333,7 +334,7 @@
                         href="{{ product.url }}"
                         class="inner"
                         style="display:block; padding: 0 10px !important;">
-                        <p class="title" style="height: 44px;">{{ product.title }}<br>
+                        <p class="title" style="height: 44px;">{{ product.title }}<br><span>{{product.metafields.custom.product_size}}GB | {{product.metafields.custom.product_color}}</span>
                         </p>
                         <div class="row" style="margin-left: 0px;">
                           <div class="col-4 d-none d-md-block" style="overflow: hidden;">
@@ -346,7 +347,7 @@
                           <div class="col-7 d-flex flex-column-reverse flex-md-column">
                             <div class="price">
                               <p>Vanaf <br>
-                                <span>{{ product.price | money }}</span>
+                                <span>{{ product.price | money_without_trailing_zeros | remove: '€' }},-</span>
                               </p>
                             </div>
                             <div class="grades" style="display:none;">

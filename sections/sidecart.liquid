@@ -122,12 +122,13 @@
 
 <form action="{{ routes.cart_url }}" method="post">
   <div jd-cloak>
+    <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
     <div class="sidebar-container" data-ajax-cart-section>
       {% assign freeShippingPrice = section.settings.freeshipping_threshold | plus: 0 %}
       {% assign cartPriceCents = cart.total_price | plus: 0 %}
       {% assign width = cartPriceCents | times: 100 | divided_by: freeShippingPrice %}
 
-      <div class="slidecart-blur" data-ajax-cart-toggle-class-button="js-my-cart-open | remove"></div>
+      
       <div class="slidecart">
         <div class="slidecart-body">
           <div class="slidecart-header">
@@ -366,6 +367,36 @@
 
 <style>
 
+
+@keyframes slidein {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+
+@keyframes slideout {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.slidecart-blur {
+  opacity: 0;
+  z-index: -999;
+  background: rgba(0,0,0,0.5);
+}
+
+
+
 .hide-me[aria-expanded="true"] {display: none;}
 
 .show-me[aria-expanded="false"] {display: none;}
@@ -388,21 +419,6 @@
 
   .sidebar-container {
     display: flex;
-    opacity: 0;
-    visibility: hidden;
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-  }
-
-  .sidebar-container .sidebar-cart {
-    transform: translate(100%);
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    opacity: 0;
   }
 
   .cart-payment-info {
@@ -902,22 +918,18 @@
 
   .sidebar-container {
     position: fixed;
-    left: 0%;
     top: 0%;
     right: 0%;
     bottom: 0%;
     z-index: 1000;
-    display: none;
     width: 100vw;
     height: 100vh;
     -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    background-color: #0006;
-    opacity: 0;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
+    transform: translateX(100%);
+   max-width: 576px;
   }
 
   .sidebar-bg {
@@ -1029,57 +1041,28 @@
 
   .sidebar-container {
     display: flex;
-    opacity: 0;
-    visibility: hidden;
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
   }
 
   /* Show the floating cart if the 'js-my-cart-open' CSS class exists */
   .js-my-cart-open .sidebar-container {
     display: flex;
-    opacity: 1;
     visibility: visible;
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-  }
-
-  .sidebar-container.sidebar-bg {
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    opacity: 0;
-  }
-
-  .js-my-cart-open .sidebar-bg {
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    opacity: 1;
-  }
-
-  .sidebar-container .sidebar-cart {
-    transform: translateX(100%);
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    opacity: 0;
-  }
-
-  .js-my-cart-open .sidebar-cart {
+    webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    transition-timing-function: ease-in-out;
     transform: translateX(0%);
-    webkit-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -moz-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    -o-transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
-    transition: all 0.35s cubic-bezier(0.83, 0, 0.17, 1);
+  }
+
+  .sidebar-container.slidecart-blur {
     opacity: 1;
+    z-index: 9999;
+  }
+
+  .js-my-cart-open .slidecart-blur {
+   opacity: 1;
+   z-index: 999;
   }
 
   @media screen and (max-width: 767px) {
@@ -1469,6 +1452,8 @@
   }
 </style>
 
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
 
 <script>
   setInterval(() => {
@@ -1483,4 +1468,12 @@
       });
     }
   },250);
+</script>
+
+
+<script>
+  var background = document.querySelector(".slidecart-blur");
+  background.addEventListener("click", function(){
+    document.body.classList.remove("js-my-cart-open");
+  });
 </script>

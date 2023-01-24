@@ -116,7 +116,7 @@
                         </div>
                         <div class="col-md-4 col-3 item-options" style="padding-top: 18px;">
                           <div class="price">
-                            <p>{{ item.final_price | money }}</p>
+                            <p>{{ item.final_price | money_without_trailing_zeros | remove: '€' }},-</p>
                           </div>
                           <div class="quantity-selection">
                             <a data-ajax-cart-request-button
@@ -158,9 +158,9 @@
                     <p>{% if freeShippingPrice <= cartPriceCents %}
                     GRATIS
                     {% else %}
-                    {{ section.settings.shipping | money }}
+                    {{ section.settings.shipping | money_without_trailing_zeros | remove: '€' }},-
                     {% endif %}</p>
-                    <p>{{ cart.total_price | money_with_currency }}</p>
+                    <p>{{ cart.total_price | money_without_trailing_zeros | remove: '€' }},-</p>
                     </div>
                   </div>
                 </div>

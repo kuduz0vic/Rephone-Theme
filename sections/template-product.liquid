@@ -405,8 +405,9 @@
                       <h4 x-text="optionName"></h4>
                       <div class="row">
                         <template x-for="value of productOptions[option]">
-                          <div class="color col-2 col-lg-2 color-container" style="max-width: 71.5px;" id="swatchesjs">
-                            <input 
+                          <div class="color col-2 col-lg-2 color-container" :class="`${optionName === 'Kleur' ? 'color-swatch' : ''} ${optionName === 'Opslag' ? 'size-swatch' : ''}`" style="max-width: 71.5px;" id="swatchesjs">
+                            
+                          <input 
                             class="color-input" 
                             type="radio" 
                             :name="option" 
@@ -500,10 +501,10 @@
                           {% if variant.title contains 'Nieuw' %}Gloednieuw{% endif %}
                         </span>
                       </p>
-                      <p style="display: none;">{{variant.title}}</p>
+                      <p class="variant-title">{{variant.title}}</p>
                     </div>
                     <div class="col-4 col-md-3 price" id="price-{{ section.id }}">
-                      <p class="blue">{{ variant.price | money }}</p>
+                      <p class="blue">{{ variant.price | money_without_trailing_zeros | remove: '€' }},-</p>
                     </div>
 
                     {% if variant.inventory_quantity == 0 %}
@@ -963,6 +964,119 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
+<script>
+  $(document).ready(function() {
+    var size = $('.size-metafield').text();
+    var color = $('.color-metafield').text();
+    $('.cart-item.mobile-line-after.mobile-line-before').each(function() {
+        var variantTitle = $(this).find('.variant-title').text().toLowerCase();
+        if(!variantTitle.includes(size.toLowerCase()) || !variantTitle.includes(color.toLowerCase())) {
+            $(this).hide();
+        }
+    });
+    $('.size-swatch').click(function() {
+        size = $(this).find('.swatch-text-outside').text();
+        $('.cart-item.mobile-line-after.mobile-line-before').show();
+        $('.cart-item.mobile-line-after.mobile-line-before').each(function() {
+            var variantTitle = $(this).find('.variant-title').text().toLowerCase();
+            if(!variantTitle.includes(size.toLowerCase()) || !variantTitle.includes(color.toLowerCase())) {
+                $(this).hide();
+            }
+        });
+    });
+    $('.color-swatch').click(function() {
+        color = $(this).find('.swatch-text-inside').text();
+        $('.cart-item.mobile-line-after.mobile-line-before').show();
+        $('.cart-item.mobile-line-after.mobile-line-before').each(function() {
+            var variantTitle = $(this).find('.variant-title').text().toLowerCase();
+            if(!variantTitle.includes(size.toLowerCase()) || !variantTitle.includes(color.toLowerCase())) {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+  $(document).ready(function() {
+    var sizeMetafield = $('.size-metafield').text();
+    var colorMetafield = $('.color-metafield').text();
+
+    // On page load, add active class to preselected swatches
+    $('.color-swatch .swatch-text-outside').each(function() {
+        if($(this).text() == colorMetafield) {
+          $(this).closest('.variant-size-radio').addClass('color-active');
+        }
+    });
+    
+    $('.size-swatch .swatch-text-inside').each(function() {
+        if($(this).text() == sizeMetafield) {
+            $(this).addClass('size-active');
+        }
+    });
+
+    $('.swatch-text-outside').filter(function() {
+      return $(this).text() === colorMetafield;
+  }).prev().addClass('color-active');
+
+    // Handle active state on swatch click
+    $('.color-swatch input').click(function() {
+        $('.color-swatch label').removeClass('color-active');
+        $(this).closest('.variant-size-radio').addClass('color-active');
+    });
+    $('.size-swatch input').click(function() {
+        $('.size-swatch span').removeClass('size-active');
+        $(this).closest('span').addClass('size-active');
+    });
+});
+</script>
+
+<script>
+
+var originalSlides = [];
+var originalThumbs = [];
+
+  // Save the original slides if they haven't been saved yet
+  if (originalSlides.length === 0) {
+    let slides = document.querySelectorAll('.mySwiper2-slide');
+    for (let slide of slides) {
+      originalSlides.push(slide.cloneNode(true));
+    }
+  }
+
+  if (originalThumbs.length === 0) {
+    let thumbs = document.querySelectorAll('.mySwiper3-slide');
+    for (let thumb of thumbs) {
+      originalThumbs.push(thumb.cloneNode(true));
+    }
+  }
+
+  
+  var colorField = document.querySelector(".color-metafield");
+  var color = colorField.innerText;
+  
+  var mySwiper2 = document.querySelector(".mySwiper2");
+  var mySwiper2Slides = mySwiper2.querySelectorAll(".swiper-slide");
+  
+  for (var i = 0; i < mySwiper2Slides.length; i++) {
+    var slide = mySwiper2Slides[i];
+    if (slide.getAttribute("data-value") != color) {
+      slide.parentElement.removeChild(slide);
+    }
+  }
+
+  var mySwiper3 = document.querySelector(".mySwiper3");
+  var mySwiper3Slides = mySwiper3.querySelectorAll(".swiper-slide");
+  
+  for (var i = 0; i < mySwiper3Slides.length; i++) {
+    var slide = mySwiper3Slides[i];
+    if (slide.getAttribute("data-value") != color) {
+      slide.parentElement.removeChild(slide);
+    }
+  }
+</script>
+
 
 <script>
   var swiper3 = new Swiper(".mySwiper3", {
@@ -977,24 +1091,17 @@
     }
   });
 
-  var originalSlides = [];
-  var originalThumbs = [];
-
   function handleClick() {
-    // Save the original slides if they haven't been saved yet
-    if (originalSlides.length === 0) {
-      let slides = document.querySelectorAll('.mySwiper2-slide');
-      for (let slide of slides) {
-        originalSlides.push(slide.cloneNode(true));
-      }
-    }
 
-    if (originalThumbs.length === 0) {
-      let thumbs = document.querySelectorAll('.mySwiper3-slide');
-      for (let thumb of thumbs) {
-        originalThumbs.push(thumb.cloneNode(true));
-      }
-    }
+        // Add the original slides back
+        for (let slide of originalSlides) {
+          swiper2.appendSlide(slide);
+        }
+    
+        for (let thumb of originalThumbs) {
+          swiper3.appendSlide(thumb);
+        }
+  
   
     let parent = event.target.parentElement;
     let swatchText = parent.querySelector('.swatch-text-outside');
@@ -1069,110 +1176,6 @@
 
 
 
-
-<script>
-  var swiper5 = new Swiper(".mySwiper5", {
-    slidesPerView: 1,
-    watchSlidesProgress: true,
-    allowSlideNext: false,
-    allowSlidePrev: false
-  });
-  var swiper4 = new Swiper(".mySwiper4", {
-    thumbs: {
-      swiper: swiper5
-    }
-  });
-
-  
-  var originalSlides = [];
-  var originalThumbs = [];
-
-  function handleClick() {
-    // Save the original slides if they haven't been saved yet
-    if (originalSlides.length === 0) {
-      let slides = document.querySelectorAll('.mySwiper4-slide');
-      for (let slide of slides) {
-        originalSlides.push(slide.cloneNode(true));
-      }
-    }
-
-    if (originalThumbs.length === 0) {
-      let thumbs = document.querySelectorAll('.mySwiper5-slide');
-      for (let thumb of thumbs) {
-        originalThumbs.push(thumb.cloneNode(true));
-      }
-    }
-  
-    let parent = event.target.parentElement;
-    let swatchText = parent.querySelector('.swatch-text-outside');
-    let value = swatchText.textContent;
-  
-    // Remove all current slides
-    let currentSlides = document.querySelectorAll('.mySwiper4-slide');
-    for (let slide of currentSlides) {
-      let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
-      swiper2.removeSlide(index);
-    }
-  
-    let currentThumbs = document.querySelectorAll('.mySwiper5-slide');
-    for (let thumb of currentThumbs) {
-      let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
-      swiper3.removeSlide(index);
-    }
-
-    // Add the original slides back
-    for (let slide of originalSlides) {
-      swiper2.appendSlide(slide);
-    }
-
-    for (let thumb of originalThumbs) {
-      swiper3.appendSlide(thumb);
-    }
-  
-    let targetSlide;
-    for (let slide of originalSlides) {
-        if (slide.getAttribute('data-value') == value) {
-            targetSlide = slide;
-            break;
-        }
-    }
-
-    let targetThumb;
-    for (let thumb of originalThumbs) {
-        if (thumb.getAttribute('data-value') == value) {
-            targetThumb = thumb;
-            break;
-        }
-    }
-  
-    if (targetSlide) {
-        let index = Array.prototype.indexOf.call(targetSlide.parentNode.children, targetSlide);
-        swiper2.slideTo(index);
-    }
-
-    if (targetThumb) {
-      let index = Array.prototype.indexOf.call(targetThumb.parentNode.children, targetThumb);
-      swiper3.slideTo(index);
-  }
-  
-    // remove all non-active slides after swiper2 is updated
-    originalSlides.forEach(function(slide) {
-      if (slide.getAttribute('data-value') != value) {
-        let index = Array.prototype.indexOf.call(slide.parentNode.children, slide);
-        swiper2.removeSlide(index);
-      }
-    });
-
-    originalThumbs.forEach(function(thumb) {
-      if (thumb.getAttribute('data-value') != value) {
-        let index = Array.prototype.indexOf.call(thumb.parentNode.children, thumb);
-        swiper3.removeSlide(index);
-      }
-    });
-    swiper4.update();
-    swiper5.update();
-  }
-</script>
 
 
 
@@ -1400,45 +1403,7 @@
 
 
 
-<script>
-  var sizeMetafield = document.querySelector('.size-metafield').innerText;
-  var colorMetafield = document.querySelector('.color-metafield').innerText;
-  var size = sizeMetafield;
-  var color = colorMetafield;
 
-  function filterVariants () {
-    var selectedSwatches = [];
-    $('.options input[type="radio"]').each(function() {
-      if ($(this).is(':checked')) {
-        selectedSwatches.push($(this).val());
-      }
-    });
-    for (var i = 0; i < selectedSwatches.length; i++) {
-      if (selectedSwatches[i] === "size") {
-        size = selectedSwatches[i+1];
-      }
-      if (selectedSwatches[i] === "color") {
-        color = selectedSwatches[i+1];
-      }
-    }
-    $('.cart-item.mobile-line-after.mobile-line-before').show();
-    $('.cart-item.mobile-line-after.mobile-line-before').filter(function() {
-      var variantTitle = $(this).find('p:nth-child(2)').text();
-      var match = true;
-      if (variantTitle.indexOf(size) === -1 || variantTitle.indexOf(color) === -1) {
-        match = false;
-      }
-      return !match;
-    }).hide();
-  }
-
-  $(document).ready(function() {
-    filterVariants();
-    $(document).on('change', '.options input[type="radio"]', function() {
-      filterVariants();
-    });
-  });
-</script>
 {% schema %}
   {
     "name": "Product Section",

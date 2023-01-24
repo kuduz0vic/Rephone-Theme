@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box; }
 
+
+
+
 body {
   margin: 0;
   color: #697C83;
@@ -5632,9 +5635,6 @@ footer {
     top: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: rgba(0, 0, 0, 0.4);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
   }
   
   .slidecart {
@@ -6464,7 +6464,7 @@ line-height: 24px;
   flex-grow: 1;
 }
 
-.price-wrapper {
+#upsellSlider .price-wrapper {
   font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 700;
@@ -6476,7 +6476,7 @@ margin-bottom: 0;
 color: #242222;
 }
 
-.title {
+#upsellSlider .title {
   font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 700;
@@ -6488,7 +6488,7 @@ margin-bottom: 0;
 color: #242222;
 }
 
-p.benefit {
+#upsellSlider p.benefit {
   font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 500;
@@ -6507,7 +6507,7 @@ color: #6A6A6A;
   padding-top: 8.5px;
 }
 
-.delivery {
+#upsellSlider .delivery {
   font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 500;
@@ -6655,3 +6655,11 @@ margin: 5px 0px;
   color: black;
   }
 
+.color-active {
+  border: 3px solid #29a7bf !important;
+}
+
+.size-active {
+  background: #29a7bf;
+  color: white;
+}
