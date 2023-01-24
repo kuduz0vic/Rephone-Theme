@@ -107,9 +107,7 @@
             "airpods-1",
             "lightning-naar-usb-kabel-1m",
             "usb-lichtnetadapter-20w-2"
-          ],
-          "benefit-line": "",
-          "upsell-description": ""
+          ]
         }
       },
       "global-settings": {
@@ -135,12 +133,20 @@
               "name": "White",
               "code": "#f9f6ef"
             }
+          },
+          "9f4352b9-7e14-4dd9-a9de-ff2c566f9185": {
+            "type": "swatch",
+            "settings": {
+              "name": "Grijs",
+              "code": "#515151"
+            }
           }
         },
         "block_order": [
           "b95b45e8-7ce6-4791-81df-fbb0db7301a9",
           "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7",
-          "60f53d95-9412-4134-9a5a-11db79f599a2"
+          "60f53d95-9412-4134-9a5a-11db79f599a2",
+          "9f4352b9-7e14-4dd9-a9de-ff2c566f9185"
         ],
         "settings": {
         }
