@@ -121,14 +121,14 @@
               "code": "#2e3033"
             }
           },
-          "0ec06054-602f-4c99-bff9-04604ced9420": {
+          "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7": {
             "type": "swatch",
             "settings": {
               "name": "Red",
               "code": "#a5282c"
             }
           },
-          "6914abf4-e6b0-4df0-9a76-12497667fe4f": {
+          "60f53d95-9412-4134-9a5a-11db79f599a2": {
             "type": "swatch",
             "settings": {
               "name": "White",
@@ -138,8 +138,8 @@
         },
         "block_order": [
           "b95b45e8-7ce6-4791-81df-fbb0db7301a9",
-          "0ec06054-602f-4c99-bff9-04604ced9420",
-          "6914abf4-e6b0-4df0-9a76-12497667fe4f"
+          "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7",
+          "60f53d95-9412-4134-9a5a-11db79f599a2"
         ],
         "settings": {
         }
