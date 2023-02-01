@@ -13,10 +13,10 @@
             "settings": {
               "collection": "iphones",
               "collection_list": [
+                "ipad-10-2-2019",
                 "iphone-12-mini",
                 "iphone-13-pro-max",
-                "iphone-se",
-                "ipad-10-2-2019"
+                "iphone-se"
               ],
               "collection-image": "shopify:\/\/shop_images\/iphone.png"
             }
