@@ -17,7 +17,7 @@
                 "iphone-13-pro-max",
                 "iphone-se"
               ],
-              "collection-image": "shopify:\/\/shop_images\/iphone.png"
+              "collection-image": "shopify:\/\/shop_images\/iphoneX.jpg"
             }
           },
           "23673bda-2ad5-49e1-bdff-7f0a8a1fb2b0": {
@@ -62,7 +62,7 @@
         ],
         "settings": {
           "menu": "main-menu",
-          "mobile-menu": "mobile-menu",
+          "mobile-menu": "",
           "logo": "shopify:\/\/shop_images\/logoheader.png",
           "secondary-logo": "shopify:\/\/shop_images\/thuiswinkel.jpg",
           "mobile-logo": "shopify:\/\/shop_images\/logoheader.jpg"
@@ -86,7 +86,7 @@
             "iphone-se"
           ],
           "email": "klantenservice@rephone.nl",
-          "secondary-menu": "legal",
+          "secondary-menu": "",
           "blog-pick": "iphone",
           "blog-link": "shopify:\/\/blogs\/iphone"
         }
