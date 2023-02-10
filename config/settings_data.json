@@ -2,7 +2,7 @@
   "current": {
     "checkout_logo_image": "shopify:\/\/shop_images\/logoheader.png",
     "checkout_body_background_color": "#ffffff",
-    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_sidebar_background_color": "#fdfdfd",
     "checkout_accent_color": "#000000",
     "checkout_button_color": "#06b35a",
     "sections": {
