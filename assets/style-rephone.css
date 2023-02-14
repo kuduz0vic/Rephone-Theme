@@ -107,8 +107,8 @@ h1 {
   font-family: 'Arial', sans-serif; }
   @media (max-width: 991.98px) {
     h1 {
-      line-height: 64px;
-      font-size: 22px;
+      line-height: 32px;
+      font-size: 32px;
       margin-bottom: 15px; } }
 
 h2 {
