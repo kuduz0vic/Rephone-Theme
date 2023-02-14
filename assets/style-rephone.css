@@ -104,7 +104,7 @@ h1 {
   font-weight: bold;
   font-size: 64px;
   color: black;
-  font-family: 'Franklin Gothic', sans-serif; }
+  font-family: 'Arial', sans-serif; }
   @media (max-width: 991.98px) {
     h1 {
       line-height: 32px;
@@ -117,7 +117,7 @@ h2 {
   font-weight: bold;
   font-size: 36px;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Arial', sans-serif;
   margin-bottom: 30px; }
 
 h3 {
@@ -125,7 +125,7 @@ h3 {
   font-weight: 300;
   font-size: 24px;
   color: black;
-  font-family: 'Ubuntu', sans-serif; }
+  font-family: 'Arial', sans-serif; }
 
 h4 {
   line-height: 24px;
