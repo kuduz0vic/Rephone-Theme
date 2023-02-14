@@ -102,13 +102,13 @@ h1 {
   text-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   line-height: 64px;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 64px;
   color: black;
   font-family: 'Arial', sans-serif; }
   @media (max-width: 991.98px) {
     h1 {
       line-height: 64px;
-      font-size: 12px;
+      font-size: 64px;
       margin-bottom: 15px; } }
 
 h2 {
