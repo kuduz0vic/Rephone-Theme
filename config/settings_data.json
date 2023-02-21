@@ -99,7 +99,7 @@
       "sidecart": {
         "type": "sidecart",
         "settings": {
-          "title": "Je Winkelwagen",
+          "title": "Winkelwagen",
           "rewards_title": "Rewards",
           "shipping_text": "Verzending",
           "freeshipping_threshold": 4000,
@@ -111,7 +111,7 @@
           "maak_af": "Eenmalige Deal!",
           "total": "Totaal",
           "checkout_btn": "Veilig Afrekenen",
-          "payments": "klarna,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay",
+          "payments": "ideal,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay",
           "swiper-products": [
             "airpods-1",
             "lightning-naar-usb-kabel-1m",
