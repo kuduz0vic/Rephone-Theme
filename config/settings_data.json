@@ -98,8 +98,8 @@
         "type": "sidecart",
         "settings": {
           "title": "Winkelwagen",
-          "rewards_title": "Rewards",
-          "shipping_text": "Verzending",
+          "rewards_title": "",
+          "shipping_text": "",
           "freeshipping_threshold": 4000,
           "freegift_threshold": 6000,
           "gift_product": "",
