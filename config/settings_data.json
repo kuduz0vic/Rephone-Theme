@@ -18,9 +18,7 @@
             "settings": {
               "collection": "iphone",
               "collection_list": [
-                "iphone-12-mini",
-                "iphone-13-pro-max",
-                "iphone-se"
+                "iphone"
               ],
               "collection-image": "shopify:\/\/shop_images\/iphoneX.jpg"
             }
