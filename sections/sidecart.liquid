@@ -138,7 +138,7 @@
             </div>
           </div>
           <div class="slidecart-rewards">
-            {% if freeShippingPrice <= cartPriceCents %} <p class="rewards-message">Gratis verzending. Vóór 22:00 uur besteld is morgen in huis.</p>
+            {% if freeShippingPrice <= cartPriceCents %} <p class="rewards-message">Gratis verzending! Vóór 22:00 uur besteld is morgen in huis</p>
               {% else %}
               <p class="rewards-message">
                 Voeg nog {{ freeShippingPrice | minus: cartPriceCents | money }} en ontvang gratis verzending
