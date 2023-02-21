@@ -16,9 +16,9 @@
           "c775197d-5122-4e43-bc36-0afd48c7a4fb": {
             "type": "collections",
             "settings": {
-              "collection": "",
+              "collection": "iphone",
               "collection_list": [
-                "iphone"
+
               ],
               "collection-image": "shopify:\/\/shop_images\/iphoneX.jpg"
             }
