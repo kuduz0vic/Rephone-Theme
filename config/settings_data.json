@@ -39,7 +39,7 @@
           "46111ae6-62f6-4d22-bc82-420ee43298ff": {
             "type": "collections",
             "settings": {
-              "collection": "macs",
+              "collection": "watch",
               "collection_list": [
                 "macbook-pro-13",
                 "macbook-pro-15"
@@ -67,7 +67,7 @@
         ],
         "settings": {
           "menu": "main-menu",
-          "mobile-menu": "mobile-menu",
+          "mobile-menu": "",
           "logo": "shopify:\/\/shop_images\/logoheader.png",
           "secondary-logo": "shopify:\/\/shop_images\/thuiswinkel.jpg",
           "mobile-logo": "shopify:\/\/shop_images\/logoheader.jpg"
