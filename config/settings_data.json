@@ -75,7 +75,7 @@
         "type": "footer",
         "settings": {
           "footer-title": "Klantenservice",
-          "footer-text": "<p><strong>Advies over refurbished elektronica <\/strong><br\/><br\/>Weet je niet welke refurbished iPhone je moet kopen, of je<br\/>voor een gebruikte\/tweedehands iPad moet kiezen of wil je ons een andere vraag stellen?<br\/>Neem dan contact met ons op via telefoon of mail en wij helpen je verder!<br\/><\/p>",
+          "footer-text": "<p>Hulp nodig bij het kiezen van de geschikte refurbished iPhone of iPad of wil je ons een andere vraag stellen? Neem dan contact met ons op via telefoon of mail en wij helpen je graag verder.<\/p>",
           "number": "085 1301 646",
           "time": "Maandag tot vrijdag van 10:00 - 17:00",
           "logo": "shopify:\/\/shop_images\/logoheade2.png",
@@ -84,9 +84,8 @@
           "menu-title": "Klantenservice",
           "collection-title": "Onze iPhones",
           "collection_list": [
-            "iphone-12-mini",
-            "iphone-13-pro-max",
-            "iphone-se"
+            "iphone",
+            "ipad"
           ],
           "email": "klantenservice@rephone.nl",
           "secondary-menu": "",
