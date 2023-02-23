@@ -1594,7 +1594,7 @@ header {
         margin-bottom: 15px; } }
   .product-overview .main-content .inner .filter {
     margin: 25px 0;
-    
+    border-top: 0px solid #E5E5E5;
     border-bottom: 1px solid #E5E5E5; }
     .product-overview .main-content .inner .filter .item {
       display: flex;
