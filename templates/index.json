@@ -24,7 +24,7 @@
           "type": "buttons",
           "settings": {
             "button_label": "Bekijk onze iPhones",
-            "button_link": "shopify:\/\/collections\/refurbished-iphone"
+            "button_link": "\/collections\/refurbished-iphone"
           }
         },
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-2": {
