@@ -1448,8 +1448,7 @@ header {
 .product-overview section.left-sidebar .temporary-discount {
   margin-bottom: 30px; }
   .product-overview section.left-sidebar .temporary-discount .inner {
-    padding: 20px;
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px; }
     .product-overview section.left-sidebar .temporary-discount .inner h4 {
       color: #697C83; }
@@ -1469,7 +1468,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #E5E5E5;
+  
   border-bottom: 1px solid #E5E5E5;
   margin: 15px 0;
   padding: 15px 0; }
