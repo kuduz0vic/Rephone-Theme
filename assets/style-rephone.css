@@ -1617,7 +1617,7 @@ header {
       width: 100%;
       min-width: unset; }
     .product-overview .main-content .inner .product-items .item-parent .item {
-      border: 1px solid #E5E5E5;
+      border: 0px solid #E5E5E5;
       border-bottom: none; }
       .product-overview .main-content .inner .product-items .item-parent .item .inner {
         padding: 10px; }
