@@ -16,7 +16,7 @@
           "c775197d-5122-4e43-bc36-0afd48c7a4fb": {
             "type": "collections",
             "settings": {
-              "collection": "iphone",
+              "collection": "refurbished-iphone",
               "collection_list": [
 
               ],
@@ -84,7 +84,7 @@
           "menu-title": "Klantenservice",
           "collection-title": "Onze iPhones",
           "collection_list": [
-            "iphone",
+            "refurbished-iphone",
             "ipad"
           ],
           "email": "klantenservice@rephone.nl",
