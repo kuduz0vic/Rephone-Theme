@@ -1,5 +1,14 @@
 {
   "current": {
+    "checkout_logo_image": "shopify:\/\/shop_images\/logoheader.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_sidebar_background_color": "#f2fcff",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#06b35a",
     "sections": {
       "header": {
         "type": "header",
@@ -7,35 +16,31 @@
           "c775197d-5122-4e43-bc36-0afd48c7a4fb": {
             "type": "collections",
             "settings": {
-              "collection": "iphones",
+              "collection": "refurbished-iphone",
               "collection_list": [
-                "iphone-12-mini",
-                "iphone-13-pro-max",
-                "iphone-se"
+                "refurbished-iphone"
               ],
-              "collection-image": "shopify:\/\/shop_images\/iphone.png"
+              "collection-image": "shopify:\/\/shop_images\/13-wit-crop.jpg"
             }
           },
           "23673bda-2ad5-49e1-bdff-7f0a8a1fb2b0": {
             "type": "collections",
             "settings": {
-              "collection": "ipads",
+              "collection": "refurbished-ipad",
               "collection_list": [
-                "ipad-10-2-2019",
-                "ipad-2017"
+                "refurbished-ipad"
               ],
-              "collection-image": "shopify:\/\/shop_images\/apple-ipad-pro.png"
+              "collection-image": "shopify:\/\/shop_images\/ipad-pro-2021-11-spacegrey-2.png"
             }
           },
           "46111ae6-62f6-4d22-bc82-420ee43298ff": {
             "type": "collections",
             "settings": {
-              "collection": "macs",
+              "collection": "refurbished-watch",
               "collection_list": [
-                "macbook-pro-13",
-                "macbook-pro-15"
+                "refurbished-watch"
               ],
-              "collection-image": "shopify:\/\/shop_images\/macbook.png"
+              "collection-image": "shopify:\/\/shop_images\/apple-watch-8_-black-3.png"
             }
           },
           "77f4bdf6-af9a-4b17-b2ab-3c9189837657": {
@@ -58,7 +63,7 @@
         ],
         "settings": {
           "menu": "main-menu",
-          "mobile-menu": "mobile-menu",
+          "mobile-menu": "",
           "logo": "shopify:\/\/shop_images\/logoheader.png",
           "secondary-logo": "shopify:\/\/shop_images\/thuiswinkel.jpg",
           "mobile-logo": "shopify:\/\/shop_images\/logoheader.jpg"
@@ -68,7 +73,7 @@
         "type": "footer",
         "settings": {
           "footer-title": "Klantenservice",
-          "footer-text": "<p><strong>Advies over refurbished elektronica <\/strong><br\/><br\/>Weet je niet welke refurbished iPhone je moet kopen, of je<br\/>voor een gebruikte\/tweedehands iPad moet kiezen of wil je ons een andere vraag stellen?<br\/>Neem dan contact met ons op via telefoon of mail en wij helpen je verder!<br\/><\/p>",
+          "footer-text": "<p>Hulp nodig bij het kiezen van de geschikte refurbished iPhone of iPad of wil je ons een andere vraag stellen? Neem dan contact met ons op via telefoon of mail en wij helpen je graag verder.<\/p>",
           "number": "085 1301 646",
           "time": "Maandag tot vrijdag van 10:00 - 17:00",
           "logo": "shopify:\/\/shop_images\/logoheade2.png",
@@ -77,12 +82,11 @@
           "menu-title": "Klantenservice",
           "collection-title": "Onze iPhones",
           "collection_list": [
-            "iphone-12-mini",
-            "iphone-13-pro-max",
-            "iphone-se"
+            "refurbished-iphone",
+            "ipad"
           ],
           "email": "klantenservice@rephone.nl",
-          "secondary-menu": "legal",
+          "secondary-menu": "",
           "blog-pick": "iphone",
           "blog-link": "shopify:\/\/blogs\/iphone"
         }
@@ -90,9 +94,9 @@
       "sidecart": {
         "type": "sidecart",
         "settings": {
-          "title": "Je Winkelwagen",
-          "rewards_title": "Rewards",
-          "shipping_text": "Verzending",
+          "title": "Winkelwagen",
+          "rewards_title": "",
+          "shipping_text": "",
           "freeshipping_threshold": 4000,
           "freegift_threshold": 6000,
           "gift_product": "",
@@ -102,14 +106,12 @@
           "maak_af": "Eenmalige Deal!",
           "total": "Totaal",
           "checkout_btn": "Veilig Afrekenen",
-          "payments": "klarna,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay",
+          "payments": "ideal,visa,master,american_express,maestro,shopify_pay,apple_pay,google_pay",
           "swiper-products": [
             "airpods-1",
             "lightning-naar-usb-kabel-1m",
             "usb-lichtnetadapter-20w-2"
-          ],
-          "benefit-line": "",
-          "upsell-description": ""
+          ]
         }
       },
       "global-settings": {
@@ -135,12 +137,21 @@
               "name": "White",
               "code": "#f9f6ef"
             }
+          },
+          "9f4352b9-7e14-4dd9-a9de-ff2c566f9185": {
+            "type": "swatch",
+            "settings": {
+              "name": "Grijs",
+              "code": "#515151",
+              "image": "shopify:\/\/shop_images\/Spacw-grey.png"
+            }
           }
         },
         "block_order": [
           "b95b45e8-7ce6-4791-81df-fbb0db7301a9",
           "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7",
-          "60f53d95-9412-4134-9a5a-11db79f599a2"
+          "60f53d95-9412-4134-9a5a-11db79f599a2",
+          "9f4352b9-7e14-4dd9-a9de-ff2c566f9185"
         ],
         "settings": {
         }
@@ -148,7 +159,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "2153490007123654574": {
+        "type": "shopify:\/\/apps\/gdpr-ccpa-cookie-management\/blocks\/gdpr_cookie_consent\/4fbe573f-a377-4fea-9801-3ee0858cae41",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {

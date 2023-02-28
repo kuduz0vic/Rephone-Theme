@@ -64,7 +64,7 @@
           "type": "additional-lines",
           "settings": {
             "line-link": "",
-            "line-text": "{{ product.metafields.custom.benefit_check_1.value }}"
+            "line-text": "Iphone{{ product.metafields.custom.benefit_check_1.value }}"
           }
         },
         "17dbcc2b-1e12-4a87-bde7-bc3b2fb87f69": {
@@ -105,12 +105,6 @@
         "title",
         "price",
         "description",
-        "9bf75894-862d-4290-a562-af0a86160871",
-        "741d398a-a210-4de8-989e-24048078da26",
-        "8fd06b8c-47f5-4983-a95d-2c8b8f70f3b7",
-        "63edcb31-99d2-4f5e-93fc-f75901eb98da",
-        "f0c349e4-19d5-4300-87fb-bde98df8f13c",
-        "de64c1bf-27af-4e49-9ab1-39e544af67ec",
         "20f86578-2ba5-4dff-a0a8-00f6c01f382d",
         "a88e89d3-08b1-4f7a-ad52-691811e7d3d9",
         "cbd21cab-dc80-4156-a1c6-c5b82c3fb6e9",

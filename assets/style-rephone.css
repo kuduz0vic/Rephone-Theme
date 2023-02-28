@@ -8,7 +8,7 @@
 body {
   margin: 0;
   color: #697C83;
-  font-family: sans-serif; }
+  font-family: Arial; }
 
 .star-ratings-css {
   unicode-bidi: bidi-override;
@@ -102,13 +102,13 @@ h1 {
   text-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   line-height: 64px;
   font-weight: bold;
-  font-size: 64px;
+  font-size: 42px;
   color: black;
-  font-family: 'Ubuntu', sans-serif; }
+  font-family: 'Arial', sans-serif; }
   @media (max-width: 991.98px) {
     h1 {
-      line-height: 32px;
-      font-size: 32px;
+      line-height: 22px;
+      font-size: 24px;
       margin-bottom: 15px; } }
 
 h2 {
@@ -117,7 +117,7 @@ h2 {
   font-weight: bold;
   font-size: 36px;
   color: black;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Arial', sans-serif;
   margin-bottom: 30px; }
 
 h3 {
@@ -125,14 +125,14 @@ h3 {
   font-weight: 300;
   font-size: 24px;
   color: black;
-  font-family: 'Ubuntu', sans-serif; }
+  font-family: 'Arial', sans-serif; }
 
 h4 {
   line-height: 24px;
   font-weight: 300;
   font-size: 20px;
   color: black;
-  font-family: 'Ubuntu', sans-serif; }
+  font-family: 'Arial', sans-serif; }
 
 p {
   font-size: 14px;
@@ -159,7 +159,7 @@ i {
   text-align: center;
   line-height: 50px;
   color: #fff;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Arial', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 16px;
@@ -202,7 +202,7 @@ i {
   text-align: center;
   line-height: 50px;
   color: #fff;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Arial', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
@@ -1448,9 +1448,7 @@ header {
 .product-overview section.left-sidebar .temporary-discount {
   margin-bottom: 30px; }
   .product-overview section.left-sidebar .temporary-discount .inner {
-    padding: 20px;
-    border: 1px solid #E5E5E5;
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
     border-radius: 5px; }
     .product-overview section.left-sidebar .temporary-discount .inner h4 {
       color: #697C83; }
@@ -1470,7 +1468,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #E5E5E5;
+  
   border-bottom: 1px solid #E5E5E5;
   margin: 15px 0;
   padding: 15px 0; }
@@ -1596,7 +1594,7 @@ header {
         margin-bottom: 15px; } }
   .product-overview .main-content .inner .filter {
     margin: 25px 0;
-    border-top: 1px solid #E5E5E5;
+    border-top: 0px solid #E5E5E5;
     border-bottom: 1px solid #E5E5E5; }
     .product-overview .main-content .inner .filter .item {
       display: flex;
@@ -1619,7 +1617,7 @@ header {
       width: 100%;
       min-width: unset; }
     .product-overview .main-content .inner .product-items .item-parent .item {
-      border: 1px solid #E5E5E5;
+      border: 0px solid #E5E5E5;
       border-bottom: none; }
       .product-overview .main-content .inner .product-items .item-parent .item .inner {
         padding: 10px; }
@@ -6113,7 +6111,7 @@ padding: 8px 0;
   @media only screen and (max-width: 768px) {
     .price-wrapper-mobile {
       display: block;
-      font-family: 'CustomUbuntu';
+      font-family: 'Arial';
 font-style: normal;
 font-weight: 700;
 font-size: 14px;

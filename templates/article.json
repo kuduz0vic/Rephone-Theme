@@ -31,29 +31,30 @@
         "0f278101-ede6-4c3c-b9c3-3aa609fe1fe0": {
           "type": "text-line",
           "settings": {
-            "line": "<p>Alle functionaliteiten uitvoerig getest<\/p>"
+            "line": "<p>Beste kwaliteit refurbished, laagste prijs garantie<\/p>"
           }
         },
         "e38ca309-f959-4f98-887b-8100004626f4": {
           "type": "text-line",
           "settings": {
-            "line": "<p>Oplader, oortjes en simpin meegeleverd<\/p>"
+            "line": "<p>Garantie op alle producten, ook op de accu<\/p>"
           }
         },
         "74b7ab87-d874-4810-8caa-cf1b712ec347": {
           "type": "text-line",
           "settings": {
-            "line": "<p>Klantenservice staat dagelijks voor je klaar<\/p>"
+            "line": "<p>Niet tevreden? Binnen 30 dagen kosteloos retour<\/p>"
           }
         },
         "efaded65-384e-4782-9c5f-ca1565454836": {
           "type": "text-line",
           "settings": {
-            "line": "<p>Op werkdagen voor 22:00 uur besteld is morgen in huis<\/p>"
+            "line": "<p>Op werkdagen vóór 22:00 uur besteld, is morgen in huis<\/p>"
           }
         },
         "f5ac96c9-72c1-486c-935f-f41928c53abe": {
           "type": "text-line",
+          "disabled": true,
           "settings": {
             "line": "<p>De hele zaterdag en op zondag voor 18:00 uur besteld is maandag in huis<\/p>"
           }
@@ -74,7 +75,7 @@
       "settings": {
         "enable_author": true,
         "enable_published_date": true,
-        "menu": "page-side-menu"
+        "menu": ""
       }
     }
   },

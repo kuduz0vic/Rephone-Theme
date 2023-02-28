@@ -17,48 +17,48 @@
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-0": {
           "type": "text",
           "settings": {
-            "title": "Refurbished <br> van Rephone"
+            "title": "De voordelen van Rephone"
           }
         },
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-1": {
           "type": "buttons",
           "settings": {
             "button_label": "Bekijk onze iPhones",
-            "button_link": "shopify:\/\/collections\/all"
+            "button_link": "\/collections\/refurbished-iphone"
           }
         },
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-2": {
           "type": "hero-usp",
           "settings": {
-            "hero-column-text": "Ruim 22360 klanten beoordelen ons met een 8.3"
+            "hero-column-text": "Beste kwaliteit refurbished van de Benelux"
           }
         },
         "08acf502-edff-4e0f-ac1d-c4817768e0bd": {
           "type": "hero-usp",
           "settings": {
-            "hero-column-text": "14 dagen bedenktijd, gratis retour"
+            "hero-column-text": "Vandaag besteld, is morgen in huis"
           }
         },
         "3f57837a-ca88-4cfd-8923-711b5c522124": {
           "type": "hero-usp",
           "settings": {
-            "hero-column-text": "24 maanden garantie op alle producten"
+            "hero-column-text": "2 jaar garantie op alle producten"
           }
         },
         "c5633490-7e60-4eff-941d-51191048ae14": {
           "type": "hero-usp",
           "settings": {
-            "hero-column-text": "Ook garantie op de accu"
+            "hero-column-text": "Ruim 20.000 klanten beoordelen ons met een 8.5"
           }
         },
         "c260bb44-362b-4441-ae78-a06038aab1e4": {
           "type": "first-product",
           "settings": {
             "price-title": "Al vanaf",
-            "price": "99,-",
+            "price": "159,-",
             "product-image": "shopify:\/\/shop_images\/ixs-1-456x456.jpg",
-            "title": "Onze iPhones",
-            "product-text1": "Oplader meegeleverd",
+            "title": "Refurbished iPhone",
+            "product-text1": "Inclusief accessoires",
             "product-text2": "24 maanden garantie",
             "product-text3": "14 dagen bedenktijd"
           }
@@ -67,9 +67,9 @@
           "type": "second-product",
           "settings": {
             "price-title-2": "Al vanaf",
-            "price-2": "119,-",
+            "price-2": "199,-",
             "product-image-2": "shopify:\/\/shop_images\/APPLE-iPad-2017-WiFi-32GB-Spacegrijs-456x456.png",
-            "title-2": "Onze iPads",
+            "title-2": "Refurbished iPad",
             "product-text1-2": "Oplader meegeleverd",
             "product-text2-2": "24 maanden garantie",
             "product-text3-2": "14 dagen bedenktijd"
@@ -87,7 +87,7 @@
         "9d4ff3ea-9544-419d-b737-1c6a5e92222d"
       ],
       "settings": {
-        "banner": "shopify:\/\/shop_images\/inspiration-geometry_521e6cca-017a-46f9-8471-87c47299ffad.png",
+        "banner": "shopify:\/\/shop_images\/inspiration-geometry.png",
         "phone-gif": "https:\/\/cdn.shopify.com\/s\/files\/1\/0683\/3478\/0718\/files\/phone.gif?v=1669394089",
         "mobile-phone": "shopify:\/\/shop_images\/mobile-gif-replacement.png"
       }
@@ -106,14 +106,14 @@
         "fcf7ddbf-6ccc-4d88-be54-1f3e01b6f9c2": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-12-mini-black",
-            "variant": "64GB | Space Grey"
+            "product": "apple-iphone-11-64gb-white",
+            "variant": "64GB | Wit"
           }
         },
         "826276b7-6fec-4160-af14-f74b29a995eb": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-13-pro-max-blauw",
+            "product": "apple-iphone-11-pro-64gb-space-grey",
             "variant": "64GB | Space Grey"
           }
         },
@@ -160,25 +160,25 @@
         "36b661a1-bde1-4785-b828-ddaf431f5dc4": {
           "type": "text-line",
           "settings": {
-            "line": "Goede kwaliteit\/prijs verhouding"
+            "line": "Laagste prijs, hoogste kwaliteit"
           }
         },
         "efeda675-a79c-4dfe-8340-56ace3847846": {
           "type": "text-line",
           "settings": {
-            "line": "Uitvoerig nagekeken, getest en gereinigd"
+            "line": "Duurzaam en besparend voor het milieu"
           }
         },
         "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517": {
           "type": "text-line",
           "settings": {
-            "line": "Twee jaar garantie"
+            "line": "Twee jaar garantie, ook op de accu"
           }
         },
         "67ea050b-0c64-4b64-b916-a9a0e343aab4": {
           "type": "text-line",
           "settings": {
-            "line": "Op werkdagen voor 22:00 uur besteld is morgen in huis"
+            "line": "Vóór 22:00 uur besteld, is morgen in huis"
           }
         },
         "13b7a4f3-2d7d-4a2e-8e36-a2cfe03d54d5": {
