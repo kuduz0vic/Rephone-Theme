@@ -56,6 +56,11 @@
       <div class="item-parent col-12 col-lg-6">
         <ul class="item-parent">
           <li class="item">
+            <a href="javascript:history.back()">
+              <p>Back</p>
+            </a>
+          </li>
+          <li class="item">
             <a href="{{shop.url}}">
               <p>Home</p>
             </a>
@@ -536,22 +541,17 @@
                     <div class="col-4 col-md-3 d-flex justify-content-end">
                       <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
 
-                      {% if variant.inventory_quantity == 0 %}
-                        <div
-                          class="btn-cart stockemail"
-                          data-toggle="modal"
-                          data-product-option="option[{{ variant.product_option_id }}]"
-                          data-product-option-value-id="{{ variant.product_option_value_id }}"
-                          data-product-option-value-name="{{ variant.name }}"
-                          data-product-id="{{ product_id }}"
-                          data-product-option-value-price="{{ variant.price }}"
-                          data-option-value-id="{{ variant.option_value_id }}"
-                          data-target="#stockemail"
-                          style="background:  #29a7bf; border-bottom: #29a7bf;">
-                          <i class="fal fa-envelope"></i>&nbsp;
-                          E-mail mij
-                        </div>
-                      {% else %}
+                        {% if variant.available and variant.inventory_quantity > 0 %}
+                        <a id="add-to-cart-button"
+                        class="btn-cart addtocart"
+                        href="/cart/add?id={{ variant.id }}"
+                        type="submit"
+                        data-ajax-cart-request-button>
+                        <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
+                      </a>
+
+                      {% elsif variant.available and variant.inventory_quantity == 0 %}
+                        <div style="display: flex; flex-direction: column;" class="btn-delivery_wrapper">
                         <a id="add-to-cart-button"
                           class="btn-cart addtocart"
                           href="/cart/add?id={{ variant.id }}"
@@ -559,6 +559,24 @@
                           data-ajax-cart-request-button>
                           <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
                         </a>
+                        <p>Longer delivery time</p>
+                        </div>
+{% else %}
+
+<div
+class="btn-cart stockemail"
+data-toggle="modal"
+data-product-option="option[{{ variant.product_option_id }}]"
+data-product-option-value-id="{{ variant.product_option_value_id }}"
+data-product-option-value-name="{{ variant.name }}"
+data-product-id="{{ product_id }}"
+data-product-option-value-price="{{ variant.price }}"
+data-option-value-id="{{ variant.option_value_id }}"
+data-target="#stockemail"
+style="background:  #29a7bf; border-bottom: #29a7bf;">
+<i class="fal fa-envelope"></i>&nbsp;
+E-mail mij
+</div>
                       {% endif %}
                     </div>
 
