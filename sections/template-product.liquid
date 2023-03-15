@@ -504,14 +504,18 @@
                       <p class="blue">{{ variant.price | money_without_trailing_zeros | remove: '€' }},-</p>
                     </div>
 
-                    {% if variant.inventory_quantity == 0 %}
-                      <div class="stock no-stock col-3 d-none d-md-flex">
-                        <p>Uitverkocht</p>
-                        <p>Ontvang een e-mail bij voorraad</p>
-                      </div>
-                    {% elsif variant.inventory_quantity < 200 %}
+
+                    {% if variant.available and variant.inventory_quantity > 0 %}
+<div class="stock in-stock col-3 d-none d-md-flex message-wrapper" style="padding-right: 15px;">
+<div style="
+font-size: 12px;
+margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px; justify-content: right;
+align-items: center;
+"><div>{{section.settings.delivery-svg}}</div> Bestellen met <br> langere levertijd</div>
+</div>
+                    {% elsif variant.available and variant.inventory_quantity < 200 %}
                       {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
-   assign tomorrow_en = tomorrow | date: '%A' %}
+                      assign tomorrow_en = tomorrow | date: '%A' %}
                       <div class="stock in-stock col-3 d-none d-md-flex">
                         <p>In voorraad</p>
                         <p>Voor 22:30 besteld,
@@ -527,16 +531,23 @@
                           in huis</p>
                       </div>
 
-                    {% elsif variant.inventory_quantity == 200 %}
+                    {% elsif variant.available and variant.inventory_quantity >= 200 %}
                       <div class="stock in-stock col-3 d-none d-md-flex">
                         <p>4 stuks in voorraad</p>
                         <p>{{ supplier_delivery }}</p>
                       </div>
-                    {% elsif variant.inventory_quantity == 300 %}
+                    {% elsif variant.available and variant.inventory_quantity >= 300 %}
                       <div class="stock in-stock col-3 d-none d-md-flex">
                         <p>4 stuks in voorraad</p>
                         <p>{{ supplier_minpex_delivery }}</p>
                       </div>
+
+                      
+                      {% else %}
+                        <div class="stock no-stock col-3 d-none d-md-flex">
+                          <p>Uitverkocht</p>
+                          <p>Ontvang een e-mail bij voorraad</p>
+                        </div>
                     {% endif %}
                     <div class="col-4 col-md-3 d-flex justify-content-end">
                       <!-- <div class="btn-cart" data-toggle="modal" data-target="#addToCartModal"><i class="fal fa-shopping-cart"></i></div> -->
@@ -551,7 +562,6 @@
                       </a>
 
                       {% elsif variant.available and variant.inventory_quantity == 0 %}
-                        <div style="display: flex; flex-direction: column;" class="btn-delivery_wrapper">
                         <a id="add-to-cart-button"
                           class="btn-cart addtocart"
                           href="/cart/add?id={{ variant.id }}"
@@ -559,8 +569,6 @@
                           data-ajax-cart-request-button>
                           <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
                         </a>
-                        <p>Longer delivery time</p>
-                        </div>
 {% else %}
 
 <div
@@ -948,14 +956,6 @@ E-mail mij
               class="btn-green"
               style="margin: 20px 0px; border:none; width: 100%; cursor:pointer;"
               value="Houd mij op de hoogte" />
-            <a
-              data-product-option=""
-              data-product-option-value-id=""
-              data-product-option-value-name=""
-              data-product-option-value-price=""
-              data-product-id=""
-              class="blue-underline addtocartlink addtocart"
-              style="display: block; text-align: center; cursor:pointer;">Of product bestellen met langere levertijd</a>
 
           </form>
 
@@ -1587,7 +1587,13 @@ var originalThumbs2 = [];
     "name": "Product Section",
     "tag": "section",
     "class": "products",
-    "settings": [],
+    "settings": [
+      {
+        "type": "html",
+        "id": "delivery-svg",
+        "label": "Delivery SVG"
+      }
+    ],
     "blocks": [
       {
         "type": "title",
