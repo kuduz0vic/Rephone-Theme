@@ -592,11 +592,15 @@ E-mail mij
 
 
                   <div class="row no-gutters mobile">
-                    {% if variant.inventory_quantity == 0 %}
-                      <div class="stock no-stock col-12 d-none">
-                        <p>Uitverkocht ontvang een e-mail bij voorraad</p>
-                      </div>
-                    {% elsif variant.inventory_quantity <= 200 %}
+                                      {% if variant.available and variant.inventory_quantity > 0 %}
+<div class="stock in-stock col-3 d-none d-md-flex message-wrapper" style="padding-right: 15px;">
+<div style="
+font-size: 12px;
+margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px; justify-content: right;
+align-items: center;
+"><div>{{section.settings.delivery-svg}}</div> Bestellen met <br> langere levertijd</div>
+</div>
+                    {% elsif variant.available and variant.inventory_quantity <= 200 %}
                       {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
    assign tomorrow_en = tomorrow | date: '%A' %}
                       <div class="stock in-stock col-12 d-none">
@@ -612,17 +616,17 @@ E-mail mij
                           {% endcase %}
                           in huis</p>
                       </div>
-                    {% elsif variant.inventory_quantity == 200 %}
+                    {% elsif variant.available and variant.inventory_quantity >= 200 %}
                       <div class="stock in-stock col-12 d-none">
                         <p>In voorraad bij leverancier, {{ supplier_delivery }}</p>
                       </div>
-                    {% elsif variant.inventory_quantity == 300 %}
+                    {% elsif variant.available and variant.inventory_quantity >= 300 %}
                       <div class="stock in-stock col-12 d-none">
                         <p>In voorraad bij leverancier, {{ supplier_minpex_delivery }}</p>
                       </div>
                     {% else %}
-                      <div class="stock in-stock col-12 d-none">
-                        <p>Onbekend aantal stuks in voorraad</p>
+                      <div class="stock no-stock col-12 d-none">
+                        <p>Uitverkocht ontvang een e-mail bij voorraad</p>
                       </div>
                     {% endif %}
                   </div>
