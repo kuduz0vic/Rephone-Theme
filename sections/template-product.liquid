@@ -596,7 +596,7 @@ E-mail mij
 <div class="stock in-stock col-12 d-none" style="padding-right: 15px;">
 <div style="
 font-size: 12px;
-margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px;"><div>{{section.settings.delivery-svg}}</div> Bestellen met langere levertijd</div>
+margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px;justify-content: right;"><div>{{section.settings.delivery-svg}}</div> Bestellen met langere levertijd</div>
 </div>
                     {% elsif variant.available and variant.inventory_quantity <= 200 %}
                       {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
