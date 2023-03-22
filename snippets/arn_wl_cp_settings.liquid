@@ -1,0 +1,72 @@
+<script type="text/javascript">
+    var customerLogged = '{{ customer.id }}'
+    var customerEmail = '{{ customer.email }}'
+    {% if shop.metafields.arena.wl_cp_settings %}
+    	{% if shop.metafields.arena.wl_cp_settings.type == blank %}
+    var arn_wl_cp_settings = {{ shop.metafields.arena.wl_cp_settings | json }}
+        {% else %}
+            var arn_wl_cp_settings =  {{ shop.metafields.arena.wl_cp_settings }}
+    	{% endif %}
+    {% endif %}
+            
+    {% if shop.metafields.arena.wl_cp_text_settings %}
+    	{% if shop.metafields.arena.wl_cp_text_settings.type == blank %}
+      		var wl_cp_text_settings =  {{ shop.metafields.arena.wl_cp_text_settings | json }}
+        {% else %}
+            var wl_cp_text_settings =  {{ shop.metafields.arena.wl_cp_text_settings }}
+    	{% endif %}
+    {% endif %}
+            
+    {% if shop.metafields.arena.wl_cp_reminder_mail %}
+    	{% if shop.metafields.arena.wl_cp_reminder_mail.type == blank %}
+      		var arn_reminder_email =  {{ shop.metafields.arena.wl_cp_reminder_mail | json }}
+        {% else %}
+            var arn_reminder_email =  {{ shop.metafields.arena.wl_cp_reminder_mail }}
+    	{% endif %}
+    {% else %}
+    	var arn_reminder_email = {}      
+    {% endif %}            
+    
+    var wl_routes = {
+                root_url : {{routes.root_url | json }}
+                ,account_url : {{routes.account_url | json }}
+                ,account_login_url : {{routes.account_login_url | json }}
+                ,account_logout_url : {{routes.account_logout_url | json }}
+                ,account_register_url : {{routes.account_register_url | json }}
+                ,account_addresses_url : {{routes.account_addresses_url | json }}
+                ,collections_url : {{routes.collections_url | json }}
+                ,all_products_collection_url : {{routes.all_products_collection_url | json }}
+                ,search_url : {{routes.search_url | json }}
+                ,cart_url : {{routes.cart_url | json }}
+                ,cart_add_url : {{routes.cart_add_url | json }}
+                ,cart_change_url : {{routes.cart_change_url | json }}
+                ,cart_clear_url : {{routes.cart_clear_url | json }}
+                ,product_recommendations_url : {{routes.product_recommendations_url | json }}
+            }
+    var inv_qty = {};
+    var pre_order_qty = {}
+    var arn_out_stock = []
+    {% for var in product.variants %}
+    {% if var.inventory_policy != "continue" %}
+    inv_qty[{{- var.id -}}] = {{ var.inventory_quantity | default: 0 }};
+    {% endif %}
+    {% if var.inventory_policy == "continue" %}
+    pre_order_qty[{{- var.id -}}] = {{ var.inventory_quantity | default: 0 }};
+    {% endif %}
+    {% if var.inventory_quantity <= 0 and var.inventory_policy != "continue" %}
+    var obj = {}
+    obj.title = '{{ var.title }}'
+    obj.id = '{{- var.id -}}'
+    obj.image = '{{ var.image | default: product.featured_image| img_url: 'master'  }}'
+    arn_out_stock.push(obj)
+    {% endif %}
+    {% endfor %}
+    var arn_product_id = {{product.id | default: 0 }}
+    var arn_handle = "{{product.handle}}"
+    var arn_product_variant_id = {{product.selected_or_first_available_variant.id | default: 0}}
+    var customerWishlist = []
+</script>
+<script>
+    var themeWl = window.theme || {};
+     themeWl.moneyFormat = {{ shop.money_format | json }};
+</script>

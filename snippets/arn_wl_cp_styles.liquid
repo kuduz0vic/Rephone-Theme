@@ -1,0 +1,135 @@
+{%liquid 
+  if shop.metafields.arena.wl_cp_settings.type == blank
+  assign arn_wl_cp_settings = shop.metafields.arena.wl_cp_settings
+  else
+  assign arn_wl_cp_settings = shop.metafields.arena.wl_cp_settings.value
+  endif  
+%}
+<style type="text/css">
+    :root {
+      --arn-add-wishlist-icon-color: {{ arn_wl_cp_settings.wishlist_settings.add_class_icon.icon_color }};
+      --arn-add-wishlist-icon-active-color: {{ arn_wl_cp_settings.wishlist_settings.add_class_icon.icon_active_color }};
+      --arn-add-wishlist-icon-color-product: {{ arn_wl_cp_settings.wishlist_settings.add_class_icon_product.icon_color }};
+      --arn-add-wishlist-icon-active-color-product: {{ arn_wl_cp_settings.wishlist_settings.add_class_icon_product.icon_active_color }};
+
+      --arn-show-wishlist-icon-color: {{ arn_wl_cp_settings.wishlist_settings.show_class_icon.icon_color }};
+      --arn-show-wishlist-icon-active-color: {{ arn_wl_cp_settings.wishlist_settings.show_class_icon.icon_active_color }};
+      --arn-remove-wishlist-icon-color: {{ arn_wl_cp_settings.wishlist_settings.remove_class_icon.icon_color }};
+
+      --arn-add-compare-icon-color: {{ arn_wl_cp_settings.compare_settings.add_class_icon.icon_color }};
+      --arn-add-compare-icon-active-color: {{ arn_wl_cp_settings.compare_settings.add_class_icon.icon_active_color }};
+      --arn-add-compare-icon-color-product: {{ arn_wl_cp_settings.compare_settings.add_class_icon_product.icon_color }};
+      --arn-add-compare-icon-active-color-product: {{ arn_wl_cp_settings.compare_settings.add_class_icon_product.icon_active_color }};
+      --arn-show-compare-icon-color: {{ arn_wl_cp_settings.compare_settings.show_class_icon.icon_color }};
+      --arn-show-compare-icon-active-color: {{ arn_wl_cp_settings.compare_settings.show_class_icon.icon_active_color }};
+      --arn-remove-compare-icon-color: {{ arn_wl_cp_settings.compare_settings.remove_class_icon.icon_color }};
+      --arn-preloader-icon-color: {{ arn_wl_cp_settings.general_settings.preloader_icon.icon_color}};
+
+      --arn-outstock-color: #ff0000;
+      --arn-instock-color: #2D882D;
+      --arn-table-heading-bkg: {{ arn_wl_cp_settings.general_settings.background_color }};
+      --arn-table-text-color-1: #000000;
+      --arn-table-text-color-2: {{ arn_wl_cp_settings.general_settings.text_color }};
+      --arn-table-btn-border-color: #000000;
+      --arn-table-btn-color: #ffffff;
+      --arn-table-btn-active-color: #000000;
+
+      --arn-table-product-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_product_heading }}";
+      --arn-table-price-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_price_heading }}";
+      --arn-table-image-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_image_heading }}";
+      --arn-table-price-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_price_heading }}";
+      --arn-table-available-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_available_heading }}";
+      --arn-table-delete-heading: "{{ arn_wl_cp_settings.wishlist_settings.table_delete_heading }}";
+
+      --bg-sidenav: #fff;
+      --link-color: #000;
+      --font-size-title: 15px;
+      --button-add-bg: #fed700;
+      --button-add-cl: #fff;
+      --button-add-br: #fed700;
+      --button-add-hover-bg: #fed700;
+      --button-add-hover-cl: #fff;
+      --button-add-hover-br: #fed700;
+      --button-remove-bg: #000;
+      --button-remove-cl: #fff;
+      --button-remove-br: #000;
+      --button-remove-hover-bg: #000;
+      --button-remove-hover-cl: #fff;
+      --button-remove-hover-br: #000;
+      --button-border-radius: 20px;
+
+      --arn-wishlist-page-bg: {{arn_wl_cp_settings.wishlist_settings.background_color}};
+      --arn-wishlist-page-text: {{arn_wl_cp_settings.wishlist_settings.text_color}};
+
+      --arn-show-wishlist-fl-min-height: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.minHeight}};
+      --arn-show-wishlist-fl-min-width: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.minWidth}};
+      --arn-show-wishlist-fl-height: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.height}}px;
+      --arn-show-wishlist-fl-width: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.width}}px;
+      --arn-show-wishlist-fl-bottom: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.bottom}};
+      --arn-show-wishlist-fl-top: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.top}};
+      --arn-show-wishlist-fl-left: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.left}};
+      --arn-show-wishlist-fl-right: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.right}};
+      --arn-show-wishlist-fl-boxShadow: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.boxShadow}};
+      --arn-show-wishlist-fl-backgroundColor: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.background_color}};
+      --arn-show-wishlist-fl-color: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.text_color}};
+      --arn-show-wishlist-fl-borderRadius: {{arn_wl_cp_settings.wishlist_settings.launch_show.position_button.borderRadius}}px;
+
+      --arn-add-wishlist-bg: {{arn_wl_cp_settings.wishlist_settings.launch_add.background_color}};
+      --arn-add-wishlist-bg-actived: {{arn_wl_cp_settings.wishlist_settings.launch_add.background_color_actived}};
+      --arn-add-wishlist-bg-product: {{arn_wl_cp_settings.wishlist_settings.launch_add_product_page.background_color}};
+      --arn-add-wishlist-bg-actived-product: {{arn_wl_cp_settings.wishlist_settings.launch_add_product_page.background_color_actived}};
+      --arn-add-wishlist-color: {{arn_wl_cp_settings.wishlist_settings.launch_add.text_color}};
+      --arn-add-wishlist-color-actived: {{arn_wl_cp_settings.wishlist_settings.launch_add.text_color_actived}};
+      --arn-add-wishlist-color-product: {{arn_wl_cp_settings.wishlist_settings.launch_add_product_page.text_color}};
+      --arn-add-wishlist-color-actived-product: {{arn_wl_cp_settings.wishlist_settings.launch_add_product_page.text_color_actived}};
+      --arn-add-wishlist-width: {{arn_wl_cp_settings.wishlist_settings.launch_add.width}}px;
+      --arn-add-wishlist-height: {{arn_wl_cp_settings.wishlist_settings.launch_add.height}}px;
+      --arn-add-wishlist-borderRadius: {{arn_wl_cp_settings.wishlist_settings.launch_add.borderRadius}}px;
+      --arn-add-wishlist-borderRadius-product: {{arn_wl_cp_settings.wishlist_settings.launch_add_product_page.borderRadius}}px;
+      
+      --arn-add-wishlist-noti-bg: {{arn_wl_cp_settings.wishlist_settings.added_wl_notifications_bg}};
+      --arn-add-wishlist-noti-color: {{arn_wl_cp_settings.wishlist_settings.added_wl_notifications_color}};
+
+      --arn-add-multiple-settings-add-background: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.add_background_color}};
+      --arn-add-multiple-settings-add-border: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.add_border_color}};
+      --arn-add-multiple-settings-add-text: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.add_text_color}};
+      --arn-add-multiple-settings-create-background: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.create_background_color}};
+      --arn-add-multiple-settings-create-border: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.create_border_color}};
+      --arn-add-multiple-settings-create-text: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.create_text_color}};
+      --arn-add-multiple-settings-radio-button-background: {{arn_wl_cp_settings.wishlist_settings.add_multiple_settings.radio_button_background_color}};
+
+      --arn-compare-page-bg: {{arn_wl_cp_settings.compare_settings.background_color}};
+      --arn-compare-page-text: {{arn_wl_cp_settings.compare_settings.text_color}};
+
+      --arn-show-compare-fl-min-height: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.minHeight}};
+      --arn-show-compare-fl-min-width: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.minWidth}};
+      --arn-show-compare-fl-height: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.height}}px;
+      --arn-show-compare-fl-width: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.width}}px;
+      --arn-show-compare-fl-bottom: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.bottom}};
+      --arn-show-compare-fl-top: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.top}};
+      --arn-show-compare-fl-left: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.left}};
+      --arn-show-compare-fl-right: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.right}};
+      --arn-show-compare-fl-boxShadow: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.boxShadow}};
+      --arn-show-compare-fl-backgroundColor: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.background_color}};
+      --arn-show-compare-fl-color: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.text_color}};
+      --arn-show-compare-fl-borderRadius: {{arn_wl_cp_settings.compare_settings.launch_show.position_button.borderRadius}}px;
+
+      --arn-add-compare-bg: {{arn_wl_cp_settings.compare_settings.launch_add.background_color}};
+      --arn-add-compare-bg-product: {{arn_wl_cp_settings.compare_settings.launch_add_product_page.background_color}};
+      --arn-add-compare-color: {{arn_wl_cp_settings.compare_settings.launch_add.text_color}};
+      --arn-add-compare-color-product: {{arn_wl_cp_settings.compare_settings.launch_add_product_page.text_color}};
+      --arn-add-compare-bg-actived: {{arn_wl_cp_settings.compare_settings.launch_add.background_color_actived}};
+      --arn-add-compare-bg-actived-product: {{arn_wl_cp_settings.compare_settings.launch_add_product_page.background_color_actived}};
+      --arn-add-compare-color-actived: {{arn_wl_cp_settings.compare_settings.launch_add.text_color_actived}};
+      --arn-add-compare-color-actived-product: {{arn_wl_cp_settings.compare_settings.launch_add_product_page.text_color_actived}};
+      --arn-add-compare-width: {{arn_wl_cp_settings.compare_settings.launch_add.width}}px;
+      --arn-add-compare-height: {{arn_wl_cp_settings.compare_settings.launch_add.height}}px;
+      --arn-add-compare-borderRadius: {{arn_wl_cp_settings.compare_settings.launch_add.borderRadius}}px;
+      --arn-add-compare-borderRadius-product: {{arn_wl_cp_settings.compare_settings.launch_add_product_page.borderRadius}}px;
+    
+      --arn-add-compare-noti-bg: {{arn_wl_cp_settings.compare_settings.added_cp_notifications_bg}};
+      --arn-add-compare-noti-color: {{arn_wl_cp_settings.compare_settings.added_cp_notifications_color}};
+    }
+    {{ shop.metafields.arena.wl_cp_styles }}
+    {{ shop.metafields.arena.wl_cp_styles.value }}
+</style>
