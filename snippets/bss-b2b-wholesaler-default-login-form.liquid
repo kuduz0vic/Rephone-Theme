@@ -1,0 +1,31 @@
+
+	{{ 'bss-b2b-state.js' | asset_url | script_tag }}
+	<script id="bss-b2b-wholesaler-form">
+    if (typeof BSS_B2B == 'undefined') {
+      var BSS_B2B = {};
+    }
+    BSS_B2B.formDataRender = [];
+    BSS_B2B.formId = 12765;
+    BSS_B2B.reCAPCHA = 0;
+    BSS_B2B.CAPCHA_SITE_KEY = "6LcYPEgbAAAAAKEQdimI1PPA4vuOJHxNb5p6eLUo";
+    BSS_B2B.status = 1;
+    BSS_B2B.created_account = 2;
+    BSS_B2B.redirect_url = "/";
+    BSS_B2B.taxExempt = 0;
+    BSS_B2B.formPrivacyPolicyStatus = 0;
+    BSS_B2B.formPrivacyPolicyContent = `<p>By clicking Create, I confirm that I have read and accepted the <a href="/">privacy policy</a></p>`;
+    let isEnableForm = 1
+		BSS_B2B.shopModules && BSS_B2B.shopModules.forEach(function(sm){
+			if(sm.code == 'form') {
+				isEnableForm = sm.status;
+			}
+		})
+		if (window.location.pathname == '/account/register' && BSS_B2B.created_account == 0 && isEnableForm == 1) {
+			let passwordField = document.querySelector('form[action*="/account"] input[type*="password"]')
+			let labelPasswordField = document.querySelector('form[action*="/account"] label[for*="' + passwordField.id + '"]')
+			labelPasswordField.style.display = "none";
+		}
+		</script>
+		<style>input[bss-b2b-password-hidden]{ display: none;}null</style>
+		
+    

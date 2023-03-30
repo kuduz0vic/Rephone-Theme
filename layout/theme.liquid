@@ -102,7 +102,7 @@
       }
     </style>
 
-  </head>
+  {% if content_for_header contains 'bss-b2b-cp' %}{% include 'bss-b2b-header' %}{% endif %}</head>
   <body>
     {% section 'global-settings' %}
     {% section 'header' %}
@@ -151,7 +151,7 @@
       }
     </script>
   {{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
-</body>
+{% if content_for_header contains 'bss-b2b-cp' %}{% include 'bss-b2b-jquery-341-js' %}{% include 'bss-b2b-js' %}{% endif %}</body>
   <script>
     function debounce(func, timeout = 300) {
       let timer;
