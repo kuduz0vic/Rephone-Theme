@@ -142,8 +142,7 @@
             "type": "swatch",
             "settings": {
               "name": "Grijs",
-              "code": "#515151",
-              "image": "shopify:\/\/shop_images\/Spacw-grey.png"
+              "code": "#515151"
             }
           }
         },
