@@ -3,7 +3,7 @@
     "template": {
       "type": "template-page",
       "custom_css": [
-        "{max-width: 1000px; margin: 0 auto;}"
+        "{max-width: 1100px; margin: 0 auto;}"
       ],
       "settings": {
       }
