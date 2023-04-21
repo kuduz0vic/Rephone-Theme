@@ -42,9 +42,9 @@
         "443976c6-cda2-4765-aeb0-d0dc85bc8c7e"
       ],
       "settings": {
-        "blog_read_more": "Read more",
+        "blog_read_more": "Lees meer",
         "number_of_blog_posts": 3,
-        "menu": "page-side-menu"
+        "menu": ""
       }
     }
   },
