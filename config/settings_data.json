@@ -131,26 +131,26 @@
               "code": "#ffce00"
             }
           },
-          "14c8e927-a780-4973-a1ed-cc85b4771e8e": {
-            "type": "swatch",
-            "settings": {
-              "name": "Space Grey",
-              "code": "#acacac"
-            }
-          },
           "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823": {
             "type": "swatch",
             "settings": {
-              "name": "White",
-              "code": "#ffffff"
+              "name": "Silver",
+              "code": "#f4f4f4"
+            }
+          },
+          "8c527ac1-ef0f-4f5f-9a4f-d39d03c98249": {
+            "type": "swatch",
+            "settings": {
+              "name": "Space Grey",
+              "code": "#464343"
             }
           }
         },
         "block_order": [
           "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7",
           "2a4cefc8-933c-44f8-a459-c19c12f56e31",
-          "14c8e927-a780-4973-a1ed-cc85b4771e8e",
-          "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823"
+          "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823",
+          "8c527ac1-ef0f-4f5f-9a4f-d39d03c98249"
         ],
         "settings": {
         }
