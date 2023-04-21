@@ -2,6 +2,9 @@
   "sections": {
     "template": {
       "type": "template-page",
+      "custom_css": [
+        "DIV.container {min-height: 10em; display: table-cell; vertical-align: middle }"
+      ],
       "settings": {
       }
     }
