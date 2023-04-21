@@ -137,12 +137,20 @@
               "name": "White",
               "code": "#f9f6ef"
             }
+          },
+          "2a4cefc8-933c-44f8-a459-c19c12f56e31": {
+            "type": "swatch",
+            "settings": {
+              "name": "Gold",
+              "code": "#ffce00"
+            }
           }
         },
         "block_order": [
           "b95b45e8-7ce6-4791-81df-fbb0db7301a9",
           "e7ed86fe-486f-4b35-9e8e-c47f4962a2f7",
-          "60f53d95-9412-4134-9a5a-11db79f599a2"
+          "60f53d95-9412-4134-9a5a-11db79f599a2",
+          "2a4cefc8-933c-44f8-a459-c19c12f56e31"
         ],
         "settings": {
         }
