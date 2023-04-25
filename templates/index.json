@@ -27,16 +27,16 @@
             "button_link": "\/collections\/refurbished-iphone"
           }
         },
+        "08acf502-edff-4e0f-ac1d-c4817768e0bd": {
+          "type": "hero-usp",
+          "settings": {
+            "hero-column-text": "Vóór 22:00 uur besteld, is morgen in huis"
+          }
+        },
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-2": {
           "type": "hero-usp",
           "settings": {
             "hero-column-text": "Beste kwaliteit refurbished van de Benelux"
-          }
-        },
-        "08acf502-edff-4e0f-ac1d-c4817768e0bd": {
-          "type": "hero-usp",
-          "settings": {
-            "hero-column-text": "Vandaag besteld, is morgen in huis"
           }
         },
         "3f57837a-ca88-4cfd-8923-711b5c522124": {
@@ -79,8 +79,8 @@
       "block_order": [
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-0",
         "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-1",
-        "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-2",
         "08acf502-edff-4e0f-ac1d-c4817768e0bd",
+        "template--17065257828654__d4046020-af19-4038-b6c3-9edc22e9fb14-166956481386394a6e-2",
         "3f57837a-ca88-4cfd-8923-711b5c522124",
         "c5633490-7e60-4eff-941d-51191048ae14",
         "c260bb44-362b-4441-ae78-a06038aab1e4",
