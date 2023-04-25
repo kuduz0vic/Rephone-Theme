@@ -18,7 +18,12 @@
             "settings": {
               "collection": "refurbished-iphone",
               "collection_list": [
-                "refurbished-iphone"
+                "refurbished-iphone-8",
+                "iphone-xr",
+                "iphone-xs",
+                "iphone-se-2020",
+                "iphone-11",
+                "iphone-11-pro"
               ],
               "collection-image": "shopify:\/\/shop_images\/13-wit-crop.jpg"
             }
