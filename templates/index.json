@@ -95,7 +95,7 @@
     "1e0e049e-c20e-4484-a67f-7105f66922d3": {
       "type": "image-w-text",
       "settings": {
-        "article": "iphone\/safari-tabbladen-sluiten-op-iphone-en-ipad",
+        "article": "iphone\/carplay-wat-is-het-en-wat-kun-je-ermee",
         "article-summary": "<p>Klinkt het herkenbaar om zoveel tabbladen open te hebben staan, dat je doorde bomen het bos niet meer ziet? Dan is dit artikel zeker iets voor jou. In deblogpost van deze week leggen we je uit hoe je meerdere tabbladen met een drukop de knop afsluit. Alle tabbladen sluiten Om alle tabbladen in één keer te sluiten, ga je naar het overzicht van alletabbladen en hou je je vinger in Safari ingedrukt op ‘Gereed’. Vervolgens krijgje de optie te zien om alle tabbladen in één<\/p>",
         "button-label": "Lees meer"
       }
@@ -157,6 +157,18 @@
     "1af80d9c-cdc8-4332-9229-35a7a8ecf2d3": {
       "type": "about-us",
       "blocks": {
+        "67ea050b-0c64-4b64-b916-a9a0e343aab4": {
+          "type": "text-line",
+          "settings": {
+            "line": "Vóór 22:00 uur besteld, is morgen in huis"
+          }
+        },
+        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517": {
+          "type": "text-line",
+          "settings": {
+            "line": "2 jaar garantie, ook op de accu"
+          }
+        },
         "36b661a1-bde1-4785-b828-ddaf431f5dc4": {
           "type": "text-line",
           "settings": {
@@ -167,18 +179,6 @@
           "type": "text-line",
           "settings": {
             "line": "Duurzaam en besparend voor het milieu"
-          }
-        },
-        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517": {
-          "type": "text-line",
-          "settings": {
-            "line": "Twee jaar garantie, ook op de accu"
-          }
-        },
-        "67ea050b-0c64-4b64-b916-a9a0e343aab4": {
-          "type": "text-line",
-          "settings": {
-            "line": "Vóór 22:00 uur besteld, is morgen in huis"
           }
         },
         "13b7a4f3-2d7d-4a2e-8e36-a2cfe03d54d5": {
@@ -218,10 +218,10 @@
         }
       },
       "block_order": [
+        "67ea050b-0c64-4b64-b916-a9a0e343aab4",
+        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517",
         "36b661a1-bde1-4785-b828-ddaf431f5dc4",
         "efeda675-a79c-4dfe-8340-56ace3847846",
-        "ed1aabbe-a5d7-411b-b2fa-935c4dbe6517",
-        "67ea050b-0c64-4b64-b916-a9a0e343aab4",
         "13b7a4f3-2d7d-4a2e-8e36-a2cfe03d54d5",
         "482991d4-fffe-450d-a632-c16520e47409",
         "ecdc9ba9-c7bd-4390-9a6b-4f5eaaa0ec76",
