@@ -46,31 +46,31 @@
             "grade-button-label": ""
           }
         },
-        "3371b941-2dcd-46b6-a72f-bfd1273c3190": {
-          "type": "additional-lines",
-          "settings": {
-            "line-link": "",
-            "line-text": "2 jaar garantie op je refurbished apparaat"
-          }
-        },
         "e78134e0-fd28-4290-af94-dc3122eeb2f3": {
           "type": "additional-lines",
           "settings": {
-            "line-link": "",
-            "line-text": "Gratis verzending naar Nederland en België"
+            "line-link": "shopify:\/\/pages\/bezorging-afhalen",
+            "line-text": "Vóór 22:30 uur besteld, is morgen in huis"
           }
         },
         "4abde90e-3540-47e5-a3b9-a4fa58651ad1": {
           "type": "additional-lines",
           "settings": {
-            "line-link": "",
-            "line-text": "Iphone{{ product.metafields.custom.benefit_check_1.value }}"
+            "line-link": "shopify:\/\/pages\/bezorging-afhalen",
+            "line-text": "Gratis verzending naar Nederland en België"
+          }
+        },
+        "3371b941-2dcd-46b6-a72f-bfd1273c3190": {
+          "type": "additional-lines",
+          "settings": {
+            "line-link": "shopify:\/\/pages\/garantie-voorwaarden",
+            "line-text": "2 jaar garantie op je refurbished apparaat"
           }
         },
         "17dbcc2b-1e12-4a87-bde7-bc3b2fb87f69": {
           "type": "additional-lines",
           "settings": {
-            "line-link": "",
+            "line-link": "shopify:\/\/pages\/veel-gestelde-vragen",
             "line-text": "Beste kwaliteit refurbished van de Benelux"
           }
         },
@@ -108,9 +108,9 @@
         "20f86578-2ba5-4dff-a0a8-00f6c01f382d",
         "a88e89d3-08b1-4f7a-ad52-691811e7d3d9",
         "cbd21cab-dc80-4156-a1c6-c5b82c3fb6e9",
-        "3371b941-2dcd-46b6-a72f-bfd1273c3190",
         "e78134e0-fd28-4290-af94-dc3122eeb2f3",
         "4abde90e-3540-47e5-a3b9-a4fa58651ad1",
+        "3371b941-2dcd-46b6-a72f-bfd1273c3190",
         "17dbcc2b-1e12-4a87-bde7-bc3b2fb87f69",
         "d05c128c-d8b5-421f-8cf2-6337874ae26c",
         "4cdf1e8a-6357-4f0d-8322-ad1b13a2176d",
