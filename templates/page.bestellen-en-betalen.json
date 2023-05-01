@@ -3,6 +3,8 @@
     "template": {
       "type": "garantie",
       "settings": {
+        "menu": "footer",
+        "repair-link": ""
       }
     }
   },
