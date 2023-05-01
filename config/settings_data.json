@@ -137,21 +137,21 @@
             "type": "swatch",
             "settings": {
               "name": "Gold",
-              "code": "#ffce00"
+              "code": "#f5ddc5"
             }
           },
           "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823": {
             "type": "swatch",
             "settings": {
               "name": "Silver",
-              "code": "#f4f4f4"
+              "code": "#e4e4e2"
             }
           },
           "8c527ac1-ef0f-4f5f-9a4f-d39d03c98249": {
             "type": "swatch",
             "settings": {
               "name": "Space",
-              "code": "#464343"
+              "code": "#25282a"
             }
           },
           "503aba1e-8f3a-4307-a3d4-a75650fdea87": {
