@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "template": {
+      "type": "garantie",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
+}
