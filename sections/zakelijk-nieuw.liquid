@@ -1,107 +1,45 @@
-<div class="container order-and-pickup contact">
-  <section class="breadcrumbs">
-    <div class="item-parent col-12 col-lg-6">
-      <ul class="item-parent">
-        <li class="item">
-          <p>
-            <a href="{{routes.root_url}}">Home</a>
-          </p>
-        </li>
-        <li class="item">
-          <p>
-            <a href="">Garantie</a>
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <div class="row">
-    <section class="main-content col-12 col-lg-9">
-      <div class="inner">
-        <section class="content-text">
-          <h1 class="mt-2 mt-lg-0">Garantie</h1>
-          <div class="contact-method">
-            <h3>Probleem met uw apparaat?</h3>
-            <p>Heeft u probleem met uw apparaat. Meld uw apparaat online aan voor garantie.</p>
-            <a
-              href="{{section.settings.repair-link}}"
-              class="btn-green"
-              style="width: 300px;">Aanmelden garantie</a>
-          </div>
-          <br><br>
-          <h4>Hardware garantie</h4>
-          <p>Je refurbished product koop je met garantie op de hardware met uitzondering van slijtage gevoelige onderdelen. Deze garantie doet niets af aan de wettelijke garantie. Per product wordt aangegeven wat de garantieperiode is. Op eventueel bijgeleverde accessoires zoals simtool, kabel en lader heb je 6 maanden garantie. Daarnaast zijn vocht-, val- en stootschade en iedere andere vorm van zelf aangerichte schade uitgesloten van garantie. Het buigen van de behuizing na enige tijd van gebruik betreft geen productiefout zoals bij nieuwe iPhones soms het geval is geweest, maar schade ontstaan door gebruik van het toestel bijvoorbeeld door het zitten op de iPhone, in de achterzak of bijvoorbeeld door te leunen tegen voorwerpen aan. Daarnaast zijn defecten voortkomend uit reparatie bij derden zonder onze toestemming ook uitgesloten van garantie. Buiten garantie zijn kosten voor herinstalleren van software en verzending van reparatie niet gedekt. Indien de batterij binnen 24 maanden na levering niet goed functioneert wordt deze gratis door ons vervangen als dit binnen onze garantievoorwaarden valt.</p>
-          <h4>Vloeistofschade</h4>
-          <p>Sommige iPhones hebben een extra beveiliging, deze zijn namelijk waterbestendig. Dat betekent echter niet dat ze waterdicht zijn. Met de normen die Apple aanhoudt zou je bij ongeveer een meter diepte niet direct een defecte iPhone hebben. Dit soort normen zijn getest in een laboratorium en niet in de echte wereld ná gebruik. Wij raden je dan ook af te gaan zwemmen met je iPhone. Net als Apple geeft rephone.nl géén garantie op enige vorm van vloeistofschade.</p>
-          <h4>
-            Garantievoorwaarden</h4>
-          <p>Bij Rephone geloven we in de kwaliteit van onze refurbished elektronica. Voor alle artikelen die je bij ons koopt, geldt de wettelijke garantie. Wettelijke garantie wil zeggen dat een product datgene is of moet doen wat de consument er in alle redelijkheid van mag verwachten. Voor sommige producten geldt ook een verkopersgarantie. Deze garantie doet niets af aan de wettelijke garantie.</p>
-          <p>Onderstaande punten vallen binnen de geadverteerde 24 maanden Rephone garantie:<br>- Defecten die zich binnen 2 jaar na aankoop voordoen;<br>- Accu (bij uitvallen van het toestel)</p>
-          <p>Onderstaande punten vallen buiten de Rephone garantie:<br>- Alle optische schade (bijvoorbeeld scherm en/of cameralens gebarsten, behuizing gebogen)<br>- Defecten die zich 2 jaar na aankoop voordoen;<br>- Defecten die als gevolg van val of vochtschade zijn ontstaan;<br>- Defecten die ontstaan zijn door reparatie van derden;<br>- Defecten aan oplaadconnector (door stof of slijtage);<br>- Defecten aan Touch ID (vingerscanner) of Face ID (gezichtsscanner);<br>- Geen garantie op waterdichtheid;</p>
-          <p>Twijfelt u of uw schade binnen of buiten de garantie valt? Neem dan contact met ons op via 085 1301 646 of info@rephone.nl en vraag hiernaar.</p>
-          <h4>Klachten&nbsp;</h4>
-          <p>Het is altijd vervelend wanneer uw bestelde product niet aan uw eisen voldoet of u niet tevreden bent met uw bestelling. Wij zijn ons ervan bewust dat dit kan gebeuren en zijn dan ook vijf dagen in de week bereikbaar om samen met u een gepaste oplossing te vinden voor deze ontevredenheid. U kunt ons bereiken via 085 1301 646 of klantenservice@rephone.nl.&nbsp;</p>
-        </section>
-      </div>
-    </section>
-    <section class="right-sidebar col-12 col-lg-3">
-      <div class="inner">
-        <div class="customer-support-nav mobile-line-before">
-          <h4>Klantenservice</h4>
-          <ul>
-            {% for link in linklists[section.settings.menu].links -%}
-              <li class="mobile-line-before">
-                <a href="{{link.url}}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="why-buy-here mobile-line-after">
-          <h4>Waarom bij ons kopen</h4>
-          <div class="check-marks">
-            {% for block in section.blocks %}
-              {% case block.type %}
-                {% when 'text-line' %}
-                <div class="check-mark">
-                  <i class="fal fa-check-circle"></i>
-                  <p>{{ block.settings.line }}</p>
-                </div>
-              {% endcase %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-{% schema %}
-  {
-    "name": "Garantie",
-    "class": "section",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "menu",
-        "label": "Menu"
-      }, {
-        "type": "url",
-        "id": "repair-link",
-        "label": "Repair Link"
-      }
-    ],
-    "blocks": [
-      {
-        "name": "Side Text Line",
-        "type": "text-line",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "line",
-            "label": "Text Line"
-          }
-        ]
-      }
-    ]
-  }
-{% endschema %}
+<p><strong>Zakelijk kopen bij Rephone</strong></p>
+<div style="text-align: right;"><img src="https://cdn.shopify.com/s/files/1/0607/5206/8837/files/iPhones_rephone_logo_betst_2048x2048.png?v=1682069718" alt="" width="495" height="278" style="float: right; margin-top: -50px;" /></div>
+<p>Bent u op zoek naar iPhones, iPads of andere merken toestellen? Dan bent u bij ons aan het juiste adres. Wij leveren gereviseerde en nieuwe toestellen van voornamelijk Apple tegen een aanzienlijk lagere prijs dan onze concurrent. Naast in- en verkoop van toestellen kunnen wij u ook voorzien van zakelijke zowel particuliere abonnementen, accessoires en vaste telefonie. Wij bieden standaard 2 jaar garantie op al onze toestellen zowel nieuw als refurbished. Naast de garantie bieden wij ook optionele verzekeringen aan voor uw toestellen dit kan al vanaf €3,- per maand per toestel.</p>
+<p> </p>
+<p><strong>Buyback</strong></p>
+<p>Naast verkoop kopen wij ook uw oude apparaten in tegen de hoogste prijs. Wij bieden vooraf een prijsschatting zodat u precies weet waar u aan toe bent. Bent u akkoord met de prijs? Dan kunt u de toestellen gratis opsturen via PostNL met ons label. Ook bieden we een afhaal optie indien dat nodig is. Nadat wij het toestel verwerkt hebben ontvangt u een directe uitbetaling (binnen 48 uur).</p>
+<div style="text-align: left;"><img src="https://cdn.shopify.com/s/files/1/0607/5206/8837/files/persoon_adviseur_2048x2048.png?v=1682070772" alt="" style="float: left;" width="244" height="244" /></div>
+<p> </p>
+<p> </p>
+<p><strong>Persoonlijk advies op maat</strong></p>
+<p>Als u besluit om bij ons refurbished of nieuwe apparaten aan te schaffen krijgt u van ons een persoonlijke adviseur toegewezen. Deze adviseur zal u voorzien van passend advies op uw behoeften. We gaan kijken welke apparaten geschikt zijn voor uw organisatie. Op basis daarvan maken we voor u een prijsopgave, uiteraard met een leuke korting. Wij kunnen u voorzien van zowel toestellen als zakelijke abonnementen en VoIP aansluitingen.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>Reparatie service</strong></p>
+<p>Bereikbaarheid in uw organisatie is uiteraard van groot belang. Bij Rephone snappen we dat. Zodra er iets mis is met uw apparaat zullen we deze zo snel mogelijk repareren. U kunt langskomen op onze locatie in Middelharnis en direct geholpen worden of we zorgen dat een koerier het defecte toestel kosteloos bij u op komt halen. We streven ernaar om uw toestel binnen 48 uur weer terug bij uw bedrijf te hebben. Hiernaast bieden wij ook de mogelijkheid voor een tijdelijk vervangend toestel aan zodat u bereikbaar kunt zijn tot uw huidige toestel is gerepareerd.</p>
+<p> </p>
+<div style="text-align: left;"></div>
+<p> </p>
+<style><!--
+img {
+  float: right;
+  margin-left: 20px;
+}
+--></style>
+<p><img src="https://cdn.shopify.com/s/files/1/0607/5206/8837/files/Foto_abbenomenten_zakelijk_website_7e4a2a76-11fb-4328-b69a-c3cdadb5c24b_2048x2048.png?v=1682078937" alt="" width="142" height="191" /></p>
+<p> </p>
+<p><strong>Mobiele abonnementen en vaste telefonie</strong></p>
+<p>Wij bieden van verschillende providers abonnementen aan zowel zakelijk als particulier. Wij zijn een onafhankelijke dealer van KPN, Vodafone en T-Mobile.</p>
+<p> </p>
+<p> </p>
+<div style="text-align: left;"></div>
+<p> </p>
+<p style="padding-left: 240px;">  </p>
+<div style="text-align: left;"><img src="https://cdn.shopify.com/s/files/1/0607/5206/8837/files/Ontwerp_zonder_titel_19_2048x2048.png?v=1682948933" alt="" style="float: left;" width="269" height="151" /></div>
+<p style="padding-left: 240px;"><strong>VoIP aansluitingen</strong></p>
+<p style="padding-left: 240px;">Wij bieden ook VoIP-oplossingen aan, waarmee u via internet kunt bellen vanaf uw vaste telefoon, computer of mobiele apparaat. Hiermee bespaart u kosten en</p>
+<div style="text-align: left;"></div>
+<p style="padding-left: 240px;">vergroot u de flexibiliteit van communicatie. Meer weten over VoIP? Klik hier voor meer informatie of neem contact met ons op.</p>
+<p style="padding-left: 240px;"> </p>
+<p style="padding-left: 240px;"> </p>
+<p style="padding-left: 240px;"> </p>
+<p> </p>
+<div style="text-align: left;"></div>
