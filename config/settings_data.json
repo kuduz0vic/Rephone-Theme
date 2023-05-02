@@ -203,6 +203,13 @@
               "name": "Graphite",
               "code": "#5c5b57"
             }
+          },
+          "8d440d75-4ddd-45ca-8639-d5747d27f86c": {
+            "type": "swatch",
+            "settings": {
+              "name": "Pacific Blue",
+              "code": "#2e4755"
+            }
           }
         },
         "block_order": [
@@ -217,7 +224,8 @@
           "9695c557-077b-4e8b-aef1-a7bb9bf82d1b",
           "c98084a2-3bc7-4819-95f8-a12015575709",
           "782f74d2-af22-4845-9b45-25c9c507efdb",
-          "10d691f3-fdec-47cb-8686-46ead2564715"
+          "10d691f3-fdec-47cb-8686-46ead2564715",
+          "8d440d75-4ddd-45ca-8639-d5747d27f86c"
         ],
         "settings": {
         }
