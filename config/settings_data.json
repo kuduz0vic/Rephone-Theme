@@ -196,6 +196,13 @@
               "name": "Midnight",
               "code": "#4e5851"
             }
+          },
+          "10d691f3-fdec-47cb-8686-46ead2564715": {
+            "type": "swatch",
+            "settings": {
+              "name": "Graphite",
+              "code": "#5c5b57"
+            }
           }
         },
         "block_order": [
@@ -209,7 +216,8 @@
           "be981151-1e7c-4eed-9511-af21fcc82f98",
           "9695c557-077b-4e8b-aef1-a7bb9bf82d1b",
           "c98084a2-3bc7-4819-95f8-a12015575709",
-          "782f74d2-af22-4845-9b45-25c9c507efdb"
+          "782f74d2-af22-4845-9b45-25c9c507efdb",
+          "10d691f3-fdec-47cb-8686-46ead2564715"
         ],
         "settings": {
         }
