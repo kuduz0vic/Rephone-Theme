@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "custom_css": [
+        "{max-width: 1100px; margin: 0 auto;}"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
+}
