@@ -189,6 +189,13 @@
               "name": "Green",
               "code": "#e1f8dc"
             }
+          },
+          "782f74d2-af22-4845-9b45-25c9c507efdb": {
+            "type": "swatch",
+            "settings": {
+              "name": "Midnight Green",
+              "code": "#4e5851"
+            }
           }
         },
         "block_order": [
@@ -201,7 +208,8 @@
           "b121b3fa-ad9e-41ea-9b96-7d7973767a1f",
           "be981151-1e7c-4eed-9511-af21fcc82f98",
           "9695c557-077b-4e8b-aef1-a7bb9bf82d1b",
-          "c98084a2-3bc7-4819-95f8-a12015575709"
+          "c98084a2-3bc7-4819-95f8-a12015575709",
+          "782f74d2-af22-4845-9b45-25c9c507efdb"
         ],
         "settings": {
         }
