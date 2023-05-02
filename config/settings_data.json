@@ -154,6 +154,13 @@
               "name": "Purple",
               "code": "#b8afe6"
             }
+          },
+          "3ea991aa-f86c-4538-8e8b-47f4424e2109": {
+            "type": "swatch",
+            "settings": {
+              "name": "Blue",
+              "code": "#5eb0e5"
+            }
           }
         },
         "block_order": [
@@ -161,7 +168,8 @@
           "2a4cefc8-933c-44f8-a459-c19c12f56e31",
           "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823",
           "8c527ac1-ef0f-4f5f-9a4f-d39d03c98249",
-          "503aba1e-8f3a-4307-a3d4-a75650fdea87"
+          "503aba1e-8f3a-4307-a3d4-a75650fdea87",
+          "3ea991aa-f86c-4538-8e8b-47f4424e2109"
         ],
         "settings": {
         }
