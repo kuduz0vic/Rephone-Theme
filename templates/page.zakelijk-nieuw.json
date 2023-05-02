@@ -2,9 +2,6 @@
   "sections": {
     "template": {
       "type": "zakelijk-nieuw",
-      "custom_css": [
-        "{max-width: 1100px; margin: 0 auto;}"
-      ],
       "settings": {
       }
     }
