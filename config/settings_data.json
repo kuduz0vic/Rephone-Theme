@@ -161,6 +161,20 @@
               "name": "Blue",
               "code": "#5eb0e5"
             }
+          },
+          "b121b3fa-ad9e-41ea-9b96-7d7973767a1f": {
+            "type": "swatch",
+            "settings": {
+              "name": "White",
+              "code": "#fbf7f4"
+            }
+          },
+          "be981151-1e7c-4eed-9511-af21fcc82f98": {
+            "type": "swatch",
+            "settings": {
+              "name": "Yellow",
+              "code": "#ffe681"
+            }
           }
         },
         "block_order": [
@@ -169,7 +183,9 @@
           "91c55aaa-cb8c-4413-a2b5-ee8ca6bfb823",
           "8c527ac1-ef0f-4f5f-9a4f-d39d03c98249",
           "503aba1e-8f3a-4307-a3d4-a75650fdea87",
-          "3ea991aa-f86c-4538-8e8b-47f4424e2109"
+          "3ea991aa-f86c-4538-8e8b-47f4424e2109",
+          "b121b3fa-ad9e-41ea-9b96-7d7973767a1f",
+          "be981151-1e7c-4eed-9511-af21fcc82f98"
         ],
         "settings": {
         }
