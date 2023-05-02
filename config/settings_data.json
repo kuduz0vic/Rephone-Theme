@@ -175,6 +175,13 @@
               "name": "Yellow",
               "code": "#ffe681"
             }
+          },
+          "9695c557-077b-4e8b-aef1-a7bb9bf82d1b": {
+            "type": "swatch",
+            "settings": {
+              "name": "Black",
+              "code": "#1f2020"
+            }
           }
         },
         "block_order": [
@@ -185,7 +192,8 @@
           "503aba1e-8f3a-4307-a3d4-a75650fdea87",
           "3ea991aa-f86c-4538-8e8b-47f4424e2109",
           "b121b3fa-ad9e-41ea-9b96-7d7973767a1f",
-          "be981151-1e7c-4eed-9511-af21fcc82f98"
+          "be981151-1e7c-4eed-9511-af21fcc82f98",
+          "9695c557-077b-4e8b-aef1-a7bb9bf82d1b"
         ],
         "settings": {
         }
