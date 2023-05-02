@@ -26,9 +26,9 @@
           "23673bda-2ad5-49e1-bdff-7f0a8a1fb2b0": {
             "type": "collections",
             "settings": {
-              "collection": "refurbished-ipad",
+              "collection": "ipad",
               "collection_list": [
-                "apple-ipad-2017"
+
               ],
               "collection-image": "shopify:\/\/shop_images\/ipad-pro-2021-11-spacegrey-2.png"
             }
@@ -36,9 +36,9 @@
           "46111ae6-62f6-4d22-bc82-420ee43298ff": {
             "type": "collections",
             "settings": {
-              "collection": "refurbished-watch",
+              "collection": "watch",
               "collection_list": [
-                "refurbished-watch"
+
               ],
               "collection-image": "shopify:\/\/shop_images\/apple-watch-8_-black-3.png"
             }
