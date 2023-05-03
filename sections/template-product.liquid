@@ -518,7 +518,7 @@ align-items: center;
                       assign tomorrow_en = tomorrow | date: '%A' %}
                       <div class="stock in-stock col-3 d-none d-md-flex">
                         <p>In voorraad</p>
-                        <p>Voor 22:30 besteld,
+                        <p>Voor 22:00 besteld,
                           {% case tomorrow_en %}
                             {% when 'Monday' %} maandag
                             {% when 'Tuesday' %} dinsdag
@@ -602,7 +602,7 @@ margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px;justify-c
                       {% assign tomorrow = 'now' | date: '%s' | plus: 86400 %} {%
    assign tomorrow_en = tomorrow | date: '%A' %}
                       <div class="stock in-stock col-12 d-none">
-                        <p>{{ variant.inventory_quantity }} stuks in voorraad voor 22:30 besteld,
+                        <p>{{ variant.inventory_quantity }} stuks in voorraad voor 22:00 besteld,
                           {% case tomorrow_en %}
                             {% when 'Monday' %} maandag
                             {% when 'Tuesday' %} dinsdag
