@@ -231,6 +231,13 @@
               "name": "Sierra",
               "code": "#9bb5ce"
             }
+          },
+          "7a8f65d8-71e0-4b4f-a52c-2811674583cb": {
+            "type": "swatch",
+            "settings": {
+              "name": "Deep",
+              "code": "#36013f"
+            }
           }
         },
         "block_order": [
@@ -249,7 +256,8 @@
           "8d440d75-4ddd-45ca-8639-d5747d27f86c",
           "60c3f62f-9da4-41ce-a4ca-8e71d72da059",
           "4569204e-ee14-4afe-b48e-d545557eba4f",
-          "4885ba96-58fd-4f95-947a-3c06116988c3"
+          "4885ba96-58fd-4f95-947a-3c06116988c3",
+          "7a8f65d8-71e0-4b4f-a52c-2811674583cb"
         ],
         "settings": {
         }
