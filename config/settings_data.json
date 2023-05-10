@@ -194,14 +194,14 @@
             "type": "swatch",
             "settings": {
               "name": "Midnight",
-              "code": "#4e5851"
+              "code": "#171e27"
             }
           },
           "10d691f3-fdec-47cb-8686-46ead2564715": {
             "type": "swatch",
             "settings": {
               "name": "Graphite",
-              "code": "#5c5b57"
+              "code": "#4c4a46"
             }
           },
           "8d440d75-4ddd-45ca-8639-d5747d27f86c": {
@@ -209,6 +209,27 @@
             "settings": {
               "name": "Pacific",
               "code": "#2e4755"
+            }
+          },
+          "60c3f62f-9da4-41ce-a4ca-8e71d72da059": {
+            "type": "swatch",
+            "settings": {
+              "name": "Starlight",
+              "code": "#f9f3ee"
+            }
+          },
+          "4569204e-ee14-4afe-b48e-d545557eba4f": {
+            "type": "swatch",
+            "settings": {
+              "name": "Pink",
+              "code": "#fae0d8"
+            }
+          },
+          "4885ba96-58fd-4f95-947a-3c06116988c3": {
+            "type": "swatch",
+            "settings": {
+              "name": "Sierra",
+              "code": "#9bb5ce"
             }
           }
         },
@@ -225,7 +246,10 @@
           "c98084a2-3bc7-4819-95f8-a12015575709",
           "782f74d2-af22-4845-9b45-25c9c507efdb",
           "10d691f3-fdec-47cb-8686-46ead2564715",
-          "8d440d75-4ddd-45ca-8639-d5747d27f86c"
+          "8d440d75-4ddd-45ca-8639-d5747d27f86c",
+          "60c3f62f-9da4-41ce-a4ca-8e71d72da059",
+          "4569204e-ee14-4afe-b48e-d545557eba4f",
+          "4885ba96-58fd-4f95-947a-3c06116988c3"
         ],
         "settings": {
         }
