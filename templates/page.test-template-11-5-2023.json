@@ -2,7 +2,10 @@
   "sections": {
     "template": {
       "type": "zakelijk-nieuw",
+      "disabled": true,
       "settings": {
+        "menu": "",
+        "repair-link": ""
       }
     }
   },
