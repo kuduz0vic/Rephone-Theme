@@ -6,6 +6,8 @@
 
       ],
       "settings": {
+        "menu": "footer",
+        "repair-link": ""
       }
     }
   },
