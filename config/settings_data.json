@@ -238,6 +238,13 @@
               "name": "Deep",
               "code": "#36013f"
             }
+          },
+          "c82b7c1c-938b-466c-b9ba-f4abd84cdb51": {
+            "type": "swatch",
+            "settings": {
+              "name": "Rose",
+              "code": "#e6c7c2"
+            }
           }
         },
         "block_order": [
@@ -257,7 +264,8 @@
           "60c3f62f-9da4-41ce-a4ca-8e71d72da059",
           "4569204e-ee14-4afe-b48e-d545557eba4f",
           "4885ba96-58fd-4f95-947a-3c06116988c3",
-          "7a8f65d8-71e0-4b4f-a52c-2811674583cb"
+          "7a8f65d8-71e0-4b4f-a52c-2811674583cb",
+          "c82b7c1c-938b-466c-b9ba-f4abd84cdb51"
         ],
         "settings": {
         }
