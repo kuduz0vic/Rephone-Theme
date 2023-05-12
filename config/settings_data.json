@@ -17,8 +17,11 @@
             "type": "collections",
             "settings": {
               "collection": "refurbished-iphone",
-              "collection_list": [
-
+              "product_list": [
+                "iphone-14",
+                "refurbished-iphone-11",
+                "refurbished-iphone-11-pro",
+                "refurbished-iphone-11-pro-max"
               ],
               "collection-image": "shopify:\/\/shop_images\/13-wit-crop.jpg"
             }
@@ -27,7 +30,7 @@
             "type": "collections",
             "settings": {
               "collection": "refurbished-ipad",
-              "collection_list": [
+              "product_list": [
 
               ],
               "collection-image": "shopify:\/\/shop_images\/ipad-pro-2021-11-spacegrey-2.png"
@@ -37,7 +40,7 @@
             "type": "collections",
             "settings": {
               "collection": "refurbished-watch",
-              "collection_list": [
+              "product_list": [
 
               ],
               "collection-image": "shopify:\/\/shop_images\/apple-watch-8_-black-3.png"
@@ -47,7 +50,7 @@
             "type": "collections",
             "settings": {
               "collection": "accessoires",
-              "collection_list": [
+              "product_list": [
 
               ],
               "collection-image": "shopify:\/\/shop_images\/menu-accessoires.jpg"
