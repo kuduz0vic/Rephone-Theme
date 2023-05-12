@@ -31,7 +31,7 @@
             "settings": {
               "collection": "refurbished-ipad",
               "product_list": [
-
+                "refurbished-apple-ipad-10-2-2019-wifi"
               ],
               "collection-image": "shopify:\/\/shop_images\/ipad-pro-2021-11-spacegrey-2.png"
             }
@@ -41,7 +41,7 @@
             "settings": {
               "collection": "refurbished-watch",
               "product_list": [
-
+                "refurbished-apple-watch-series-4-gps"
               ],
               "collection-image": "shopify:\/\/shop_images\/apple-watch-8_-black-3.png"
             }
