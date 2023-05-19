@@ -30,22 +30,3 @@
   }
 {%- endschema -%}
 
-<style>
-  {% for block in section.blocks %}
-    {% if block.type == 'swatch'%}
-          .swatch-{{ block.settings.name | downcase }} {
-            {% if block.settings.image != blank %}
-      background: url('{{ block.settings.image | img_url: '100x' }}') !important;
-    {% else %}
-      background: {{ block.settings.code }}
-       !important;
-    {% endif %}
-    background-size: cover !important;
-  }
-
-  .swatch-{{ block.settings.name | downcase }}> span {
-    color: transparent !important;
-  }
-{% endif %}
-{% endfor %}
-</style>
