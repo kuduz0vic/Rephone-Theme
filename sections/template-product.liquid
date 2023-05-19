@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-
+<p class="size-metafield" style="display: none;">{{product.metafields.custom.product_size}}</p>
+<p class="color-metafield" style="display: none;">{{product.metafields.custom.product_color}}</p>
 {% assign selected_variant = product.selected_or_first_available_variant %}
 <style>
   .variant-a {
