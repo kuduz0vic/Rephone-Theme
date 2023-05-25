@@ -253,6 +253,153 @@
               "name": "Zwart",
               "code": "#000000"
             }
+          },
+          "af271495-0cce-43fb-9562-63a23c53f859": {
+            "type": "swatch",
+            "settings": {
+              "name": "Licht Blauw",
+              "code": "#c7e0ed"
+            }
+          },
+          "07798f33-0f7c-44cf-b06a-405f24e9e5d1": {
+            "type": "swatch",
+            "settings": {
+              "name": "Donker Blauw",
+              "code": "#12279e"
+            }
+          },
+          "78612354-039a-4c60-b4ee-c7e012bebe9a": {
+            "type": "swatch",
+            "settings": {
+              "name": "Crème",
+              "code": "#f8f4e9"
+            }
+          },
+          "0ba3236f-d2db-4c71-ae88-93387e787272": {
+            "type": "swatch",
+            "settings": {
+              "name": "Oranje",
+              "code": "#f8d4ba"
+            }
+          },
+          "04f13507-6df5-48f7-b7cc-3950badc50f3": {
+            "type": "swatch",
+            "settings": {
+              "name": "Rood",
+              "code": "#b75047"
+            }
+          },
+          "145a18e5-808a-4962-bfe8-a5847bae2509": {
+            "type": "swatch",
+            "settings": {
+              "name": "Bordeaux Rood",
+              "code": "#5e3f47"
+            }
+          },
+          "3930e97e-e3c5-4e3c-a93f-95e9510f76f3": {
+            "type": "swatch",
+            "settings": {
+              "name": "Mint",
+              "code": "#a0ceba"
+            }
+          },
+          "1a572ba8-9bac-4fba-8790-de6307a84b5a": {
+            "type": "swatch",
+            "settings": {
+              "name": "Groen",
+              "code": "#bbbba1"
+            }
+          },
+          "47acac32-90ce-454b-b219-62796bdba00c": {
+            "type": "swatch",
+            "settings": {
+              "name": "Limoen",
+              "code": "#dee5b9"
+            }
+          },
+          "c48cb51c-2416-4ed6-ab2c-77a8b9378595": {
+            "type": "swatch",
+            "settings": {
+              "name": "Grafiet",
+              "code": "#3a393f"
+            }
+          },
+          "612768c8-fa38-49a8-bd75-e1fa22606d38": {
+            "type": "swatch",
+            "settings": {
+              "name": "Grijs",
+              "code": "#757575"
+            }
+          },
+          "cfcb341a-d73d-465d-97f1-d7b6652ee303": {
+            "type": "swatch",
+            "settings": {
+              "name": "Violet",
+              "code": "#e6dcef"
+            }
+          },
+          "e1068b5f-555a-4bb9-8824-c33981989cc2": {
+            "type": "swatch",
+            "settings": {
+              "name": "Paars",
+              "code": "#c9c1d0"
+            }
+          },
+          "5edda7ee-4a03-46a1-aad5-83e004fa73ef": {
+            "type": "swatch",
+            "settings": {
+              "name": "Wit",
+              "code": "#f0f0f2"
+            }
+          },
+          "5c58a64a-fc47-4361-bd63-f10c5c9842cf": {
+            "type": "swatch",
+            "settings": {
+              "name": "Roze",
+              "code": "#f3c5b8"
+            }
+          },
+          "8ead6198-03c9-4313-913b-a47045260cf1": {
+            "type": "swatch",
+            "settings": {
+              "name": "Zilver",
+              "code": "#d6e0e2"
+            }
+          },
+          "b0000ead-a8ed-4e43-8e67-11ce080e6a2b": {
+            "type": "swatch",
+            "settings": {
+              "name": "Titanium",
+              "code": "#a3a5b0"
+            }
+          },
+          "0224dd59-e5ff-4559-b074-1ca0857d085d": {
+            "type": "swatch",
+            "settings": {
+              "name": "Bruin",
+              "code": "#5c4d46"
+            }
+          },
+          "91807aaf-02bb-47dd-8bbd-d50baea67896": {
+            "type": "swatch",
+            "settings": {
+              "name": "Goud",
+              "code": "#f2d89b"
+            }
+          },
+          "0bab5914-3e86-4352-808b-361be4b16cba": {
+            "type": "swatch",
+            "settings": {
+              "name": "Brons",
+              "code": "#bc9087"
+            }
+          },
+          "21060dd6-255f-4c18-878e-5517d8e0db66": {
+            "type": "swatch",
+            "settings": {
+              "name": "Blauw\/Grijs",
+              "code": "#7f72b7"
+            }
           }
         },
         "block_order": [
@@ -274,7 +421,28 @@
           "4885ba96-58fd-4f95-947a-3c06116988c3",
           "7a8f65d8-71e0-4b4f-a52c-2811674583cb",
           "c82b7c1c-938b-466c-b9ba-f4abd84cdb51",
-          "31847e2a-2a68-479d-9861-986948ecbf32"
+          "31847e2a-2a68-479d-9861-986948ecbf32",
+          "af271495-0cce-43fb-9562-63a23c53f859",
+          "07798f33-0f7c-44cf-b06a-405f24e9e5d1",
+          "78612354-039a-4c60-b4ee-c7e012bebe9a",
+          "0ba3236f-d2db-4c71-ae88-93387e787272",
+          "04f13507-6df5-48f7-b7cc-3950badc50f3",
+          "145a18e5-808a-4962-bfe8-a5847bae2509",
+          "3930e97e-e3c5-4e3c-a93f-95e9510f76f3",
+          "1a572ba8-9bac-4fba-8790-de6307a84b5a",
+          "47acac32-90ce-454b-b219-62796bdba00c",
+          "c48cb51c-2416-4ed6-ab2c-77a8b9378595",
+          "612768c8-fa38-49a8-bd75-e1fa22606d38",
+          "cfcb341a-d73d-465d-97f1-d7b6652ee303",
+          "e1068b5f-555a-4bb9-8824-c33981989cc2",
+          "5edda7ee-4a03-46a1-aad5-83e004fa73ef",
+          "5c58a64a-fc47-4361-bd63-f10c5c9842cf",
+          "8ead6198-03c9-4313-913b-a47045260cf1",
+          "b0000ead-a8ed-4e43-8e67-11ce080e6a2b",
+          "0224dd59-e5ff-4559-b074-1ca0857d085d",
+          "91807aaf-02bb-47dd-8bbd-d50baea67896",
+          "0bab5914-3e86-4352-808b-361be4b16cba",
+          "21060dd6-255f-4c18-878e-5517d8e0db66"
         ],
         "settings": {
         }
