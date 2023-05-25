@@ -107,34 +107,34 @@
           "type": "product",
           "settings": {
             "product": "refurbished-iphone-12",
-            "variant": "64GB | Black"
+            "variant": "64GB | 128GB | 256GB"
           }
         },
         "826276b7-6fec-4160-af14-f74b29a995eb": {
           "type": "product",
           "settings": {
             "product": "refurbished-iphone-11",
-            "variant": "64GB | Space Grey"
+            "variant": "64GB | 128GB | 256GB"
           }
         },
         "a97b1af3-cc61-4059-a690-56aff1b3b1fd": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-13-pro-max-grafiet",
-            "variant": "64GB | Space Grey"
+            "product": "refurbished-iphone-xs-max",
+            "variant": "64GB | 256GB"
           }
         },
         "964b0999-4556-41ce-a3dd-9722dd4619b4": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-13-pro-max-goud",
-            "variant": "64GB | Space Grey"
+            "product": "refurbished-iphone-xr",
+            "variant": "64GB | 128GB | 256GB"
           }
         },
         "a005867f-b891-4e19-aea9-0f3c261387fb": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-se-2022-wit-64gb",
+            "product": "refurbished-apple-ipad-9-7-2018-wifi",
             "variant": "64GB | Space Grey"
           }
         }
