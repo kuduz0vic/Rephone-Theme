@@ -84,12 +84,10 @@
           "menu-title": "Klantenservice",
           "collection-title": "Onze iPhones",
           "collection_list": [
-            "refurbished-iphone-8",
-            "iphone-xr",
-            "iphone-xs",
-            "iphone-se-2020",
-            "iphone-11",
-            "iphone-11-pro"
+            "refurbished-iphone",
+            "refurbished-ipad",
+            "refurbished-watch",
+            "accessoires"
           ],
           "email": "klantenservice@rephone.nl",
           "secondary-menu": "",
