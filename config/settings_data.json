@@ -90,7 +90,7 @@
             "accessoires"
           ],
           "email": "klantenservice@rephone.nl",
-          "secondary-menu": "",
+          "secondary-menu": "footer-bottom-menu",
           "blog-pick": "",
           "blog-link": "shopify:\/\/blogs\/iphone"
         }
