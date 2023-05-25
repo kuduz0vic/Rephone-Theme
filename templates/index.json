@@ -106,14 +106,14 @@
         "fcf7ddbf-6ccc-4d88-be54-1f3e01b6f9c2": {
           "type": "product",
           "settings": {
-            "product": "refurbished-iphone-8",
-            "variant": "64GB | Space Grey"
+            "product": "refurbished-iphone-12",
+            "variant": "64GB | Black"
           }
         },
         "826276b7-6fec-4160-af14-f74b29a995eb": {
           "type": "product",
           "settings": {
-            "product": "apple-iphone-11-pro-64gb-space-grey",
+            "product": "refurbished-iphone-11",
             "variant": "64GB | Space Grey"
           }
         },
