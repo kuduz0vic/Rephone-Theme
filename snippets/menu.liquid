@@ -39,7 +39,7 @@
         {% when 'collections' %}
           {% assign collection = collections[block.settings.collection] %}
           <li>
-            {{ collection.title }}
+            <a href="{{ collection.url  }}" class="item">{{ collection.title }}</a>
             <ul>
               {% for collection in block.settings.collection_list %}
                 <li>
