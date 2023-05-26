@@ -18,7 +18,29 @@
             "settings": {
               "collection": "refurbished-iphone",
               "product_list": [
-
+                "refurbished-iphone-11",
+                "refurbished-iphone-xs-max",
+                "refurbished-iphone-xs",
+                "refurbished-iphone-xr",
+                "refurbished-iphone-x",
+                "refurbished-iphone-se-2022",
+                "refurbished-iphone-se-2020",
+                "refurbished-iphone-8-plus",
+                "refurbished-iphone-8",
+                "refurbished-iphone-14-pro-max",
+                "refurbished-iphone-14-pro",
+                "refurbished-iphone-14-plus",
+                "refurbished-iphone-14",
+                "refurbished-iphone-13-pro-max",
+                "refurbished-iphone-13-pro",
+                "refurbished-iphone-13-mini",
+                "refurbished-iphone-13",
+                "refurbished-iphone-12-pro-max",
+                "refurbished-iphone-12-pro",
+                "refurbished-iphone-12-mini",
+                "refurbished-iphone-12",
+                "refurbished-iphone-11-pro-max",
+                "refurbished-iphone-11-pro"
               ],
               "collection-image": "shopify:\/\/shop_images\/13-wit-crop.jpg"
             }
