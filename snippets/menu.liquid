@@ -14,7 +14,7 @@
 {% for block in section.blocks %}
   {% case block.type %}
     {% when 'collections' %}
-      {% assign collection = products[block.settings.products] %}
+      {% assign all_products = all_products[block.settings.products] %}
       <section class="menu-row d-md-none d-none" data-menu="{{collection.title}}">
         <div class="container">
           <div class="row">
