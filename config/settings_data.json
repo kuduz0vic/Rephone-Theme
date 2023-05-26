@@ -18,10 +18,7 @@
             "settings": {
               "collection": "refurbished-iphone",
               "product_list": [
-                "refurbished-iphone-14",
-                "refurbished-iphone-11",
-                "refurbished-iphone-11-pro",
-                "refurbished-iphone-11-pro-max"
+
               ],
               "collection-image": "shopify:\/\/shop_images\/13-wit-crop.jpg"
             }
