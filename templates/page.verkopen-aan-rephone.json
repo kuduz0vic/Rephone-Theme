@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "menu": "footer",
+        "repair-link": ""
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
+}
