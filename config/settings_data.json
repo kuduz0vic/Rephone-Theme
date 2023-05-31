@@ -419,6 +419,13 @@
               "name": "Blauw\/Grijs",
               "code": "#7f72b7"
             }
+          },
+          "887661b8-b232-413e-ab16-4e989d7ec419": {
+            "type": "swatch",
+            "settings": {
+              "name": "Coral",
+              "code": "#f9624c"
+            }
           }
         },
         "block_order": [
@@ -461,7 +468,8 @@
           "0224dd59-e5ff-4559-b074-1ca0857d085d",
           "91807aaf-02bb-47dd-8bbd-d50baea67896",
           "0bab5914-3e86-4352-808b-361be4b16cba",
-          "21060dd6-255f-4c18-878e-5517d8e0db66"
+          "21060dd6-255f-4c18-878e-5517d8e0db66",
+          "887661b8-b232-413e-ab16-4e989d7ec419"
         ],
         "settings": {
         }
