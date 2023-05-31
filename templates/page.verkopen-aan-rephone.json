@@ -4,20 +4,9 @@
       "type": "verkopen",
       "settings": {
       }
-    },
-    "template": {
-      "type": "template-page",
-      "custom_css": [
-
-      ],
-      "settings": {
-        "menu": "footer",
-        "repair-link": ""
-      }
     }
   },
   "order": [
-    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b",
-    "template"
+    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b"
   ]
 }
