@@ -9,9 +9,15 @@
         "menu": "footer",
         "repair-link": ""
       }
+    },
+    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b": {
+      "type": "verkopen",
+      "settings": {
+      }
     }
   },
   "order": [
-    "template"
+    "template",
+    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b"
   ]
 }
