@@ -1,5 +1,10 @@
 {
   "sections": {
+    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b": {
+      "type": "verkopen",
+      "settings": {
+      }
+    },
     "template": {
       "type": "template-page",
       "custom_css": [
@@ -9,15 +14,10 @@
         "menu": "footer",
         "repair-link": ""
       }
-    },
-    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b": {
-      "type": "verkopen",
-      "settings": {
-      }
     }
   },
   "order": [
-    "template",
-    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b"
+    "fbe18388-01b6-4b29-aaf1-2b8c5ad39f6b",
+    "template"
   ]
 }
