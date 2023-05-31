@@ -3,16 +3,12 @@
     "template": {
       "type": "template-page",
       "settings": {
-      }
-    },
-    "contact-form": {
-      "type": "contact-form",
-      "settings": {
+        "menu": "",
+        "repair-link": ""
       }
     }
   },
   "order": [
-    "template",
-    "contact-form"
+    "template"
   ]
 }
