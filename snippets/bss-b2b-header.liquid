@@ -18,12 +18,20 @@
     "id": {{ customer.id | json }},
     "tags": {{ customer.tags | json }},
     "tax_exempt": {{ customer.tax_exempt | json }},
+    "first_name": {{ customer.first_name | json }},
+    "last_name": {{ customer.last_name | json }},
+    "phone": {{ customer.phone | json }},
     "email": "{{ customer.email | join }}"
   },
   "cart": {{ cart | json }},
   "line_item_products": {{ cart | map: "items"  | map: "product" | json }},
   "template": "{{ template | split: "." | first }}",
   "product": {{ product | json }},
+  "product_collections": [
+    {% for collection in product.collections %}
+      {{ collection.id }}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
   "collection": {{ collection.products | json }},
   "collections": [
     {% for collection in product.collections %}
@@ -60,7 +68,6 @@
     width: 100%;
 }
 .bss-b2b-cart-item-qty-table table{
-    margin-bottom: 2px;
     width: 100%;
 }
 .bss-b2b-cart-item-qty-table table td{
@@ -80,9 +87,10 @@
     text-align: center;
 }
 .bss-b2b-qty-table-wrapper th,.bss-b2b-qty-table-wrapper-ef th {
-    font-weight: bold;
+    font-weight: bold !important;
     padding: 10px !important;
     text-align: center;
+    text-transform: capitalize !important;
 }
 
 @keyframes moneyAnimation { to { visibility: visible; } }
@@ -204,12 +212,14 @@ li.bss-amo-text-warning {
 }
 
 li.bss-amo-text-warning::before {
-  content: '\27A2';
+  content: '\26AB';
   position: absolute;
   left: 0;
-  font-size: 19px;
-  margin-top: -4px;
-  margin-left: 15px;
+  font-size: 5px;
+  margin-left: 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
 .bss-amo-list-warning-minimum-quantity, .bss-amo-list-warning-maximum-quantity {
@@ -321,12 +331,14 @@ li.bss-qi-text-warning {
 }
 
 li.bss-qi-text-warning::before {
-  content: '\27A2';
+  content: '\26AB';
   position: absolute;
   left: 0;
-  font-size: 19px;
-  margin-top: -4px;
-  margin-left: 15px;
+  font-size: 5px;
+  margin-left: 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
 .bss-qi-list-warning-quantity {
@@ -389,7 +401,7 @@ li.bss-qi-text-warning::before {
     border: solid white 1px;
 }
 .bss-b2b-cart-item-qty-table {
-  max-width: fit-content !important;
+  max-width: fit-content;
 }
 .bss_rf_privacy_policy_container{
   margin-bottom: 10px
@@ -398,78 +410,31 @@ li.bss-qi-text-warning::before {
   display: inline;
 }
 </style>
-	          
-	          {% capture bss_b2b_featured_product_vat_styles_content %}{% include 'bss-b2b-featured-product-vat-styles' %}{% endcapture %}{% unless bss_b2b_featured_product_vat_styles_content contains "Liquid error" %}{{ bss_b2b_featured_product_vat_styles_content }}{% endunless %}
-	          {% include "bss-b2b-currency-format"%}
-	          
-              
-	          <script id="bss-b2b-config-data">
-	          if (typeof BSS_B2B == 'undefined') {
-	              var BSS_B2B = {};
-	          }
-	
-	          BSS_B2B.storeId = 9714;
-	          BSS_B2B.currentPlan = "false";
-	          BSS_B2B.planCode = "null";
-	          BSS_B2B.rfGeneralSettings = null;
-	          BSS_B2B.shopModules = [];
-	          BSS_B2B.currencyConfig = null;
-	          BSS_B2B.currencyFormat = bssCurrencyFormat;
-	          BSS_B2B.amoRules = null;
-	          BSS_B2B.amoTranslations = null;
-	          BSS_B2B.amoSettings = null;
-	          BSS_B2B.dcRules = null;
-	          BSS_B2B.taxDisplayRules = [];
-	          BSS_B2B.taxDisplayTranslations = null;
-	          BSS_B2B.taxOverrides = [];
-	          BSS_B2B.qiRules = null;
-	          BSS_B2B.qiTranslations = null;
-	          BSS_B2B.qiSettings = null;
-	          BSS_B2B.efRules = null;
-	          BSS_B2B.efSettings = null;
-	          BSS_B2B.efTranslations = null;
-	          BSS_B2B.srRules = null;
-	          BSS_B2B.bogoRule = null;
-	          BSS_B2B.vatTranslations = null;
-              BSS_B2B.allVatCountries = [];
-              BSS_B2B.integrationApp = [];
-	          var bssB2bApiServer = "https://b2b-solution-api.bsscommerce.com";
-	          var bssB2bCmsUrl = "https://b2b-solution.bsscommerce.com";
-	          var bssGeoServiceUrl = "https://geo-ip-service.bsscommerce.com";
-	          var bssB2BIsRequiredVat = null;
-	          var bssB2BAutoExemptTax = null;
-	          var bssB2BAutoRedirectToCheckout = null;
-	          var bssB2BEnableSelectEUVATCountries = null;
-	          var bssB2BSelectedEUVATCountries = "";
-	          var bssB2BEnableEuVat = null;
-	          var bssB2BEnableUkVat = null;
-	          var bssB2BEnableGst = null;
-	          var bssB2BEnableAbn = null;
-	          var bssB2BVatExemptSelectedOriginal = null;
-	          var bssB2BVatExemptSelected = null;
-	        </script>
-	        <style type="text/css">.bss-b2b-tax-ex-wrapper, .bss-b2b-product-vat, .bss-b2b-discount-code-wrapper {display: none !important}</style>
-			<script id="bss-b2b-wholesaler-form-default">
-                 BSS_B2B.formDataRenderDefault = null;
-                 BSS_B2B.formIdDef = null;
-                 BSS_B2B.reCAPCHA = null;
-                 BSS_B2B.CAPCHA_SITE_KEY = "6LcYPEgbAAAAAKEQdimI1PPA4vuOJHxNb5p6eLUo";
-                 BSS_B2B.status = null;
-                 BSS_B2B.created_account = null;
-                 BSS_B2B.redirect_url = "/null";
-                 BSS_B2B.taxExempt = null;
-                 BSS_B2B.formPrivacyPolicyStatus = null;
-                 BSS_B2B.formPrivacyPolicyContent = null;
-            </script>
-            <style>
-				null
-				#account-popover, 
-				.popover--unlogged {
-					height: 400px; 
-					width: 365px;
-				}
-				#header-register-panel {
-					height: 400px;
-					overflow-y: auto;
-				}
-			</style>
+                    {% capture bss_b2b_featured_product_vat_styles_content %}{% include 'bss-b2b-featured-product-vat-styles' %}{% endcapture %}{% unless bss_b2b_featured_product_vat_styles_content contains "Liquid error" %}{{ bss_b2b_featured_product_vat_styles_content }}{% endunless %}
+                    {% include "bss-b2b-currency-format"%}
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <script id="bss-b2b-config-data">
+                    if (typeof BSS_B2B == 'undefined') {
+                        var BSS_B2B = {};
+                    }
+            
+                    BSS_B2B.storeId = 9714;
+                    BSS_B2B.currentPlan = "false";
+                    BSS_B2B.planCode = "null";
+                    BSS_B2B.shopModules = [{"code":"qb","status":0},{"code":"cp","status":0},{"code":"act","status":0},{"code":"form","status":0},{"code":"tax_exempt","status":0},{"code":"amo","status":0},{"code":"mc","status":0},{"code":"public_api","status":0},{"code":"dc","status":0},{"code":"cart_note","status":0},{"code":"mo","status":0},{"code":"tax_display","status":0},{"code":"sr","status":0},{"code":"bogo","status":0},{"code":"qi","status":0},{"code":"ef","status":0}];
+                    BSS_B2B.integrationApp = [];
+                    var bssB2bApiServer = "https://b2b-solution-api.bsscommerce.com";
+                    var bssB2bCmsUrl = "https://b2b-solution.bsscommerce.com";
+                    var bssGeoServiceUrl = "https://geo-ip-service.bsscommerce.com";
+                </script><style type="text/css">.bss-b2b-discount-code-wrapper {display: none !important}</style>
