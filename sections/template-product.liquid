@@ -546,7 +546,7 @@ align-items: center;
                       {% else %}
                         <div class="stock no-stock col-3 d-none d-md-flex">
                           <p>Uitverkocht</p>
-                          <p>Ontvang een e-mail bij voorraad</p>
+                          <p>Ontvang een e-mail bij voorraad {{ variant.inventory_quantity }}</p>
                         </div>
                     {% endif %}
                     <div class="col-4 col-md-3 d-flex justify-content-end">
