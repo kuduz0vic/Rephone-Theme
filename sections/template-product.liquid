@@ -561,7 +561,7 @@ align-items: center;
                         <i class="fal fa-shopping-cart"></i>&nbsp;Toevoegen
                       </a>
 
-                      {% elsif variant.available and variant.inventory_quantity == 0 %}
+                      {% elsif variant.available and variant.inventory_quantity <= 0 %}
                         <a id="add-to-cart-button"
                           class="btn-cart addtocart"
                           href="/cart/add?id={{ variant.id }}"
