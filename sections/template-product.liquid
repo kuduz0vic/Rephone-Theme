@@ -340,7 +340,7 @@
               itemtype="http://schema.org/Offer"
               style="display: none;">
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
-              <span itemprop="price" content="{{ price }}"></span>
+              <span itemprop="price" content="{{ variant.price[2] }}"></span>
               {% if quantity > 0 %}
                 <link itemprop="availability" href="http://schema.org/InStock" />
               {% else %}
