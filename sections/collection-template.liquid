@@ -20,22 +20,22 @@
       <div class="inner">
         <div class="product-filter">
           <script type="text/javascript">
-            $(function() {      
+            $(function() {
             let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-                                                                                                                                                                                                                                                                                    
+
                                                                                                                                                                                                                                                                                         if (isMobile) {
                                                                                                                                                                                                                                                                                             //Conditional script here
                                                                                                                                                                                                                                                                                             $('.collapse').removeClass('show');
                                                                                                                                                                                                                                                                                             $('.collapse').addClass('hide');
-                                                                                                                                                                                                                                                                                            
+
                                                                                                                                                                                                                                                                                         }
-                                                                                                                                                                                                                                                                                        
+
                                                                                                                                                                                                                                                                                         $('#close').click(function (){
                                                                                                                                                                                                                                                                                             var menu = $('.mobile-menu-bar');
                                                                                                                                                                                                                                                                                             menu.css('left', '-100%').removeClass('menu-open');
-                                                                                                                                                                                                                                                                                             
+
                                                                                                                                                                                                                                                                                         });
-                                                                                                                                                                                                                                                                                        
+
                                                                                                                                                                                                                                                                                      });
           </script>
           <style>
@@ -52,8 +52,6 @@
           <a id="close">X</a>
           <div class="inner">
             <div id="accordion">
-
-
               <form class="filter-form" id="filter-form">
                 {%- for filter in collection.filters -%}
                   <div class="card">
@@ -64,7 +62,8 @@
                           data-toggle="collapse"
                           data-target="#collapse4"
                           aria-expanded="false"
-                          aria-controls="collapse4">
+                          aria-controls="collapse4"
+                        >
                           <p>{{ filter.label }}</p>
                           <i class="fal fa-arrow-down"></i>
                         </button>
@@ -74,10 +73,11 @@
                       id="collapse4"
                       class="collapse show"
                       aria-labelledby="heading4"
-                      data-parent="#accordion">
+                      data-parent="#accordion"
+                    >
                       <div class="card-body">
                         {%- for filter_value in filter.values -%}
-                          {% if filter_value.variant_name != "Grades" %}
+                          {% if filter_value.variant_name != 'Grades' %}
                             <div class="product-filter-item">
                               <label class="filter-label" for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
                                 <input
@@ -85,10 +85,16 @@
                                   name="{{ filter_value.param_name }}"
                                   value="{{ filter_value.value }}"
                                   id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
-                                  {% if filter_value.active -%}checked{%- endif %}
-                                  {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
-                                  onclick="applyFilters()">{{ filter_value.label }}</label>
-                                  
+                                  {% if filter_value.active -%}
+                                    checked
+                                  {%- endif %}
+                                  {% if filter_value.count == 0 and filter_value.active == false -%}
+                                    disabled
+                                  {%- endif %}
+                                  onclick="applyFilters()"
+                                >
+                                {{- filter_value.label -}}
+                              </label>
                             </div>
                           {% endif %}
                         {%- endfor -%}
@@ -97,9 +103,6 @@
                   </div>
                 {% endfor %}
               </form>
-
-
-
             </div>
           </div>
         </div>
@@ -147,7 +150,10 @@
               </div>
             </div>
             <div class="text">
-              <p>iPhone 5s gekocht bij Rephone. Werkt helemaal naar behoren en ziet er nog mooi uit. Ik zou Rephone zeker aanraden!</p>
+              <p>
+                iPhone 5s gekocht bij Rephone. Werkt helemaal naar behoren en ziet er nog mooi uit. Ik zou Rephone zeker
+                aanraden!
+              </p>
             </div>
           </div>
           <div class="review">
@@ -171,7 +177,10 @@
               </div>
             </div>
             <div class="text">
-              <p>telefoon gister pas gekregen. Zag er verder goed uit. Verder nog moeilijk te beoordelen. Is nog niet in gebruik.</p>
+              <p>
+                telefoon gister pas gekregen. Zag er verder goed uit. Verder nog moeilijk te beoordelen. Is nog niet in
+                gebruik.
+              </p>
             </div>
           </div>
           <div class="review">
@@ -195,13 +204,15 @@
               </div>
             </div>
             <div class="text">
-              <p>Ik was wat achterdochtig door enkele tegenslagen in het verleden, doch onmiddellijk antwoord op mijn mails, en correcte afhandeling van mijn bestelling</p>
+              <p>
+                Ik was wat achterdochtig door enkele tegenslagen in het verleden, doch onmiddellijk antwoord op mijn
+                mails, en correcte afhandeling van mijn bestelling
+              </p>
             </div>
           </div>
           <div class="review">
             <div class="title">
-              <p>
-                | Oost-Vlaanderen</p>
+              <p>| Oost-Vlaanderen</p>
             </div>
             <div class="star-ratings-css blue-stars">
               <div class="star-ratings-css-top" style="width: 80%">
@@ -220,13 +231,17 @@
               </div>
             </div>
             <div class="text">
-              <p>Heel correct. Aangekocht via Belgisch bedrijf. BTW eerst betaald maar nadat Rephone BTW nr. gecontroleerd heeft krijg je direct de factuur en de BTW teruggestort.</p>
+              <p>
+                Heel correct. Aangekocht via Belgisch bedrijf. BTW eerst betaald maar nadat Rephone BTW nr.
+                gecontroleerd heeft krijg je direct de factuur en de BTW teruggestort.
+              </p>
             </div>
           </div>
           <a
             href="https://www.kiyoh.nl/rephone/"
             target="_blank"
-            class="blue-underline">
+            class="blue-underline"
+          >
             <p>Lees alle reviews</p>
             <i class="fas fa-arrow-right"></i>
           </a>
@@ -315,41 +330,50 @@
                   <a
                     href="{{ product.url }}"
                     class="inner"
-                    style="display:block; padding: 0 10px !important;"></a>
+                    style="display:block; padding: 0 10px !important;"
+                  ></a>
                   <div class="row">
                     <a
                       href="{{ product.url }}"
                       class="inner"
-                      style="display:block; padding: 0 10px !important;">
+                      style="display:block; padding: 0 10px !important;"
+                    >
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6  d-md-none mobile-img d-flex align-items-center justify-content-center">
                         <img
-                          src="{{product.featured_image | img_url: 'master'}}"
+                          data-src="{{product.featured_image | img_url: 'master'}}"
                           alt="{{product.title}}"
                           title="{{product.title}}"
-                          style="max-width: 100%;">
+                          class="lazyload"
+                          style="max-width: 100%;"
+                        >
                       </div>
                     </a>
                     <div class="col-md-12 col-lg-12">
                       <a
                         href="{{ product.url }}"
                         class="inner"
-                        style="display:block; padding: 0 10px !important;">
-                        
-                        <p class="title" style="height: 44px;">{{ product.title }}<!--<br><span>{{product.metafields.custom.product_size}}GB | {{product.metafields.custom.product_color}}</span>
-                        -->
+                        style="display:block; padding: 0 10px !important;"
+                      >
+                        <p class="title" style="height: 44px;">
+                          {{ product.title }}
+                          <!--
+                            <br><span>{{product.metafields.custom.product_size}}GB | {{product.metafields.custom.product_color}}</span>
+                          -->
                         </p>
-                        
+
                         <div class="row" style="margin-left: 0px;">
                           <div class="col-4 d-none d-md-block" style="overflow: hidden;">
                             <img
                               src="{{product.featured_image | img_url: 'master'}}"
                               alt="{{product.title}}"
                               title="{{product.title}}"
-                              style="height: 130px; margin-left: -30px; position: relative; z-index: -1;">
+                              style="height: 130px; margin-left: -30px; position: relative; z-index: -1;"
+                            >
                           </div>
                           <div class="col-7 d-flex flex-column-reverse flex-md-column">
                             <div class="price">
-                              <p>Vanaf <br>
+                              <p>
+                                Vanaf <br>
                                 <span>{{ product.price | money_without_trailing_zeros | remove: '€' }},-</span>
                               </p>
                             </div>
@@ -388,57 +412,89 @@
                 </div>
               </div>
             {% endfor %}
-
           </div>
         </div>
         <div>
           <h3>Koop een refurbished iPhone bij Rephone</h3>
-          <p>Zoek je een iPhone met dezelfde kwaliteit als een nieuwe iPhone, maar tegen een lagere prijs? Dan is Rephone dé plek voor jou. Rephone levert dagelijks refurbished Apple devices aan mensen in binnen- en buitenland. Hieronder lees je alles wat je moet weten over de iPhone van Apple!</p>
+          <p>
+            Zoek je een iPhone met dezelfde kwaliteit als een nieuwe iPhone, maar tegen een lagere prijs? Dan is Rephone
+            dé plek voor jou. Rephone levert dagelijks refurbished Apple devices aan mensen in binnen- en buitenland.
+            Hieronder lees je alles wat je moet weten over de iPhone van Apple!
+          </p>
           <h4>Wat maakt de iPhone zo uniek?</h4>
-          <p>Voor de introductie van de oorspronkelijke iPhone was Apple's kijk op mobiele telefoons dat deze ingewikkeld om te gebruiken waren en dat de mobiele telefoon van toen over functies beschikte die niemand begreep. Als reactie hierop ontwikkelde Apple een mobiele telefoon met slimme functies dat in 2007 zou worden gepresenteerd als de eerste iPhone.</p>
-          <p>Door de vele functies waarover een iPhone beschikt is een mobiel tegenwoordig veel meer dan een apparaat waar je alleen maar mee kunt bellen en smsen. Dankzij de iPhone zijn mensen aanzienlijk meer gebruik gaan maken van het internet, worden apps geïnstalleerd om meer uit je smartphone te halen en leren mensen hun telefoon op een geheel nieuwe manier gebruiken.</p>
-          <p>Een ander aspect dat de iPhone zo uniek maakt is de naadloze integratie tussen fysieke componenten en software. Doordat Apple zowel haar eigen producten als eigen software maakt, zijn beide onderdelen optimaal op elkaar afgestemd. Als gebruiker van een iPhone zie je dit terug in de snelheid en gebruiksvriendelijkheid waarmee functies op de iPhone werken.</p>
+          <p>
+            Voor de introductie van de oorspronkelijke iPhone was Apple's kijk op mobiele telefoons dat deze ingewikkeld
+            om te gebruiken waren en dat de mobiele telefoon van toen over functies beschikte die niemand begreep. Als
+            reactie hierop ontwikkelde Apple een mobiele telefoon met slimme functies dat in 2007 zou worden
+            gepresenteerd als de eerste iPhone.
+          </p>
+          <p>
+            Door de vele functies waarover een iPhone beschikt is een mobiel tegenwoordig veel meer dan een apparaat
+            waar je alleen maar mee kunt bellen en smsen. Dankzij de iPhone zijn mensen aanzienlijk meer gebruik gaan
+            maken van het internet, worden apps geïnstalleerd om meer uit je smartphone te halen en leren mensen hun
+            telefoon op een geheel nieuwe manier gebruiken.
+          </p>
+          <p>
+            Een ander aspect dat de iPhone zo uniek maakt is de naadloze integratie tussen fysieke componenten en
+            software. Doordat Apple zowel haar eigen producten als eigen software maakt, zijn beide onderdelen optimaal
+            op elkaar afgestemd. Als gebruiker van een iPhone zie je dit terug in de snelheid en gebruiksvriendelijkheid
+            waarmee functies op de iPhone werken.
+          </p>
           <h4>iPhone generaties: deze modellen bestaan er</h4>
           <p><br></p>
-          <li>2021:
-            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-pro-max/">iPhone 12 Pro Max</a>
+          <li>
+            2021:
+            <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-pro-max/"
+              >iPhone 12 Pro Max</a
+            >
           </li>
-          <li>2021:
+          <li>
+            2021:
             <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-pro/">iPhone 12 Pro</a>
           </li>
-          <li>2021:
+          <li>
+            2021:
             <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12-mini/">iPhone 12 Mini</a>
           </li>
-          <li>2021:
+          <li>
+            2021:
             <a href="https://www.rephone.nl/refurbished-iphone/refurbished-apple-iphone-12/">iPhone 12</a>
           </li>
-          <li>2020:
+          <li>
+            2020:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-se-2020/">iPhone SE (2020)</a>
           </li>
-          <li>2020:
+          <li>
+            2020:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-11-pro-max/">iPhone 11 Pro Max</a>
           </li>
-          <li>2020:
+          <li>
+            2020:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-11-pro/">iPhone 11 Pro</a>
           </li>
-          <li>2019:
+          <li>
+            2019:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-11/">iPhone 11</a>
           </li>
-          <li>2018:
+          <li>
+            2018:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-xs-max/">iPhone Xs Max</a>
           </li>
-          <li>2018:
-            <a href="https://www.rephone.nl/refurbished-iphone/iphone-xs/">iPhone Xs</a><br></li>
-          <li>2018:
+          <li>2018: <a href="https://www.rephone.nl/refurbished-iphone/iphone-xs/">iPhone Xs</a><br></li>
+          <li>
+            2018:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-xr/">iPhone Xr</a>
           </li>
-          <li>2017:
+          <li>
+            2017:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-x/">iPhone X</a>
           </li>
-          <li>2017:
+          <li>
+            2017:
             <a href="https://www.rephone.nl/refurbished-iphone/iphone-8-plus/">iPhone 8&nbsp;Plus</a>
           </li>
-          <li>2017:
+          <li>
+            2017:
             <a href="https://www.rephone.nl/refurbished-iphone/refurbished-iphone-8/">iPhone 8</a>
           </li>
           <li>2016: iPhone 7&nbsp;Plus</li>
@@ -462,43 +518,92 @@
               <strong>Touchscreen</strong>
             </li>
           </ul>
-          <p>iPhones uit 2010 en nieuwer beschikken over een Retina-display. Met deze technologie zijn individuele pixels met het blote oog niet zichtbaar en ervaar je als gebruiker een scherper beeld.</p>
-          <p>In de loop der jaren heeft Apple haar Retina-display verder verbeterd en sinds 2015 beschikken de meeste iPhone-modellen ook over 3D Touch. Deze technologie maakt het scherm drukgevoelig en hierdoor kunnen acties sneller uitgevoerd worden. Dankzij 3D Touch is het mogelijk om slimmer en sneller te interacteren met iOS. De iPhone 8 en nieuwer beschikken tot slot over een functie genaamd True Tone. Met deze technologie stemt het scherm zich automatisch af op jouw omgeving wat het scherm prettiger maakt om naar te kijken.</p>
+          <p>
+            iPhones uit 2010 en nieuwer beschikken over een Retina-display. Met deze technologie zijn individuele pixels
+            met het blote oog niet zichtbaar en ervaar je als gebruiker een scherper beeld.
+          </p>
+          <p>
+            In de loop der jaren heeft Apple haar Retina-display verder verbeterd en sinds 2015 beschikken de meeste
+            iPhone-modellen ook over 3D Touch. Deze technologie maakt het scherm drukgevoelig en hierdoor kunnen acties
+            sneller uitgevoerd worden. Dankzij 3D Touch is het mogelijk om slimmer en sneller te interacteren met iOS.
+            De iPhone 8 en nieuwer beschikken tot slot over een functie genaamd True Tone. Met deze technologie stemt
+            het scherm zich automatisch af op jouw omgeving wat het scherm prettiger maakt om naar te kijken.
+          </p>
           <ul>
             <li>
               <strong>iOS</strong>
             </li>
           </ul>
-          <p>iOS is het besturingssysteem van de iPhone en zorgt ervoor dat je prettig, veilig en snel met je iPhone kunt werken. Het besturingssysteem bevat diverse standaard apps zoals Safari, iMessage en Mail. Hierdoor kan je een iPhone meteen gebruiken zonder eerst apps te moeten downloaden. Een andere app die je altijd terugziet op de iPhone is de App Store. Via dit platform vind je bijna twee miljoen apps die jouw iPhone-ervaring personaliseren.</p>
+          <p>
+            iOS is het besturingssysteem van de iPhone en zorgt ervoor dat je prettig, veilig en snel met je iPhone kunt
+            werken. Het besturingssysteem bevat diverse standaard apps zoals Safari, iMessage en Mail. Hierdoor kan je
+            een iPhone meteen gebruiken zonder eerst apps te moeten downloaden. Een andere app die je altijd terugziet
+            op de iPhone is de App Store. Via dit platform vind je bijna twee miljoen apps die jouw iPhone-ervaring
+            personaliseren.
+          </p>
           <ul>
             <li>
               <strong>Synchronisatie via iCloud</strong>
             </li>
           </ul>
-          <p>iCloud is een dienst die het mogelijk maakt om verschillende apparaten van Apple op een slimme manier met elkaar te laten samenwerken. Een foto die je met een iPhone maakt bijvoorbeeld bekijk je vervolgens zonder zelf iets te hoeven doen op een iPad die aan hetzelfde iCloud-account gekoppeld is. De kracht van iCloud ligt niet alleen in het slim laten samenwerken van verschillende apparaten. Met behulp van iCloud is het tevens mogelijk om een backups te maken van je waardevolle gegevens. Mocht je iPhone onverhoopt kapot gaan, dan stel je je nieuwe iPhone gemakkelijk op dezelfde manier in dankzij een eerder gemaakte iCloud-backup.</p>
+          <p>
+            iCloud is een dienst die het mogelijk maakt om verschillende apparaten van Apple op een slimme manier met
+            elkaar te laten samenwerken. Een foto die je met een iPhone maakt bijvoorbeeld bekijk je vervolgens zonder
+            zelf iets te hoeven doen op een iPad die aan hetzelfde iCloud-account gekoppeld is. De kracht van iCloud
+            ligt niet alleen in het slim laten samenwerken van verschillende apparaten. Met behulp van iCloud is het
+            tevens mogelijk om een backups te maken van je waardevolle gegevens. Mocht je iPhone onverhoopt kapot gaan,
+            dan stel je je nieuwe iPhone gemakkelijk op dezelfde manier in dankzij een eerder gemaakte iCloud-backup.
+          </p>
           <ul>
             <li>
               <strong>iPhone als camera</strong>
             </li>
           </ul>
-          <p>De iPhone heeft ervoor gezorgd dat veel mensen geen digitale camera meer meenemen wanneer ze op vakantie gaan. De camera van de iPhone voldoet namelijk voor velen aan de verwachtingen wanneer het gaat om het maken van mooie foto's. Apple voert regelmatig verbeteringen door ter verbetering van de camera- en fotokwaliteit zoals het toevoegen van optische beeldstabilisatie, betere zoom en het maken van foto's in portretmodus.</p>
+          <p>
+            De iPhone heeft ervoor gezorgd dat veel mensen geen digitale camera meer meenemen wanneer ze op vakantie
+            gaan. De camera van de iPhone voldoet namelijk voor velen aan de verwachtingen wanneer het gaat om het maken
+            van mooie foto's. Apple voert regelmatig verbeteringen door ter verbetering van de camera- en fotokwaliteit
+            zoals het toevoegen van optische beeldstabilisatie, betere zoom en het maken van foto's in portretmodus.
+          </p>
           <ul>
             <li>
               <strong>Andere kenmerkende functies</strong>
             </li>
           </ul>
-          <p>Naast de hierboven genoemde functies zijn er nog een aantal andere functies die kenmerkend zijn voor de iPhone. Eén van deze functies is Face ID. Met deze technologie is het mogelijk om een iPhone te ontgrendelen aan de hand van gezichtsherkenning. Een gezicht wordt al dan niet herkend door een combinatie van sensoren die met elkaar samenwerken. Hierdoor verhoogt de veiligheid van het systeem en is het bijvoorbeeld niet mogelijk om met een foto van de eigenaar een iPhone te ontgrendelen. Face ID is beschikbaar op iPhone Xr en nieuwer.</p>
-          <p>Een andere functie waarmee Apple zich onderscheidt is met de betaaldienst Apple Pay. Deze dienst van Apple maakt het mogelijk om contactloos te betalen met een iPhone. Om gebruik te kunnen maken van Apple Pay zal een koppeling gemaakt moeten worden met je eigen bank en ondersteuning van Apple Pay kan per bank verschillen. De dienst werkt vanaf de iPhone 6 en nieuwer en vanaf de iPhone 5 wanneer je beschikt over een Apple Watch.</p>
+          <p>
+            Naast de hierboven genoemde functies zijn er nog een aantal andere functies die kenmerkend zijn voor de
+            iPhone. Eén van deze functies is Face ID. Met deze technologie is het mogelijk om een iPhone te ontgrendelen
+            aan de hand van gezichtsherkenning. Een gezicht wordt al dan niet herkend door een combinatie van sensoren
+            die met elkaar samenwerken. Hierdoor verhoogt de veiligheid van het systeem en is het bijvoorbeeld niet
+            mogelijk om met een foto van de eigenaar een iPhone te ontgrendelen. Face ID is beschikbaar op iPhone Xr en
+            nieuwer.
+          </p>
+          <p>
+            Een andere functie waarmee Apple zich onderscheidt is met de betaaldienst Apple Pay. Deze dienst van Apple
+            maakt het mogelijk om contactloos te betalen met een iPhone. Om gebruik te kunnen maken van Apple Pay zal
+            een koppeling gemaakt moeten worden met je eigen bank en ondersteuning van Apple Pay kan per bank
+            verschillen. De dienst werkt vanaf de iPhone 6 en nieuwer en vanaf de iPhone 5 wanneer je beschikt over een
+            Apple Watch.
+          </p>
           <h4>De voordelen en kwaliteit van een Refurbished iPhone bij Rephone</h4>
-          <p>Een refurbished iPhone is een
+          <p>
+            Een refurbished iPhone is een
             <a href="https://www.rephone.nl/tweedehands-iphone/">tweedehands IPhone</a>
-            die door een van onze experts wordt nagekeken en in orde wordt gemaakt zodat alles als nieuw werkt. Een refurbished iPhone is goedkoper dan een nieuw toestel maar met dezelfde kwaliteit als een nieuwe iPhone. Om dit te onderstrepen krijg je 2 jaar garantie op een iPhone van Rephone. Elke refurbished iPhone die je bij Rephone kunt kopen is simlockvrij. Hierdoor kan je gebruik blijven maken van je eigen simkaart. Lees ook
+            die door een van onze experts wordt nagekeken en in orde wordt gemaakt zodat alles als nieuw werkt. Een
+            refurbished iPhone is goedkoper dan een nieuw toestel maar met dezelfde kwaliteit als een nieuwe iPhone. Om
+            dit te onderstrepen krijg je 2 jaar garantie op een iPhone van Rephone. Elke refurbished iPhone die je bij
+            Rephone kunt kopen is simlockvrij. Hierdoor kan je gebruik blijven maken van je eigen simkaart. Lees ook
             <a href="https://www.rephone.nl/blog/">onze blogs</a>
-            om het meeste uit uw toestel te halen!<br></p>
+            om het meeste uit uw toestel te halen!<br>
+          </p>
           <h4>Meer uit je bestaande iPhone halen?</h4>
-          <p>Op onze
+          <p>
+            Op onze
             <a href="https://www.rephone.nl/blog/">blog</a>
-            lees je onder andere hoe je zoveel mogelijk uit je iPhone haalt, laten we je graag kennismaken met handige apps binnen diverse categorien en geven we tips mee op het gebied van de keuze en het gebruik van technologie. Ben je nieuwsgierig geworden? Klik dan hier! <br></p>
+            lees je onder andere hoe je zoveel mogelijk uit je iPhone haalt, laten we je graag kennismaken met handige
+            apps binnen diverse categorien en geven we tips mee op het gebied van de keuze en het gebruik van
+            technologie. Ben je nieuwsgierig geworden? Klik dan hier! <br>
+          </p>
         </div>
       </div>
     </section>
