@@ -333,12 +333,14 @@
                 </div>
               {% endcase %}
             {% endfor %}
+
+            //ITEMPROP
             <div style="display: none;" itemprop="description">{{ description }}</div>
+            
             <div
               itemprop="offers"
-              itemscope
-              itemtype="http://schema.org/Offer"
-              style="display: none;">
+              itemscope itemtype="http://schema.org/Offer" style="display: none;">
+              
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content= {{ product.price | money_without_trailing_zeros | remove: '€' }} ></span>
               {% if quantity > 0 %}
