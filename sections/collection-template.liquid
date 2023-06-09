@@ -363,9 +363,10 @@
                         <div class="row" style="margin-left: 0px;">
                           <div class="col-4 d-none d-md-block" style="overflow: hidden;">
                             <img
-                              data-src="{{product.featured_image | img_url: 'master'}}"
+                              src="{{product.featured_image | img_url: 'master'}}"
                               alt="{{product.title}}"
                               title="{{product.title}}"
+                              class="lazyload"
                               style="height: 130px; margin-left: -30px; position: relative; z-index: -1;"
                             >
                           </div>
