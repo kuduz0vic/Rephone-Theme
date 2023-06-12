@@ -346,7 +346,7 @@
               
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content= {{ product.price | money_without_trailing_zeros | remove: '€' }} ></span>
-              {% if variant.quantity <= 0 %}
+              {% if variant.quantity > 0 %}
                 <link itemprop="availability" href="https://schema.org/InStock" />
               {% else %}
                 <link itemprop="availability" href="https://schema.org/OutOfStock" />
