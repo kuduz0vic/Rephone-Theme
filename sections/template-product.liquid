@@ -343,13 +343,12 @@
             <div
               itemprop="offers"
               itemscope itemtype="http://schema.org/Offer" style="display: none;">
-              
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content= {{ product.price | money_without_trailing_zeros | remove: '€' }} ></span>
               {% if variant.quantity > 0 %}
-                <link itemprop="availability" href="https://schema.org/InStock" />
+                <link itemprop="availability" href="InStock" />
               {% else %}
-                <link itemprop="availability" href="https://schema.org/OutOfStock" />
+                <link itemprop="availability" href="OutOfStock" />
               {% endif %}
               <span itemprop="priceValidUntil">2030-01-01</span>
               <span itemprop="url">{{ href }}</span>
