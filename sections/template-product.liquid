@@ -345,7 +345,7 @@
               itemscope itemtype="http://schema.org/Offer" style="display: none;">
               <span itemprop="priceCurrency" content="EUR">&euro;</span>
               <span itemprop="price" content= {{ product.price | money_without_trailing_zeros | remove: '€' }} ></span>
-              {% if variant.quantity > 0 %}
+              {% if variant.available and variant.inventory_quantity > 0 %}
                 <link itemprop="availability" href="http://schema.org/InStock" />
               {% else %}
                 <link itemprop="availability" href="http://schema.org/OutOfStock" />
