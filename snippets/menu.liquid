@@ -41,6 +41,7 @@
           <li>
             <a href="{{ collection.url  }}" class="item">{{ collection.title }}</a>
             <ul>
+              <li><a href="{{ collection.url  }}" class="item">{{ collection.title }}</a></li>
               {% for collection in block.settings.collection_list %}
                 <li>
                   <a href="{{ collection.url  }}" class="item">{{ collection.title }}</a>
@@ -55,7 +56,6 @@
         <a href="{{ link.url }}">{{ link.title }}</a>
         {% if link.links.size > 0 %}
           <ul>
-           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% for child_link in link.links %}
               <li>
                 <a href="{{ child_link.url }}">{{ child_link.title }}</a>
