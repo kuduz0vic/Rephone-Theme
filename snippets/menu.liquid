@@ -40,6 +40,7 @@
           {% assign collection = collections[block.settings.collection] %}
           <li>
             <a href="{{ collection.url  }}" class="item">{{ collection.title }}</a>
+            <!--
             <ul>
               <li><a href="{{ collection.url  }}" class="item">- Bekijk alle {{ collection.title }}</a></li>
               {% for collection in block.settings.collection_list %}
@@ -48,6 +49,7 @@
                 </li>
               {% endfor %}
             </ul>
+            -->
           {% endcase %}
       {% endfor %}
     </li>
