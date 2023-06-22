@@ -429,11 +429,6 @@
   "shopify": {
     "page_titles": {
       "collections": "refurbished"
-    },
-    "filters": {
-      "product_type": {
-        "label": "Model"
-      }
     }
   }
 }
