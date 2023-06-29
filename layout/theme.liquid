@@ -183,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {%- include 'bss-b2b-jquery-341-js' -%}
       {%- include 'bss-b2b-js' -%}
     {%- endif %}
-  </body>
+  {% if content_for_header contains 'bss-b2b-cp' %}{% include 'bss-b2b-jquery-341-js' %}{% include 'bss-b2b-js' %}{% endif %}</body>
   <script>
     function debounce(func, timeout = 300) {
       let timer;
