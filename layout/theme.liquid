@@ -1,11 +1,6 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-
-        <!-- custom css -->
-   {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
-   {{ 'slicknav.css' | asset_url | stylesheet_tag }}
-    
     <meta charset="UTF-8">
     <meta
       name="viewport"
@@ -89,7 +84,10 @@
     <!-- Google Fonts -->
     {% # <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> %}
     {% # <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> %}
-    
+
+    <!-- custom css -->
+    {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
+    {{ 'slicknav.css' | asset_url | stylesheet_tag }}
 
     <style>
       .slidecart-body {
@@ -181,10 +179,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         section.appendChild(script2);
       }
     </script>
+
+    <script defer src="//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23"></script>
     
-  {{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
-  
-    
+
   </body>
   <script>
     function debounce(func, timeout = 300) {
@@ -229,5 +227,4 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-
 </html>
