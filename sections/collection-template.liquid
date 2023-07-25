@@ -364,11 +364,12 @@
                         <div class="row" style="margin-left: 0px;">
                           <div class="col-4 d-none d-md-block" style="overflow: hidden;">
                             <img
-                              src="{{product.featured_image | img_url: 'master' }}"
+                              src="{{product.featured_image | image_url: 'master' }}"
                               alt="{{product.title}}"
                               title="{{product.title}}"
-                              style="height: 130px; margin-left: -30px; position: relative; z-index: -1;"
+                            
                               class="lazyload"
+                              height="130px"
                             >
                           </div>
                           <div class="col-7 d-flex flex-column-reverse flex-md-column">
