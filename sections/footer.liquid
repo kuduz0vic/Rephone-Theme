@@ -37,7 +37,9 @@
       <div class="socials-container">
           <div class="row">
               <div class="logo col-6 col-md-2">
-                  <div class="img" style="background: url({{section.settings.logo | img_url: 'master'}}) no-repeat center;background-size: contain;"></div>
+                  <div class="img" 
+                    style="background: url({{section.settings.logo | img_url: 'master'}}) no-repeat center;background-size: contain;"
+                    class=lazyload></div>
               </div>
               <div class="socials col-6 col-md-2">
                   <a href="https://www.facebook.com/rephonenl" rel="nofollow" target="_blank" style="display:block; margin-right: 10px;"><i class="fab fa-facebook-f"></i></a>
