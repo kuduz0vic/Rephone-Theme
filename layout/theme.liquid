@@ -114,7 +114,6 @@
       }
     </style>
 
-    {% if content_for_header contains 'bss-b2b-cp' %}{% include 'bss-b2b-header' %}{% endif %}
   </head>
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -179,10 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     </script>
     {{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
-    {% if content_for_header contains 'bss-b2b-cp' -%}
-      {%- include 'bss-b2b-jquery-341-js' -%}
-      {%- include 'bss-b2b-js' -%}
-    {%- endif %}
+
   </body>
   <script>
     function debounce(func, timeout = 300) {
