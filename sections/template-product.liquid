@@ -654,10 +654,9 @@ margin: 0;color: #18B900; display: flex; flex-direction: row; gap: 8px;justify-c
                   {% when 'addition' %}
                   <div class="item">
                     <img
-                      data-src="{{block.settings.addition-image | img_url: 'master'}}"
+                      src="{{block.settings.addition-image | img_url: 'master'}}"
                       alt="Simpin"
-                      class="lazyload"
-                      size="auto"/>
+                      class="img" />
                   </div>
                 {% endcase %}
               {% endfor %}
