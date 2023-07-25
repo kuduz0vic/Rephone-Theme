@@ -2,6 +2,10 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
 
+        <!-- custom css -->
+   {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
+   {{ 'slicknav.css' | asset_url | stylesheet_tag }}
+    
     <meta charset="UTF-8">
     <meta
       name="viewport"
@@ -179,10 +183,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
     
   {{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
-
-        <!-- custom css -->
-   {{ 'style-rephone.css' | asset_url | stylesheet_tag }}
-   {{ 'slicknav.css' | asset_url | stylesheet_tag }}
   
     
   </body>
